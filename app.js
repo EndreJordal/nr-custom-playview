@@ -296,21 +296,25 @@ function extractNodeData(node, unit) {
       };
 
       if (type === "unit") {
-        const label = profile.name || unit.name;
-        if (!unit.statblocks.some(sb => sb.label === label)) {
-          const inv = getChar("InSv");
-          unit.statblocks.push({
-            label,
-            stats: {
-              m: getChar("M"),
-              t: getChar("T"),
-              sv: getChar("Sv"),
-              w: getChar("W"),
-              ld: getChar("LD"),
-              oc: getChar("OC"),
-              insv: inv !== "--" && inv !== "-" ? inv : null,
-            },
-          });
+        const inv = getChar("InSv");
+        const stats = {
+          m: getChar("M"),
+          t: getChar("T"),
+          sv: getChar("Sv"),
+          w: getChar("W"),
+          ld: getChar("LD"),
+          oc: getChar("OC"),
+          insv: inv !== "--" && inv !== "-" ? inv : null,
+        };
+        // Some catalogues give a Leader a differently-named profile (e.g.
+        // Tyranid Prime vs Tyranid Warrior) that's numerically identical to
+        // the rest of the unit — only add a new row when the values differ.
+        const statsKey = JSON.stringify(stats);
+        const isDuplicate = unit.statblocks.some(
+          sb => JSON.stringify(sb.stats) === statsKey,
+        );
+        if (!isDuplicate) {
+          unit.statblocks.push({ label: profile.name || unit.name, stats });
         }
       } else if (type.includes("ranged weapon")) {
         unit.ranged.push({
@@ -547,7 +551,7 @@ function buildStatblockSection(unit) {
         .map(
           sb => `
             <div class="statblock-row">
-              <div class="statblock-row__boxes">${buildStatBoxes(sb.stats, "stat-box--compact")}</div>
+              <div class="statblock-row__boxes">${buildStatBoxes(sb.stats)}</div>
               <span class="statblock-row__label">${sanitizeHTML(sb.label)}</span>
             </div>
           `,

@@ -951,11 +951,13 @@ body {
    attached to a squad with a different one) — stack every distinct
    statblock, each labeled, instead of only ever showing the first one
    found. Always visible regardless of viewport, unlike the single-block
-   version above which is mobile-only. */
+   version above which is mobile-only. Left-aligned so the M box lines up
+   with the weapon table below, and boxes stay the dashboard-row size
+   rather than the enlarged mobile single-block size. */
 .unit-drawer__statblock.unit-drawer__statblock--multi {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
 }
 
@@ -963,7 +965,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   column-gap: 12px;
   row-gap: 4px;
 }
@@ -971,7 +973,7 @@ body {
 .statblock-row__boxes {
   display: flex;
   flex-shrink: 0;
-  gap: 4px;
+  gap: 6px;
 }
 
 .statblock-row__label {
@@ -981,16 +983,16 @@ body {
   color: var(--text-primary);
 }
 
-.stat-box.stat-box--compact {
-  width: 30px;
+.unit-drawer__statblock.unit-drawer__statblock--multi .stat-box {
+  width: 34px;
 }
 
-.stat-box.stat-box--compact .stat-box__label {
-  font-size: 7px;
-  margin-bottom: 1px;
+.unit-drawer__statblock.unit-drawer__statblock--multi .stat-box__label {
+  font-size: 9px;
+  margin-bottom: 3px;
 }
 
-.stat-box.stat-box--compact .stat-box__value {
-  font-size: 11px;
-  padding: 2px 0;
+.unit-drawer__statblock.unit-drawer__statblock--multi .stat-box__value {
+  font-size: 15px;
+  padding: 4px 0;
 }
