@@ -2,28 +2,28 @@
   color-scheme: dark;
 
   /* Surfaces (elevation ladder — each step slightly lighter) */
-  --bg-page: #08080a;
-  --bg-surface-1: #131316; /* panels: header, cards, drawers */
-  --bg-surface-2: #19191d; /* rows, chips */
-  --bg-surface-3: #212127; /* hover / active state */
-  --bg-inset: #0e0e10; /* recessed elements: stat values, table body */
+  --bg-page: #19191c; /* dark grey, not black */
+  --bg-surface-1: #212126; /* panels: header, cards, drawers */
+  --bg-surface-2: #29292f; /* rows, chips */
+  --bg-surface-3: #333339; /* hover / active state */
+  --bg-inset: #141417; /* recessed elements: stat values, table body */
 
   /* Borders — low-contrast alpha, not solid hues */
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-subtle-strong: rgba(255, 255, 255, 0.14);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-subtle-strong: rgba(255, 255, 255, 0.17);
 
   /* Text */
-  --text-primary: #f4f4f6;
-  --text-secondary: #a8a8b3;
-  --text-tertiary: #6b6b76;
+  --text-primary: #f6f6f8;
+  --text-secondary: #b5b5c0;
+  --text-tertiary: #84848f;
 
   /* Accents — used sparingly and with intent */
   --accent: #2dd4bf; /* primary: interactive / highlighted stats */
-  --accent-soft: rgba(45, 212, 191, 0.12);
+  --accent-soft: rgba(45, 212, 191, 0.16);
   --accent-amber: #f2b544; /* currency: points, CP cost */
-  --accent-amber-soft: rgba(242, 181, 68, 0.13);
+  --accent-amber-soft: rgba(242, 181, 68, 0.17);
   --accent-danger: #f87171; /* semantic warning: opponent's turn */
-  --accent-danger-soft: rgba(248, 113, 113, 0.12);
+  --accent-danger-soft: rgba(248, 113, 113, 0.16);
 
   /* Stratagem-card exception palette (deliberately outside the core system) */
   --strat-blue: #3a5ba0; /* "your turn" stratagems */
@@ -646,7 +646,7 @@ body {
   table-layout: fixed;
   border-collapse: collapse;
   font-size: 12px;
-  background: var(--bg-inset);
+  background: var(--bg-page);
   border: 1px solid var(--border-subtle);
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   overflow: hidden;
@@ -753,7 +753,7 @@ body {
 }
 
 .abilities-block__body {
-  background: var(--bg-inset);
+  background: var(--bg-page);
   padding: 12px;
   border: 1px solid var(--border-subtle);
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);

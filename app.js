@@ -508,18 +508,19 @@ function buildStatBox(label, value, isHighlight = false) {
 }
 
 function renderStratagemSection(metadata) {
-  if (
-    typeof STRATAGEM_DATABASE === "undefined" ||
-    metadata.detachments.length === 0
-  )
-    return;
+  if (typeof STRATAGEM_DATABASE === "undefined") return;
+
+  const detachmentsWithStrats = metadata.detachments.filter(
+    det => STRATAGEM_DATABASE[det.name],
+  );
+  if (detachmentsWithStrats.length === 0) return;
 
   rosterContainer.appendChild(el("div", "strat-section-header", "Stratagems"));
 
-  metadata.detachments.forEach(det => {
-    const stratsList = STRATAGEM_DATABASE[det.name];
-    if (!stratsList) return;
-    rosterContainer.appendChild(buildDetachmentBlock(det, stratsList));
+  detachmentsWithStrats.forEach(det => {
+    rosterContainer.appendChild(
+      buildDetachmentBlock(det, STRATAGEM_DATABASE[det.name]),
+    );
   });
 }
 
