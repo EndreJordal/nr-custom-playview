@@ -38,6 +38,15 @@ const CATEGORY_ORDER = [
   { key: "DEDICATED TRANSPORT", label: "DEDICATED TRANSPORTS" },
 ];
 
+// --- 0. PWA SERVICE WORKER ---
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").catch(err => {
+      console.error("Service worker registration failed:", err);
+    });
+  });
+}
+
 // --- 1. INITIALIZATION & CACHING ---
 document.addEventListener("DOMContentLoaded", () => {
   const cachedData = localStorage.getItem("40k_roster_cache");
