@@ -65,6 +65,9 @@ function formatText(str) {
   let safeStr = sanitizeHTML(str);
   safeStr = safeStr.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
   safeStr = safeStr.replace(/\^\^(.*?)\^\^/g, "<em>$1</em>");
+  // sanitizeHTML escapes the literal <br> markers we author in strats.js —
+  // unescape just that one fixed, attribute-less tag, nothing else.
+  safeStr = safeStr.replace(/&lt;br&gt;/g, "<br>");
   return safeStr;
 }
 
