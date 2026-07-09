@@ -1,4 +1,4 @@
-const CACHE_NAME = "nr-playview-v3";
+const CACHE_NAME = "nr-playview-v4";
 
 const CORE_ASSETS = [
   "/",

@@ -214,15 +214,11 @@ function processArmyList(data) {
       name: selection.name || "Unknown Unit",
       points: 0,
       models: 0,
-      stats: {
-        m: "--",
-        t: "--",
-        sv: "--",
-        w: "--",
-        ld: "--",
-        oc: "--",
-        insv: null,
-      },
+      // Most units have one statline. Some (e.g. a Leader model attached to
+      // a squad, like Ravener Prime + Raveners) mix models with genuinely
+      // different statlines under one selection — every distinct one found
+      // gets its own entry here, keyed by its own profile name.
+      statblocks: [],
       ranged: [],
       melee: [],
       abilities: [],
@@ -233,6 +229,12 @@ function processArmyList(data) {
 
     extractNodeData(selection, flatUnit);
     flatUnit.keywords = Array.from(flatUnit.keywords);
+    if (flatUnit.statblocks.length === 0) {
+      flatUnit.statblocks.push({
+        label: flatUnit.name,
+        stats: { m: "--", t: "--", sv: "--", w: "--", ld: "--", oc: "--", insv: null },
+      });
+    }
     armyRoster.push(flatUnit);
   });
 
@@ -294,15 +296,21 @@ function extractNodeData(node, unit) {
       };
 
       if (type === "unit") {
-        if (unit.stats.m === "--") {
-          unit.stats.m = getChar("M");
-          unit.stats.t = getChar("T");
-          unit.stats.sv = getChar("Sv");
-          unit.stats.w = getChar("W");
-          unit.stats.ld = getChar("LD");
-          unit.stats.oc = getChar("OC");
+        const label = profile.name || unit.name;
+        if (!unit.statblocks.some(sb => sb.label === label)) {
           const inv = getChar("InSv");
-          unit.stats.insv = inv !== "--" && inv !== "-" ? inv : null;
+          unit.statblocks.push({
+            label,
+            stats: {
+              m: getChar("M"),
+              t: getChar("T"),
+              sv: getChar("Sv"),
+              w: getChar("W"),
+              ld: getChar("LD"),
+              oc: getChar("OC"),
+              insv: inv !== "--" && inv !== "-" ? inv : null,
+            },
+          });
         }
       } else if (type.includes("ranged weapon")) {
         unit.ranged.push({
@@ -477,7 +485,7 @@ function buildUnitRow(unit) {
       <span class="unit-row__points">${sanitizeHTML(unit.points.toString())} pts</span>
     </div>
     <div class="unit-row__stats">
-      ${buildStatBoxes(unit)}
+      ${buildStatBoxes(unit.statblocks[0].stats)}
     </div>
   `;
 
@@ -502,24 +510,49 @@ function buildUnitRow(unit) {
   return row;
 }
 
-function buildStatBoxes(unit) {
-  const hasInv = !!unit.stats.insv;
+function buildStatBoxes(stats, sizeClass = "") {
+  const hasInv = !!stats.insv;
   return `
-    ${buildStatBox("M", unit.stats.m)}
-    ${buildStatBox("T", unit.stats.t)}
-    ${buildStatBox("SV", unit.stats.sv)}
-    ${buildStatBox("INV", hasInv ? unit.stats.insv : "-", hasInv)}
-    ${buildStatBox("W", unit.stats.w)}
-    ${buildStatBox("LD", unit.stats.ld)}
-    ${buildStatBox("OC", unit.stats.oc)}
+    ${buildStatBox("M", stats.m, false, sizeClass)}
+    ${buildStatBox("T", stats.t, false, sizeClass)}
+    ${buildStatBox("SV", stats.sv, false, sizeClass)}
+    ${buildStatBox("INV", hasInv ? stats.insv : "-", hasInv, sizeClass)}
+    ${buildStatBox("W", stats.w, false, sizeClass)}
+    ${buildStatBox("LD", stats.ld, false, sizeClass)}
+    ${buildStatBox("OC", stats.oc, false, sizeClass)}
   `;
 }
 
-function buildStatBox(label, value, isHighlight = false) {
+function buildStatBox(label, value, isHighlight = false, sizeClass = "") {
   return `
-    <div class="stat-box ${isHighlight ? "stat-box--highlight" : ""}">
+    <div class="stat-box ${isHighlight ? "stat-box--highlight" : ""} ${sizeClass}">
       <span class="stat-box__label">${sanitizeHTML(label)}</span>
       <div class="stat-box__value">${sanitizeHTML(value)}</div>
+    </div>
+  `;
+}
+
+function buildStatblockSection(unit) {
+  if (unit.statblocks.length === 1) {
+    return `
+      <div class="unit-drawer__statblock">
+        ${buildStatBoxes(unit.statblocks[0].stats)}
+      </div>
+    `;
+  }
+
+  return `
+    <div class="unit-drawer__statblock unit-drawer__statblock--multi">
+      ${unit.statblocks
+        .map(
+          sb => `
+            <div class="statblock-row">
+              <div class="statblock-row__boxes">${buildStatBoxes(sb.stats, "stat-box--compact")}</div>
+              <span class="statblock-row__label">${sanitizeHTML(sb.label)}</span>
+            </div>
+          `,
+        )
+        .join("")}
     </div>
   `;
 }
@@ -599,9 +632,7 @@ function renderInlineTray(targetRow, unit) {
   const inlineDrawer = el("div", "unit-drawer");
   inlineDrawer.innerHTML = `
     <div class="unit-drawer__inner">
-      <div class="unit-drawer__statblock">
-        ${buildStatBoxes(unit)}
-      </div>
+      ${buildStatblockSection(unit)}
 
       <div>
         <div class="weapon-section-header">

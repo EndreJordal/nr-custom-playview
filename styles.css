@@ -946,3 +946,51 @@ body {
     padding-right: 6px;
   }
 }
+
+/* --- MIXED-PROFILE UNITS (e.g. a Leader model with its own statline
+   attached to a squad with a different one) — stack every distinct
+   statblock, each labeled, instead of only ever showing the first one
+   found. Always visible regardless of viewport, unlike the single-block
+   version above which is mobile-only. */
+.unit-drawer__statblock.unit-drawer__statblock--multi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.statblock-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 12px;
+  row-gap: 4px;
+}
+
+.statblock-row__boxes {
+  display: flex;
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+.statblock-row__label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-box.stat-box--compact {
+  width: 30px;
+}
+
+.stat-box.stat-box--compact .stat-box__label {
+  font-size: 7px;
+  margin-bottom: 1px;
+}
+
+.stat-box.stat-box--compact .stat-box__value {
+  font-size: 11px;
+  padding: 2px 0;
+}
