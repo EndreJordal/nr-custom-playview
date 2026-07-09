@@ -39,7 +39,8 @@ const CATEGORY_ORDER = [
 ];
 
 // --- 0. PWA SERVICE WORKER ---
-if ("serviceWorker" in navigator) {
+const isLocalDev = ["localhost", "127.0.0.1"].includes(location.hostname);
+if ("serviceWorker" in navigator && !isLocalDev) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("/sw.js").catch(err => {
       console.error("Service worker registration failed:", err);
@@ -241,6 +242,12 @@ function processArmyList(data) {
   return { metadata, armyRoster };
 }
 
+// Drops the running tally so two weapon entries can be compared by their
+// actual profile fields alone, ignoring how many models have accumulated so far.
+function stripCount({ count, ...rest }) {
+  return rest;
+}
+
 function extractNodeData(node, unit) {
   if (node.costs) {
     const pts = node.costs.find(c => c.name === "pts");
@@ -318,7 +325,9 @@ function extractNodeData(node, unit) {
         }
       } else if (type.includes("ranged weapon")) {
         // Like statblocks, the same weapon profile is often copied onto
-        // every model-level node in a unit — only keep the first copy.
+        // every model-level node in a unit — merge duplicates into one
+        // entry and sum how many models carry it (node.number here is the
+        // count of whichever model/wargear node this profile is attached to).
         const weapon = {
           name: profile.name,
           range: getChar("Range"),
@@ -330,8 +339,13 @@ function extractNodeData(node, unit) {
           keywords: getKeywords(),
         };
         const weaponKey = JSON.stringify(weapon);
-        if (!unit.ranged.some(w => JSON.stringify(w) === weaponKey)) {
-          unit.ranged.push(weapon);
+        const existing = unit.ranged.find(
+          w => JSON.stringify(stripCount(w)) === weaponKey,
+        );
+        if (existing) {
+          existing.count += node.number || 1;
+        } else {
+          unit.ranged.push({ ...weapon, count: node.number || 1 });
         }
       } else if (type.includes("melee weapon")) {
         const weapon = {
@@ -345,8 +359,13 @@ function extractNodeData(node, unit) {
           keywords: getKeywords(),
         };
         const weaponKey = JSON.stringify(weapon);
-        if (!unit.melee.some(w => JSON.stringify(w) === weaponKey)) {
-          unit.melee.push(weapon);
+        const existing = unit.melee.find(
+          w => JSON.stringify(stripCount(w)) === weaponKey,
+        );
+        if (existing) {
+          existing.count += node.number || 1;
+        } else {
+          unit.melee.push({ ...weapon, count: node.number || 1 });
         }
       } else if (type === "abilities") {
         if (!unit.abilities.some(a => a.name === profile.name)) {
@@ -510,6 +529,7 @@ function buildUnitRow(unit) {
     }
     closeActiveDrawer();
     currentlyActiveRow = row;
+    row.classList.add("unit-row--open");
     renderInlineTray(row, unit);
   };
 
@@ -547,22 +567,15 @@ function buildStatBox(label, value, isHighlight = false, sizeClass = "") {
 }
 
 function buildStatblockSection(unit) {
-  if (unit.statblocks.length === 1) {
-    return `
-      <div class="unit-drawer__statblock">
-        ${buildStatBoxes(unit.statblocks[0].stats)}
-      </div>
-    `;
-  }
-
+  const showLabels = unit.statblocks.length > 1;
   return `
-    <div class="unit-drawer__statblock unit-drawer__statblock--multi">
+    <div class="unit-drawer__statblock">
       ${unit.statblocks
         .map(
           sb => `
             <div class="statblock-row">
               <div class="statblock-row__boxes">${buildStatBoxes(sb.stats)}</div>
-              <span class="statblock-row__label">${sanitizeHTML(sb.label)}</span>
+              ${showLabels ? `<span class="statblock-row__label">${sanitizeHTML(sb.label)}</span>` : ""}
             </div>
           `,
         )
@@ -649,7 +662,7 @@ function renderInlineTray(targetRow, unit) {
       ${buildStatblockSection(unit)}
 
       <div>
-        <div class="weapon-section-header">
+        <div class="weapon-section-header weapon-section-header--ranged">
           <img src="ranged.png" alt="Ranged Icon" class="weapon-section-header__icon"> RANGED WEAPONS
         </div>
         <div class="weapon-table-scroll">
@@ -670,7 +683,7 @@ function renderInlineTray(targetRow, unit) {
       </div>
 
       <div class="unit-drawer__section">
-        <div class="weapon-section-header">
+        <div class="weapon-section-header weapon-section-header--melee">
           <img src="melee.png" alt="Melee Icon" class="weapon-section-header__icon weapon-section-header__icon--melee"> MELEE WEAPONS
         </div>
         <div class="weapon-table-scroll">
@@ -702,6 +715,16 @@ function renderInlineTray(targetRow, unit) {
   });
 }
 
+// Only a flat integer A value (e.g. "4") has a meaningful total across
+// models — dice notation like "D3" or "D6+3" can't be multiplied into a
+// single number, so those are left alone.
+function buildTotalAttacks(aValue, count) {
+  if (count <= 1) return "";
+  const base = Number(aValue);
+  if (!Number.isFinite(base)) return "";
+  return ` <span class="weapon-table__cell-total">(${base * count})</span>`;
+}
+
 function buildWeaponRows(weaponList) {
   if (weaponList.length === 0) {
     return `<tr><td colspan="8" class="weapon-table__empty">No profiles found.</td></tr>`;
@@ -710,9 +733,13 @@ function buildWeaponRows(weaponList) {
     .map(
       w => `
         <tr class="weapon-table__row">
-          <td class="weapon-table__cell weapon-table__cell--name">${formatText(w.name)}</td>
+          <td class="weapon-table__cell weapon-table__cell--name">${formatText(w.name)}${
+            w.count > 1
+              ? ` <span class="weapon-table__count-badge">x${sanitizeHTML(w.count.toString())}</span>`
+              : ""
+          }</td>
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.range)}</td>
-          <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.a)}</td>
+          <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.a)}${buildTotalAttacks(w.a, w.count)}</td>
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.ws || w.bs)}</td>
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.s)}</td>
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.ap)}</td>
@@ -768,13 +795,16 @@ function buildKeywordsBlock(unit) {
   if (unit.keywords.length === 0) return "";
   return `
     <div class="keywords-block">
-      <strong class="keywords-block__label">KEYWORDS:</strong>
-      <span class="keywords-block__list">${sanitizeHTML(unit.keywords.join(", "))}</span>
+      <strong class="keywords-block__label">Keywords</strong>
+      ${buildKeywordBadges(unit.keywords.join(","))}
     </div>
   `;
 }
 
 function closeActiveDrawer() {
+  if (currentlyActiveRow) {
+    currentlyActiveRow.classList.remove("unit-row--open");
+  }
   if (currentlyOpenDrawer) {
     const target = currentlyOpenDrawer;
     target.style.maxHeight = "0px";

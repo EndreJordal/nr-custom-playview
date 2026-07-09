@@ -1,6 +1,6 @@
 {
-  "name": "Datasheet Dashboard",
-  "short_name": "Datasheet",
+  "name": "New Recruit Custom Play View",
+  "short_name": "NR Playview",
   "description": "Interactive army roster and stratagem viewer for New Recruit exports.",
   "start_url": "/",
   "scope": "/",
