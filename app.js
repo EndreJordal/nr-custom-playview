@@ -461,8 +461,6 @@ function buildUnitRow(unit) {
   row.tabIndex = 0;
   row.setAttribute("role", "button");
 
-  const hasInv = !!unit.stats.insv;
-
   row.innerHTML = `
     <div class="unit-row__title">
       <span class="unit-row__name">${sanitizeHTML(unit.name)}</span>
@@ -470,13 +468,7 @@ function buildUnitRow(unit) {
       <span class="unit-row__points">${sanitizeHTML(unit.points.toString())} pts</span>
     </div>
     <div class="unit-row__stats">
-      ${buildStatBox("M", unit.stats.m)}
-      ${buildStatBox("T", unit.stats.t)}
-      ${buildStatBox("SV", unit.stats.sv)}
-      ${buildStatBox("INV", hasInv ? unit.stats.insv : "-", hasInv)}
-      ${buildStatBox("W", unit.stats.w)}
-      ${buildStatBox("LD", unit.stats.ld)}
-      ${buildStatBox("OC", unit.stats.oc)}
+      ${buildStatBoxes(unit)}
     </div>
   `;
 
@@ -499,6 +491,19 @@ function buildUnitRow(unit) {
   });
 
   return row;
+}
+
+function buildStatBoxes(unit) {
+  const hasInv = !!unit.stats.insv;
+  return `
+    ${buildStatBox("M", unit.stats.m)}
+    ${buildStatBox("T", unit.stats.t)}
+    ${buildStatBox("SV", unit.stats.sv)}
+    ${buildStatBox("INV", hasInv ? unit.stats.insv : "-", hasInv)}
+    ${buildStatBox("W", unit.stats.w)}
+    ${buildStatBox("LD", unit.stats.ld)}
+    ${buildStatBox("OC", unit.stats.oc)}
+  `;
 }
 
 function buildStatBox(label, value, isHighlight = false) {
@@ -585,42 +590,50 @@ function renderInlineTray(targetRow, unit) {
   const inlineDrawer = el("div", "unit-drawer");
   inlineDrawer.innerHTML = `
     <div class="unit-drawer__inner">
+      <div class="unit-drawer__statblock">
+        ${buildStatBoxes(unit)}
+      </div>
+
       <div>
         <div class="weapon-section-header">
           <img src="ranged.png" alt="Ranged Icon" class="weapon-section-header__icon"> RANGED WEAPONS
         </div>
-        <table class="weapon-table">
-          <tr class="weapon-table__head-row">
-            <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
-            <th class="weapon-table__head">RANGE</th>
-            <th class="weapon-table__head">A</th>
-            <th class="weapon-table__head">BS</th>
-            <th class="weapon-table__head">S</th>
-            <th class="weapon-table__head">AP</th>
-            <th class="weapon-table__head">D</th>
-            <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
-          </tr>
-          ${buildWeaponRows(unit.ranged)}
-        </table>
+        <div class="weapon-table-scroll">
+          <table class="weapon-table">
+            <tr class="weapon-table__head-row">
+              <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
+              <th class="weapon-table__head">RANGE</th>
+              <th class="weapon-table__head">A</th>
+              <th class="weapon-table__head">BS</th>
+              <th class="weapon-table__head">S</th>
+              <th class="weapon-table__head">AP</th>
+              <th class="weapon-table__head">D</th>
+              <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
+            </tr>
+            ${buildWeaponRows(unit.ranged)}
+          </table>
+        </div>
       </div>
 
       <div class="unit-drawer__section">
         <div class="weapon-section-header">
           <img src="melee.png" alt="Melee Icon" class="weapon-section-header__icon weapon-section-header__icon--melee"> MELEE WEAPONS
         </div>
-        <table class="weapon-table">
-          <tr class="weapon-table__head-row">
-            <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
-            <th class="weapon-table__head">RANGE</th>
-            <th class="weapon-table__head">A</th>
-            <th class="weapon-table__head">WS</th>
-            <th class="weapon-table__head">S</th>
-            <th class="weapon-table__head">AP</th>
-            <th class="weapon-table__head">D</th>
-            <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
-          </tr>
-          ${buildWeaponRows(unit.melee)}
-        </table>
+        <div class="weapon-table-scroll">
+          <table class="weapon-table">
+            <tr class="weapon-table__head-row">
+              <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
+              <th class="weapon-table__head">RANGE</th>
+              <th class="weapon-table__head">A</th>
+              <th class="weapon-table__head">WS</th>
+              <th class="weapon-table__head">S</th>
+              <th class="weapon-table__head">AP</th>
+              <th class="weapon-table__head">D</th>
+              <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
+            </tr>
+            ${buildWeaponRows(unit.melee)}
+          </table>
+        </div>
       </div>
 
       ${buildAbilitiesBlock(unit)}

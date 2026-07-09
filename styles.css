@@ -621,6 +621,20 @@ body {
   margin-top: 14px;
 }
 
+/* Mirrors .unit-row__stats for narrow viewports where the row itself can't
+   fit the statblock alongside the unit name — see mobile media query below. */
+.unit-drawer__statblock {
+  display: none;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.weapon-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .weapon-section-header,
 .abilities-block__header {
   background: var(--bg-surface-2);
@@ -651,6 +665,7 @@ body {
 
 .weapon-table {
   width: 100%;
+  min-width: 520px;
   table-layout: fixed;
   border-collapse: collapse;
   font-family: var(--font-display);
@@ -837,5 +852,16 @@ body {
 
   .roster-header__tag-label {
     width: auto;
+  }
+
+  /* The row can't fit name + count + points alongside 7 stat boxes at this
+     width, so drop the statblock from the row and show it at the top of the
+     drawer instead, where there's room to wrap. */
+  .unit-row__stats {
+    display: none;
+  }
+
+  .unit-drawer__statblock {
+    display: flex;
   }
 }
