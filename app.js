@@ -317,7 +317,9 @@ function extractNodeData(node, unit) {
           unit.statblocks.push({ label: profile.name || unit.name, stats });
         }
       } else if (type.includes("ranged weapon")) {
-        unit.ranged.push({
+        // Like statblocks, the same weapon profile is often copied onto
+        // every model-level node in a unit — only keep the first copy.
+        const weapon = {
           name: profile.name,
           range: getChar("Range"),
           a: getChar("A"),
@@ -326,9 +328,13 @@ function extractNodeData(node, unit) {
           ap: getChar("AP"),
           d: getChar("D"),
           keywords: getKeywords(),
-        });
+        };
+        const weaponKey = JSON.stringify(weapon);
+        if (!unit.ranged.some(w => JSON.stringify(w) === weaponKey)) {
+          unit.ranged.push(weapon);
+        }
       } else if (type.includes("melee weapon")) {
-        unit.melee.push({
+        const weapon = {
           name: profile.name,
           range: getChar("Range"),
           a: getChar("A"),
@@ -337,7 +343,11 @@ function extractNodeData(node, unit) {
           ap: getChar("AP"),
           d: getChar("D"),
           keywords: getKeywords(),
-        });
+        };
+        const weaponKey = JSON.stringify(weapon);
+        if (!unit.melee.some(w => JSON.stringify(w) === weaponKey)) {
+          unit.melee.push(weapon);
+        }
       } else if (type === "abilities") {
         if (!unit.abilities.some(a => a.name === profile.name)) {
           unit.abilities.push({
