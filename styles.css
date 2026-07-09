@@ -626,8 +626,22 @@ body {
 .unit-drawer__statblock {
   display: none;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 16px;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.unit-drawer__statblock .stat-box {
+  width: 52px;
+}
+
+.unit-drawer__statblock .stat-box__label {
+  font-size: 11px;
+}
+
+.unit-drawer__statblock .stat-box__value {
+  font-size: 20px;
+  padding: 8px 0;
 }
 
 .weapon-table-scroll {
@@ -863,5 +877,49 @@ body {
 
   .unit-drawer__statblock {
     display: flex;
+  }
+
+  /* Edge-to-edge: drop the outer gutter and square off the cards that would
+     otherwise float with rounded corners in the middle of a narrow screen. */
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .roster-header,
+  .unit-row,
+  .detachment-row,
+  .unit-drawer {
+    border-radius: 0;
+  }
+
+  /* Tighter weapon table columns so most rows fit without the horizontal
+     scroll fallback — numeric columns only need a couple of characters. */
+  .weapon-table {
+    min-width: 100%;
+    font-size: 11px;
+  }
+
+  .weapon-table__head {
+    width: 9%;
+  }
+
+  .weapon-table__head--name,
+  .weapon-table__head--keywords {
+    width: 23%;
+    padding: 6px 8px;
+  }
+
+  .weapon-table__cell {
+    padding: 8px 4px;
+  }
+
+  .weapon-table__cell--name {
+    padding-left: 8px;
+    font-size: 12px;
+  }
+
+  .weapon-table__cell--keywords {
+    padding-right: 8px;
   }
 }
