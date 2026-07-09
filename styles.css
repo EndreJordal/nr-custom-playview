@@ -893,11 +893,34 @@ body {
     border-radius: 0;
   }
 
+  /* Reclaim a bit more width for the weapon tables by tightening the
+     drawer's own inset. */
+  .unit-drawer {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  /* Keep the statblock on one line — narrower boxes and a tighter gap
+     instead of letting OC wrap to its own row. */
+  .unit-drawer__statblock {
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+
+  .unit-drawer__statblock .stat-box {
+    width: 42px;
+  }
+
+  .unit-drawer__statblock .stat-box__value {
+    font-size: 17px;
+    padding: 6px 0;
+  }
+
   /* Tighter weapon table columns so most rows fit without the horizontal
      scroll fallback — numeric columns only need a couple of characters. */
   .weapon-table {
     min-width: 100%;
-    font-size: 11px;
+    font-size: 12.5px;
   }
 
   .weapon-table__head {
@@ -907,19 +930,19 @@ body {
   .weapon-table__head--name,
   .weapon-table__head--keywords {
     width: 23%;
-    padding: 6px 8px;
+    padding: 6px 6px;
   }
 
   .weapon-table__cell {
-    padding: 8px 4px;
+    padding: 8px 3px;
   }
 
   .weapon-table__cell--name {
-    padding-left: 8px;
-    font-size: 12px;
+    padding-left: 6px;
+    font-size: 12.5px;
   }
 
   .weapon-table__cell--keywords {
-    padding-right: 8px;
+    padding-right: 6px;
   }
 }
