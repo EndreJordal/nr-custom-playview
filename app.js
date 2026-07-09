@@ -42,7 +42,7 @@ const CATEGORY_ORDER = [
 const isLocalDev = ["localhost", "127.0.0.1"].includes(location.hostname);
 if ("serviceWorker" in navigator && !isLocalDev) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").catch(err => {
+    navigator.serviceWorker.register("./sw.js").catch(err => {
       console.error("Service worker registration failed:", err);
     });
   });
