@@ -711,12 +711,12 @@ function buildWeaponRows(weaponList) {
       w => `
         <tr class="weapon-table__row">
           <td class="weapon-table__cell weapon-table__cell--name">${formatText(w.name)}</td>
-          <td class="weapon-table__cell">${formatText(w.range)}</td>
+          <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.range)}</td>
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.a)}</td>
-          <td class="weapon-table__cell">${formatText(w.ws || w.bs)}</td>
-          <td class="weapon-table__cell">${formatText(w.s)}</td>
-          <td class="weapon-table__cell">${formatText(w.ap)}</td>
-          <td class="weapon-table__cell weapon-table__cell--damage">${formatText(w.d)}</td>
+          <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.ws || w.bs)}</td>
+          <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.s)}</td>
+          <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.ap)}</td>
+          <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.d)}</td>
           <td class="weapon-table__cell weapon-table__cell--keywords">${buildKeywordBadges(w.keywords)}</td>
         </tr>
       `,

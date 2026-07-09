@@ -746,11 +746,6 @@ body {
   font-weight: 700;
 }
 
-.weapon-table__cell--damage {
-  color: var(--accent);
-  font-weight: 700;
-}
-
 .weapon-table__cell--keywords {
   text-align: left;
   padding-right: 10px;
