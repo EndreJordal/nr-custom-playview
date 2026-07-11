@@ -3973,4 +3973,346 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Traitoris Lance": [
+    {
+      name: "PTERRORSHADES",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after an enemy unit fails a **Battle-shock** **test**.",
+        target: 'One **CHAOS** **KNIGHTS** unit from your army that is within 12" of that enemy unit.',
+        effect: "Roll six D6: for each 4+, that enemy unit suffers 1 **mortal** **wound** and one model in your unit regains up to 1 lost wound.<br><br>**Restrictions:** You can only use this Stratagem once per battle round.",
+      },
+    },
+    {
+      name: "CONQUERORS WITHOUT MERCY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **CHAOS** **KNIGHTS** model from your army that made a **Charge** **move** this turn and has not been selected to fight this phase.",
+        effect: 'Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by your model by 1. After your model has finished making its attacks this phase, if it destroyed one or more enemy units this phase, each enemy unit within 6" of your model must take a **Battle-shock** **test**.',
+      },
+    },
+    {
+      name: "DISDAIN FOR THE WEAK",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **CHAOS** **KNIGHTS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **6+** ability, and the **Feel** **No** **Pain** **5+** ability against attacks made by **Battle-shocked** models.",
+      },
+    },
+    {
+      name: "A LONG LEASH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **ABHORRENT** unit from your army and up to two friendly **WAR** **DOG** units.",
+        effect: "Until the start of your next Command phase, those WAR DOG units are treated as being within range of any **Aura** **abilities** your ABHORRENT unit has.",
+      },
+    },
+    {
+      name: "IMPERIOUS ADVANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "Up to two **WAR** **DOG** units from your army or one **TITANIC** **CHAOS** **KNIGHTS** unit from your army.",
+        effect: "Until the end of the phase, each time a model in one of your units makes a **Normal**, **Advance**, **Fall** **Back** or **Charge** **move**, it can move through models and terrain features. When doing so, it can move within **Engagement** **Range** of such models but, unless it made a Charge move, cannot end that move within Engagement Range of them, and any **Desperate** **Escape** **test** is automatically passed (the **Super-heavy** **Walker** ability does not apply while using this Stratagem).",
+      },
+    },
+    {
+      name: "STORM OF DARKNESS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **CHAOS** **KNIGHTS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have the **Stealth** ability, and each time an attack targets your unit, models in it have the **Benefit** **of** **Cover** against that attack.",
+      },
+    },
+  ],
+
+  "Infernal Lance": [
+    {
+      name: "PROFANE SYMBIOSIS",
+      cp: "1 CP",
+      rules: {
+        when: "End of any phase.",
+        target: "One **CHAOS** **KNIGHTS** unit from your army that is not **Empowered**.",
+        effect: "Your unit makes a **Malefic** **Surge**.<br><br>**Restrictions:** You cannot select the same unit as the target of this Stratagem more than once per battle round.",
+      },
+    },
+    {
+      name: "HELLFORGED CONSTRUCTION",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **CHAOS** **KNIGHTS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "CORRUPTING TAINT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase, just after a **CHAOS** **KNIGHTS** **CHARACTER** unit from your army makes a **Malefic** **Surge**.",
+        target: "That CHAOS KNIGHTS CHARACTER unit.",
+        effect: "Select one **objective** **marker** your unit is within range of that you control. That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "UNLEASH BALEFIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **CHAOS** **KNIGHTS** unit from your army that has not been selected to shoot this phase.",
+        effect: 'After your unit has shot, select one enemy unit hit by one or more of those attacks. That enemy unit must take a **Battle-shock** **test**; if the test is failed, until the end of your opponent’s next turn, it is aflame. While a unit is aflame, subtract 2" from its Move characteristic and subtract 2 from **Charge** **rolls** made for it.',
+      },
+    },
+    {
+      name: "WARP VISION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **CHAOS** **KNIGHTS** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[IGNORES** **COVER]** ability.",
+      },
+    },
+    {
+      name: "DIABOLIC BULWARK",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **CHAOS** **KNIGHTS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have a 4+ **invulnerable** **save**.",
+      },
+    },
+  ],
+
+  "Lords of Dread": [
+    {
+      name: "CLAIMED FOR THE DARK GODS",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Command phase.",
+        target: "One **CHAOS** **KNIGHTS** **CHARACTER** unit from your army that is within range of one or more **objective** **markers** you control.",
+        effect: "Select one of those objective markers. That objective marker remains under your control, with a Level of Control of 5 (unless it would otherwise be higher), until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "SPITEFUL DEMISE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a **CHAOS** **KNIGHTS** **CHARACTER** unit from your army is destroyed.",
+        target: "That CHAOS KNIGHTS CHARACTER unit. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "When rolling to determine whether **mortal** **wounds** are inflicted by your unit’s **Deadly** **Demise** ability, that model’s Deadly Demise ability inflicts mortal wounds on a D6 roll of a 4+ instead of on a 6.",
+      },
+    },
+    {
+      name: "RUNES OF DISDAIN",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **CHAOS** **KNIGHTS** **CHARACTER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "TITANIC DUEL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **CHAOS** **KNIGHTS** **CHARACTER** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Select one enemy MONSTER or VEHICLE unit. Until the end of the phase, each time a model in your unit makes an attack that targets that enemy unit, re-roll a **Hit** **roll** of 1 and re-roll a **Wound** **roll** of 1. Each time a model in your unit makes an attack that targets that enemy unit, if that enemy unit is TITANIC, you can re-roll the Hit roll and you can re-roll the Wound roll instead.",
+      },
+    },
+    {
+      name: "TROPHY HUNTER",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just before a **CHAOS** **KNIGHTS** **CHARACTER** unit from your army **consolidates**.",
+        target: "That CHAOS KNIGHTS CHARACTER unit.",
+        effect: 'Until the end of the phase, each time your unit Consolidates, models in it can move an additional 3" as long as your unit can end that move within **Engagement** **Range** of one or more enemy units.',
+      },
+    },
+    {
+      name: "CRUSHED LIKE VERMIN",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **CHAOS** **KNIGHTS** **CHARACTER** unit from your army ends a **Normal** **move**.",
+        target: "That CHAOS KNIGHTS CHARACTER unit.",
+        effect: "Select one enemy unit (excluding MONSTERS and VEHICLES) that your unit moved over during that move and roll six D6: for each 4+, that enemy unit suffers 1 **mortal** **wound**. If one or more models are destroyed as a result of this Stratagem, that enemy unit must take a **Battle-shock** **test**.",
+      },
+    },
+  ],
+
+  "Helhunt Lance": [
+    {
+      name: "FERAL ARROGANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a **mortal** **wound** is allocated to a **CHAOS** **KNIGHTS** unit from your army.",
+        target: "That CHAOS KNIGHTS unit.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **5+** ability against **mortal** **wounds**.",
+      },
+    },
+    {
+      name: "MERCILESS FUSILLADE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Shooting phase or the start of the Fight phase.",
+        target: "One **TITANIC** **CHAOS** **KNIGHTS** unit from your army, and up to two friendly **WAR** **DOG** units, that have not been selected to shoot or fight this phase.",
+        effect: "Select one enemy unit that is an eligible target for each of those CHAOS KNIGHTS units. Until the end of the phase, each time one of those Chaos Knights units is selected to shoot or fight, if that enemy unit is an eligible target, you can only select that enemy unit as the target for all of those attacks and those attacks have the **[SUSTAINED** **HITS** **1]** ability.",
+      },
+    },
+    {
+      name: "BEASTHIDE MANIFESTATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One CHAOS KNIGHTS unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "FLUSH THE QUARRY",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Movement phase.",
+        target: 'One **TITANIC** **CHAOS** **KNIGHTS** unit from your army and up to three friendly **WAR** **DOG** units within 6" of that Titanic Chaos Knights unit.',
+        effect: "Until the end of the phase, each time one of those War Dog units makes a **Normal**, **Advance** or **Fall** **Back** **move**, its models can move through models and terrain features. When doing so, they can move within **Engagement** **Range** of such models but cannot end that move within Engagement Range of them, and any **Desperate** **Escape** **test** is automatically passed.",
+      },
+    },
+    {
+      name: "CONTEMPTUOUS VOLLEYS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a CHAOS KNIGHTS unit from your army **Falls** **Back**.",
+        target: "That **CHAOS** **KNIGHTS** unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it **Fell** **Back**.",
+      },
+    },
+    {
+      name: "GOADED BEAST",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One CHAOS KNIGHTS unit from your army that lost one or more wounds as a result of those attacks.",
+        effect: "Your unit can make a Surge move. To do so, roll one D6: models in your unit move a number of inches up to the result, but your unit must end that move as close as possible to the closest enemy unit (excluding AIRCRAFT). When doing so, those models can be moved within **Engagement** **Range** of that enemy unit.",
+      },
+    },
+  ],
+
+  "Houndpack Lance": [
+    {
+      name: "VOX-HOWL",
+      cp: "2 CP",
+      rules: {
+        when: "Start of the Shooting phase or the start of the Fight phase.",
+        target: "One WAR DOG CHARACTER unit from your army.",
+        effect: 'Each enemy unit within 6" of your unit must take a **Battle-shock** **test**. Each friendly WAR DOG unit that is within 6" of your unit and is Battle-shocked must take a **Leadership** **test**; if that test is passed, that unit is no longer Battle-shocked.<br><br>**Restrictions:** You can only use this Stratagem once per turn.',
+      },
+    },
+    {
+      name: "HUNGRY FOR COMBAT",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "Two or more **WAR** **DOG** units from your army within **Engagement** **Range** of the same enemy unit.",
+        effect: "Select one enemy unit within Engagement Range of those WAR DOG units. Until the end of the phase, models in those WAR DOG units can only target that enemy unit, but each time a model in one of those WAR DOG units makes an attack, an unmodified **Hit** **roll** of 5+ scores a **Critical** **Hit**.",
+      },
+    },
+    {
+      name: "CUNNING HUNTER",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **WAR** **DOG** unit from your army **Falls** **Back**.",
+        target: "That WAR DOG unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it **Fell** **Back**.",
+      },
+    },
+    {
+      name: "ANIMALISTIC RAGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after a **WAR** **DOG** unit from your army that has not yet fought is destroyed.",
+        target: "That WAR DOG unit. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Before resolving your unit’s **Deadly** **Demise** ability, it can either shoot or fight. When doing so, it must target only the enemy unit that just destroyed it, and can only do so if that enemy unit is an eligible target. After it has done so and after any **Consolidation** **moves** have been made, resolve your unit’s Deadly Demise ability as normal.",
+      },
+    },
+    {
+      name: "HARRYING HOUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **WAR** **DOG** unit from your army that is within 9" of that enemy unit.',
+        effect: 'Your unit can make a **Normal** **move** of up to 6".',
+      },
+    },
+    {
+      name: "ENCIRCLING PACK",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: 'One **WAR** **DOG** unit from your army that is wholly within 12" of one or more battlefield edges and not within **Engagement** **Range** of one or more enemy units.',
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Iconoclast Fiefdom": [
+    {
+      name: "AVENGE THE MASTERS!",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **CHAOS** **KNIGHTS** unit from your army that was just destroyed. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Until the end of the battle, the enemy unit that destroyed your unit is Marked. Each time a **DAMNED** model from your army makes an attack that targets a Marked unit, that attack has the **[LETHAL** **HITS]** ability.",
+      },
+    },
+    {
+      name: "WRETCHED MASSES",
+      cp: "2 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **DAMNED** unit (excluding **ACCURSED** **CULTISTS**) from your army that was just destroyed. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Add a new unit to your army identical to your destroyed unit, in Strategic Reserves, at its **Starting** **Strength** and with all of its wounds remaining.<br><br>**Restrictions:** You can only use this Stratagem once per battle. This Stratagem cannot be used to return destroyed CHARACTER units to **Attached** **units**.",
+      },
+    },
+    {
+      name: "SOUL HUNGER",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a CHAOS KNIGHTS unit from your army has fought.",
+        target: "That **CHAOS** **KNIGHTS** unit.",
+        effect: "If one or more models were destroyed as a result of those attacks, your unit regains up to D3 lost wounds. If one or more models from **Battle-shocked** units were destroyed as a result of those attacks, your unit regains up to D3+2 lost wounds instead.",
+      },
+    },
+    {
+      name: "UNRESTRAINED RAGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a CHAOS KNIGHTS unit from your army **Advances** or **Falls** **Back**.",
+        target: "That **CHAOS** **KNIGHTS** unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Advanced or Fell Back.",
+      },
+    },
+    {
+      name: "WORTHLESS CHATTEL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DAMNED** unit from your army.",
+        effect: "Until the end of the phase, enemy units are not considered to be within **Engagement** **Range** of your unit for the purposes of selecting targets of ranged weapons. Until the end of the phase, each time an enemy model loses a wound, while that model’s unit is within Engagement Range of your unit, roll one D6: on a 4+, one model from your unit is destroyed after the attacking unit has finished making its attacks.",
+      },
+    },
+    {
+      name: "PRESERVE THE IDOLS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **CHAOS** **KNIGHTS** unit from your army that is within 9" of that enemy unit.',
+        effect: 'Select one **DAMNED** unit from your army that is not **Battle-shocked**, not within **Engagement** **Range** of one or more enemy units and is within 6" of your unit. That DAMNED unit can make a **Normal** **move** of up to 6", but it must end this move closer to that enemy unit than when it started the move.',
+      },
+    },
+  ],
 };
