@@ -156,6 +156,7 @@ function processArmyList(data) {
     listName: data.roster.name || "Unnamed Roster",
     factionName: forces[0].catalogueName || "Unknown Faction",
     totalPoints: 0,
+    pointsLimit: null,
     detachments: [],
     forceDispositions: [],
   };
@@ -163,6 +164,11 @@ function processArmyList(data) {
   if (data.roster.costs) {
     const pts = data.roster.costs.find(c => c.name === "pts");
     if (pts) metadata.totalPoints = pts.value;
+  }
+
+  if (data.roster.costLimits) {
+    const limit = data.roster.costLimits.find(c => c.name === "pts");
+    if (limit) metadata.pointsLimit = limit.value;
   }
 
   const armyRoster = [];
@@ -223,6 +229,7 @@ function processArmyList(data) {
       ranged: [],
       melee: [],
       abilities: [],
+      enhancements: [],
       coreRules: [],
       factionRules: [],
       keywords: new Set(),
@@ -249,10 +256,18 @@ function stripCount({ count, ...rest }) {
 }
 
 function extractNodeData(node, unit) {
+  let nodePoints = 0;
   if (node.costs) {
     const pts = node.costs.find(c => c.name === "pts");
-    if (pts) unit.points += pts.value;
+    if (pts) nodePoints = pts.value;
+    unit.points += nodePoints;
   }
+  // Enhancements are wargear upgrades filed under a group starting with
+  // "Enhancements" (e.g. "Enhancements::Vanguard Onslaught Enhancements") —
+  // their name/description arrives as a normal Abilities-typed profile, so
+  // without this they'd get silently folded into the unit's ability list.
+  const isEnhancement =
+    typeof node.group === "string" && node.group.startsWith("Enhancements");
   if (node.type === "model") {
     unit.models += node.number || 1;
   }
@@ -368,7 +383,15 @@ function extractNodeData(node, unit) {
           unit.melee.push({ ...weapon, count: node.number || 1 });
         }
       } else if (type === "abilities") {
-        if (!unit.abilities.some(a => a.name === profile.name)) {
+        if (isEnhancement) {
+          if (!unit.enhancements.some(e => e.name === profile.name)) {
+            unit.enhancements.push({
+              name: profile.name,
+              desc: getChar("Description"),
+              cost: nodePoints,
+            });
+          }
+        } else if (!unit.abilities.some(a => a.name === profile.name)) {
           unit.abilities.push({
             name: profile.name,
             desc: getChar("Description"),
@@ -391,16 +414,26 @@ function renderDashboard(metadata, armyRoster) {
   renderStratagemSection(metadata);
 }
 
+// Shows "used / limit" when New Recruit reports a points limit for the
+// battle size, otherwise just the used total.
+function formatPointsLabel(metadata) {
+  const used = metadata.totalPoints.toString();
+  return metadata.pointsLimit ? `${used} / ${metadata.pointsLimit}` : used;
+}
+
 function buildHeader(metadata) {
   const headerWrapper = el("div", "roster-header");
   const leftMetaBlock = el("div", "roster-header__meta");
+  const overBudget =
+    metadata.pointsLimit && metadata.totalPoints > metadata.pointsLimit;
+  const pointsClass = overBudget ? "roster-header__points--over" : "";
 
   const renderMeta = collapsed => {
     if (collapsed) {
       leftMetaBlock.innerHTML = `
         <div class="roster-header__collapsed-row">
           <span class="roster-header__name roster-header__name--collapsed">${sanitizeHTML(metadata.listName)}</span>
-          <span class="roster-header__points roster-header__points--collapsed">${sanitizeHTML(metadata.totalPoints.toString())} pts</span>
+          <span class="roster-header__points roster-header__points--collapsed ${pointsClass}">${sanitizeHTML(formatPointsLabel(metadata))} pts</span>
           <span class="roster-header__faction roster-header__faction--collapsed">${sanitizeHTML(metadata.factionName)}</span>
         </div>
       `;
@@ -425,7 +458,7 @@ function buildHeader(metadata) {
       leftMetaBlock.innerHTML = `
         <span class="roster-header__name">${sanitizeHTML(metadata.listName)}</span>
         <div class="roster-header__meta-row">
-          <span class="roster-header__points">${sanitizeHTML(metadata.totalPoints.toString())} pts</span>
+          <span class="roster-header__points ${pointsClass}">${sanitizeHTML(formatPointsLabel(metadata))} pts</span>
           <span class="roster-header__faction">${sanitizeHTML(metadata.factionName)}</span>
         </div>
         <div class="roster-header__tag-group">
@@ -515,11 +548,16 @@ function buildUnitRow(unit) {
   row.tabIndex = 0;
   row.setAttribute("role", "button");
 
+  const warlordBadge = unit.keywords.includes("WARLORD")
+    ? `<span class="unit-row__warlord-badge">★ Warlord</span>`
+    : "";
+
   row.innerHTML = `
     <div class="unit-row__title">
       <span class="unit-row__name">${sanitizeHTML(unit.name)}</span>
       <span class="unit-row__count">x${sanitizeHTML(unit.models.toString())}</span>
       <span class="unit-row__points">${sanitizeHTML(unit.points.toString())} pts</span>
+      ${warlordBadge}
     </div>
     <div class="unit-row__stats">
       ${buildStatBoxes(unit.statblocks[0].stats)}
@@ -707,6 +745,7 @@ function renderInlineTray(targetRow, unit) {
         </div>
       </div>
 
+      ${buildEnhancementsBlock(unit)}
       ${buildAbilitiesBlock(unit)}
       ${buildKeywordsBlock(unit)}
     </div>
@@ -772,6 +811,29 @@ function buildKeywordBadges(keywords) {
       .join("") +
     `</div>`
   );
+}
+
+function buildEnhancementsBlock(unit) {
+  if (unit.enhancements.length === 0) return "";
+
+  const rows = unit.enhancements
+    .map(
+      e => `
+        <div class="ability-row">
+          <strong class="enhancement-label">${formatText(e.name)}</strong>
+          <span class="enhancement-cost">${sanitizeHTML(e.cost.toString())} pts</span>
+          <span class="ability-text ability-text--desc">${formatText(e.desc)}</span>
+        </div>
+      `,
+    )
+    .join("");
+
+  return `
+    <div class="abilities-block">
+      <div class="abilities-block__header abilities-block__header--enhancement">Enhancements</div>
+      <div class="abilities-block__body">${rows}</div>
+    </div>
+  `;
 }
 
 function buildAbilitiesBlock(unit) {

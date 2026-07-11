@@ -210,6 +210,12 @@ body {
   padding: 2px 8px;
 }
 
+/* Over the declared points limit for this battle size. */
+.roster-header__points--over {
+  background: var(--accent-danger-soft);
+  color: var(--accent-danger);
+}
+
 .roster-header__faction {
   font-size: 13px;
   color: var(--text-secondary);
@@ -420,6 +426,20 @@ body {
   font-family: var(--font-display);
   font-size: 14px;
   font-weight: 600;
+  flex-shrink: 0;
+}
+
+.unit-row__warlord-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-amber-soft);
+  color: var(--accent-amber);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   flex-shrink: 0;
 }
 
@@ -741,6 +761,10 @@ body {
   border-left-color: var(--accent-amber);
 }
 
+.abilities-block__header--enhancement {
+  border-left-color: var(--accent-amber);
+}
+
 .weapon-section-header__icon {
   width: 15px;
   height: 15px;
@@ -911,6 +935,24 @@ body {
   font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.enhancement-label {
+  color: var(--accent-amber);
+  font-weight: 700;
+}
+
+.enhancement-cost {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 8px;
+  margin: 0 6px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-amber-soft);
+  color: var(--accent-amber);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .ability-text {
