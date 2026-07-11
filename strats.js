@@ -11326,4 +11326,289 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Alien Hunters": [
+    {
+      name: "ARMOUR OF CONTEMPT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **DEATHWATCH** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "ADAPTIVE TACTICS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **DEATHWATCH** unit from your army.",
+        effect: "Select the **Furor** **Tactics**, **Malleus** **Tactics** or **Purgatus** **Tactics**. Until the start of your next Command phase, that Deathwatch Mission Tactic is active for your unit instead of any other Deathwatch Mission Tactic that is active for your army, even if you have already selected that Deathwatch Mission Tactic this battle.",
+      },
+    },
+    {
+      name: "HELLFIRE ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DEATHWATCH** **INFANTRY** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons (excluding **Devastating** **Wounds** **weapons**) equipped by models in your unit have the **[ANTI-INFANTRY** **2+]** and **[ANTI-MONSTER** **5+]** abilities.<br><br>**Restrictions:** You cannot select any units that have already been targeted with either the Kraken Rounds or Dragonfire Rounds Stratagems this phase.",
+      },
+    },
+    {
+      name: "DRAGONFIRE ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DEATHWATCH** **INFANTRY** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[ASSAULT]** and **[IGNORES** **COVER]** abilities.<br><br>**Restrictions:** You cannot select any units that have already been targeted with either the Kraken Rounds or Hellfire Rounds Stratagems this phase.",
+      },
+    },
+    {
+      name: "KRAKEN ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DEATHWATCH** **INFANTRY** unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, improve the Armour Penetration characteristic of ranged weapons equipped by models in your unit by 1 and improve the Range characteristic of those weapons by 6".<br><br>**Restrictions:** You cannot select any units that have already been targeted with either the Dragonfire Rounds or Hellfire Rounds Stratagems this phase.',
+      },
+    },
+    {
+      name: "RAPID TACTICAL RELOCATION",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **INQUISITOR** or **DEATHWATCH** **INFANTRY** unit from your army.",
+        effect: "Remove your unit from the battlefield. In the Reinforcements step of your next Movement phase, set your unit up anywhere on the battlefield that is more than 9” horizontally away from all enemy models.<br><br>**Restrictions:** You cannot select a unit that is within **Engagement** **Range** of one or more enemy units.",
+      },
+    },
+  ],
+
+  "Purgation Force": [
+    {
+      name: "STUN GRENADES",
+      cp: "1 CP",
+      rules: {
+        when: "Start of any phase (excluding the Command phase).",
+        target: "One **ADEPTUS** **ARBITES**, **INQUISITORIAL** **AGENTS** or **ORDO** **HERETICUS** **GRENADES** unit from your army that is not within **Engagement** **Range** of one or more enemy units.",
+        effect: 'Select one enemy unit (excluding MONSTERS or VEHICLES) within 8" of and visible to your unit. That enemy unit must take a **Battle-shock** **test** and, until the end of the phase, each time a model in that unit makes an attack, subtract 1 from the **Hit** **roll**.',
+      },
+    },
+    {
+      name: "DISPENSE JUSTICE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **ADEPTUS** **ARBITES**, **INQUISITORIAL** **AGENTS** or **ORDO** **HERETICUS** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, weapons equipped by models in your unit have the **[LETHAL** **HITS]** ability.",
+      },
+    },
+    {
+      name: "INVIOLATE JURISDICTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **ADEPTUS** **ARBITES**, **INQUISITORIAL** **AGENTS** or **ORDO** **HERETICUS** **INFANTRY** unit from your army within range of an **objective** **marker** and that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **5+** ability.",
+      },
+    },
+    {
+      name: "EXECUTION ORDER",
+      cp: "2 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **ADEPTUS** **ARBITES**, **INQUISITORIAL** **AGENTS** or **ORDO** **HERETICUS** **INFANTRY** unit from your army.",
+        effect: "Select one enemy CHARACTER unit on the battlefield. Until the start of your next Command phase, each time a model in your unit targets that CHARACTER unit, its weapons have the **[PRECISION]** ability.",
+      },
+    },
+    {
+      name: "LINE OF FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ADEPTUS** **ARBITES**, **INQUISITORIAL** **AGENTS** or **ORDO** **HERETICUS** unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, models in your unit can target enemy units that are within **Engagement** **Range** of one or more friendly units with ranged weapons (excluding **Blast** **weapons**), provided the target is within 12".',
+      },
+    },
+    {
+      name: "EXACT PUNISHMENT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an **AGENTS** OF THE **IMPERIUM** unit from your army is **destroyed** as the result of an enemy unit's attacks.",
+        target: 'One **ADEPTUS** **ARBITES**, **INQUISITORIAL** **AGENTS** or **ORDO** **HERETICUS** unit from your army that was within 6" of the destroyed unit (you cannot target the destroyed unit with the Stratagem).',
+        effect: "After the attacking unit has shot, your unit can shoot as if it were your Shooting phase, but when resolving those attacks it can only target that enemy unit (and only if it is an eligible target).",
+      },
+    },
+  ],
+
+  "Daemon Hunters": [
+    {
+      name: "RITUAL OF WARDING",
+      cp: "1 CP",
+      rules: {
+        when: "Start of any Command phase.",
+        target: "One **INQUISITOR**, **INQUISITORIAL** **AGENTS** or **ORDO** **MALLEUS** unit from your army that is within range of an **objective** **marker** you control.",
+        effect: 'That objective marker is said to be Warded and remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn. While an objective marker is Warded and under your control, enemy DAEMON units cannot be set up on the battlefield within 6" of it.',
+      },
+    },
+    {
+      name: "RITES OF EXORCISM",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **INQUISITOR**, **INQUISITORIAL** **AGENTS** or **ORDO** **MALLEUS** unit from your army.",
+        effect: 'Select one enemy DAEMON unit within 12" and visible to your unit. That unit must take a **Battle-shock** **test**. If that test is failed, then until the end of the phase, each time a friendly **AGENTS** OF THE **IMPERIUM** unit makes an attack that targets that DAEMON unit, that attack has the **[DEVASTATING** **WOUNDS]** ability.',
+      },
+    },
+    {
+      name: "STEEL HEART",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **GREY** **KNIGHTS** **TERMINATOR** **SQUAD** unit from your army **Falls** **Back**.",
+        target: "That GREY KNIGHTS TERMINATOR SQUAD unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "TRUESILVER ARMOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase orthe Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **GREY** **KNIGHTS** **TERMINATOR** **SQUAD** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "HEXAGRAMMIC WARDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **ORDO** **MALLEUS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, all **Psychic** **weapons** equipped by models in the attacking unit have the **[HAZARDOUS]** ability.",
+      },
+    },
+    {
+      name: "PSYBOLT AMMUNITION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **GREY** **KNIGHTS** **TERMINATOR** **SQUAD** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[LETHAL** **HITS]** and **[PSYCHIC]** abilities.",
+      },
+    },
+  ],
+
+  "Imperialis Fleet": [
+    {
+      name: "VIOLENT ACQUISITION",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **AGENTS** OF THE **IMPERIUM** unit from your army.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit within range of an **objective** **marker**, that attack has the **[SUSTAINED** **HITS** **1]**, **[LANCE]** and **[IGNORES** **COVER]** abilities.",
+      },
+    },
+    {
+      name: "MASTERS OF THE VOID",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **VOIDFARERS** **CHARACTER** unit from your army.",
+        effect: "Until the end of the phase, each **AGENTS** OF THE **IMPERIUM** unit from your army that is arriving from Strategic Reserves this turn can be set up within your opponent’s deployment zone (all other restrictions still apply).",
+      },
+    },
+    {
+      name: "CLOSE-QUARTERS BARRAGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **VOIDFARERS** unit from your army.",
+        effect: 'Until the end of the phase, each time a model in your unit makes a ranged attack that targets a unit within 12", improve the Strength and Armour Penetration characteristics of that attack by 1.',
+      },
+    },
+    {
+      name: "EMPEROR’S WILL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **AGENTS** OF THE **IMPERIUM** unit from your army.",
+        effect: "Until the end of the phase, your unit is eligible to shoot in a turn in which it **Advanced** or **Fell** **Back**.",
+      },
+    },
+    {
+      name: "DISPLACER FIELD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent's Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **AGENTS** OF THE **IMPERIUM** **CHARACTER** unit from your army (excluding **OFFICIO** **ASSASSINORUM** units) that was selected as the target of one or more of the attacking unit's attacks.",
+        effect: 'Until the end of the phase, models in your unit have a 4+ **invulnerable** **save** and, after the attacking unit has resolved its attacks, unless your unit is within **Engagement** **Range** of one or more enemy units, it can make a **Normal** **move** of up to 6" (when doing so, models in this unit move as if they have the **Fly** keyword).',
+      },
+    },
+    {
+      name: "SELFLESS BODYGUARD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **AGENTS** OF THE **IMPERIUM** **Attached** unit that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack with the **[PRECISION]** ability is allocated to a CHARACTER model in your unit, if there are one or more **Bodyguard** models in your unit, roll one D6: on a 2+, that attack is allocated to a Bodyguard model of your choice in your unit instead.",
+      },
+    },
+  ],
+
+  "Veiled Blade Elimination Force": [
+    {
+      name: "PRIME TARGET",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **AGENTS** OF THE **IMPERIUM** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a CHARACTER unit, re-roll a **Wound** **roll** of 1. If that attack is made by an **OFFICIO** **ASSASSINORUM** model and it targets the enemy WARLORD, you can re-roll the Wound roll instead.",
+      },
+    },
+    {
+      name: "HYPERSTIMMS",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **AGENTS** OF THE **IMPERIUM** **CHARACTER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, add 1 to the Toughness characteristic of models in your unit. In addition, if it is an **EVERSOR** **ASSASSIN** unit, until the end of the phase, it has the **Feel** **No** **Pain** **4+** ability.",
+      },
+    },
+    {
+      name: "WILL‑SAPPING SALVO",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **AGENTS** OF THE **IMPERIUM** **INFANTRY** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[SUSTAINED** **HITS** **1]** ability. In addition, if it is a **CULEXUS** **ASSASSIN** unit, until the end of the phase, change the Damage characteristic of ranged weapons equipped by models in your unit to 3.",
+      },
+    },
+    {
+      name: "ORBITAL OVERSIGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **AGENTS** OF THE **IMPERIUM** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18", or, if your unit has the **Lone** **Operative** ability, if the attacking model is within 6".',
+      },
+    },
+    {
+      name: "BLIND GRENADES",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit has **declared** **a** **charge**.",
+        target: "One **AGENTS** OF THE **IMPERIUM** **GRENADES** or **VINDICARE** **ASSASSIN** unit from your army that was selected as one of the targets of that charge and is not within **Engagement** **Range** of one or more enemy units.",
+        effect: "Until the end of the phase, subtract 1 from **Charge** **rolls** made for that enemy unit, or, if your unit is a VINDICARE ASSASSIN, subtract 2 from Charge rolls made for that enemy unit instead.",
+      },
+    },
+    {
+      name: "ENSNARING TRAP",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Charge phase.",
+        target: 'One **AGENTS** OF THE **IMPERIUM** **INFANTRY** unit from your army that is within 6" of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units.',
+        effect: "Your unit can declare a charge. When doing so, you must select one or more of those enemy units as the targets of that charge, and your unit does not receive a **Charge** **bonus** this turn. In addition, if it is a **CALLIDUS** **ASSASSIN** unit and it makes a **Charge** **move** as a result of this Stratagem, until the end of the turn, each time a model in your unit makes a melee attack, add 1 to the **Wound** **roll**.",
+      },
+    },
+  ],
 };
