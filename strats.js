@@ -5968,4 +5968,346 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Host of Ascension": [
+    {
+      name: "COORDINATED TRAP",
+      cp: "2 CP",
+      rules: {
+        when: "The start of your Shooting phase or the start of the Fight phase.",
+        target: "Two GENESTEALER CULTS units from your army that have not been selected to shoot or fight this phase.",
+        effect: "Select one enemy unit (if this Stratagem is used in the Fight phase, that enemy unit must be within **Engagement** **Range** of both of your units). Until the end of the phase, each time a model in either of your units makes an attack, it can only target that enemy unit (and only if it is an eligible target for that attack), and when resolving that attack, add 1 to the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "PRIMED AND READIED",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One GENESTEALER CULTS units from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, a **Critical** **Hit** is scored on an unmodified **Hit** **roll** of 5+, instead of only a 6.",
+      },
+    },
+    {
+      name: "TUNNEL CRAWLERS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One GENESTEALER CULTS unit from your army that is arriving using the **Deep** **Strike** ability this phase.",
+        effect: 'Your unit can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy units.<br><br>**Restrictions:** A unit targeted by this Stratagem is not eligible to declare a charge in the same turn.',
+      },
+    },
+    {
+      name: "LYING IN WAIT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase.",
+        target: "One **GENESTEALER** **CULTS** **BATTLELINE** unit from your army in **Cult** **Ambush**.",
+        effect: 'Until the end of the phase, when setting your unit up using a Cult Ambush marker, set your unit up anywhere on the battlefield wholly within 6" of that Cult Ambush marker and not within **Engagement** **Range** of one or more enemy units.',
+      },
+    },
+    {
+      name: "RETURN TO THE SHADOWS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **GENESTEALER** **CULTS** **INFANTRY** unit from your army that is not within **Engagement** **Range** of one or more enemy units.",
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+    {
+      name: "A DEADLY SNARE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit **declares** **a** **charge**.",
+        target: "One **GENESTEALER** **CULTS** **INFANTRY** unit from your army that was selected as a target of that charge.",
+        effect: "Roll one D6: on a 2-4, that enemy unit suffers D3 **mortal** **wounds**; on a 5+, that enemy unit suffers 3 mortal wounds.",
+      },
+    },
+  ],
+
+  "Xenocreed Congregation": [
+    {
+      name: "VENGEANCE FOR THE MARTYR!",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit destroys a **GENESTEALER** **CULTS** **CHARACTER** model from your army.",
+        target: "One other GENESTEALER CULTS CHARACTER model from your army.",
+        effect: "Until the end of the battle, each time a friendly **ACOLYTE** **HYBRIDS**, Hybrid Metamorphs or Neophyte Hybrids model makes an attack that targets that enemy unit, re-roll a **Hit** **roll** of 1. If the **destroyed** model was a **MAGUS**, **PRIMUS** or **ACOLYTE** **ICONWARD**, you can re-roll the Hit roll instead.",
+      },
+    },
+    {
+      name: "FRENZIED DEVOTION",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **ACOLYTE** **HYBRIDS**, **HYBRID** **METAMORPHS** or **NEOPHYTE** **HYBRIDS** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, improve the Attacks and Weapon Skill characteristics of melee weapons equipped by models (excluding **CHARACTERS**) in your unit by 1 and those weapons have the **[HAZARDOUS]** ability.",
+      },
+    },
+    {
+      name: "TIRELESS FERVOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **ACOLYTE** **HYBRIDS**, **HYBRID** **METAMORPHS** or **NEOPHYTE** **HYBRIDS** unit from your army that has not **declared** **a** **charge** this phase.",
+        effect: "Until the end of the phase, your unit is eligible to declare a charge in a turn in which it **Advanced** or **Fell** **Back**. When doing so, if it targets an enemy unit within **Engagement** **Range** of one or more friendly **CHARACTER** units, you can re-roll the **Charge** **roll**.",
+      },
+    },
+    {
+      name: "TRANSCENDENT CELERITY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ACOLYTE** **HYBRIDS**, **HYBRID** **METAMORPHS** or **NEOPHYTE** **HYBRIDS** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[ASSAULT]** ability.",
+      },
+    },
+    {
+      name: "THE DOWNTRODDEN RISE",
+      cp: "2 CP",
+      rules: {
+        when: "End of the Reinforcements step of your opponent’s Movement phase.",
+        target: "One **ACOLYTE** **HYBRIDS**, **HYBRID** **METAMORPHS** or **NEOPHYTE** **HYBRIDS** unit from your army in **Cult** **Ambush**.",
+        effect: 'Until the end of the phase, you can set up your unit on the battlefield without using a Cult Ambush marker. When doing so, set up your unit anywhere on the battlefield that is more than 6" horizontally away from all enemy units.',
+      },
+    },
+    {
+      name: "THE PATH OF ANGUISH",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **ACOLYTE** **HYBRIDS** or **NEOPHYTE** **HYBRIDS** unit from your army that had one or more of its models **destroyed** as a result of the attacking unit's attacks.",
+        effect: 'Your unit can make a move of up to D6", but it unit must end that move as close as possible to the closest enemy unit (excluding AIRCRAFT), When doing so, models in your unit can be moved within **Engagement** **Range** of that enemy unit.',
+      },
+    },
+  ],
+
+  "Biosanctic Broodsurge": [
+    {
+      name: "EVASIVE VANGUARD",
+      cp: "1 CP",
+      rules: {
+        when: 'Any phase, just after an enemy unit ends a move within 9" of one or more of your **Cult** **Ambush** markers, before removing those markers from the battlefield.',
+        target: "Select one of those Cult Ambush markers.",
+        effect: 'You can set up that Cult Ambush marker anywhere on the battlefield that is more than 9" horizontally away from all enemy units.',
+      },
+    },
+    {
+      name: "SAINTLY PAROXYSM",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit destroys a **GENESTEALER** **CULTS** **CHARACTER** model from your army.",
+        target: "That **destroyed** CHARACTER model. You can use this Stratagem on that model even though it was just destroyed.",
+        effect: "Roll one D6: on a 2+, that enemy unit suffers D3 **mortal** **wounds**. If that Character model is an **ABOMINANT** or **PATRIARCH**, that enemy unit suffers 2D3 mortal wounds instead.",
+      },
+    },
+    {
+      name: "GENE-TWISTED MUSCLE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **ABERRANTS**, **BIOPHAGUS** or **PURESTRAIN** **GENESTEALERS** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE, add 1 to the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "HYPER-METABOLIC VIGOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **ABERRANTS**, **BIOPHAGUS** or **PURESTRAIN** **GENESTEALERS** unit from your army that has not been selected to fight this phase.",
+        effect: 'Until the end of the phase, each time a model in your unit makes a **Pile-in** or **Consolidation** **move**, it can move up to 6" instead of up to 3". In addition, it does not need to end that move closer to the closest enemy model, provided it ends it as close as possible to the closest enemy unit.',
+      },
+    },
+    {
+      name: "STIMULATED BIO-SURGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **ABERRANTS**, **BIOPHAGUS** or **PURESTRAIN** **GENESTEALERS** unit from your army that has not **declared** **a** **charge** this phase.",
+        effect: "Until the end of the phase, each time your unit declares a charge, if the closest eligible enemy unit is selected as one of the targets of that charge, add 1 to the **Charge** **roll** for each selected target of that charge (including the closest eligible enemy unit), to a maximum of +3.",
+      },
+    },
+    {
+      name: "BIO-HORROR REVELATION",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent's Shooting phase.",
+        target: "One **ABERRANTS**, **BIOPHAGUS** or **PURESTRAIN** **GENESTEALERS** unit from your army.",
+        effect: 'Until the end of the phase, each time an enemy unit within 9" of your unit is selected to shoot, it must take a **Leadership** **test**, subtracting 1 from the result. If that test is failed, until the end of the phase, each time a model in that enemy unit makes an attack that targets your unit, subtract 1 from the **Hit** **roll**.',
+      },
+    },
+  ],
+
+  "Outlander Claw": [
+    {
+      name: "ALONG SHADOWED TRAILS",
+      cp: "1 CP",
+      rules: {
+        when: 'Any phase, just after an enemy unit ends a move within 9" of one or more of your **Cult** **Ambush** markers.',
+        target: "Select one of those Cult Ambush markers.",
+        effect: 'You can set up that Cult Ambush marker anywhere on the battlefield that is more than 9" horizontally away from all enemy units.',
+      },
+    },
+    {
+      name: "DEVOTED CREW",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **GOLIATH** **ROCKGRINDER** or **GOLIATH** **TRUCK** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "CLOSE-RANGE SHOOT-OUT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **GENESTEALER** **CULTS** **MOUNTED** or **GENESTEALER** **CULTS** **VEHICLE** unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, ranged weapons equipped by models in your unit have the **[LETHAL** **HITS]** ability while targeting an enemy unit within 18".',
+      },
+    },
+    {
+      name: "RAPID FEINT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **ACHILLES** **RIDGERUNNERS** or **ATALAN** **JACKALS** unit from your army that is within 9" of that enemy unit.',
+        effect: 'Your unit can make a **Normal** **move** of up to 6".',
+      },
+    },
+    {
+      name: "DEFT MANOEUVRING",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent's Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **ACHILLES** **RIDGERUNNERS** or **ATALAN** **JACKALS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have a 4+ **invulnerable** **save**.",
+      },
+    },
+    {
+      name: "ENCIRCLING THE PREY",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent's Fight phase.",
+        target: 'One **GENESTEALER** **CULTS** **MOUNTED** or **GENESTEALER** **CULTS** **VEHICLE** unit from your army that is not within **Engagement** **Range** of one or more enemy units and is wholly within 9" of one or more battlefield edges.',
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Brood Brother Auxilia": [
+    {
+      name: "IN THE SHADOW OF IRON",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after an enemy unit ends a move within 9” of one or more of your **Cult** **Ambush** markers.",
+        target: "One **ASTRA** **MILITARUM** **VEHICLE** unit from your army.",
+        effect: 'Select one of those Cult Ambush markers. You can set up that Cult Ambush marker anywhere on the battlefield that is more than 9" horizontally away from all enemy units and wholly within 6" of your unit.',
+      },
+    },
+    {
+      name: "REGIMENTAL REINFORCEMENTS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an **ASTRA** **MILITARUM** **INFANTRY** **REGIMENT** unit from your army (excluding **ARTILLERY** and **CHARACTER** units) is **destroyed**.",
+        target: "That INFANTRY unit. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: 'Roll one D6: on a 3+, place one **Cult** **Ambush** marker anywhere on the battlefield that is more than 9" horizontally away from all enemy units (if this is not possible, no marker is placed) and add a new unit to your army identical to your destroyed unit, in Cult Ambush, at its **Starting** **Strength**, with all of its wounds remaining and any [ONE SHOT] weapons those models are equipped with considered as not having been shot.<br><br>**Restrictions:** You can only use this Stratagem once per battle.',
+      },
+    },
+    {
+      name: "SUPPRESS AND OVERWHELM",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after an **ASTRA** **MILITARUM** unit from your army has shot.",
+        target: "That ASTRA MILITARUM unit.",
+        effect: "Select one enemy unit hit by one or more of those attacks. Until the end of the turn, that enemy unit cannot be targeted with the **Fire** **Overwatch** Stratagem and each time a GENESTEALER CULTS unit from your army selects that enemy unit as a target of a charge, you can re-roll the **Charge** **roll**.",
+      },
+    },
+    {
+      name: "ACCEPTABLE LOSSES",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ASTRA** **MILITARUM** unit from your army.",
+        effect: "Select one enemy unit within **Engagement** **Range** of one or more GENESTEALER CULTS units from your army. Until the end of the phase, your unit can make ranged attacks that target that enemy unit. If it does, after it has resolved those attacks, roll one D6 for each of those GENESTEALER CULTS units: on a 5+, the unit being rolled for suffers D3+1 **mortal** **wounds**.",
+      },
+    },
+    {
+      name: "SYMBIOTIC DESTRUCTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ASTRA** **MILITARUM** and one GENESTEALER CULTS unit from your army that have not been selected to shoot this phase.",
+        effect: "Select one enemy unit that is visible to both of those selected units and within range of at least one ranged weapon from each of those units. Until the end of the phase, models in those units can only make attacks that target that enemy unit (and only if it is an eligible target). When doing so, each time such a model makes an attack, re-roll a **Wound** **roll** of 1.",
+      },
+    },
+    {
+      name: "A DARK NETWORK",
+      cp: "1 CP",
+      rules: {
+        when: "Reinforcements step of your opponent’s Movement phase, just after an enemy unit is set up on the battlefield from Reserves.",
+        target: 'One **ASTRA** **MILITARUM** or GENESTEALER CULTS unit from your army (excluding **MONSTERS** and **VEHICLES**) within 12" of that enemy unit.',
+        effect: 'Your unit can make a **Normal** **move** of up to 6".',
+      },
+    },
+  ],
+
+  "Final Day": [
+    {
+      name: "HYPERFEROCITY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **GENESTEALER** **CULTS** unit from your army that has not been selected to fight this phase.",
+        effect: 'Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit, re-roll a **Wound** **roll** of 1. If one or more friendly **TYRANIDS** units are within 6" of that enemy unit, you can re-roll the Wound roll instead.',
+      },
+    },
+    {
+      name: "PSI SURGE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of any phase.",
+        target: "One **TYRANIDS** unit from your army.",
+        effect: 'Until the start of your next Command phase, increase the range of your unit’s Catalyst ability by 3".<br><br>**Restrictions:** Each time you use this Stratagem, until the end of your next Command phase, you cannot use this Stratagem again.',
+      },
+    },
+    {
+      name: "AVENGE THE STAR CHILDREN",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has shot or fought.",
+        target: "One **TYRANIDS** **CHARACTER** unit from your army that was destroyed by that enemy unit this phase. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Until the end of the battle, each time a **GENESTEALER** **CULTS** model from your army makes an attack that targets that enemy unit, add 1 to the **Hit** **roll** and add 1 to the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "DIVINE IMPERATIVE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **GENESTEALER** **CULTS** unit from your army that has not **declared** **a** **charge** this phase.",
+        effect: "Select one enemy unit within **Engagement** **Range** of one or more **TYRANIDS** units from your army. Until the end of the phase, each time your GENESTEALER CULTS unit declares a charge, if that enemy unit is one of the targets of that charge, add 1 to **Charge** **rolls** made for your unit and you can re-roll the Charge roll.",
+      },
+    },
+    {
+      name: "DARTING ATTACKS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or your Charge phase.",
+        target: "One **TYRANIDS** unit from your army.",
+        effect: "Until the end of the phase, your unit is eligible to shoot and declare a charge in a turn in which it **Fell** **Back**.",
+      },
+    },
+    {
+      name: "RESISTANCE TUNNELS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **GENESTEALER** **CULTS** or **TYRANIDS** unit from your army that is not within **Engagement** **Range** of one or more enemy units.",
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
 };
