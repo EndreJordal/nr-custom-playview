@@ -6652,4 +6652,346 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Valourstrike Lance": [
+    {
+      name: "RUN THEM THROUGH!",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, melee weapons equipped by your models have the **[LANCE]** ability.",
+      },
+    },
+    {
+      name: "THUNDERSTOMP",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **IMPERIAL** **KNIGHTS** model from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, the Attacks characteristic of any armoured Feet melee weapons equipped by your model is 8, the Attacks characteristic of any titanic Feet melee weapons equipped by your model is 12, and improve the Armour Penetration characteristic of those weapons by 1.",
+      },
+    },
+    {
+      name: "FULL TILT",
+      cp: "2 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that has not been selected to move this phase.",
+        effect: 'Until the end of the phase, add 2" to the Move characteristic of your models and add 2 to **Advance** **rolls** made for those model’s units.',
+      },
+    },
+    {
+      name: "VOW OF RETRIBUTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by your models have the **[LETHAL** **HITS]** ability.",
+      },
+    },
+    {
+      name: "TACTICAL FOIL",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **IMPERIAL** **KNIGHTS** model from your army that is within 9" of that unit.',
+        effect: 'Your model can make a **Normal** **move** of up to D6".',
+      },
+    },
+    {
+      name: "ROTATE ION SHIELDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have a 4+ **invulnerable** **save**.",
+      },
+    },
+  ],
+
+  "Gate Warden Lance": [
+    {
+      name: "DRIVE THEM OUT!",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit on your **defensive** **line**, an unmodified **Hit** **roll** of 5+ scores a **Critical** **Hit**.",
+      },
+    },
+    {
+      name: "LANCEBREAKER",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks and is on your **defensive** **line**.",
+        effect: "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greaterthan the Toughness characteristic of your unit, subtract 1 from the **Wound** **roll**",
+      },
+    },
+    {
+      name: "STEADFAST SUPERIORITY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that is within **Engagement** **Range** of one or more enemy units, that is on your **defensive** **line** and that has not already been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "MARSHAL THE DEFENCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "Up to two **IMPERIAL** **KNIGHTS** units from your army that have not been selected to move this phase.",
+        effect: 'Until the end of the phase, add 3" to the Move characteristic of models in your units.',
+      },
+    },
+    {
+      name: "TITANIC BOMBARDMENT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **IMPERIAL** **KNIGHTS** **TITANIC** unit from your army that **Remained** **Stationary** this turn, that is on your **defensive** **line** and that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[SUSTAINED** **HITS** **2]** ability.",
+      },
+    },
+    {
+      name: "FORTRESS OF INTIMIDATION",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Charge phase.",
+        target: "One **IMPERIAL** **KNIGHTS** **TITANIC** unit from your army that is on your **defensive** **line**.",
+        effect: "Until the end of the phase, each time an enemy unit selects your unit as a target of a charge, that unit must take a **Battle-shock** **test**, subtracting 1 from the result.",
+      },
+    },
+  ],
+
+  "Questoris Companions": [
+    {
+      name: "COURAGEOUS STAND",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **IMPERIAL** **KNIGHTS** **TITANIC** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **6+** ability.",
+      },
+    },
+    {
+      name: "TITANIC DUEL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **IMPERIAL** **KNIGHTS** **TITANIC** model from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time your model makes an attack that targets a MONSTER, TITANIC or WALKER unit, add 1 to the **Hit** **roll** and add 1 to the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "MOMENT OF GLORY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just before an **IMPERIAL** **KNIGHTS** **TITANIC** unit from your army **Consolidates**.",
+        target: "That IMPERIAL KNIGHTS TITANIC unit.",
+        effect: 'Until the end of the phase, each time your unit Consolidates, models in it can move an additional 3" provided your unit can end that move within **Engagement** **Range** of one or more enemy units.',
+      },
+    },
+    {
+      name: "HERO’S TREAD",
+      cp: "1 CP",
+      rules: {
+        when: "End of your Command phase.",
+        target: "One **IMPERIAL** **KNIGHTS** **TITANIC** model from your army that is within range of an **objective** **marker** you control.",
+        effect: "Your Level of Control over that objective marker is 5 (unless it would otherwise be higher), until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "UNSTOPPABLE WARRIOR",
+      cp: "2 CP",
+      rules: {
+        when: "Your Movement phase, just after an **IMPERIAL** **KNIGHTS** **TITANIC** unit from your army **Falls** **Back**.",
+        target: "That IMPERIAL KNIGHTS TITANIC unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "DRIVEN BY THE PAST",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **IMPERIAL** **KNIGHTS** **TITANIC** unit from your army.",
+        effect: "Until the end of the turn, your unit is eligible to declare a charge in a turn in which it **Advanced**.",
+      },
+    },
+  ],
+
+  "Spearhead-At-Arms": [
+    {
+      name: "VIRTUE OF COURAGE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "One **ARMIGER** model from your army, or one **IMPERIAL** **KNIGHTS** **TITANIC** model from your army, and one or more friendly ARMIGER models affected by that model’s **Bondsman** ability.",
+        effect: "Select one enemy unit. Until the end of the phase, each time one of your ARMIGER models makes an attack that targets that enemy unit, add 1 to the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "EXEMPLAR’S WISDOM",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after an **IMPERIAL** **KNIGHTS** **TITANIC** model from your army has shot.",
+        target: "That IMPERIAL KNIGHTS TITANIC model, and one or more friendly **ARMIGER** models affected by that model’s **Bondsman** ability.",
+        effect: "Select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time one of your ARMIGER models makes an attack that targets that enemy unit, improve the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "MANTLE OF THE MENTOR",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Shooting phase.",
+        target: "One **ARMIGER** model from your army, or one **IMPERIAL** **KNIGHTS** **TITANIC** model from your army, and one or more friendly ARMIGER models affected by that model’s **Bondsman** ability.",
+        effect: "Until the end of the phase, your ARMIGER models are eligible to shoot in a turn in which they **Fell** **Back**.",
+      },
+    },
+    {
+      name: "THIN THEIR RANKS",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Shooting phase.",
+        target: "One **ARMIGER** model from your army, or one **IMPERIAL** **KNIGHTS** **TITANIC** model from your army, and one or more friendly ARMIGER models affected by that model’s **Bondsman** ability.",
+        effect: "Until the end of the phase, ranged weapons equipped by your ARMIGER models have the **[RAPID** **FIRE** **1]** ability.",
+      },
+    },
+    {
+      name: "LET DUTY BE YOUR SHIELD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **ARMIGER** unit from your army that was selected as the target of one or more of the attacking units attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "SQUIRES OFTHE HUNT",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **ARMIGER** model from your army, or one **IMPERIAL** **KNIGHTS** **TITANIC** model from your army, and one or more friendly ARMIGER models affected by that model’s **Bondsman** ability.",
+        effect: 'For each of your ARMIGER models that is within 9" of one or more battlefield edges and not within **Engagement** **Range** of one or more enemy units, remove that ARMIGER model from the battlefield and place it into Strategic Reserves.',
+      },
+    },
+  ],
+
+  "Freeblade Company": [
+    {
+      name: "NOBLE SACRIFICE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that was just destroyed. You can target that unit with this Stratagem even though it was just destroyed.",
+        effect: "Your unit’s **Deadly** **Demise** ability inflicts **mortal** **wounds** on a D6 roll of 4+, adding 1 to the result if it is an **ARMIGER** unit, instead of only a 6.",
+      },
+    },
+    {
+      name: "STRENGTH FROM EXILE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: 'Until the end of the phase, each time a model in your unit makes an attack, if there are no other friendly units within 9" of your unit, re-roll a **Hit** **roll** of 1 and re-roll a **Wound** **roll** of 1.',
+      },
+    },
+    {
+      name: "FULL TILT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army.",
+        effect: 'Until the end of the phase, if your unit **Advances**, do not make an Advance roll for it. Instead, until the end of the phase, add 6" to the Move characteristic of models in your unit, or 9" instead if your unit is an **ARMIGER** or DESTRIER unit.',
+      },
+    },
+    {
+      name: "POINT‑BLANK BARRAGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, when making ranged attacks with **Blast** **weapons**, models in your unit can target enemy units within **Engagement** **Range** of your unit (provided no other friendly units are also within Engagement Range of that enemy unit). In addition, until the end of the phase, your unit does not suffer the penalty to its **Hit** **rolls** for being within Engagement Range of one or more enemy units, but each time a model in your unit makes an attack with a Blast weapon that targets a unit within Engagement Range of your unit, on an unmodified Hit roll of 1, your unit suffers 1 **mortal** **wound** after all of its attacks have been resolved.",
+      },
+    },
+    {
+      name: "SURVIVOR OF STRIFE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "FLANKING MANOEUVRES",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: 'One **ARMIGER** unit from your army that is within 9" of one or more battlefield edges and not within **Engagement** **Range** of one or more enemy units.',
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Questor Forgepact": [
+    {
+      name: "OMNISSIAH’S GRACE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a **mortal** **wound** is allocated to an **IMPERIAL** **KNIGHTS** or **ADEPTUS** **MECHANICUS** unit from your army.",
+        target: "That IMPERIAL KNIGHTS or ADEPTUS MECHANICUS unit.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **5+** ability against mortal wounds.",
+      },
+    },
+    {
+      name: "VENGEANCE OF THE MACHINE CULT",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army that was just destroyed. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Until the end of the battle, the enemy unit that destroyed your unit is Marked. Each time an **ADEPTUS** **MECHANICUS** model from your army makes an attack that targets a Marked unit, that attack has the **[LETHAL** **HITS]** ability.",
+      },
+    },
+    {
+      name: "BONDED IMPERATIVE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase, just before an **IMPERIAL** **KNIGHTS** **CHARACTER** unit from your army uses a **Bondsman** **ability**.",
+        target: "That IMPERIAL KNIGHTS CHARACTER unit.",
+        effect: 'When selecting targets for that use of that Bondsman ability, you can select one friendly **ADEPTUS** **MECHANICUS** unit within 12" of your unit in addition, or instead of selecting one **ARMIGER** model. Until the start of your next Command phase, every model in that ADEPTUS MECHANICUS unit is affected by that Bondsman ability.<br><br>**Restrictions:** You cannot target a **KNIGHT** **PRECEPTOR** with this Stratagem.',
+      },
+    },
+    {
+      name: "MACHINE FOCUS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **IMPERIAL** **KNIGHTS** unit from your army.",
+        effect: "Until the start of your next turn, your unitcan ignore any or all modifiers to the following: the Weapon Skill or Ballistic Skill characteristics of weapons equipped by its models; any **Hit** **roll** or **Wound** **roll** made for it.",
+      },
+    },
+    {
+      name: "AGGRESSION BEGETS AGGRESSION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: 'One **IMPERIAL** **KNIGHTS** unit from your army or one **IMPERIAL** **KNIGHTS** **CHARACTER** unit from your army and one friendly **ADEPTUS** **MECHANICUS** unit that is within 6" of that unit.',
+        effect: "Until the end of the phase, ranged weapons equipped by models in your units have the **[ASSAULT]** ability.",
+      },
+    },
+    {
+      name: "THRONEGHEIST FURY",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit is set up or ends a **Normal**, **Advance**, or **Fall** **Back** **move**.",
+        target: 'One **IMPERIAL** **KNIGHTS** **TITANIC** unit from your army that is within 24" of and visible to that enemy unit.',
+        effect: "Select one ranged weapon equipped by a model in your unit. That model can shoot at that enemy unit (and only if it is an eligible target). When doing so, that model can only make attacks with that weapon and each time it makes a ranged attack, an unmodified **Hit** **roll** of 6 is required to score a hit, irrespective of the attacking weapon’s Ballistic Skill or any modifiers.",
+      },
+    },
+  ],
 };
