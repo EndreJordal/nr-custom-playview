@@ -10642,4 +10642,346 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Grand Coven": [
+    {
+      name: "PSYCHIC DOMINION",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after an enemy unit has selected its targets.",
+        target: "One **THOUSAND** **SONS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, **Psychic** **weapons** equipped by models in the attacking unit have the **[hazardous]** ability, and models in your unit have the **Feel** **No** **Pain** **4+** ability against **Psychic** **Attacks**.",
+      },
+    },
+    {
+      name: "DESTINED BY FATE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a saving throw is failed for a **THOUSAND** **SONS** **PSYKER** model from your army. If you are using fast dice rolling, this Stratagem can still be used after rolling multiple **saving** **throws** at once.",
+        target: "That PSYKER model.",
+        effect: "Change the Damage characteristic of that attack to 0. If you are using fast dice rolling, select one of those attacks you failed a saving throw for.",
+      },
+    },
+    {
+      name: "EGOTISTICAL POWER",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **THOUSAND** **SONS** **PSYKER** unit from your army.",
+        effect: "Select the **Imbued** **Manifestation**, **Psychic** **Maelstrom** or **Wrath** **of** **the** **Immaterium** ability. Until the start of your next Command phase, that ability applies to your unit instead of any other **Kindred** **Sorcery** ability, even if you have already selected that ability this battle.",
+      },
+    },
+    {
+      name: "DESECRATION OF WORLDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **THOUSAND** **SONS** **PSYKER** unit from your army within range of an **objective** **marker** you control.",
+        effect: "That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "ARCANE FOCUS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after you take a Psychic test for a **THOUSAND** **SONS** model from your army that Channelled the Warp (before resolving that **Ritual**).",
+        target: "That THOUSAND SONS model.",
+        effect: "Re-roll all of the D6 rolled for that Psychic test (including the additional D6 for Channelling the Warp).",
+      },
+    },
+    {
+      name: "DEVASTATING SORCERY",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **THOUSAND** **SONS** **PSYKER** unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, add 9" to the Range characteristic of **Psychic** **weapons** equipped by models in your unit, and each time a model in your unit makes an attack with a Psychic weapon, you can re-roll the **Hit** **roll** and you can re-roll the **Wound** **roll**.',
+      },
+    },
+  ],
+
+  "Changehost of Deceit": [
+    {
+      name: "SULPHUROUS VEIL",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **THOUSAND** **SONS** or **SCINTILLATING** **LEGIONS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "DECEPTIVE GLAMOUR",
+      cp: "2 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "One **THOUSAND** **SONS** unit from your army.",
+        effect: "Until the end of the phase, each time an enemy model within **Engagement** **Range** of your unit selects targets for its attacks, it can only target your unit if there are no eligible **SCINTILLATING** **LEGIONS** targets for those attacks.",
+      },
+    },
+    {
+      name: "ETHEREAL PHANTASM",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **SCINTILLATING** **LEGIONS** unit from your army that is within 9" of that enemy unit and not within **Engagement** **Range** of one or more enemy units.',
+        effect: 'Your unit can make a **Normal** **move** of up to D6", or a Normal move of up to 6" instead if it is wholly within 6" of one or more friendly **THOUSAND** **SONS** units.',
+      },
+    },
+    {
+      name: "FRACTAL DISJUNCTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **SCINTILLATING** **LEGIONS** unit from your army (excluding **MONSTERS**) that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18".',
+      },
+    },
+    {
+      name: "CHRONOSORCEROUS BLEED",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit has **declared** **a** **charge**.",
+        target: "One **THOUSAND** **SONS** **PSYKER** or **SCINTILLATING** **LEGIONS** unit from your army that was selected as a target of that charge.",
+        effect: "Until the end of the phase, subtract 2 from **Charge** **rolls** made for that enemy unit (this is not cumulative with any other negative modifiers to that Charge roll).",
+      },
+    },
+    {
+      name: "GLIMMERSHIFT PORTAL",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: 'Up to two **SCINTILLATING** **LEGIONS** units from your army (excluding **MONSTERS**), or one **SCINTILLATING** **LEGIONS** **MONSTER** unit from your army, if all of those units are more than 6" horizontally away from all enemy units.',
+        effect: "Remove those units from the battlefield and place them into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Warpmeld Pact": [
+    {
+      name: "GIFT OF CHANGE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **THOUSAND** **SONS** **CHARACTER** model from your army (excluding **MONSTERS**) that was just destroyed. You can use this Stratagem on that model even though it was just destroyed.",
+        effect: "At the end of the phase, add one **TZEENTCH** **CHAOS** **SPAWN** unit containing one model to your army, and set it up as close as possible to where your model was destroyed and not within **Engagement** **Range** of one or more enemy units.<br><br>**Restrictions:** You can only use this Stratagem once per battle round.",
+      },
+    },
+    {
+      name: "WARPED VICISSITUDE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **TZAANGORS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have a 4+ **invulnerable** **save**.",
+      },
+    },
+    {
+      name: "DERANGED FEROCITY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a **TZEENTCH** **MUTANT** unit from your army is selected to fight.",
+        target: "That TZEENTCH MUTANT unit.",
+        effect: 'Until the end of the phase, each time a model in your unit makes a **Pile-in** or **Consolidation** **move**, it can move up to 6" instead of up to 3", and when determining which models in it are eligible to fight, any models in it that are within 3" of one or more enemy models are eligible to fight. When resolving those attacks, such models can target one of those enemy units that is within 3" of them and within **Engagement** **Range** of their unit.',
+      },
+    },
+    {
+      name: "BLESSED TRANSMUTATIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: 'One **THOUSAND** **SONS** **PSYKER** model from your army, and one friendly **TZAANGORS** unit that is below its **Starting** **Strength** and within 12" of that PSYKER model.',
+        effect: "Return up to D3+1 destroyed models (excluding **CHARACTERS**) to your TZAANGORS unit.",
+      },
+    },
+    {
+      name: "TOUCHED BY TZEENTCH",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Movement phase.",
+        target: "One **TZEENTCH** **MUTANT** unit from your army.",
+        effect: "Until the end of the turn, your unit is eligible to shoot or declare a charge in a turn in which it **Advanced**.",
+      },
+    },
+    {
+      name: "TWISTED MIRAGE",
+      cp: "1 CP",
+      rules: {
+        when: "Reinforcements step of your Movement phase.",
+        target: "One **TZEENTCH** **MUTANT** unit from your army that is arriving from Strategic Reserves this phase.",
+        effect: 'Your unit can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy units, or anywhere on the battlefield that is more than 9" horizontally away from all enemy units if it is a **MONSTER** unit. In either case, until the end of the turn, it is not eligible to declare a charge.',
+      },
+    },
+  ],
+
+  "Rubricae Phalanx": [
+    {
+      name: "ARDENT AUTOMATA",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **RUBRICAE** unit from your army **Falls** **Back**.",
+        target: "That RUBRICAE unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "INEXORABLE ADVANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **RUBRICAE** unit from your army.",
+        effect: "Until the end of the turn, your unit can ignore any or all modifiers to its Move characteristic and to **Advance** **rolls** made for it, and ranged weapons equipped by models in your unit have the **[ASSAULT]** ability.",
+      },
+    },
+    {
+      name: "INFERNAL FUSILLADE",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **THOUSAND** **SONS** **PSYKER** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, all inferno bolt pistols, inferno boltguns, inferno combi-bolters and inferno combi-weapons equipped by models in your unit have the **[PSYCHIC]** ability and a Strength characteristic of 5.",
+      },
+    },
+    {
+      name: "REVENGE OF THE RUBRICAE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after a **THOUSAND** **SONS** **PSYKER** model from your army is destroyed.",
+        target: 'One **RUBRICAE** unit from your army that was within 6" of that PSYKER model when it was destroyed.',
+        effect: "After the attacking unit has shot, your RUBRICAE unit can shoot as if it were your Shooting phase, but when resolving those attacks it can only target the enemy unit that just destroyed your PSYKER model (and only if it is an eligible target).",
+      },
+    },
+    {
+      name: "IMPLACABLE GUARDIANS",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **RUBRIC** **MARINES** **PSYKER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack is allocated to a model in your unit (excluding PSYKER models), subtract 1 from the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "UNWAVERING PHALANX",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit ends a **Charge** **move**.",
+        target: "One **RUBRIC** **MARINES** unit from your army within **Engagement** **Range** of that enemy unit.",
+        effect: "Until the end of the turn, each time an attack targets your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+  ],
+
+  "Warpforged Cabal": [
+    {
+      name: "HEX-MARKED ARMOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **THOUSAND** **SONS** **VEHICLE** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "MUTATE LANDSCAPE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **THOUSAND** **SONS** **PSYKER** unit from your army within range of an **objective** **marker** you control.",
+        effect: "That objective marker is mutated, and remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase. While an objective marker is mutated and under your control, each time an enemy unit ends a **Normal**, **Advance**, **Fall** **Back** or **Charge** **move** within range of that objective marker, roll one D6: on a 4+, that enemy unit suffers D3 **mortal** **wounds**.",
+      },
+    },
+    {
+      name: "CYBERSPIRIT MACHINATIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **THOUSAND** **SONS** **VEHICLE** unit from your army **Falls** **Back**.",
+        target: 'That VEHICLE unit, and one friendly **THOUSAND** **SONS** **PSYKER** unit within 6" of that VEHICLE unit.',
+        effect: "Until the end of the turn, your VEHICLE unit is eligible to shoot and declare a charge in a turn in which it **Fell** **Back**.",
+      },
+    },
+    {
+      name: "MALEVOLENT ANIMUS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: 'One **THOUSAND** **SONS** **VEHICLE** unit from your army within 6" of one or more friendly **THOUSAND** **SONS** **PSYKER** units.',
+        effect: "Until the start of your next Command phase, your VEHICLE unit is malevolent. While a unit is malevolent, it can ignore any or all modifiers to the following: the profile characteristics of its models; the Weapon Skill and Ballistic Skill characteristics of weapons equipped by its models; any roll or test made for it (excluding modifiers to **saving** **throws**).",
+      },
+    },
+    {
+      name: "ENSORCELLED INFUSION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: 'One **THOUSAND** **SONS** **VEHICLE** unit from your army that has not been selected to shoot this phase, that is within 6" of one or more friendly **THOUSAND** **SONS** **PSYKER** units.',
+        effect: "Until the end of the phase, ranged weapons equipped by VEHICLE models in your unit have the **[PSYCHIC]** ability and each time an attack is made with such a weapon, add 1 to the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "WARPFLAME GARGOYLES",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit ends a **Charge** **move**.",
+        target: "One **THOUSAND** **SONS** **VEHICLE** unit from your army within **Engagement** **Range** of that enemy unit.",
+        effect: "Roll six D6: for each 5+, that enemy unit suffers 1 **mortal** **wound**. That enemy unit must then take a **Battle-shock** **test**.",
+      },
+    },
+  ],
+
+  "Hexwarp Thrallband": [
+    {
+      name: "WARDING HEX",
+      cp: "1 CP",
+      rules: {
+        when: "Command phase.",
+        target: "One **THOUSAND** **SONS** **PSYKER** unit from your army within range of an **objective** **marker** you control, if that objective marker is wholly within your army’s **Flow** **of** **Magic**.",
+        effect: "That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "WRATH OF THE DOOMED",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One THOUSAND SONS unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 to the result if your unit is wholly within your army’s **Flow** **of** **Magic**: on a 4+, do not remove it from play. That destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "STRANDS OF TIME",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a THOUSAND SONS PSYKER unit from your army **Falls** **Back**.",
+        target: "That **THOUSAND** **SONS** **PSYKER** unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot or declare a charge in a turn in which it Fell Back. If your unit is wholly within your army’s **Flow** **of** **Magic** when it is targeted with this Stratagem, then until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "THROUGH THE VEIL",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Reinforcements step of your Movement phase.",
+        target: "One **RUBRIC** **MARINES** or **SCARAB** **OCCULT** **TERMINATORS** unit from your army that is in Strategic Reserves.",
+        effect: 'If it is a RUBRIC MARINES unit, until the end of the phase, it has the **Deep** **Strike** ability. When your unit is set up on the battlefield using the Deep Strike ability, if it is a SCARAB OCCULT TERMINATOR unit it can be set up anywhere on the battlefield that is wholly within your army’s **Flow** **of** **Magic** and more than 6" horizontally away from all enemy models.<br><br>**Restrictions:** If a SCARAB OCCULT TERMINATORS unit is targeted with this Stratagem, it is not eligible to declare a charge in the same turn.',
+      },
+    },
+    {
+      name: "SCOURING WARPFLAME",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **THOUSAND** **SONS** **PSYKER** unit from your army that has not been selected to shoot this phase and is wholly within your army’s **Flow** **of** **Magic**.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[IGNORES** **COVER]** ability. After your unit has shot this phase, select one enemy unit hit by one or more of those attacks. Until the end of the phase, models in that unit cannot have the **Benefit** **of** **Cover**.",
+      },
+    },
+    {
+      name: "KALEIDOSCOPIC TEMPEST",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **THOUSAND** **SONS** **PSYKER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, your unit has the **Stealth** ability, and, if your unit is wholly within your army’s **Flow** **of** **Magic**, each time an attack targets your unit, it has the **Benefit** **of** **Cover** against that attack.",
+      },
+    },
+  ],
 };
