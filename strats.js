@@ -5569,4 +5569,403 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Mercurial Host": [
+    {
+      name: "VIOLENT EXCESS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, **melee** **weapons** equipped by models in your unit have the **[SUSTAINED** **HITS** **1]** ability.",
+      },
+    },
+    {
+      name: "COMBAT STIMMS",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **EMPEROR’S** **CHILDREN** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "HONOUR THE PRINCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **EMPEROR’S** **CHILDREN** **INFANTRY** unit from your army that has not been selected to move this phase.",
+        effect: 'Until the end of the phase, if your unit Advances, do not make an **Advance** **roll**. Instead, until the end of the phase, add 6" to the Move characteristic of models in your unit.',
+      },
+    },
+    {
+      name: "DARK VIGOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **EMPEROR’S** **CHILDREN** unit from your army (excluding **BEASTS** and **VEHICLES**) that is within 9" of the enemy unit that just ended that move.',
+        effect: 'Your unit can make a **Normal** **move** of up to 6".',
+      },
+    },
+    {
+      name: "CAPRICIOUS REACTIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "CRUEL RAIDERS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: 'One **EMPEROR’S** **CHILDREN** unit from your army that is wholly within 9" of one or more battlefield edges and not within 3" horizontally of one or more enemy units.',
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Peerless Bladesmen": [
+    {
+      name: "DEFT PARRY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "DEATH ECSTASY",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "INCESSANT VIOLENCE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just before an **EMPEROR’S** **CHILDREN** unit from your army **Consolidates**.",
+        target: "That EMPEROR’S CHILDREN unit.",
+        effect: 'Until the end of the phase, each time a model in your unit makes a **Consolidation** **move**, it can move up to 6" instead of up to 3", provided your unit ends that Consolidation move within **Engagement** **Range** of one or more enemy units.',
+      },
+    },
+    {
+      name: "CRUEL BLADESMAN",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that made a **Charge** **move** this turn and has not been selected to fight this phase.",
+        effect: "Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1.",
+      },
+    },
+    {
+      name: "TERRIFYING SPECTACLE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Command phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that made a **Charge** **move** in the previous turn and destroyed one or more enemy units in the previous Fight phase.",
+        effect: 'Each enemy unit within 6" of your unit must take a **Battle-shock** **test**, subtracting 1 from that test if they are **Below** **Half-strength**. Enemy units affected by this Stratagem do not need to take any other Battle-shock tests in the same phase.',
+      },
+    },
+    {
+      name: "CUT DOWN THE WEAK",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit **Falls** **Back**.",
+        target: 'One **EMPEROR’S** **CHILDREN** unit from your army (you can only select a **VEHICLE** if it is a **WALKER**) that is within 6" of that enemy unit and would be eligible to declare a charge against that enemy unit if it were your Charge phase.',
+        effect: "Your unit can declare a charge. When doing so, you must select that enemy unit as a target of that charge, and your unit does not receive a **Charge** **bonus** this turn.",
+      },
+    },
+  ],
+
+  "Rapid Evisceration": [
+    {
+      name: "ONTO THE NEXT",
+      cp: "1 CP",
+      rules: {
+        when: "End of the Fight phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that destroyed an enemy unit this phase, and one friendly **TRANSPORT** it is able to **embark** within.",
+        effect: 'If your EMPEROR’S CHILDREN unit is wholly within 6" of that TRANSPORT, it can embark within it.',
+      },
+    },
+    {
+      name: "ADVANCE AND CLAIM",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **EMPEROR’S** **CHILDREN** **TRANSPORT** from your army that has one or more **TORMENTORS** units **embarked** within it (excluding **Battle-shocked** units).",
+        effect: "Select one **objective** **marker** you control that your TRANSPORT is within range of. That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "DYNAMIC BREAKTHROUGH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **EMPEROR’S** **CHILDREN** **VEHICLE** unit from your army that has not been selected to move this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes a move, it can move through enemy models (excluding MONSTERS and VEHICLES). When doing so, it can move within **Engagement** **Range** of such models but cannot end that move within Engagement Range of them, and any **Desperate** **Escape** **test** is automatically passed.",
+      },
+    },
+    {
+      name: "CEASELESS ONSLAUGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that **disembarked** from a **TRANSPORT** that made a **Normal** **move** this turn.",
+        effect: "Until the end of the phase, your EMPEROR’S CHILDREN unit is eligible to declare a charge.",
+      },
+    },
+    {
+      name: "REACTIVE DISEMBARKATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **EMPEROR’S** **CHILDREN** **TRANSPORT** from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'One **EMPEROR’S** **CHILDREN** unit embarked within your TRANSPORT can **disembark**. When doing so, models in that unit can be set up anywhere on the battlefield wholly within 6" of that TRANSPORT and not within **Engagement** **Range** of one or more enemy units.',
+      },
+    },
+    {
+      name: "OUTFLANKING STRIKE",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **EMPEROR’S** **CHILDREN** **TRANSPORT** from your army, or up to two **EMPEROR’S** **CHILDREN** **DEDICATED** **TRANSPORTS** from your army.",
+        effect: 'For each of those TRANSPORTS wholly within 9" of one or more battlefield edges, remove it from the battlefield and place it into Strategic Reserves.',
+      },
+    },
+  ],
+
+  "Carnival of Excess": [
+    {
+      name: "SUSTAINED BY AGONY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an **EMPEROR’S** **CHILDREN** unit from your army destroys an enemy unit.",
+        target: "That EMPEROR’S CHILDREN unit.",
+        effect: 'Select one friendly **LEGIONS** OF **EXCESS** unit within 6" of your unit. One model in that LEGIONS OF EXCESS unit recovers up to 3 lost wounds or, if it is a **DAEMONETTES** unit, return upto D3+3 destroyed models to it instead.',
+      },
+    },
+    {
+      name: "ECSTATIC SLAUGHTER",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a LEGIONS OF EXCESS unit from your army destroys an enemy unit.",
+        target: 'That **LEGIONS** OF **EXCESS** unit and one friendly **EMPEROR’S** **CHILDREN** unit within 6" of it that is not within **Engagement** **Range** of one or more enemy units.',
+        effect: "Your EMPEROR’S CHILDREN unit can declare a charge. If it does so and it has already been selected to fight this phase, it cannot fight again this phase.",
+      },
+    },
+    {
+      name: "VIOLENT CRESCENDO",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **SLAANESH** **BEASTS**, **SLAANESH** **INFANTRY** or **SLAANESH** **MOUNTED** unit from your army that has not been selected to fight this phase.",
+        effect: 'Until the end of the phase, each time a model in your unit makes a **Pile-in** or **Consolidation** **move**, it can move up to 6" instead of up to 3". When doing so, it does not need to end that move closer to the closest enemy model, provided it ends that move as close as possible to the closest enemy unit.',
+      },
+    },
+    {
+      name: "SYCOPHANTIC SURGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **LEGIONS** OF **EXCESS** unit from your army.",
+        effect: "Until the end of the phase, your unit is eligible to declare a charge in a turn in which it **Advanced** or **Fell** **Back**, provided at least one of the targets of that charge is within **Engagement** **Range** of one or more **EMPEROR’S** **CHILDREN** units from your army.",
+      },
+    },
+    {
+      name: "UNCANNY REACTIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **SLAANESH** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "DARK APPARITIONS",
+      cp: "2 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **DAEMONETTES** unit from your army that is not within **Engagement** **Range** of one or more enemy units.",
+        effect: 'Remove your unit from the battlefield and place it into Strategic Reserves. If it arrives back on the battlefield in the Reinforcements step of your next Movement phase using the **Deep** **Strike** ability, it can be set up anywhere that is more than 6" horizontally away from all enemy units (instead of more than 9"), provided it is also set up wholly within 9" of one or more friendly **EMPEROR’S** **CHILDREN** units.',
+      },
+    },
+  ],
+
+  "Coterie of the Conceited": [
+    {
+      name: "PROTECTION OF THE DARK PRINCE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a **mortal** **wound** or attack is allocated to a model in an **EMPEROR’S** **CHILDREN** unit from your army.",
+        target: "That EMPEROR’S CHILDREN unit.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **6+** ability, and the **Feel** **No** **Pain** **4+** ability against **mortal** **wounds**.",
+      },
+    },
+    {
+      name: "UNSHAKEABLE OPPONENTS",
+      cp: "1 CP",
+      rules: {
+        when: "Command phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army.",
+        effect: "Until the end of the turn, each time a model in your unit makes an attack, you can ignore any or all modifiers to the following: that attack’s Ballistic Skill or Weapon Skill characteristic; the **Hit** **roll**; the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "EMBRACE THE PAIN",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "One **EMPEROR’S** **CHILDREN** **INFANTRY** unit from your army.",
+        effect: "Until the end of the phase, each time an enemy model within **Engagement** **Range** of your unit selects targets, it must select your unit as the target of its attacks.",
+      },
+    },
+    {
+      name: "MARTIAL PERFECTION",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "UNBOUND ARROGANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase, just after an **EMPEROR’S** **CHILDREN** unit from your army destroys an enemy unit.",
+        target: "That EMPEROR’S CHILDREN unit.",
+        effect: "Increase your **pledge** **to** **Slaanesh** by 1.<br><br>**Restrictions:** You can only use this Stratagem once per battle round.",
+      },
+    },
+    {
+      name: "ARMOUR OF ABHORRENCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets a model in your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+  ],
+
+  "Slaanesh’s Chosen": [
+    {
+      name: "DEVOTED DUELLISTS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One or more **EMPEROR’S** **CHILDREN** **CHARACTER** units from your army that have not been selected to fight this phase.",
+        effect: "Select one enemy unit. Until the end of the phase, melee weapons equipped by models in those CHARACTER units have the **[SUSTAINED** **HITS** **1]** ability while targeting that enemy unit.",
+      },
+    },
+    {
+      name: "BEAUTIFUL DEATH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **EMPEROR’S** **CHILDREN** **CHARACTER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 to the result if your unit is your army’s **Favoured** **Champions**. On a 4+, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "HEIGHTENED JEALOUSY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase, just after an **EMPEROR’S** **CHILDREN** **CHARACTER** unit becomes your army’s **Favoured** **Champions**, or just after your army’s Favoured Champions unit destroys an enemy unit.",
+        target: "Your army’s **Favoured** **Champions** unit.",
+        effect: "Until the end of the phase, each time a model in an EMPEROR’S CHILDREN CHARACTER unit from your army that is not your army’s Favoured Champions makes an attack, add 1 to the Strength characteristic of that attack.",
+      },
+    },
+    {
+      name: "DIABOLIC MAJESTY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase, just after an **EMPEROR’S** **CHILDREN** **CHARACTER** unit becomes your army’s **Favoured** **Champions**.",
+        target: "That EMPEROR’S CHILDREN unit.",
+        effect: 'Each enemy unit within 6" of your unit must take a **Battle-shock** **test**, subtracting 1 from the result.<br><br>**Restrictions:** You can only use this Stratagem once per battle round.',
+      },
+    },
+    {
+      name: "REFUSAL TO BE OUTDONE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **EMPEROR’S** **CHILDREN** **CHARACTER** unit from your army.",
+        effect: "Select one enemy unit within **Engagement** **Range** of one or more units from your army. Until the end of the phase, each time your unit **declares** **a** **charge**, if that enemy unit is one of the targets of that charge, add 2 to the **Charge** **roll**.",
+      },
+    },
+    {
+      name: "VENGEFUL SURGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **EMPEROR’S** **CHILDREN** **CHARACTER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "After the attacking unit has shot, your unit can make a Surge move. To do so, roll one D6: each model in your unit can move a distance in inches up to the result, but your unit must end that move as close as possible to the closest enemy unit. When doing so, those models can be moved within **Engagement** **Range** of that enemy unit. If your unit is not your army’s **Favoured** **Champions**, you can re-roll the dice to determine the distance of its Surge move.",
+      },
+    },
+  ],
+
+  "Court of the Phoenician": [
+    {
+      name: "CONTEMPTUOUS DISREGARD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army.",
+        effect: "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "PRIDEFUL SUPERIORITY",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a CHARACTER unit, you can re-roll the **Hit** **roll** and you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "SINUOUS BREACH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **EMPEROR’S** **CHILDREN** **DAEMON** unit from your army that has not been selected to move or charge this phase.",
+        effect: "Until the end of the phase, each time your unit makes a **Normal**, **Advance** or **Charge** **move**, it can move horizontally through terrain features.",
+      },
+    },
+    {
+      name: "CLOSE-QUARTERS EXCRUCIATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, each time an EMPEROR’S CHILDREN model in your unit makes an attack that targets an eligible unit within 12", improve the Strength and Armour Penetration characteristics of that attack by 1.',
+      },
+    },
+    {
+      name: "EUPHORIC INSPIRATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **EMPEROR’S** **CHILDREN** **DAEMON** unit from your army.",
+        effect: 'Until the end of the phase, you can re-roll **Charge** **rolls** for friendly **EMPEROR’S** **CHILDREN** units within 6" of your unit.',
+      },
+    },
+    {
+      name: "CATALYTIC STIMULUS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **EMPEROR’S** **CHILDREN** unit from your army that lost one or more wounds as a result of those attacks.",
+        effect: "Your unit can make a Stimulus move. To do so, roll one D6: models in your unit move a number of inches up to the result, but your unit must end that move as close as possible to the closest enemy unit (excluding AIRCRAFT). When doing so, those models can be moved within **Engagement** **Range** of that enemy unit.",
+      },
+    },
+  ],
 };
