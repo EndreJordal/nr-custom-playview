@@ -455,8 +455,12 @@ function buildHeader(metadata) {
     location.reload();
   });
 
+  const actions = el("div", "roster-header__actions");
+  actions.appendChild(uploadBtn);
+  actions.appendChild(el("span", "roster-header__chevron"));
+
   headerWrapper.appendChild(leftMetaBlock);
-  headerWrapper.appendChild(uploadBtn);
+  headerWrapper.appendChild(actions);
 
   let collapsed = false;
   headerWrapper.addEventListener("click", () => {

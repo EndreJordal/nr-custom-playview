@@ -135,16 +135,17 @@ body {
 /* --- ROSTER HEADER --- */
 .roster-header {
   width: 100%;
-  background: var(--bg-surface-1);
+  background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
+  border-top: 3px solid var(--accent);
   border-radius: var(--radius-lg);
   padding: 22px 28px;
   margin-bottom: 22px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 20px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   cursor: pointer;
   transition: padding 0.25s var(--ease-out-expo), background 0.25s var(--ease-out-expo),
     border-color 0.2s var(--ease-out-expo);
@@ -157,6 +158,7 @@ body {
 .roster-header--collapsed {
   padding: 12px 22px;
   background: var(--bg-page);
+  align-items: center;
 }
 
 .roster-header__meta {
@@ -168,6 +170,7 @@ body {
 
 .roster-header__collapsed-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   gap: 14px;
 }
@@ -225,9 +228,8 @@ body {
 
 .roster-header__tag-group {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .roster-header__tag-label {
@@ -236,13 +238,18 @@ body {
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  width: 84px;
+}
+
+.roster-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   flex-shrink: 0;
 }
 
 .roster-header__upload-btn {
   padding: 9px 16px;
-  background: var(--bg-surface-2);
+  background: var(--bg-surface-3);
   color: var(--text-secondary);
   border: 1px solid var(--border-subtle-strong);
   border-radius: var(--radius-pill);
@@ -255,13 +262,34 @@ body {
 }
 
 .roster-header__upload-btn:hover {
-  background: var(--bg-surface-3);
+  background: var(--bg-surface-2);
   color: var(--text-primary);
   border-color: var(--accent);
 }
 
 .roster-header--collapsed .roster-header__upload-btn {
   display: none;
+}
+
+/* Expand/collapse indicator — points up when open (click to collapse),
+   down when collapsed (click to expand). */
+.roster-header__chevron {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--text-secondary);
+  border-bottom: 2px solid var(--text-secondary);
+  transform: rotate(225deg);
+  transition: transform 0.25s var(--ease-out-expo), border-color 0.2s var(--ease-out-expo);
+  flex-shrink: 0;
+  margin: 3px;
+}
+
+.roster-header:hover .roster-header__chevron {
+  border-color: var(--accent);
+}
+
+.roster-header--collapsed .roster-header__chevron {
+  transform: rotate(45deg);
 }
 
 /* --- CHIPS --- */
@@ -277,7 +305,7 @@ body {
   gap: 5px;
   padding: 3px 10px;
   border-radius: var(--radius-pill);
-  background: var(--bg-surface-2);
+  background: var(--bg-surface-3);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   font-size: 12px;
@@ -918,18 +946,33 @@ body {
     grid-template-columns: 1fr;
   }
 
+  /* Stack instead of relying on wrap — predictable order (meta, then
+     actions) instead of the upload button landing wherever there's room. */
   .roster-header {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 18px;
+    gap: 14px;
+  }
+
+  .roster-header--collapsed {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 16px;
+  }
+
+  .roster-header__name {
+    font-size: 20px;
+  }
+
+  .roster-header__actions {
+    justify-content: space-between;
   }
 
   /* The row can't fit name + count + points alongside 7 stat boxes at this
      width — keep it drawer-only on mobile regardless of open/closed state. */
   .unit-row__stats {
     display: none;
-  }
-
-  .roster-header__tag-label {
-    width: auto;
   }
 
   /* Edge-to-edge: drop the outer gutter and square off the cards that would
