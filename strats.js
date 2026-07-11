@@ -6310,4 +6310,346 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Brotherhood Strike": [
+    {
+      name: "TRUESILVER CHANNELLING",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **GREY** **KNIGHTS** **INFANTRY** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, **Psychic** **weapons** equipped by models in your unit have the **[DEVASTATING** **WOUNDS]** ability.",
+      },
+    },
+    {
+      name: "COMBAT MANIFESTATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **GREY** **KNIGHTS** unit from your army that is arriving using the **Deep** **Strike** ability this phase.",
+        effect: 'Set your unit up anywhere on the battlefield that is more than 6" horizontally away from all enemy units, but until the end of the turn, it is not eligible to declare a charge.',
+      },
+    },
+    {
+      name: "PURGATION PATTERN",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **GREY** **KNIGHTS** unit from your army that was set up using the **Deep** **Strike** ability this turn and has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, weapons equipped by models in your unit have the **[SUSTAINED** **HITS** **1]** ability.",
+      },
+    },
+    {
+      name: "DUTY UNENDING",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit within **Engagement** **Range** of one or more **GREY** **KNIGHTS** units from your army **Falls** **Back**.",
+        target: "One of those GREY KNIGHTS units that is not within Engagement Range of one or more enemy units.",
+        effect: "If your unit has the **Deep** **Strike** ability, it can be placed into Strategic Reserves.",
+      },
+    },
+    {
+      name: "SHINING VEIL",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **GREY** **KNIGHTS** unit that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, your unit has the **Stealth** ability.",
+      },
+    },
+    {
+      name: "EXPEDITIOUS EXIT",
+      cp: "2 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **GREY** **KNIGHTS** **PSYKER** **INFANTRY** unit from your army.",
+        effect: "If every model in your unit has the **Deep** **Strike** ability, remove your unit from the battlefield and place it into Strategic Reserves.Designer’s Note: This Stratagem allows you to remove a unit in addition to those removed using the **Gate** **of** **Infinity** rule, and it allows you to remove a unit within **Engagement** **Range** of one or more enemy units.",
+      },
+    },
+  ],
+
+  "Hallowed Conclave": [
+    {
+      name: "GIANTS OF THE BATTLEFIELD",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **GREY** **KNIGHTS** **TERMINATOR** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, add 1 to the Attacks characteristic of melee weapons equipped by models in your unit.",
+      },
+    },
+    {
+      name: "UNENDING FIDELITY",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **GREY** **KNIGHTS** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not shot or fought this phase, roll one D6. On a 4+, do not remove the destroyed model from play; it can shoot or fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "POINT-BLANK PURGATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **GREY** **KNIGHTS** **INFANTRY** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, storm bolter weapons equipped by models in your unit have the **[PISTOL]** and **[TWIN-LINKED]** abilities.",
+      },
+    },
+    {
+      name: "GRIND THEM UNDERFOOT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, just after a **GREY** **KNIGHTS** **TERMINATOR** unit from your army ends a **Charge** **move**.",
+        target: "That GREY KNIGHTS unit.",
+        effect: "Select one enemy unit within **Engagement** **Range** of your unit, then roll one D6 for each model in your unit that is within Engagement Range of that enemy unit: for each 4+, that enemy unit suffers 1 **mortal** **wound** (to a maximum of 6 mortal wounds).",
+      },
+    },
+    {
+      name: "PRECOGNITIVE STRATEGIES",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **GREY** **KNIGHTS** **INFANTRY** unit from your army that is within 9" of that enemy unit and not within **Engagement** **Range** of one or more enemy units.',
+        effect: 'Your unit can make a **Normal** **move** of up to D6".',
+      },
+    },
+    {
+      name: "SHINING RESOLVE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **GREY** **KNIGHTS** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+  ],
+
+  "Banishers": [
+    {
+      name: "HEXWROUGHT REPRISAL",
+      cp: "1 CP",
+      rules: {
+        when: "End of any phase.",
+        target: "One **GREY** **KNIGHTS** **PSYKER** unit from your army that is on the battlefield and suffered one or more **mortal** **wounds** this phase.",
+        effect: "Select one enemy unit which inflicted one or more mortal wounds on your unit this phase, then roll a number of dice equal to the number of mortal wounds your unit suffered this phase: for each 2+, that enemy unit suffers one mortal wound (to a maximum of 6 mortal wounds). These mortal wounds are **Psychic** **Attacks**.",
+      },
+    },
+    {
+      name: "WARDING CHANT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **GREY** **KNIGHTS** **PSYKER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **5+** ability against attacks with an unmodified Damage characteristic of 1.",
+      },
+    },
+    {
+      name: "CHAOS BANE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **GREY** **KNIGHTS** **PSYKER** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[ANTI-CHAOS** **4+]** ability.",
+      },
+    },
+    {
+      name: "CELERITY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **GREY** **KNIGHTS** **PSYKER** **INFANTRY** unit from your army.",
+        effect: "Until the end of the turn, your unit is eligible to declare a charge in a turn in which it **Advanced**.",
+      },
+    },
+    {
+      name: "CIRCLE OF SANCTUARY",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Movement phase.",
+        target: "One **GREY** **KNIGHTS** **CHARACTER** model from your army.",
+        effect: 'Until the end of the phase, enemy units that are set up on the battlefield as Reinforcements cannot be set up within 12" horizontally of your model.',
+      },
+    },
+    {
+      name: "SHADOW OF ANARCH",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **GREY** **KNIGHTS** **PSYKER** unit from your army that is within 9" of that enemy unit and is not within **Engagement** **Range** of one or more enemy units.',
+        effect: 'Your unit can make a **Normal** **move** of up to 6" or, if it has the **Deep** **Strike** ability, it can be placed into Strategic Reserves.',
+      },
+    },
+  ],
+
+  "Sanctic Spearhead": [
+    {
+      name: "TRUESILVER WILL",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a **GREY** **KNIGHTS** **PSYKER** **VEHICLE** unit from your army suffers a **mortal** **wound**.",
+        target: "That GREY KNIGHTS PSYKER VEHICLE unit.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **4+** ability against mortal wounds.",
+      },
+    },
+    {
+      name: "ABOMINUS-CLASS TARGETS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **GREY** **KNIGHTS** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE unit, add 1 to the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "ARMOURED AEGIS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **GREY** **KNIGHTS** **PSYKER** **VEHICLE** unit from your army.",
+        effect: "One model in your unit regains up to 3 lost wounds.",
+      },
+    },
+    {
+      name: "REDOUBLED ASSAULT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **GREY** **KNIGHTS** **VEHICLE** unit from your army **Falls** **Back**.",
+        target: "That GREY KNIGHTS VEHICLE unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "FORCE WAVE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **GREY** **KNIGHTS** **VEHICLE** unit from your army that has not been selected to move or charge this phase.",
+        effect: "Until the end of the phase, each time your unit makes a **Normal**, **Advance** or **Charge** **move**, it can move horizontally through terrain features.",
+      },
+    },
+    {
+      name: "ARGENT WRATH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, just after a **GREY** **KNIGHTS** **VEHICLE** unit from your army ends a **Charge** **move**.",
+        target: "That GREY KNIGHTS VEHICLE unit.",
+        effect: 'Each enemy unit within 3" of your unit must take a **Battle-shock** **test**, subtracting 1 from that test.',
+      },
+    },
+  ],
+
+  "Augurium Task Force": [
+    {
+      name: "AGGRESSIVE ANTICIPATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **GREY** **KNIGHTS** **PSYKER** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, you can ignore any or all modifiers to that attack’s Weapon Skill or Ballistic Skill characteristics and/or any or all modifiers to the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "APPOINTED HOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **GREY** **KNIGHTS** **PSYKER** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, an unmodified **Hit** **roll** of 5+ scores a **Critical** **Hit**.",
+      },
+    },
+    {
+      name: "FOREWARNED EVASION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **GREY** **KNIGHTS** **WALKER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "NECESSARY END",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **GREY** **KNIGHTS** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6. If the result is greater than the current battle round number, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "REDIRECTED STRIKE",
+      cp: "1 CP",
+      rules: {
+        when: "End of your Command phase.",
+        target: "One **GREY** **KNIGHTS** **PSYKER** unit from your army that is not within **Engagement** **Range** of one or more enemy units.",
+        effect: "If your unit has the **Deep** **Strike** ability, it can be placed into Strategic Reserves.Designer’s Note: This Stratagem lets players utilise abilities that retain control of **objective** **markers** and react to their missions and objectives with this unit.",
+      },
+    },
+    {
+      name: "MIRAGE OF ECHOES",
+      cp: "1 CP",
+      rules: {
+        when: "The Reinforcements step of your opponent’s Movement phase, just after an enemy unit is set up.",
+        target: 'One **GREY** **KNIGHTS** **PSYKER** unit from your army that is within 12" of that enemy unit and is not within **Engagement** **Range** of one or more enemy units.',
+        effect: "If your unit has the **Deep** **Strike** ability, it can be placed into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Warpbane Task Force": [
+    {
+      name: "SANCTIFIED KILL ZONE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One GREY KNIGHTS unit from your army that has not been selected to shoot or fight this phase and that is wholly within your army’s **Hallowed** **Ground**.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, re-roll a **Wound** **roll** of 1, or, re-roll the Wound roll instead if your unit is a **PURIFIER** **SQUAD**.",
+      },
+    },
+    {
+      name: "FLAMES OF SANCTITY",
+      cp: "1 CP",
+      rules: {
+        when: "End of the Fight phase.",
+        target: "One **PURIFIER** **SQUAD** unit from your army that was eligible to fight this phase.",
+        effect: 'Roll one D6 for each enemy unit within 6" of your unit, adding 1 to the result if your unit includes **CASTELLAN** **CROWE**: on a 4+, that enemy unit suffers D3 **mortal** **wounds**.',
+      },
+    },
+    {
+      name: "HALLOWED BEACON",
+      cp: "1 CP",
+      rules: {
+        when: "Reinforcements step of your Movement phase.",
+        target: "One **GREY** **KNIGHTS** **INFANTRY** unit (excluding **TERMINATOR** units) that is arriving using the **Deep** **Strike** ability this phase.",
+        effect: 'Set up your unit wholly within your army’s **Hallowed** **Ground** and more than 6" horizontally away from all enemy units.',
+      },
+    },
+    {
+      name: "FIRES OF COVENANT",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Movement phase.",
+        target: "One **GREY** **KNIGHTS** **INFANTRY** unit from your army.",
+        effect: 'Until the end of the phase, each time an enemy unit is set up or ends a **Normal**, **Advance** or **Fall** **Back** **move** within 6" of your unit, roll one D6, adding 2 to the result if your unit is wholly within your army’s **Hallowed** **Ground**: on a 4+, that enemy unit suffers D3 **mortal** **wounds**.',
+      },
+    },
+    {
+      name: "AEGIS ETERNAL",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **GREY** **KNIGHTS** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit that are wholly within your **Hallowed** **Ground** have a 4+ **invulnerable** **save**.",
+      },
+    },
+    {
+      name: "REPELLING SPHERE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Charge phase.",
+        target: "One **GREY** **KNIGHTS** **INFANTRY** unit from your army.",
+        effect: "Until the end of the phase, each time an enemy unit declares a charge and your unit is one of the targets of that charge, subtract 1 from the **Charge** **roll**, or subtract 2 instead if your unit is wholly within your army’s **Hallowed** **Ground**.",
+      },
+    },
+  ],
 };
