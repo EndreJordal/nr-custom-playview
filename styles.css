@@ -374,7 +374,8 @@ body {
   transform: scale(0.997);
 }
 
-.unit-row--open {
+.unit-row--open,
+.unit-row--open:hover {
   background: var(--accent-soft);
   border-color: var(--accent);
 }
