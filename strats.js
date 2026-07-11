@@ -1062,4 +1062,350 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Realspace Raiders": [
+    {
+      name: "INSENSIBLE TO PAIN",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **HAEMONCULUS COVENS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect:
+          "Until the end of the phase, each time an attack is allocated to a model in your unit, **subtract 1 from the Damage characteristic** of that attack.",
+      },
+    },
+    {
+      name: "FIGHTING SHADOWS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **DRUKHARI** unit from your army (excluding **HAEMONCULUS COVENS** units) that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, **subtract 1 from the Hit roll**.",
+      },
+    },
+    {
+      name: "INSTINCTIVE SPITE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Shooting phase or the start of the Fight phase.",
+        target: "Up to two **DRUKHARI BATTLELINE** units from your army, or one other **DRUKHARI** unit from your army.",
+        effect:
+          "You can spend 1 **Pain token**. Until the end of the phase, each time a model in each of those units makes an attack that targets an enemy unit that is **Below Half-strength**, **add 1 to the Hit roll**. If you spent 1 Pain token, **add 1 to the Wound roll** as well.",
+      },
+    },
+    {
+      name: "DARK HARVEST",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "Up to two **WRACKS** units from your army, or one other **DRUKHARI** unit from your army.",
+        effect: "Until the end of the phase, melee weapons equipped by models in each of those units have the **[LETHAL HITS]** ability.",
+      },
+    },
+    {
+      name: "EAGER FOR THE KILL",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Movement phase.",
+        target: "Up to two **WYCHES** units from your army, or one other **DRUKHARI** unit from your army, that have not been selected to move this phase.",
+        effect:
+          'Until the end of the phase, each time one of those units **Advances**, do not make an Advance roll for it. Instead, until the end of the phase, add **6"** to the Move characteristic of models in that unit (this is not cumulative with the **REAVERS’** Matchless Swiftness ability).',
+      },
+    },
+    {
+      name: "RAID AND FADE",
+      cp: "2 CP",
+      rules: {
+        when: "End of your Shooting phase.",
+        target: "Up to two **KABALITE WARRIORS** units from your army, or one other **DRUKHARI** unit from your army (excluding **SCOURGES** and **AIRCRAFT**).",
+        effect:
+          'Each of those units can make a Normal move of up to **6"**.<br><br>**Restrictions:** You cannot select units that are within Engagement Range of one or more enemy units. Until the end of the turn, those units are not eligible to declare a charge.',
+      },
+    },
+  ],
+
+  "Skysplinter Assault": [
+    {
+      name: "VICIOUS BLADES",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a **DRUKHARI** **TRANSPORT** from your army has selected its targets.",
+        target: "That TRANSPORT.",
+        effect: "After your TRANSPORT has fought, select one enemy unit that was the target of one or more of those attacks and roll one D6 for each model **embarked** within your TRANSPORT, adding 1 to the result if that embarked model is a **WRACKS** model: for each 5+, that enemy unit suffers 1 **mortal** **wound** (to a maximum of 6 mortal wounds).",
+      },
+    },
+    {
+      name: "WRAITHLIKE RETREAT",
+      cp: "1 CP",
+      rules: {
+        when: "End of the Fight phase.",
+        target: "One **DRUKHARI** **INFANTRY** unit from your army that fought this phase.",
+        effect: 'Your unit can make a **Normal** or **Fall** **Back** **move**, but unless it is a **WYCHES** unit, it must end that move wholly within 3" horizontally and 5" vertically of a friendly **DRUKHARI** **TRANSPORT** and must **embark** within that TRANSPORT at the end of that move (otherwise, it cannot make that move).',
+      },
+    },
+    {
+      name: "POUNCE ON THE PREY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **DRUKHARI** **INFANTRY** unit from your army **disembarks** from a **TRANSPORT** that made a **Normal** **move** this phase.",
+        target: "That INFANTRY unit.",
+        effect: "Until the end of the turn, your unit is eligible to declare a charge.",
+      },
+    },
+    {
+      name: "SKYBORNE ANNIHILATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DRUKHARI** unit from your army that has not been selected to shoot this phase and that **disembarked** from a **TRANSPORT** this turn.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[SUSTAINED** **HITS** **1]** ability, or the **[SUSTAINED** **HITS** **2]** ability if your unit is a **KABALITE** **WARRIORS** or **HAND** OF THE **ARCHON** unit.",
+      },
+    },
+    {
+      name: "SWOOPING MOCKERY",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **DRUKHARI** **TRANSPORT** from your army that is within 9" of that enemy unit.',
+        effect: 'Your TRANSPORT can make a **Normal** **move** of up to 6".',
+      },
+    },
+    {
+      name: "NIGHT SHIELD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **DRUKHARI** **VEHICLE** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have a 4+ **invulnerable** **save**.",
+      },
+    },
+  ],
+
+  "Spectacle of Spite": [
+    {
+      name: "BERSERK FUGUE",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **WYCH** **CULT** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "DEADLY DEBUT",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **DRUKHARI** unit from your army that made a **Charge** **move** this turn and has not been selected to fight this phase.",
+        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the **[LETHAL** **HITS]** ability. If your unit is a **WYCHES** unit, until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1 as well.",
+      },
+    },
+    {
+      name: "FEIGNED WEAKNESS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **DRUKHARI** unit from your army **Falls** **Back**.",
+        target: "That DRUKHARI unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in turn in which it **Fell** **Back**.",
+      },
+    },
+    {
+      name: "PRETERNATURAL AGILITY",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Movement or Charge phase.",
+        target: "One **WYCH** **CULT** unit from your army.",
+        effect: "Until the end of the phase, each time your unit makes a **Normal**, **Advance** or **Charge** **move**, you can ignore any or all modifiers to its Move characteristic and to Advance and Charge rolls made for it and, until the end of the turn, each time a model in your unit makes such a move, it can move horizontally through models (when doing so, such a model can move within **Engagement** **Range** of such models but cannot end a Normal or Advance move within Engagement Range of them).",
+      },
+    },
+    {
+      name: "A CHALLENGE MET",
+      cp: "2 CP",
+      rules: {
+        when: "End of your opponent’s Movement phase.",
+        target: "One **WYCH** **CULT** unit from your army that would be able to declare a charge if it were your Charge phase.",
+        effect: 'Select one enemy unit within 9" of your unit that was set up on the battlefield this phase or that ended a **Normal** or **Advance** **move** this phase. Your unit now declares a charge that targets only that enemy unit, and you resolve that charge.<br><br>**Restrictions:** Even if that charge is successful, your unit does not receive any **Charge** **bonus** this turn.',
+      },
+    },
+    {
+      name: "ACROBATIC DISPLAY",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **WYCH** **CULT** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have a 5+ **invulnerable** **save**.",
+      },
+    },
+  ],
+
+  "Covenite Coterie": [
+    {
+      name: "POSTMORTALITY",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **HAEMONCULUS** model from your army that was just destroyed. You can use this Stratagem on that model even though it was just destroyed.",
+        effect: "Spend 1-3 **Pain** **tokens**. At the end of the phase, set the destroyed model back up on the battlefield, as close as possible to where it was destroyed and not within **Engagement** **Range** of any enemy units, with a number of wounds remaining equal to the number of Pain tokens you just spent.<br><br>**Restrictions:** You cannot use this Stratagem if you have 0 Pain tokens, and you cannot target the same HAEMONCULUS model with this Stratagem more than once per battle.",
+      },
+    },
+    {
+      name: "SYMPHONY OF SUFFERING",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a **DRUKHARI** unit from your army destroys an enemy unit.",
+        target: "That DRUKHARI unit.",
+        effect: 'Each enemy unit within 9" of and visible to your unit must take a **Battle-shock** **test**, subtracting 1 from that test if your unit is a **HAEMONCULUS** **COVENS** unit.',
+      },
+    },
+    {
+      name: "POISONER’S ART",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a **HAEMONCULUS** **COVENS** unit from your army has fought.",
+        target: "That HAEMONCULUS COVENS unit.",
+        effect: "Select one enemy unit (excluding VEHICLES) hit by one or more of your unit’s attacks this phase. Until the end of the battle, that enemy unit is poisoned. At the start of each Command phase, roll one D6 for each poisoned unit on the battlefield: on a 4+, that unit suffers D3 **mortal** **wounds**.",
+      },
+    },
+    {
+      name: "DISTILLERS OF FEAR",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **HAEMONCULUS** **COVENS** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit that is **Battle-shocked**, that attack has the **[DEVASTATING** **WOUNDS]** ability.",
+      },
+    },
+    {
+      name: "CONNOISSEURS OF PAIN",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **DRUKHARI** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Spend 1 **Pain** **token**. Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1. At the end of the phase, if your unit is still on the battlefield and it is a **HAEMONCULUS** **COVENS** unit, you gain 1 Pain token.",
+      },
+    },
+    {
+      name: "ENFOLDING NIGHTMARE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **HAEMONCULUS** **COVENS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Roll one D6: your unit can be moved a number of inches up to the result, but it must end that move as close as possible to the closest enemy unit (excluding AIRCRAFT). When doing so, those models can be moved within **Engagement** **Range** of that enemy unit.",
+      },
+    },
+  ],
+
+  "Kabalite Cartel": [
+    {
+      name: "DOUBLE-CROSS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **KABAL** or **BLADES** FOR **HIRE** unit from your army that was selected as the target of one or more of the attacking unit’s attacks, and one friendly **DRUKHARI** unit (excluding **VEHICLES**).",
+        effect: "Until the end of the phase, each time you would allocate an attack to a model in your KABAL or BLADES FOR HIRE unit, if your DRUKHARI unit is within **Engagement** **Range** of the attacking model, no **saving** **throw** is made for that attack; instead, your DRUKHARI unit suffers a number of **mortal** **wounds** equal to the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "TAKEN ALIVE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **DRUKHARI** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, add 1 to the **Hit** **roll**. If your Contract unit is destroyed as a result of those attacks, every unit in your opponent’s army must take a **Battle-shock** **test**. You cannot gain more than 3 **Pain** **tokens** as a result of failed **Battle-shock** **tests** caused by this Stratagem.",
+      },
+    },
+    {
+      name: "TAILORED TOXINS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **KABAL** or **BLADES** FOR **HIRE** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets your **Contract** **unit**, an unmodified **Hit** **roll** of 5+ scores a **Critical** **Hit**.",
+      },
+    },
+    {
+      name: "ENEMIES WITHOUT NUMBER",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase, just after you **complete** **a** **Contract**.",
+        target: "One **ARCHON** WARLORD from your army.",
+        effect: "Select one **new** **Contract** (this can be one you have already completed), then select one unit from your opponent’s army that is on the battlefield and matches the ‘Contract’ description in that Contract. Until that Contract is completed, that unit is your Contract unit and the **Murderous** **Agenda** Detachment rule applies as normal.",
+      },
+    },
+    {
+      name: "MAKING A POINT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **KABALITE** **WARRIORS** or **HAND** OF THE **ARCHON** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, improve the Ballistic Skill and Armour Penetration characteristics of ranged weapons equipped by models in your unit by 1.",
+      },
+    },
+    {
+      name: "DEADLY DECEIVERS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **KABAL** or **BLADES** FOR **HIRE** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18".',
+      },
+    },
+  ],
+
+  "Reaper’s Wager": [
+    {
+      name: "MALICIOUS FRENZY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **DRUKHARI** or **HARLEQUINS** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Select **[LETHAL** **HITS]** or **[SUSTAINED** **HITS** **1]**. Until the end of the phase, weapons equipped by models in your unit have the selected ability.",
+      },
+    },
+    {
+      name: "FATEFUL ROLE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **DRUKHARI** or **HARLEQUINS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 to the result if that unit is losing the wager: on a 4+, do not remove it from play. That destroyed model can fight after the attacking model’s unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "MURDERER’S CIRCUS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **DRUKHARI** or **HARLEQUINS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "SHORTEN THE ODDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **DRUKHARI** or **HARLEQUINS** unit from your army has **Advanced**.",
+        target: "That unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Advanced.",
+      },
+    },
+    {
+      name: "SCINTILLATING TEMPO",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase, just after a **DRUKHARI** or **HARLEQUINS** unit from your army is selected to make a **Normal**, **Advance** or **Fall** **Back** **move**, is set up on the battlefield, or declares a charge.",
+        target: "That unit.",
+        effect: "Until the end of the turn, enemy units cannot use the **Fire** **Overwatch** Stratagem to shoot at your unit.",
+      },
+    },
+    {
+      name: "DANCE MACABRE",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **DRUKHARI** **INFANTRY** or **HARLEQUINS** **INFANTRY** unit from your army that is within 9" of that enemy unit.',
+        effect: 'Your unit can make a Normal move of up to D6". If your unit is currently losing the wager, it can make a Normal move of up to 6" instead.',
+      },
+    },
+  ],
 };
