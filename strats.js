@@ -3118,4 +3118,517 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Combined Arms": [
+    {
+      name: "COORDINATED ACTION",
+      cp: "1 CP",
+      rules: {
+        when: "Start of any phase.",
+        target: 'One **REGIMENT** unit from your army and one **SQUADRON** unit from your army within 6" of and visible to that REGIMENT unit.',
+        effect: "Until the end of the phase, **Orders** affecting one of your units affect the other, and vice versa.",
+      },
+    },
+    {
+      name: "REINFORCEMENTS!",
+      cp: "2 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **INFANTRY** **REGIMENT** unit from your army that was just destroyed. You can target that unit with this Stratagem even though it was just destroyed.",
+        effect: "Add a new unit to your army identical to your destroyed unit, in Strategic Reserves, at its **Starting** **Strength** and with all of its wounds remaining.<br><br>**Restrictions:** This Stratagem cannot be used to return destroyed CHARACTER units to **Attached** **units**. You can only use this Stratagem once per battle.",
+      },
+    },
+    {
+      name: "FLEXIBLE COMMAND",
+      cp: "2 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "Any number of **ASTRA** **MILITARUM** **OFFICER** units from your army.",
+        effect: "Until the end of the phase, your Officers can **issue** **Orders** to **REGIMENT** units and **SQUADRON** units.",
+      },
+    },
+    {
+      name: "FIELDS OF FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **REGIMENT** unit and one **SQUADRON** unit from your army that have not been selected to shoot this phase.",
+        effect: "Select one enemy unit. Until the end of the phase, each time your selected REGIMENT and SQUADRON units make an attack that targets that enemy unit, improve the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "INSPIRED COMMAND",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Command phase.",
+        target: "One **ASTRA** **MILITARUM** **OFFICER** unit from your army.",
+        effect: "Your OFFICER can issue one Order as if it were your Command phase.",
+      },
+    },
+    {
+      name: "STALWART PROTECTOR",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **ASTRA** **MILITARUM** **VEHICLE** unit from your army.",
+        effect: "Until the end of the phase, each time a ranged attack is allocated to an INFANTRY model from your army, if that model is not fully visible to every model in the attacking unit because of your VEHICLE, that model has the **Benefit** **of** **Cover** against that attack.",
+      },
+    },
+  ],
+
+  "Siege Regiment": [
+    {
+      name: "TRENCH FIGHTERS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **ASTRA** **MILITARUM** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 2 to the result if it is a **REGIMENT** model. On a 4+, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "OVER THE TOP",
+      cp: "2 CP",
+      rules: {
+        when: "Start of your Command phase.",
+        target: "One **INFANTRY** **OFFICER** model from your army.",
+        effect: "Until the end of the phase, when your model issues the **Move!** **Move!** **Move!** Order, it can issue that Order to any number of eligible friendly **INFANTRY** **REGIMENT** units, regardless of range to your model.",
+      },
+    },
+    {
+      name: "FLARE BURST",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ASTRA** **MILITARUM** **CHARACTER** unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, each time your unit makes an attack that targets a visible enemy unit within 12", you can re-roll the **Hit** **roll**.',
+      },
+    },
+    {
+      name: "CALLOUS SACRIFICE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **PLATOON** unit from your army that is within **Engagement** **Range** of one or more enemy units.",
+        effect: "Until the end of the phase, enemy units are not considered to be within Engagement Range of your unit for the purposes of selecting targets of ranged weapons. Until the end of the phase, each time an enemy model loses a wound, while that model’s unit is within Engagement Range of your unit, roll one D6: on a 4+, one model from your unit is destroyed after the attacking unit has finished making its attacks.",
+      },
+    },
+    {
+      name: "FURIOUS FUSILLADE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **PLATOON** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, add 1 to the Attacks characteristic of ranged weapons equipped by models in your unit while targeting an enemy unit within half range.",
+      },
+    },
+    {
+      name: "MINEFIELD",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Charge phase.",
+        target: "One **PLATOON** unit from your army.",
+        effect: "Until the end of the phase, each time an enemy unit ends a **Charge** **move** within **Engagement** **Range** of your unit, roll one D6 for each model in that enemy unit: for each 5+, that enemy unit suffers 1 **mortal** **wound** (to a maximum of 6 mortal wounds).",
+      },
+    },
+  ],
+
+  "Mechanised Assault": [
+    {
+      name: "VOX-RELAY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **INFANTRY** **OFFICER** unit from your army **embarked** within a **TRANSPORT**. You can use this Stratagem on that unit even though it is embarked within a TRANSPORT.",
+        effect: "Until the end of the phase, your unit can **issue** **Orders** even though it is not on the battlefield, and it can issue Orders to **ASTRA** **MILITARUM** **TRANSPORT** units from your army [excluding **TITANIC** units) regardless of the distance to and from your unit’s TRANSPORT.",
+      },
+    },
+    {
+      name: "RAPID DISPERSAL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **ASTRA** **MILITARUM** **INFANTRY** unit from your army that **disembarked** from a **TRANSPORT** this phase.",
+        effect: 'Your INFANTRY unit can make a **Normal** **move** of up to D6".',
+      },
+    },
+    {
+      name: "CLEAR AND SECURE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ASTRA MILITARUM unit from your army that **disembarked** from a **TRANSPORT** this turn and has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a unit within range of an **objective** **marker**, you can re-roll the **Hit** **roll** and you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "SWIFT INTERCEPTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **TRANSPORT** unit from your army (excluding **AIRCRAFT** and **TITANIC** units) that is not within **Engagement** **Range** of one or more enemy units, and is within 9" of the enemy unit that just ended that move.',
+        effect: 'Your TRANSPORT can make a **Normal** **move** of up to 6".',
+      },
+    },
+    {
+      name: "HASTY EXTRACTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, after an enemy unit has selected targets for its charge but before it makes a **Charge** **move**.",
+        target: "One **ASTRA** **MILITARUM** **INFANTRY** unit from your army that was selected as a target of that charge.",
+        effect: 'Provided your unit is not within **Engagement** **Range** of one or more enemy units and every model in your unit is within 3" of an **ASTRA** **MILITARUM** **TRANSPORT** from your army, it can **embark** within that TRANSPORT.',
+      },
+    },
+    {
+      name: "MOVE OUT",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s turn.",
+        target: "One ASTRA MILITARUM unit from your army.",
+        effect: 'Provided your unit is not within **Engagement** **Range** of one or more enemy units and every model in your unit is within 3" of an **ASTRA** **MILITARUM** **TRANSPORT** from your army, it can **embark** within that TRANSPORT.',
+      },
+    },
+  ],
+
+  "Hammer of the Emperor": [
+    {
+      name: "FINAL HOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **SQUADRON** unit from your army that is **Below** **Half-strength** (excluding **OFFICER** units).",
+        effect: "Until the end of the battle round, ranged weapons equipped by models in your unit (excluding [ONE SHOT] weapons) have the **[HAZARDOUS]** ability, and each time a model in your unit makes a ranged attack, you can ignore any or all modifiers to that attack’s Ballistic Skill characteristic and to the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "BLAZING ADVANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **SQUADRON** unit from your army **Advances**.",
+        target: "That SQUADRON unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it Advanced.",
+      },
+    },
+    {
+      name: "TACTICAL WITHDRAWAL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **SQUADRON** unit from your army **Falls** **Back**.",
+        target: "That SQUADRON unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "CRASH THROUGH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **ASTRA** **MILITARUM** **VEHICLE** unit from your army that has not been selected to move or charge this phase.",
+        effect: "Until the end of the phase, each time your unit makes a **Normal**, **Advance** or **Charge** **move**, it can move horizontally through terrain features as if they were not there.",
+      },
+    },
+    {
+      name: "FURIOUS CANNONADE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **SQUADRON** unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, each time a model in your unit makes an attack that targets a unit within 12", improve the Armour Penetration characteristic of that attack by 1.',
+      },
+    },
+    {
+      name: "ABLATIVE PLATING",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **ASTRA** **MILITARUM** **VEHICLE** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack is allocated to your unit, subtract 1 from the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "SCOUTING OUTRIDERS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s turn.",
+        target: 'One **ASTRA** **MILITARUM** **MOUNTED** or **ASTRA** **MILITARUM** **WALKER** unit from your army that is wholly within 10" of one or more battlefield edges and not within **Engagement** **Range** of one or more enemy units.',
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Recon Element": [
+    {
+      name: "CRACK SHOTS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **PLATOON** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[PRECISION]** ability.",
+      },
+    },
+    {
+      name: "DRAW THEM OUT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **PLATOON** unit from your army that is within 9" of that enemy unit, and is not within **Engagement** **Range** of one or more enemy units.',
+        effect: 'Your unit can make a Normal move of up to 6".',
+      },
+    },
+    {
+      name: "SCRAMBLE FIELD",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Reinforcements step.",
+        target: "One **ASTRA** **MILITARUM** **INFANTRY** unit from your army.",
+        effect: 'Until the end of the phase, enemy units that are set up on the battlefield as Reinforcements cannot be set up within 12" of your unit.',
+      },
+    },
+    {
+      name: "COURAGEOUS DIVERSION",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Shooting phase.",
+        target: "One **ASTRA** **MILITARUM** **INFANTRY** or **ASTRA** **MILITARUM** **MOUNTED** unit from your army.",
+        effect: "Until the end of the phase, your unit has the **Feel** **No** **Pain** **6+** ability, and each time an enemy model makes an attack, if your unit is the closest eligible target, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "TANGLEFOOT GRENADES",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Charge phase.",
+        target: "One **ASTRA** **MILITARUM** **GRENADES** unit from your army.",
+        effect: "Until the end of the phase, each time an enemy unit selects your unit as the target of a charge, subtract 2 from the **Charge** **roll** (this is not cumulative with any other negative modifiers to that Charge roll).",
+      },
+    },
+  ],
+
+  "Bridgehead Strike": [
+    {
+      name: "BELLICOSA DROP",
+      cp: "1 CP",
+      rules: {
+        when: "The Reinforcements step of your Movement phase.",
+        target: "One **ASTRA** **MILITARUM** **INFANTRY** unit from your army that is in Reserves and has the **Deep** **Strike** ability.",
+        effect: 'Until the end of the phase, when your unit is set up on the battlefield using the Deep Strike ability, it can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy units.<br><br>**Restrictions:** Until the end of the turn, your unit is not eligible to declare a charge.',
+      },
+    },
+    {
+      name: "FIRING HOT",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **MILITARUM** **TEMPESTUS** or **KASRKIN** unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, when targeting an enemy unit within 12", improve the Strength and Armour Penetration characteristics of hot-shot lascarbines, hot-shot lasguns, hot-shot laspistols, hot-shot marksman rifles, hot-shot volley guns and sentry hot-shot volley guns equipped by models in your unit by 1.',
+      },
+    },
+    {
+      name: "FIRE AND RELOCATE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ASTRA MILITARUM unit (excluding **TITANIC** units) from your army.",
+        effect: "Until the end of the phase, your unit is eligible to shoot in a turn in which it **Advanced**.",
+      },
+    },
+    {
+      name: "SERVO‑DESIGNATORS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after an ASTRA MILITARUM INFANTRY unit from your army has shot.",
+        target: "That **ASTRA** **MILITARUM** **INFANTRY** unit.",
+        effect: "Select one enemy unit hit by one or more of those attacks that is visible to your unit. Until the end of the phase, that enemy unit cannot have the **Benefit** **of** **Cover**.",
+      },
+    },
+    {
+      name: "AERIAL EXTRACTION",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One ASTRA MILITARUM unit from your army that is not within **Engagement** **Range** of one or more enemy units, if all of its models have the **Deep** **Strike** ability, or one **VALKYRIE** unit from your army that is not within Engagement Range of one or more enemy units.",
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+    {
+      name: "ON MY POSITION",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **REGIMENT** **INFANTRY** unit from your army that is within **Engagement** **Range** of one or more enemy units.",
+        effect: "Roll one D6 for each enemy unit within Engagement Range of your unit: on a 2+, that enemy unit suffers D6 **mortal** **wounds**. Then, your unit suffers 3D3 mortal wounds.",
+      },
+    },
+  ],
+
+  "Grizzled Company": [
+    {
+      name: "SNAP TO IT",
+      cp: "1 CP",
+      rules: {
+        when: "Start of any phase.",
+        target: "One **ASTRA** **MILITARUM** **OFFICER** unit from your army.",
+        effect: "Your unit’s OFFICER model can issue 1 **Order** as if it were your Command phase.",
+      },
+    },
+    {
+      name: "NO RETREAT!",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One ASTRA MILITARUM unit from your army affected by the **Duty** **and** **Honour!** Order.",
+        effect: "If your unit is within range of an **objective** **marker** you control, that objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of a phase.",
+      },
+    },
+    {
+      name: "VETERAN SHARPSHOOTERS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ASTRA MILITARUM unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[IGNORES** **COVER]** ability.",
+      },
+    },
+    {
+      name: "PURGING FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ASTRA MILITARUM unit from your army affected by an **Order** that has not been selected to shoot this phase.",
+        effect: "If your unit is within range of an **objective** **marker**, until the end of the phase, ranged weapons equipped by models in your unit have the **[LETHAL** **HITS]** ability.",
+      },
+    },
+    {
+      name: "MORDIAN MINUTE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ASTRA** **MILITARUM** **INFANTRY** unit from your army affected by the **First** **Rank,** **Fire!** **Second** **Rank,** **Fire!** Order.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, improve the Strength characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "ADDITIONAL ARMOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One ASTRA MILITARUM unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+  ],
+
+  "Steel Hammer": [
+    {
+      name: "ENGINE OF WRATH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **ASTRA** **MILITARUM** **TITANIC** unit from your army that has not been selected to fight this phase.",
+        effect: "Select one enemy unit within **Engagement** **Range** of your unit. Until the end of the phase, add 6 to the Attacks characteristic of melee weapons equipped by models in your unit, improve the Armour Penetration characteristic of those weapons by 2, and each time a model in your unit fights, it can only target that enemy unit.",
+      },
+    },
+    {
+      name: "IMPOSING ARRIVAL",
+      cp: "1 CP",
+      rules: {
+        when: "Reinforcements step of your Movement phase, from the second battle round onwards.",
+        target: "One **ASTRA** **MILITARUM** **TITANIC** unit from your army that is in Reserves.",
+        effect: 'Set up your unit on the battlefield, wholly within 8" of the battlefield edge and more than 6" horizontally away from all enemy units.',
+      },
+    },
+    {
+      name: "ADAMANTINE BEHEMOTH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **ASTRA** **MILITARUM** **VEHICLE** unit from your army that has not been selected to move or charge this phase.",
+        effect: "Until the end of the phase, each time your unit makes a **Normal**, **Advance** or **Charge** **move**, it can move horizontally through terrain features.",
+      },
+    },
+    {
+      name: "SHATTERING SALVO",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after an **ASTRA** **MILITARUM** **TITANIC** unit from your army has shot.",
+        target: "That ASTRA MILITARUM TITANIC unit.",
+        effect: "Select one enemy unit hit by one or more of those attacks. Until the end of the phase, that enemy unit cannot have the **Benefit** **of** **Cover**.",
+      },
+    },
+    {
+      name: "WITHERING FIREPOWER",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after an **ASTRA** **MILITARUM** **VEHICLE** unit from your army has shot.",
+        target: "That ASTRA MILITARUM VEHICLE unit.",
+        effect: "Select one enemy unit hit by one or more of those attacks. That enemy unit must take a **Battle-shock** **test**, subtracting 1 from that test.",
+      },
+    },
+    {
+      name: "ACCURACY UNDER PRESSURE",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ASTRA MILITARUM unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the **Hit** **roll**.",
+      },
+    },
+  ],
+
+  "Armoured Infantry": [
+    {
+      name: "ORDER THE ADVANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Movement phase.",
+        target: "One **ASTRA** **MILITARUM** **OFFICER** unit from your army.",
+        effect: 'Select one or more friendly ASTRA MILITARUM units within 6" of your unit; until the end of the phase, you can re-roll **Advance** **rolls** made for those units.',
+      },
+    },
+    {
+      name: "MOBILE FIREBASE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after an **ARMOURED** **SKIRMISHER** unit from your army **Advances** or **Falls** **Back**.",
+        target: "That ARMOURED SKIRMISHER unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it **Advanced** or **Fell** **Back**.",
+      },
+    },
+    {
+      name: "BURST OF SPEED",
+      cp: "1 CP",
+      rules: {
+        when: "End of your Movement phase.",
+        target: "One ASTRA MILITARUM unit from your army that did not **Remain** **Stationary** or arrive from Reserves this phase.",
+        effect: 'Your unit can make a **Normal** **move** of up to D6".',
+      },
+    },
+    {
+      name: "SUPPORTING ORDNANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ARMOURED** **SKIRMISHER** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a visible MONSTER or VEHICLE unit, you can re-roll the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "COMBINED FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after an **ARMOURED** **SKIRMISHER** unit from your army has shot.",
+        target: "That ARMOURED SKIRMISHER unit.",
+        effect: "Select one enemy unit hit by one or more of those attacks. Until the end of the phase, that enemy unit cannot have the **Benefit** **of** **Cover**, and each time an ARMOURED SKIRMISHER unit from your army makes an attack that targets that unit, improve the Strength characteristic of that attack by 2.",
+      },
+    },
+    {
+      name: "OPENING SALVO",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ASTRA MILITARUM unit from your army that **disembarked** from a **TRANSPORT** this turn and has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, add 1 to the **Wound** **roll**.",
+      },
+    },
+  ],
 };
