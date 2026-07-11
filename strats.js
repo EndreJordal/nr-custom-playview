@@ -6994,4 +6994,403 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Needgaârd Oathband": [
+    {
+      name: "VOID HARDENED",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets, if units from your army have **Fortify** **Takeover**.",
+        target: "One LEAGUES OF VOTANN unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "HONOUR OF THE HOLD",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One LEAGUES OF VOTANN unit from your army that has not been selected to fight this phase.",
+        effect: "Each time you use this Stratagem, you can spend 3YP. Select one enemy unit within **Engagement** **Range** of your unit. Until the end of the phase, each time a model in your unit makes a melee attack that targets that enemy unit, improve the Armour Penetration characteristic of that attack by 1. If you spent YP during this use of this Stratagem, improve the Armour Penetration characteristic of that attack by 2 instead.",
+      },
+    },
+    {
+      name: "ORDERED RETREAT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a LEAGUES OF VOTANN unit from your army **Falls** **Back**.",
+        target: "That LEAGUES OF VOTANN unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it **Fell** **Back**.",
+      },
+    },
+    {
+      name: "ANCESTRAL SENTENCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One LEAGUES OF VOTANN unit from your army that has not been selected to shoot this phase.",
+        effect: "Each time you use this Stratagem, you can spend 3YP. Until the end of the phase, ranged weapons equipped by models in your unit have the **[SUSTAINED** **HITS** **1]** ability. If you spent YP during this use of this Stratagem, until the end of the phase, those weapons have the **[SUSTAINED** **HITS** **2]** ability instead.",
+      },
+    },
+    {
+      name: "HUNTR’S MARK",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One LEAGUES OF VOTANN unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, re-roll a **Hit** **roll** of 1 and re-roll a **Wound** **roll** of 1.",
+      },
+    },
+    {
+      name: "REACTIVE REPRISAL",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot, if units from your army have **Fortify** **Takeover**.",
+        target: "One LEAGUES OF VOTANN unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Your unit can shoot as if it were your Shooting phase, can only target that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.",
+      },
+    },
+  ],
+
+  "Persecution Prospect": [
+    {
+      name: "ADAPTABLE AVARICE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of any phase, if units from your army have **Fortify** **Takeover**.",
+        target: "One **LEAGUES** OF **VOTANN** **CHARACTER** unit from your army.",
+        effect: "Each time you use this Stratagem, you can spend any number of YP. Once you have done so, if you have 6 or fewer YP, until the start of your next turn, units from your army have **Hostile** **Acquisition** instead.",
+      },
+    },
+    {
+      name: "FRONTIER MOMENTUM",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **HERNKYN** unit from your army that has not been selected to move this phase.",
+        effect: 'Until the end of the phase, if your unit Advances, do not make an **Advance** **roll** for it. Instead, until the end of the phase, add 6" to the Move characteristic of models in your unit.',
+      },
+    },
+    {
+      name: "EXPOSED FLAWS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **HERNKYN** unit from your army that has not been selected to shoot this phase.",
+        effect: "Each time you use this Stratagem, you can spend 2YP. Until the end of the phase, each time a model in your unit makes an attack, if you spent YP during this use of this Stratagem and/or if that attack targets an **assailed** **unit**, you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "RANGER TACTICS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One LEAGUES OF VOTANN unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, if that attack targets an **assailed** **unit** and/or if your unit has the **HERNKYN** keyword, you can re-roll the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "CLAIMSTAKER REFLEX",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One LEAGUES OF VOTANN unit from your army (excluding **ARTILLERY** and **VEHICLE** units) that is within 9" of that enemy unit.',
+        effect: 'Each time you use this Stratagem, you can spend 2YP. Your unit can make a **Normal** **move** of up to D6". If you spent YP during this use of this Stratagem, your unit can make a Normal move of up to 6" instead.<br><br>**Restrictions:** A unit cannot **embark** within a **TRANSPORT** as part of this move.',
+      },
+    },
+    {
+      name: "DISPERSED FORMATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **LEAGUES** OF **VOTANN** **INFANTRY** or **LEAGUES** OF **VOTANN** **MOUNTED** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, your unit has the **Stealth** ability and each time a ranged attack targets your unit, models in your unit have the **Benefit** **of** **Cover** against that attack.",
+      },
+    },
+  ],
+
+  "Dêlve Assault Shift": [
+    {
+      name: "CYBERSTIMM INFUSION",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **CTHONIAN** **BESERKS** unit from your army that has not been selected to fight this phase.",
+        effect: "Each time you use this Stratagem, you can spend 2YP. Until the end of the phase, each time a model in your unit makes an attack, re-roll a **Wound** **roll** of 1. If you spent YP during this use of this Stratagem, you can re-roll the Wound roll instead.",
+      },
+    },
+    {
+      name: "UNSTOPPABLE FORCE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **LEAGUES** OF **VOTANN** unit from your army that has not been selected to fight this phase.",
+        effect: 'Until the end of the phase, each time your unit **Piles** **In** or **Consolidates**, each model in that unit can move up to 6" instead of up to 3".',
+      },
+    },
+    {
+      name: "AUGMENTED ASSAULT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **CTHONIAN** **BESERKS** unit from your army that has not been selected to move this phase.",
+        effect: 'Each time you use this Stratagem, you can spend up to 2YP. Until the end of the turn, add X" to the Move characteristic of models in your unit, where X is the number of YP you spent during this use of this Stratagem, and your unit is eligible to declare a charge in a turn in which it **Advanced**.',
+      },
+    },
+    {
+      name: "TECTONIC FRACTURE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after a CTHONIAN EARTHSHAKERS unit from your army has shot.",
+        target: "That **CTHONIAN** **EARTHSHAKERS** unit.",
+        effect: "Each time you use this Stratagem, you can spend 2YP. Select one enemy unit hit by one or more of your unit’s attacks this phase. Until the start of your next Shooting phase, subtract 2 from that unit’s Move characteristic and, if you spent YP during this use of this Stratagem, subtract 2 from **Charge** **rolls** made for that unit.",
+      },
+    },
+    {
+      name: "WEAVEWËRKE BUTTRESS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets, if units from your army have **Hostile** **Acquisition**.",
+        target: "One **LEAGUES** OF **VOTANN** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "HIDDEN ACCESSWAYS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **CTHONIAN** **BESERKS**, **HEARTHKYN** **WARRIORS** or **HERNKYN** **YAEGIRS** unit from your army that is not within **Engagement** **Range** of one or more enemy units.",
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Brandfast Oathband": [
+    {
+      name: "SECURE POSITIONS",
+      cp: "1 CP",
+      rules: {
+        when: "End of any of your phases.",
+        target: "One **LEAGUES** OF **VOTANN** **TRANSPORT** unit from your army.",
+        effect: 'One LEAGUES OF VOTANN unit embarked within your TRANSPORT can **disembark**. When doing so, models in that unit can be set up anywhere on the battlefield wholly within 6" of your TRANSPORT. That unit cannot declare a charge in the same turn, but can otherwise act normally in the remainder of the turn.',
+      },
+    },
+    {
+      name: "BASTION RUNNING",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **HEKATON** **LAND** **FORTRESS** unit from your army that has not been selected to move this phase.",
+        effect: "Until the end of the phase, each time your unit makes a **Normal** or **Advance** **move**, it can move horizontally through terrain features.",
+      },
+    },
+    {
+      name: "ILLUMINATED PRIORITY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after a **LEAGUES** OF **VOTANN** **VEHICLE** unit from your army has shot.",
+        target: "That LEAGUES OF VOTANN VEHICLE unit.",
+        effect: "Select one enemy unit hit by one or more of those attacks. Until the end of the phase, each time a **LEAGUES** OF **VOTANN** **INFANTRY** model from your army makes an attack that targets that enemy unit, re-roll a **Hit** **roll** of 1.",
+      },
+    },
+    {
+      name: "INEXORABLE EFFICIENCY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **LEAGUES** OF **VOTANN** unit from your army.",
+        effect: "Until the end of the phase, your unit is eligible to shoot in a turn in which it **Fell** **Back**.",
+      },
+    },
+    {
+      name: "OPPORTUNISTIC ESCALATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot, if units from your army have **Hostile** **Acquisition**.",
+        target: "One **LEAGUES** OF **VOTANN** **VEHICLE** unit from your army (excluding **HEKATON** **LAND** **FORTRESS** units) that was hit by one or more of those attacks.",
+        effect: 'Your unit can make a **Normal** **move** of up to D6".',
+      },
+    },
+    {
+      name: "VENGEANCE FLARE",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **LEAGUES** OF **VOTANN** **INFANTRY** unit that was hit by one or more of those attacks.",
+        effect: 'Each time you use this Stratagem, you can spend 2YP. Select one friendly **KAPRICUS** or **SAGITAUR** unit within 6" of your INFANTRY unit. If you spent YP during this use of this Stratagem, you can select one friendly **HEKATON** **LAND** **FORTRESS** unit within 6" of your INFANTRY unit instead. The selected unit can shoot as if it were your Shooting phase. When doing so, models in the selected unit can only target that enemy unit (and only if it is an eligible target).',
+      },
+    },
+  ],
+
+  "Hearthfyre Arsenal": [
+    {
+      name: "UNWAVERING ACCURACY",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **BRÔKHYR** **THUNDERKYN** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, you can ignore any or all modifiers to the following: that attack’s Ballistic Skill characteristic; the **Hit** **roll**; the **Wound** **roll**; that attack’s Armour Penetration characteristic.",
+      },
+    },
+    {
+      name: "FIRST CONCERN",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after a **BRÔKHYR**, **IRONKIN** **STEELJACKS** or **ARKANYST** **EVALUATOR** unit from your army has shot.",
+        target: "That BRÔKHYR, IRONKIN STEELJACKS or ARKANYST EVALUATOR unit.",
+        effect: "If your unit **Remained** **Stationary** in your Movement phase this turn, it can make a **Normal** **move**.",
+      },
+    },
+    {
+      name: "DELAYED-FIRE ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after a **BRÔKHYR**, **IRONKIN** **STEELJACKS** or **ARKANYST** **EVALUATOR** unit from your army has shot.",
+        target: "That BRÔKHYR, IRONKIN STEELJACKS or ARKANYST EVALUATOR unit.",
+        effect: "Select one enemy unit (excluding MONSTERS and VEHICLES) hit by one or more of those attacks. Until the start of your next Shooting phase, each time that enemy unit makes a **Normal**, **Advance** or **Fall** **Back** **move**, roll one D6 for each model in that unit: for each 1, that unit suffers 1 **mortal** **wound** (to a maximum of 6 mortal wounds).",
+      },
+    },
+    {
+      name: "WALL OF STEEL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, just after an **IRONKIN** **STEELJACKS** unit from your army ends a **Charge** **move**.",
+        target: "That IRONKIN STEELJACKS unit.",
+        effect: "Each time you use this Stratagem, you can spend 2YP. Select one enemy unit (excluding MONSTERS and VEHICLES) within **Engagement** **Range** of your unit and roll one D6 for each model in your unit, rolling two additional D6 if you spent YP during this use of this Stratagem: for each 4+, that enemy unit suffers 1 **mortal** **wound** (to a maximum of 6 mortal wounds).",
+      },
+    },
+    {
+      name: "PREVENTATIVE PURGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Fall** **Back** **move**.",
+        target: "One **BRÔKHYR** **THUNDERKYN** or **IRONKIN** **STEELJACKS** unit from your army.",
+        effect: "Your unit can shoot as if it were your Shooting phase. When doing so, models in your unit can only target that enemy unit (and only if it is an eligible target) and each time a model in your unit makes an attack, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "COGITATED NEED",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Movement phase.",
+        target: "One **IRONKIN** **STEELJACKS** unit from your army.",
+        effect: "Your unit can make a **Normal** **move**. When doing so, your unit must end that move as close as possible to the closest **objective** **marker**.",
+      },
+    },
+  ],
+
+  "Hearthband": [
+    {
+      name: "BRËKKEKNOTS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **KÂHL**, **ÛTHAR** THE **DESTINED** or **EINHYR** **HEARTHGUARD** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have a 4+ **invulnerable** **save**.",
+      },
+    },
+    {
+      name: "SURE OF PURPOSE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One LEAGUES OF VOTANN unit from your army that has not been selected to fight this phase.",
+        effect: 'Until the end of the phase, each time a model in your unit makes a **Pile-in** or **Consolidation** **move**, it can move up to 6" instead of up to 3".',
+      },
+    },
+    {
+      name: "SUPERIOR CRAFTSMANSHIP",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One LEAGUES OF VOTANN unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE unit, add 1 to the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "UNYIELDING AGGRESSION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a LEAGUES OF VOTANN INFANTRY unit from your army **Falls** **Back**.",
+        target: "That **LEAGUES** OF **VOTANN** **INFANTRY** unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "MATERIALISATION MATRICES",
+      cp: "1 CP",
+      rules: {
+        when: "The Reinforcements step of your Movement phase.",
+        target: "One LEAGUES OF VOTANN unit from your army that is in Reserves and has the **Deep** **Strike** ability.",
+        effect: 'Until the end of the phase, when your unit is set up on the battlefield using the Deep Strike ability, it can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy units.<br><br>**Restrictions:** Until the end of the turn, your unit is not eligible to declare a charge.',
+      },
+    },
+    {
+      name: "FURY OF THE HEARTH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **EINHYR** **HEARTHGUARD** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, improve the Strength characteristic of ranged weapons equipped by models in your unit by 1. If you spend 1YP, until the end of the phase, ranged weapons equipped by models in that unit have the **[SUSTAINED** **HITS** **1]** ability as well.",
+      },
+    },
+  ],
+
+  "Mercenary Oathband": [
+    {
+      name: "AUXILIARY CONTRACT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **LEAGUES** OF **VOTANN** **INFANTRY** or **LEAGUES** OF **VOTANN** **MOUNTED** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, weapons equipped by models in your unit have the **[PRECISION]** ability.",
+      },
+    },
+    {
+      name: "OPTIMAL EXPENDITURE",
+      cp: "1 CP",
+      rules: {
+        when: "The Fight phase.",
+        target: "One **LEAGUES** OF **VOTANN** **INFANTRY** unit from your army that has not been selected to fight this phase.",
+        effect: "Each time you use this Stratagem, you can spend 3YP. Until the end of the phase, each time a model in your unit makes an attack, re-roll a **Hit** **roll** of 1 and re-roll a **Wound** **roll** of 1. If you spent YP during this usage of this Stratagem, you can re-roll a Hit roll of 1 and re-roll the Wound roll instead.",
+      },
+    },
+    {
+      name: "GRAND ARTIFICE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a LEAGUES OF VOTANN unit from your army **Falls** **Back**.",
+        target: "That LEAGUES OF VOTANN unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it **Fell** **Back**.",
+      },
+    },
+    {
+      name: "PRIVATEER ARSENAL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **LEAGUES** OF **VOTANN** **INFANTRY** unit from your army that has not been selected to shoot this phase.",
+        effect: "Each time you use this Stratagem, you can spend 3YP. Until the end of the phase, each time a model in your unit makes an attack, re-roll a **Hit** **roll** of 1 and re-roll a **Wound** **roll** of 1. If you spent YP during this usage of this Stratagem, you can re-roll the Hit roll and re-roll a Wound roll of 1 instead.",
+      },
+    },
+    {
+      name: "NEW HORIZONS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **LEAGUES** OF **VOTANN** **INFANTRY** unit from your army that is not within **Engagement** **range** of one or more enemy units and one friendly **TRANSPORT** it is able to **embark** within.",
+        effect: 'If your LEAGUES OF VOTANN unit is wholly within 6" of that TRANSPORT, it can embark within it.',
+      },
+    },
+    {
+      name: "MOBILE EXPLOITATION",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **HERNKYN** unit from your army that is not within **Engagement** **Range** of one or more enemy units. Alternatively, you can spend 2YP and target up to two HERNKYN units from your army that are not within Engagement Range of one or more enemy units instead.",
+        effect: "Remove your units from the battlefield and place them into Strategic Reserves.",
+      },
+    },
+  ],
 };
