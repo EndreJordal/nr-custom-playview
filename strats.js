@@ -2434,4 +2434,688 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Warhost": [
+    {
+      name: "LIGHTNING-FAST REACTIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **ASURYANI** unit from your army (excluding **WRAITH** **CONSTRUCT** units) that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "SKYBORNE SANCTUARY",
+      cp: "1 CP",
+      rules: {
+        when: "End of the Fight phase.",
+        target: "One **ASURYANI** unit from your army that was eligible to fight this phase and one friendly **TRANSPORT** it is able to **embark** within.",
+        effect: 'If your ASURYANI unit is not within **Engagement** **Range** of one or more enemy units and is wholly within 6" of that TRANSPORT, it can embark within it.',
+      },
+    },
+    {
+      name: "FEIGNED RETREAT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after an **ASURYANI** unit from your army **Falls** **Back**.",
+        target: "That ASURYANI unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "BLITZING FIREPOWER",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ASURYANI** unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, ranged weapons equipped by models in your unit have the **[SUSTAINED** **HITS** **1]** ability while targeting an enemy unit within 12". If such a weapon already has that ability, until the end of the phase, each time an attack is made with that weapon, an unmodified **Hit** **roll** of 5+ scores a Critical Hit.',
+      },
+    },
+    {
+      name: "FIRE AND FADE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after an **ASURYANI** **INFANTRY** unit from your army (excluding **AIRCRAFT**, **ASURMEN** and **WRAITH** **CONSTRUCT** units) has shot.",
+        target: "That ASURYANI unit.",
+        effect: 'Your unit can make a **Normal** **move** of up to D6+1".<br><br>**Restrictions:** Until the end of the turn, your unit is not eligible to declare a charge or **embark** within a **TRANSPORT**.',
+      },
+    },
+    {
+      name: "WEBWAY TUNNEL",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: 'One **ASURYANI** **INFANTRY** unit from your army that is wholly within 9" of one or more battlefield edges.',
+        effect: "If your unit is not within **Engagement** **Range** of one or more enemy units, remove it from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Windrider Host": [
+    {
+      name: "DEATH FROM ON HIGH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **ASURYANI** **MOUNTED** or **VYPER** unit from your army that was set upon the battlefield from Reserves this turn and has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "OVERFLIGHT",
+      cp: "1 CP",
+      rules: {
+        when: "End of your Shooting phase or the end of the Fight phase.",
+        target: "One **ASURYANI** **MOUNTED** unit from your army that destroyed one or more enemy units this phase.",
+        effect: 'Your unit can make a **Normal** **move** of up to 7".',
+      },
+    },
+    {
+      name: "WIND OF BLADES",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **ASURYANI** **MOUNTED** or **VYPER** unit from your army that has not been selected to move this phase.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it **Advanced** or **Fell** **Back**.",
+      },
+    },
+    {
+      name: "DARING RIDERS",
+      cp: "1 CP",
+      rules: {
+        when: "The Reinforcements step of your Movement phase.",
+        target: "One **ASURYANI** **MOUNTED** or **VYPER** unit from your army in Reserves.",
+        effect: 'Until the end of the phase, when setting up your unit on the battlefield from Reserves, it can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy units. When doing so, if your unit is set up within 9" horizontally of one or more enemy units, until the end of the turn, it is not eligible to declare a charge.',
+      },
+    },
+    {
+      name: "FOCUSED FIREPOWER",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ASURYANI** **MOUNTED** or **VYPER** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, improve the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "SPIRALLING EVASION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **ASURYANI** **MOUNTED** or **VYPER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have a 4+ **invulnerable** **save**.",
+      },
+    },
+  ],
+
+  "Spirit Conclave": [
+    {
+      name: "SEER’S EYE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: 'One **AELDARI** **PSYKER** model from your army and one friendly **WRAITH** **CONSTRUCT** unit within 12" of it that has not been selected to shoot or fight this phase.',
+        effect: "Select one enemy unit visible to your PSYKER model. Until the end of the phase, each time a model in your WRAITH CONSTRUCT unit makes an attack that targets that enemy unit, you can ignore any or all modifiers to the Armour Penetration and/or Damage characteristics of that attack.",
+      },
+    },
+    {
+      name: "WRAITHBONE ARMOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **WRAITH** **CONSTRUCT** unit from your army (excluding **TITANIC** units] that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "BLADES FROM BEYOND",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **WRAITHBLADES**, **WRAITHLORD** or **WRAITHKNIGHT** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the **[DEVASTATING** **WOUNDS]** ability.",
+      },
+    },
+    {
+      name: "SOUL BRIDGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **WRAITHBLADES**, **WRAITHGUARD** or **WRAITHLORD** unit from your army and one **ASURYANI** **PSYKER** model from your army.",
+        effect: 'Until the start of your next Command phase, your WRAITHBLADES, WRAITHGUARD or WRAITHLORD unit is considered to be within 12" of your PSYKER model for the purposes of the Psychic Guidance and Spirit Guides abilities.',
+      },
+    },
+    {
+      name: "SPIRIT TOKEN",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Movement phase.",
+        target: "One **WRAITHBLADES** or **WRAITHGUARD** unit from your army.",
+        effect: "Select one **objective** **marker** you control that your unit is within range of. That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "CRUSHING STRIDES",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, just after a **WRAITHBLADES**, **WRAITHLORD** or **WRAITHKNIGHT** unit from your army ends a **Charge** **move**.",
+        target: "That WRAITHBLADES, WRAITHLORD or WRAITHKNIGHT unit.",
+        effect: "Select one enemy unit within **Engagement** **Range** of your unit and roll one D6 for each WRAITHBLADES model in your unit, or roll four D6 if your unit has the WRAITHLORD keyword, or roll six D6 if your unit has the WRAITHKNIGHT keyword: for each 3+, that enemy unit suffers 1 **mortal** **wound**.",
+      },
+    },
+  ],
+
+  "Guardian Battlehost": [
+    {
+      name: "WARDING SALVOES",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **DIRE** **AVENGERS** or **GUARDIANS** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit within range of one or more **objective** **markers**, you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "SHIELD NODES",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **DIRE** **AVENGERS** or **GUARDIANS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "If your unit is within range of one or more **objective** **markers**, until the end of the phase, each time an attack targets your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "VAUL’S VENGEANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit destroys a **DIRE** **AVENGERS** or **GUARDIANS** unit from your army.",
+        target: "One **WAR** **WALKERS** unit from your army.",
+        effect: "After that enemy unit has finished making its attacks, your unit can shoot as if it were your Shooting phase, but when resolving those attacks, it can only target that enemy unit (and only if it is an eligible target).<br><br>**Restrictions:** You can only use this Stratagem once per battle round.",
+      },
+    },
+    {
+      name: "TIME TO STRIKE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **STORM** **GUARDIANS** unit from your army that has not been selected to move this phase.",
+        effect: 'Until the end of the phase, each time your unit **Advances**, do not make an Advance roll. Instead, until the end of the phase, add 6" to the Move characteristic of models in your unit. Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Advanced.',
+      },
+    },
+    {
+      name: "BLADES OF ASURYAN",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DIRE** **AVENGERS** or **GUARDIANS** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[PISTOL]** ability.",
+      },
+    },
+    {
+      name: "COST OF VICTORY",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **GUARDIANS** unit from your army.",
+        effect: "If your unit is not within **Engagement** **Range** of one or more enemy units, remove it from the battlefield and place it into Strategic Reserves. When doing so, return every destroyed GUARDIANS model to your unit.",
+      },
+    },
+  ],
+
+  "Ghosts of the Webway": [
+    {
+      name: "STAGED DEATH",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **HARLEQUINS** **CHARACTER** model from your army that was just destroyed. You can use this Stratagem on that model even though it was just destroyed.",
+        effect: "At the end of the phase, set your model back up on the battlefield as close as possible to where it was destroyed and not within **Engagement** **Range** of any enemy units, with half of its starting number of wounds remaining.<br><br>**Restrictions:** Each model can only be targeted with this Stratagem once per battle.",
+      },
+    },
+    {
+      name: "HEROES’ FALL",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **HARLEQUINS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6. On a 4+, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "MOCKING FLIGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **HARLEQUINS** unit from your army **Falls** **Back**.",
+        target: "That HARLEQUINS unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "TRICKSTERS’ RETORT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **TROUPE** unit from your army that is within 9" of that enemy unit.',
+        effect: 'Your unit can make a Normal move of up to 6".',
+      },
+    },
+    {
+      name: "BLOODY DANCE",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Charge phase.",
+        target: 'One **HARLEQUINS** **INFANTRY** or **HARLEQUINS** **MOUNTED** unit from your army that is within 6" of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units if it were your Charge phase.',
+        effect: "Your unit now declares a charge that only targets one or more of those enemy units, and you resolve that charge.<br><br>**Restrictions:** Note that even if this charge is successful, your unit does not receive any **Charge** **bonus** this turn.",
+      },
+    },
+    {
+      name: "EXIT THE STAGE",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **HARLEQUINS** unit from your army that is not within **Engagement** **Range** of one or more enemy units.",
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Devoted of Ynnead": [
+    {
+      name: "PALL OF DREAD",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **YNNARI** unit from your army that was just destroyed while it was within range of one or more **objective** **markers** you controlled at the end of the previous phase. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Select one of those objective markers. That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "MACABRE RESILIENCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **YNNARI** **INFANTRY** or **YNNARI** **MOUNTED** unit from your army (excluding **WRAITH** **CONSTRUCT** units) that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "EMISSARIES OF YNNEAD",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a **YNNARI** **INFANTRY** unit from your army has selected its targets.",
+        target: "That YNNARI INFANTRY unit.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, re-roll a **Hit** **roll** of 1. If your unit is below its **Starting** **Strength**, you can re-roll the Hit roll instead.",
+      },
+    },
+    {
+      name: "PARTING THE VEIL",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **YNNARI** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "SOULSIGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **YNNARI** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[LETHAL** **HITS]** and **[IGNORES** **COVER]** abilities.",
+      },
+    },
+    {
+      name: "DEATH ANSWERS DEATH",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Shooting phase.",
+        target: "One **YNNARI** unit from your army (excluding **WRAITH** **CONSTRUCT** units), if one or more models in that unit were destroyed this phase.",
+        effect: "Your unit can shoot as if it were your Shooting phase.",
+      },
+    },
+  ],
+
+  "Seer Council": [
+    {
+      name: "PRESENTIMENT OF DREAD",
+      cp: "1 CP",
+      rules: {
+        when: "Command phase.",
+        target: "One **ASURYANI** **PSYKER** model from your army.",
+        effect: 'Select one enemy unit within 18" of and visible to your model. That enemy unit must take a **Battle-shock** **test**, subtracting 1 from that test.',
+      },
+    },
+    {
+      name: "FOREWARNED",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: 'One **ASURYANI** **INFANTRY** unit from your army (excluding **WRAITH** **CONSTRUCT** units) that was selected as the target of one or more of the attacking unit’s attacks and is within 9" of one or more friendly **ASURYANI** **PSYKER** models.',
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll** and subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "UNSHROUDED TRUTH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: 'One **ASURYANI** **INFANTRY** unit from your army (excluding **WRAITH** **CONSTRUCT** units) that has not been selected to move this phase, was not set up on the battlefield this phase, and is within 9" of one or more friendly **ASURYANI** **PSYKER** models.',
+        effect: 'Remove your unit from the battlefield and set it up again anywhere on the battlefield that is more than 9" horizontally away from all enemy models.<br><br>**Restrictions:** Until the end of the phase, your unit is not eligible to be selected to move.',
+      },
+    },
+    {
+      name: "FATE INESCAPABLE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: 'One **ASURYANI** **INFANTRY** unit from your army (excluding **WRAITH** **CONSTRUCT** units) that has not been selected to shoot this phase and is within 9" of one or more friendly **ASURYANI** **PSYKER** models.',
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[IGNORES** **COVER]** ability and each time a model in your unit makes an attack, on a **Critical** **Wound**, improve the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "ISHA’S FURY",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **ASURYANI** **PSYKER** model from your army within 9" of that enemy unit.',
+        effect: "Roll six D6: for each 3+, that enemy unit suffers 1 **mortal** **wound**.",
+      },
+    },
+    {
+      name: "PSYCHIC SHIELD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: 'One **ASURYANI** **INFANTRY** unit from your army (excluding **WRAITH** **CONSTRUCT** units) that was selected as the target of one or more of the attacking unit’s attacks and is within 9" of one or more friendly **ASURYANI** **PSYKER** models.',
+        effect: 'Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18".',
+      },
+    },
+  ],
+
+  "Aspect Host": [
+    {
+      name: "WARRIOR FOCUS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **ASPECT** **WARRIORS** or **AVATAR** OF **KHAINE** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, you can ignore any or all modifiers to that attack’s Ballistic Skill, Weapon skill, Strength, Armour Penetration and Damage characteristics and/or any or all modifiers to the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "TO THEIR FINAL BREATH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **ASPECT** **WARRIORS** or **AVATAR** OF **KHAINE** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Each time you use this Stratagem, you can remove one Aspect Shrine token your unit has (see datasheets). Then, until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 to the result if you removed an Aspect Shrine token during this usage of this Stratagem. On a 4+, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "SKYBORNE SANCTUARY",
+      cp: "1 CP",
+      rules: {
+        when: "End of the Fight phase.",
+        target: "One **ASURYANI** unit from your army that was eligible to fight this phase and one friendly **TRANSPORT** it is able to **embark** within.",
+        effect: 'If your ASURYANI unit is not within **Engagement** **Range** of one or more enemy units and is wholly within 6" of that TRANSPORT, it can embark within it.',
+      },
+    },
+    {
+      name: "DOOM INESCAPABLE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **AVATAR** OF **KHAINE** model from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, your model’s Wailing Doom ranged weapon has a Range characteristic of 18" and a Damage characteristic of 8.',
+      },
+    },
+    {
+      name: "PRETERNATURAL PRECISION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ASPECT** **WARRIORS** unit from your army that has not been selected to shoot this phase.",
+        effect: "Each time you use this Stratagem, you can remove one Aspect Shrine token your unit has (see datasheets). Then, select one of the following abilities, or select two of the following abilities if you removed an Aspect Shrine token during this usage of this Stratagem: **[IGNORES** **COVER]**, **[LETHAL** **HITS]**, **[SUSTAINED** **HITS** **1]**. Until the end of the phase, ranged weapons equipped by models in your unit have the selected abilities.",
+      },
+    },
+    {
+      name: "KHAINE’S VENGEANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit (excluding MONSTERS and VEHICLES) is selected to **Fall** **Back**.",
+        target: "One **ASPECT** **WARRIORS** or **AVATAR** OF **KHAINE** unit from your army that is within **Engagement** **Range** of that enemy unit.",
+        effect: "All models in that enemy unit must take a **Desperate** **Escape** **test**. When doing so, if that enemy unit is **Battle-shocked**, subtract 1 from each of those tests.",
+      },
+    },
+  ],
+
+  "Armoured Warhost": [
+    {
+      name: "LAYERED WARDS",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a **mortal** **wound** is allocated to an AELDARI VEHICLE unit from your army.",
+        target: "That **AELDARI** **VEHICLE** unit.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **5+** ability against **mortal** **wounds**.",
+      },
+    },
+    {
+      name: "SWIFT DEPLOYMENT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **AELDARI** **TRANSPORT** unit from your army.",
+        effect: "Until the end of the phase, units can **disembark** from your TRANSPORT after it has **Advanced**. Units that do so count as having made a **Normal** **move** that phase, and cannot declare a charge in the same turn, but can otherwise act normally.",
+      },
+    },
+    {
+      name: "VECTORED ENGINES",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after an AELDARI VEHICLE unit from your army that can FLY **Falls** **Back**.",
+        target: "That **AELDARI** **FLY** **VEHICLE** unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it **Fell** **Back**.",
+      },
+    },
+    {
+      name: "CLOUDSTRIKE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Reinforcements step of your Movement phase.",
+        target: "One **AELDARI** **VEHICLE** unit from your army that can **FLY** and is in Strategic Reserves.",
+        effect: 'Until the end of the phase, your unit has the **Deep** **Strike** ability. When your unit is set up on the battlefield using the Deep Strike ability, it can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy units, but if it does, until the end of the turn, it is not eligible to declare a charge. In addition, if your unit is a **TRANSPORT**, each unit that **disembarks** from it this turn must be set up more than 6" horizontally from all enemy units and until the end of the turn, is not eligible to declare a charge.',
+      },
+    },
+    {
+      name: "SOULSIGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **AELDARI** **VEHICLE** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time your unit is selected to shoot, you can re-roll one **Hit** **roll**, one **Wound** **roll** and one Damage roll made for a model in your unit. If you are using fast dice rolling, you can select one of those rolls to re-roll before moving onto the next step of the attack sequence.",
+      },
+    },
+    {
+      name: "ANTI‑GRAV REPULSION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit has **declared** **a** **charge**.",
+        target: "One **AELDARI** **VEHICLE** unit from your army that can **FLY** and was selected as a target of that charge.",
+        effect: "Until the end of the phase, subtract 2 from **Charge** **rolls** made for that enemy unit.",
+      },
+    },
+  ],
+
+  "Serpent’s Brood": [
+    {
+      name: "FANGS OF THE BROOD",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "One **TROUPE** unit from your army.",
+        effect: "Until the end of the phase, when using your unit’s Dance of Death ability, you can select three of the abilities for your unit to gain, instead of one.",
+      },
+    },
+    {
+      name: "VENOMOUS WRATH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **HARLEQUINS** **VEHICLE** unit from your army that has not been selected to shoot this phase.",
+        effect: 'After your unit has shot, if it is not within **Engagement** **Range** of one or more enemy units, it can make a **Normal** **move** of up to 6". Until the end of the turn, your unit is not eligible to declare a charge.',
+      },
+    },
+    {
+      name: "STRIKING STRIDE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **HARLEQUINS** unit from your army.",
+        effect: "Until the end of the phase, your unit is eligible to declare a charge in a turn in which it **Advanced**.",
+      },
+    },
+    {
+      name: "WEAVERS’ COILS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your Fight phase.",
+        target: "One **HARLEQUINS** **MOUNTED** unit from your army that was eligible to fight this phase.",
+        effect: 'If your unit is not within **Engagement** **Range** of one or more enemy units, it can make a **Normal** **move**. Otherwise, your unit can make a **Fall** **Back** **move** of up to 6".',
+      },
+    },
+    {
+      name: "WEAVING STRIDE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'One **HARLEQUINS** **INFANTRY** unit from your army that is within 9" of that enemy unit.',
+        effect: 'Your unit can make a **Normal** **move** of up to 6".',
+      },
+    },
+    {
+      name: "SKYWARD LUNGE",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **HARLEQUINS** **VEHICLE** or **HARLEQUINS** **MOUNTED** unit from your army.",
+        effect: "If your unit is not within **Engagement** **Range** of one or more enemy units, you can remove it from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Eldritch Raiders": [
+    {
+      name: "RAIDERS’ SPOILS",
+      cp: "1 CP",
+      rules: {
+        when: "Command phase.",
+        target: "One **ANHRATHE** unit from your army that is within **Engagement** **Range** of one or more enemy units.",
+        effect: "Until the start of the next Command phase, add 1 to the Objective Control characteristic of models in your unit.",
+      },
+    },
+    {
+      name: "RUTHLESS KILLERS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **CORSAIR** **VOIDSCARRED** unit from your army that has not been selected to shoot or Fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "YRIEL’S EXAMPLE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **AELDARI** **INFANTRY** unit from your army (excluding **WRAITH** **CONSTRUCT** units) that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **5+** ability.",
+      },
+    },
+    {
+      name: "NO PREY TOO BIG",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **ANHRATHE**, **RANGERS** or **SHROUD** **RUNNERS** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, if the Strength characteristic of that attack is less than the highest Toughness characteristic of models in the target unit, add 1 to the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "IMPEDING FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Charge phase.",
+        target: "One **RANGERS**, **SHROUD** **RUNNERS** or **STARFANG** unit from your army.",
+        effect: 'Select one enemy unit (excluding TITANIC units) visible to and within 36" of your unit. Until the end of the phase, each time that enemy unit **declares** **a** **charge**, subtract 2 from the **Charge** **roll** (this is not cumulative with any other negative modifiers to that Charge roll).',
+      },
+    },
+    {
+      name: "WITHDRAW AND REINFORCE",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **ANHRATHE** unit from your army that is not within **Engagement** **Range** of one or more enemy units.",
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves. If that unit is below **Starting** **Strength**, return all destroyed models (excluding CHARACTER models) to that unit.",
+      },
+    },
+  ],
+
+  "Corsair Coterie": [
+    {
+      name: "PIRATES’ DUE",
+      cp: "1 CP",
+      rules: {
+        when: "The Fight phase.",
+        target: "One AELDARI unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, re-roll a **Wound** **roll** of 1. If your unit has the **ANHRATHE** keyword, then until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit within range of an **objective** **marker**, you can re-roll the Wound roll instead.",
+      },
+    },
+    {
+      name: "LETHAL RUSE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after an AELDARI unit from your army **Falls** **Back**.",
+        target: "That AELDARI unit.",
+        effect: "Until the end of the turn, your unit is eligible to declare a charge in a turn in which it **Fell** **Back**. If it is an **ANHRATHE** unit, also select one enemy unit your unit was within **Engagement** **Range** of at the start of the phase, and roll six D6: for each 4+, that enemy unit suffers 1 **mortal** **wound**.",
+      },
+    },
+    {
+      name: "OUTCAST AMBUSH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **RANGERS** or **SHROUD** **RUNNERS** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[IGNORES** **COVER]** and **[RAPID** **FIRE** **1]** abilities, and until the end of the phase, improve the Armour Penetration characteristic of those weapons by 1.",
+      },
+    },
+    {
+      name: "INTO THE BREACH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, just after an **ANHRATHE** unit from your army destroyed one or more enemy units.",
+        target: "That ANHRATHE unit.",
+        effect: 'After your unit has resolved all of its shooting attacks, it can make a **Normal** **move** of up to D6+1".',
+      },
+    },
+    {
+      name: "CLOAK AND SHADOW",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **AELDARI** **INFANTRY** unit from your army that is within range of an **objective** **marker** that you control and that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'Until the end of the phase, models in your unit have the **Stealth** ability and your unit can only be selected as the target of a ranged attack if the attacking model is within 18".',
+      },
+    },
+    {
+      name: "VENGEFUL SORROW",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **AELDARI** **INFANTRY** unit from your army, if one or more models in that unit were destroyed as a result of those attacks, and if that AELDARI unit is neither **Battle-shocked** nor within **Engagement** **Range** of one or more enemy units.",
+        effect: "Your unit can make a Surge move. To do so, roll one D6 and add 1 to the roll: models in your unit move a number of inches up to this result, but your unit must end that move as close as possible to the closest enemy unit (excluding AIRCRAFT). When doing so, those models can be moved within Engagement Range of that enemy unit.",
+      },
+    },
+  ],
 };
