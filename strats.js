@@ -11671,4 +11671,94 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Cohort Acquisitus": [
+    {
+      name: "DEFECT SCRUTINY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly **ADEPTUS** **MECHANICUS** unit is selected to shoot.",
+        target: "That **ADEPTUS** **MECHANICUS** unit.",
+        effect: 'Select one visible enemy unit within 12" of a friendly **RECON** **AUGURY** unit. Your unit\'s ranged attacks that target that enemy unit have **[IGNORES** **COVER]**.',
+      },
+    },
+    {
+      name: "REPOLARISED AUGURS",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent's Movement phase.",
+        target: "One friendly unengaged **RECON** **AUGURY** unit.",
+        effect: 'Your unit has -3" detection range until the end of the turn.',
+      },
+    },
+    {
+      name: "CLANDESTINE REPOSITION",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent's Fight phase.",
+        target: "One friendly unengaged **INFILTRATORS**/**PTERAXII** unit.",
+        effect: "Place your unit in **strategic reserves**.",
+      },
+    },
+  ],
+
+  "Lords of the Forge": [
+    {
+      name: "SCRIPTURAL PROGNOSIS",
+      cp: "1 CP",
+      rules: {
+        when: "In your opponent's Shooting phase or the Fight phase, when an enemy unit targets a friendly **TECH-PRIEST** unit that is within range of an **objective**.",
+        target: "That **TECH-PRIEST** unit.",
+        effect: "Attacks that target your unit have -1 AP until that enemy unit has attacked.",
+      },
+    },
+    {
+      name: "OVERLOADED SAFEGUARDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly **TECH-PRIEST** unit is selected to make a fall-back move.",
+        target: "That **TECH-PRIEST** unit.",
+        effect: "That move does not prevent your unit from being eligible to shoot/declare a charge.",
+      },
+    },
+    {
+      name: "HOLY AVARICE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly **TECH-PRIEST** unit starts an action.",
+        target: "That **TECH-PRIEST** unit.",
+        effect: "That action does not prevent your unit from being eligible to shoot.",
+      },
+    },
+  ],
+
+  "Luminen Auto-choir": [
+    {
+      name: "ECHOES OF THE CONDUIT WARS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase, when a friendly **ELECTRO-PRIESTS** unit is selected to attack.",
+        target: "That **ELECTRO-PRIESTS** unit.",
+        effect: "Your unit's attacks that target a unit within range of an **objective** can:<br><br>Re-roll hit rolls of 1.<br><br>Re-roll wound rolls of 1.",
+      },
+    },
+    {
+      name: "CHANT OF ELECTROTRACTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly **ELECTRO-PRIESTS** **BATTLECLADE** unit is selected to make an advance move.",
+        target: "That **ELECTRO-PRIESTS** unit.",
+        effect: "That move does not prevent your unit from being eligible to declare a charge.",
+      },
+    },
+    {
+      name: "MOMENTUM FEEDBACK",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent's Shooting phase, when an enemy unit that targeted a friendly unengaged **ELECTRO-PRIESTS** unit has shot.",
+        target: "That **ELECTRO-PRIESTS** unit.",
+        effect: 'Your unit can make a surge move of up to D6".',
+      },
+    },
+  ],
 };
