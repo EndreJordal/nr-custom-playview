@@ -10984,4 +10984,346 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Berzerker Warband": [
+    {
+      name: "BLOOD OFFERING",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **WORLD** **EATERS** unit from your army that was just destroyed while it was within range of one or more **objective** **markers** you controlled at the end of the previous phase. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Select one of those objective markers. That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "HACK AND SLASH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **WORLD** **EATERS** unit from your army that has not been selected to fight this phase and that made a **charge** **move** this turn.",
+        effect: "Until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1.",
+      },
+    },
+    {
+      name: "FRENZIED RESILIENCE",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **WORLD** **EATERS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "SKULLS FOR THE SKULL THRONE!",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a WORLD EATERS unit from your army destroys a CHARACTER or MONSTER model.",
+        target: "That **WORLD** **EATERS** unit.",
+        effect: "Make a **Blessings** **of** **Khorne** **roll** and use the results to activate one Blessing of Khorne. Until the end of the battle round, that Blessing of Khorne is active in addition to any other Blessings of Khorne that are currently active.",
+      },
+    },
+    {
+      name: "APOPLECTIC FRENZY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a KHORNE BERZERKERS unit from your army is selected to **Advance**.",
+        target: "That **KHORNE** **BERZERKERS** unit.",
+        effect: "Until the end of the turn, your unit is eligible to declare a charge in a turn in which it Advanced.",
+      },
+    },
+    {
+      name: "BERZERKER’S WRATH",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **KHORNE** **BERZERKERS** unit from your army that can make a Blood Surge move as a result of those attacks.",
+        effect: 'Do not roll a D6 to determine how far models in your unit can move when they make their Blood Surge move. Instead, when making their Blood Surge move, these models can move up to 8".',
+      },
+    },
+  ],
+
+  "Cult of Blood": [
+    {
+      name: "BLOODY VENGEANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **WORLD** **EATERS** **MONSTER** or **WORLD** **EATERS** **TITANIC** unit from your army that was just destroyed by an enemy unit. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Until the end of the battle, each time a model in a **JAKHALS** or **GOREMONGERS** unit from your army makes an attack that targets the enemy unit that just destroyed your unit, you can re-roll the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "DRAWN TO THE SLAUGHTER",
+      cp: "2 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **JAKHALS** unit from your army that was just destroyed. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Add a new unit to your army identical to your destroyed unit, in Strategic Reserves, at its **Starting** **Strength**.<br><br>**Restrictions:** This Stratagem cannot be used to return destroyed **CHARACTER** units to **Attached** **units**. You can only use this Stratagem once per battle.",
+      },
+    },
+    {
+      name: "IN THE SHADOW OF BRASS IDOLS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **JAKHALS** or **GOREMONGERS** unit from your army that was selected as the target as one or more of the attacking unit’s attacks.",
+        effect: 'Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **6+** ability. If your unit is within 6" of one or more friendly **WORLD** **EATERS** **MONSTER** units, or within 9" of one or more friendly **WORLD** **EATERS** **TITANIC** units, your unit has the **Feel** **No** **Pain** **5+** ability instead.',
+      },
+    },
+    {
+      name: "BLOODTHIRSTY HORDE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **JAKHALS** or **GOREMONGERS** unit from your army that has not been selected to fight this phase and is within **Engagement** **Range** of one or more enemy units.",
+        effect: 'Until the end of the phase, each time your unit is selected to fight, when determining which models in it are eligible to fight, any models in your unit that are within 3" of one or more enemy models are eligible to fight. When resolving those attacks, such models can target one of those enemy units that is within 3" of them and within Engagement Range of their unit.',
+      },
+    },
+    {
+      name: "FAIL NOT THE BLOOD GOD",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **JAKHALS** or **GOREMONGERS** unit from your army.",
+        effect: 'Until the end of the phase, each time a model in your unit makes an attack, re-roll a **Hit** **roll** of 1. If that model’s unit is within 6" of one or more friendly **WORLD** **EATERS** **MONSTER** units, or within 9" of one or more friendly **WORLD** **EATERS** **TITANIC** units, you can re-roll the Hit roll instead.',
+      },
+    },
+    {
+      name: "BRAZEN IDOL",
+      cp: "2 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **WORLD** **EATERS** **MONSTER** or **WORLD** **EATERS** **TITANIC** unit from your army.",
+        effect: "Select the Idol of Infinite Rage, Idol of Burning Wrath or Idol of Blessed Blood. Until the start of your next Command phase, that **Idols** **of** **Khorne** ability is active for your unit instead of any other Idols of Khorne ability that is active for your army, even if you have already selected that ability this battle.<br><br>**Restrictions:** You can only use this Stratagem once per battle.",
+      },
+    },
+  ],
+
+  "Khorne Daemonkin": [
+    {
+      name: "SUMMONED BY SLAUGHTER",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, when the last model in a unit is destroyed, before removing it from play. (If that unit is a **TRANSPORT**, any units embarked within that TRANSPORT model must **disembark** first.)",
+        target: "One **BLOODLETTERS** unit from your army that is in Reserves.",
+        effect: 'Set your unit up anywhere on the battlefield wholly within 9" of that destroyed model and more than 6" horizontally away from all enemy units, then remove the destroyed model from play.<br><br>**Restrictions:** You cannot use this Stratagem more than once per battle round.',
+      },
+    },
+    {
+      name: "DAEMONIC FURY",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Fight phase.",
+        target: "One **BLOOD** **LEGIONS** unit from your army.",
+        effect: 'Select one friendly **WORLD** **EATERS** unit within 6" of your unit. Until the end of the turn, melee weapons equipped by models in your WORLD EATERS unit have the **[LANCE]** ability. If the **Daemonic** **Rage** ability is active for your army, then until the end of the phase those melee weapons also have the **[TWIN-LINKED]** ability.',
+      },
+    },
+    {
+      name: "A WORTHY SKULL",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a **BLOOD** **LEGIONS** or **WORLD** **EATERS** unit from your army has fought, and one or more enemy CHARACTER or MONSTER models were destroyed as a result of those attacks.",
+        target: "That BLOOD LEGIONS or WORLD EATERS unit.",
+        effect: "You gain **D3BTP** and you can then spend one or more BTP you have to activate one of the **Blood** **Tithe** abilities.",
+      },
+    },
+    {
+      name: "BLESSING OF BURNING BLOOD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: 'One **BLOOD** **LEGIONS** unit from your army that is within 6" of a friendly **WORLD** **EATERS** unit that was selected as the target as one or more of the attacking unit’s attacks.',
+        effect: "Until the end of the phase, models in your WORLD EATERS unit have a 5+ **invulnerable** **save**. If the **Boon** **of** **Blood** ability is active for your army, then until the end of the phase, models in your WORLD EATERS unit have a 4+ invulnerable save.",
+      },
+    },
+    {
+      name: "DAEMONTIDE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **WORLD** **EATERS** unit from your army.",
+        effect: 'Select one friendly **BLOOD** **LEGIONS** unit within 6" of your unit. One destroyed **MOUNTED** model, up to D3 destroyed **BEAST** models, or up to D6 destroyed **INFANTRY** models are returned to that BLOOD LEGIONS unit with their full wounds remaining.<br><br>**Restrictions:** This Stratagem cannot be used to return destroyed **CHARACTER** models to **Attached** **units**.',
+      },
+    },
+    {
+      name: "MURDER-CALL",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **BLOOD** **LEGIONS** unit from your army that is on the battlefield and not within **Engagement** **Range** of one or more enemy units.",
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Possessed Slaughterband": [
+    {
+      name: "DAEMONIC RESISTANCE",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **WORLD** **EATERS** **POSSESSED** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "DAEMONIC STRENGTH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **WORLD** **EATERS** **POSSESSED** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time an attack made by a model in your unit is allocated to an enemy model, if your unit has the **EIGHTBOUND** keyword and that enemy model is not a MONSTER or VEHICLE, add 1 to the Damage characteristic of that attack. If your unit has the **EXALTED** **EIGHTBOUND** keyword and that enemy model is a MONSTER or VEHICLE, add 1 to the Damage characteristic of that attack instead.",
+      },
+    },
+    {
+      name: "IMMORTAL FURY",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **WORLD** **EATERS** **POSSESSED** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, do not remove it from play. The destroyed model can fight after the attacking model’s unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "RAPID MANIFESTATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **EXALTED** **EIGHTBOUND** unit from your army that is arriving using the **Deep** **Strike** ability this phase.",
+        effect: 'Your unit can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy units.<br><br>**Restrictions:** A unit targeted with this Stratagem is not eligible to declare a charge in the same turn.',
+      },
+    },
+    {
+      name: "WARP STALKERS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **WORLD** **EATERS** **POSSESSED** unit from your army that has not been selected to move or declare a charge this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes a **Normal**, **Advance**, **Fall** **Back** or **Charge** **move**, it can move through enemy models (excluding MONSTERS and VEHICLES). When doing so, it can move within **Engagement** **Range** of such models but, unless that move was a Charge move, it cannot end that move within Engagement Range of them, and any **Desperate** **Escape** **test** is automatically passed.",
+      },
+    },
+    {
+      name: "HORRIFYING VIOLENCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Command phase.",
+        target: "One **WORLD** **EATERS** **POSSESSED** unit from your army.",
+        effect: "Each enemy unit within **Engagement** **Range** of your unit must take a **Battle-shock** **test**, subtracting 1 from that test.",
+      },
+    },
+  ],
+
+  "Goretrack Onslaught": [
+    {
+      name: "ENDLESS PURSUIT OF VIOLENCE",
+      cp: "1 CP",
+      rules: {
+        when: "End of the Fight phase.",
+        target: "One **WORLD** **EATERS** **INFANTRY** unit from your army and one friendly **TRANSPORT** that it is able to **embark** within.",
+        effect: 'If your WORLD EATERS INFANTRY unit is wholly within 6" of that TRANSPORT, it can embark within it.',
+      },
+    },
+    {
+      name: "SMASH THROUGH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **WORLD** **EATERS** **VEHICLE** model from your army that has not been selected to move this phase.",
+        effect: "Until the end of the phase, each time your unit makes a **Normal** or **Advance** **move**, it can move horizontally through terrain features.",
+      },
+    },
+    {
+      name: "AGGRESSIVE DISEMBARKATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **WORLD** **EATERS** **RHINO** model from your army that has not been selected to move this phase.",
+        effect: 'One WORLD EATERS unit embarked within your RHINO can **disembark**. When doing so, models in that unit can be set up anywhere on the battlefield wholly within 6" of your RHINO and can be set up within **Engagement** **Range** of one or more enemy units.',
+      },
+    },
+    {
+      name: "FULL-THROTTLE ASSAULT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **WORLD** **EATERS** **RHINO** model from your army that has not been selected to move this phase.",
+        effect: "Until the end of the phase, each time a WORLD EATERS unit **disembarks** from that model after it has made a **Normal** **move**, that unit is still eligible to declare a charge this turn.",
+      },
+    },
+    {
+      name: "UNRELENTING ADVANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **WORLD** **EATERS** **VEHICLE** model from your army that was hit by one or more of the attacking unit’s attacks.",
+        effect: 'Your model can make a **Normal** **move** of up to 6".<br><br>**Restrictions:** A unit cannot be targeted by this Stratagem and the Fury Unleashed Stratagem in the same phase.',
+      },
+    },
+    {
+      name: "FURY UNLEASHED",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **WORLD** **EATERS** **RHINO** model from your army that has one or more wounds remaining and was hit by one or more of the attacking unit’s attacks.",
+        effect: "One **KHORNE** **BERZERKERS** unit embarked within your model can **disembark** and make a Blood Surge move.<br><br>**Restrictions:** A unit cannot be targeted by this Stratagem and the Unrelenting Advance Stratagem in the same phase.",
+      },
+    },
+  ],
+
+  "Vessels of Wrath": [
+    {
+      name: "ASPIRE TO INFAMY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: 'One **KHORNE** **BERZERKERS** or **JAKHALS** unit from your army that has not been selected to fight this phase and is within 8" of one or more friendly **WORLD** **EATERS** **CHARACTER** models.',
+        effect: "Until the end of the phase, improve the Strength and Armour Penetration characteristics of melee weapons equipped by non-CHARACTER models in your unit by 1.",
+      },
+    },
+    {
+      name: "OVERSHADOWED BY NONE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **WORLD** **EATERS** **INFANTRY**, **WORLD** **EATERS** **MOUNTED** or **WORLD** **EATERS** **DAEMON** **PRINCE** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "GORY DEDICATION",
+      cp: "1 CP",
+      rules: {
+        when: "End of the Fight phase.",
+        target: "One WORLD EATERS unit from your army that destroyed one or more enemy models with a melee attack this phase.",
+        effect: "Select one **objective** **marker** you control that your unit is within range of. That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+      },
+    },
+    {
+      name: "PUNISH THE CRAVEN",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit (excluding MONSTERS and VEHICLES) is selected to **Fall** **Back**.",
+        target: "One **WORLD** **EATERS** **INFANTRY** or **WORLD** **EATERS** **DAEMON** **PRINCE** unit from your army within **Engagement** **Range** of that enemy unit.",
+        effect: "When that enemy unit **Falls** **Back**, all models in that enemy unit must take a **Desperate** **Escape** **test**. When doing so, if your unit is a **VESSEL** **OF** **WRATH**  unit, subtract 1 from each of those tests.",
+      },
+    },
+    {
+      name: "MEET FORCE WITH FORCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **WORLD** **EATERS** **INFANTRY**, **WORLD** **EATERS** **MOUNTED** or **WORLD** **EATERS** **DAEMON** **PRINCE** unit from your army that lost one or more wounds as a result of those attacks.",
+        effect: "Your unit can make a Blood Surge move. To do so, roll one D6: models in your unit move a number of inches up to the result, but your unit must end that move as close as possible to the closest enemy unit (excluding AIRCRAFT). When doing so, those models can be moved within **Engagement** **Range** of that enemy unit. If your unit is a **KHORNE** **BERZERKERS** or **VESSEL** **OF** **WRATH**  unit, you can re-roll the D6 to determine how far your unit can move.",
+      },
+    },
+    {
+      name: "BRAZEN CONTEMPT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One WORLD EATERS unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of your unit, subtract 1 from the **Wound** **roll**, or, if it is a **VESSEL** **OF** **WRATH** unit, subtract 1 from the Wound roll instead.",
+      },
+    },
+  ],
 };
