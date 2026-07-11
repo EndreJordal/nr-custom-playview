@@ -11611,4 +11611,64 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Chorus of Condemnation": [
+    {
+      name: "INSPIRATIONAL BATTLE CANTICLES",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Command phase.",
+        target: "One friendly **ADEPTA** **SORORITAS** **INFANTRY** **FLY** unit or one friendly **EXORCIST** unit.",
+        effect: 'Select one friendly battle-shocked **ADEPTA** **SORORITAS** unit within 6" of your unit. That unit is no longer battle-shocked.',
+      },
+    },
+    {
+      name: "HARMONISED EXORCISM",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly **EXORCIST** unit is selected to shoot.",
+        target: "That **EXORCIST** unit.",
+        effect: 'Select one unit visible to and within 9" of a friendly **ADEPTA** **SORORITAS** **INFANTRY** **FLY** unit. Your unit\'s ranged attacks that target that unit have +1 to hit rolls.',
+      },
+    },
+    {
+      name: "DEVASTATING REPRISE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly **EXORCIST** unit has shot.",
+        target: "One friendly **ADEPTA** **SORORITAS** **INFANTRY** **FLY** unit.",
+        effect: "Select one enemy unit (excluding **MONSTER**/**VEHICLE** units) hit by those ranged attacks. Your unit's ranged attacks that target that unit have **[DEVASTATING** **WOUNDS]**.",
+      },
+    },
+  ],
+
+  "Sacred Champions": [
+    {
+      name: "SANCTIFIED BLOWS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly **CELESTIAN** **SACRESANTS** unit is selected to fight.",
+        target: "That **CELESTIAN** **SACRESANTS** unit.",
+        effect: "Your unit's melee attacks have +1 A and S.",
+      },
+    },
+    {
+      name: "FAITHFUL FORTITUDE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, when a friendly **CELESTIAN** **SACRESANTS** unit suffers a mortal wound.",
+        target: "That **CELESTIAN** **SACRESANTS** unit.",
+        effect: "Your unit has **Feel No Pain 5+** against mortal wounds until the end of the phase.",
+      },
+    },
+    {
+      name: "UNFLINCHING DETERMINATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly **CELESTIAN** **SACRESANTS** unit is selected to make an advance/fall-back move.",
+        target: "That **CELESTIAN** **SACRESANTS** unit.",
+        effect: "Your unit's ranged attacks have **[ASSAULT]** until the end of the turn.<br><br>That move does not prevent your unit from being eligible to shoot/declare a charge.",
+      },
+    },
+  ],
 };
