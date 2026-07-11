@@ -1408,4 +1408,631 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Hallowed Martyrs": [
+    {
+      name: "DIVINE INTERVENTION",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **ADEPTA** **SORORITAS** **CHARACTER** unit from your army that was just **destroyed**. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "You can discard 1-3 **Miracle** **dice**. At the end of the phase, set the last destroyed model from your unit back up on the battlefield, as close as possible to where it was destroyed and not within **Engagement** **Range** of any enemy models. Roll one D3, adding 1 to the result for each Miracle dice you discarded. That model is set back up with that number of wounds remaining (up to its starting number of wounds).<br><br>**Restrictions:** You cannot select **SAINT** **CELESTINE** as the target of this Stratagem. You cannot select the same CHARACTER as the target of this Stratagem more than once per battle.",
+      },
+    },
+    {
+      name: "SUFFERING AND SACRIFICE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "One **ADEPTA** **SORORITAS** **INFANTRY** or **ADEPTA** **SORORITAS** **WALKER** unit from your army.",
+        effect: "Until the end of the phase, each time an enemy model within **Engagement** **Range** of your unit selects its targets, it must select your unit as the target of its attacks.",
+      },
+    },
+    {
+      name: "RIGHTEOUS VENGEANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One ADEPTA SORORITAS unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes a melee attack, you can re-roll the **Hit** **roll** and, if your unit is **Below** **Half-strength**, you can re-roll the **Wound** **roll** as well.",
+      },
+    },
+    {
+      name: "SANCTIFIED IMMOLATION",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **ADEPTA** **SORORITAS** **VEHICLE** model from your army with the Deadly Demise ability that was just destroyed. You can use this Stratagem on that model even though It was just destroyed.",
+        effect: "Do not roll one D6 to determine whether **mortal** **wounds** are inflicted by your model's **Deadly** **Demise** ability. Instead, mortal wounds are automatically inflicted.",
+      },
+    },
+    {
+      name: "SPIRIT OF THE MARTYR",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One ADEPTA SORORITAS unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is **destroyed**, if that model has not fought this phase, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "PRAISE THE FALLEN",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One ADEPTA SORORITAS unit from your army that had one or more of its models **destroyed** as a result of the attacking unit’s attacks.",
+        effect: "Your unit can shoot as if it were your Shooting phase, but it must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.",
+      },
+    },
+  ],
+
+  "Penitent Host": [
+    {
+      name: "FINAL REDEMPTION",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **PENITENT** unit from your army that was just **destroyed** while it was within range of an **objective** **marker** you controlled. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn.",
+      },
+    },
+    {
+      name: "PURITY OF SUFFERING",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **PENITENT** unit from your army that was selected as the target of one or more of the attacking unit's attacks.",
+        effect: "Until the end of the phase, PENITENT models in your unit have the **Feel** **No** **Pain** **4+** ability.",
+      },
+    },
+    {
+      name: "PASSION OF THE PENITENT",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **PENITENT** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a PENITENT model in your unit makes a melee attack, a successful unmodified **Hit** **roll** of 5+ scores a **Critical** **Hit**.",
+      },
+    },
+    {
+      name: "LASH OF GUILT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just before a **PENITENT** unit from your army **Advances**.",
+        target: "That PENITENT unit.",
+        effect: 'Until the end of the turn, your unit is eligible to declare a charge in a turn in which it **Advanced**. If your unit has the **PENITENT** **ENGINES** keyword, do not make an **Advance** **roll** for it; instead, until the end of the phase, add 6" to the Move characteristic of models in your unit.',
+      },
+    },
+    {
+      name: "BOUNDLESS ZEAL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after an ADEPTA SORORITAS unit from your army Falls Back.",
+        target: "That ADEPTA SORORITAS unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot or declare a charge in a turn in which it **Fell** **Back**. If your unit has the **PENITENT** keyword, it is eligible to shoot and declare a charge in a turn in which it Fell Back instead.",
+      },
+    },
+    {
+      name: "DEVOUT FANATICISM",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **PENITENT** unit from your army that was selected as the target as one or more of the attacking unit’s attacks.",
+        effect: "Roll one D6: your unit can be moved a distance in inches up to the result, but it must end that move as close as possible to the closest enemy unit (excluding AIRCRAFT). When doing so, models in your unit can be moved within **Engagement** **Range** of enemy units.",
+      },
+    },
+  ],
+
+  "Bringers of Flame": [
+    {
+      name: "SHIELD OF AVERSION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One ADEPTA SORORITAS unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "RIGHTEOUS BLOWS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One ADEPTA SORORITAS unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the **[LETHAL** **HITS]** ability. If one or more enemy models are **destroyed** as the result of attacks made by those weapons this phase, select one of those destroyed models; that destroyed model’s unit must take a **Battle-shock** **test**.",
+      },
+    },
+    {
+      name: "CARRY FORTH THE FAITHFUL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just before an **ADEPTA** **SORORITAS** **TRANSPORT** model from your army **Advances**.",
+        target: "That ADEPTA SORORITAS TRANSPORT model.",
+        effect: "Until the end of the turn, you can re-roll Advance rolls made for your TRANSPORT, and units can **disembark** from your TRANSPORT even though it **Advanced**. Units that do so count as having made a Normal move, and cannot declare a charge this turn",
+      },
+    },
+    {
+      name: "CLEANSING FLAMES",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ADEPTA SORORITAS unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, **Torrent** weapons equipped by models in your unit have the **[DEVASTATING** **WOUNDS]** ability",
+      },
+    },
+    {
+      name: "RITES OF FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ADEPTA SORORITAS unit from your army that **disembarked** from a **TRANSPORT** this turn and has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, each time a model in your unit makes a ranged attack that targets an enemy unit within 6" that is also within range of an **objective** **marker**, add 1 to the **Wound** **roll**. If one or more enemy models are **destroyed** as the result of those attacks, select one of those destroyed models; that destroyed model’s unit must take a **Battle-shock** **test**.',
+      },
+    },
+    {
+      name: "BLAZING IRE",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One **ADEPTA** **SORORITAS** **TRANSPORT** unit from your army that was selected as the target of one or more of the attacking unit's attacks.",
+        effect: "One unit **embarked** within your TRANSPORT can **disembark** as if it were your Movement phase, and can then shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.",
+      },
+    },
+  ],
+
+  "Army of Faith": [
+    {
+      name: "SHIELD OF FAITH",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after an ADEPTA SORORITAS unit from your army suffers a **mortal** **wound**.",
+        target: 'That ADEPTA SORORITAS unit, or one friendly **ADEPTA** **SORORITAS** **JUMP** **PACK** unit within 3" of it.',
+        effect: 'Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **5+** ability against mortal wounds. If you targeted an ADEPTA SORORITAS JUMP PACK unit from your army with this Stratagem, then until the end of the phase, while a friendly ADEPTA SORORITAS unit is unit is within 3" of your unit, models in that unit have the Feel No Pain 5+ ability against mortal wounds.',
+      },
+    },
+    {
+      name: "LIGHT OF THE EMPEROR",
+      cp: "1 CP",
+      rules: {
+        when: "Command phase.",
+        target: "One ADEPTA SORORITAS unit from your army.",
+        effect: 'Until the end of the turn, your unit is blessed. While a unit is blessed, it can ignore any or all modifiers to the following: the profile characteristics of its models; the Weapon Skill or Ballistic Skill characteristics of weapons equipped by its models; any roll or test made for it (excluding modifiers to **saving** **throws**). If your unit has the **JUMP** **PACK** keyword, until the end of the turn, while a friendly ADEPTA SORORITAS unit is within 3" of your unit, that friendly unit is also blessed.',
+      },
+    },
+    {
+      name: "FAITH AND FURY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One ADEPTA SORORITAS unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the **[LANCE]** ability. If one or more enemy models are **destroyed** as the result of your unit's attacks this phase, you gain 1 **Miracle** **dice**.",
+      },
+    },
+    {
+      name: "BLINDING RADIANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent's Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: 'One ADEPTA SORORITAS unit from your army that was selected as the target of one or more of the attacking unit\'s attacks, or one friendly **ADEPTA** **SORORITAS** **JUMP** **PACK** unit within 3" of such a unit.',
+        effect: 'Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**. If you targeted an ADEPTA SORORITAS JUMP PACK unit from your army with this Stratagem, then until the end of the phase, while a friendly ADEPTA SORORITAS unit is unit is within 3" of your unit, each time an attack targets that unit, subtract 1 from the Hit roll.',
+      },
+    },
+    {
+      name: "DIVINE GUIDANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "That ADEPTA SORORITAS unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, improve the Armour Penetration characteristic of that attack by 1. If one or more enemy models are **destroyed** as the result of any of those attacks, you gain 1 **Miracle** **dice**.",
+      },
+    },
+    {
+      name: "ANGELIC DESCENT",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **ADEPTA** **SORORITAS** **JUMP** **PACK** unit from your army.",
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.<br><br>**Restrictions:** You cannot select a unit that is within **Engagement** **Range** of one or more enemy units.",
+      },
+    },
+  ],
+
+  "Champions of Faith": [
+    {
+      name: "SHIELD OF DENIAL",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a **mortal** **wound** is allocated to an ADEPTA SORORITAS unit from your army.",
+        target: "That ADEPTA SORORITAS unit.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **6+** ability against **mortal** **wounds**. If your unit is **Righteous**, until the end of the phase, models in your unit have the **Feel** **No** **Pain** **5+** ability against mortal wounds instead.",
+      },
+    },
+    {
+      name: "SUFFER NOT THE UNFAITHFUL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One ADEPTA SORORITAS unit from your army that is **Righteous** and that has not been selected to shoot or fight this phase.",
+        effect: "Select either the **[LETHAL** **HITS]** or **[SUSTAINED** **HITS** **1]** ability. Until the end of the phase, weapons equipped by models in your unit have the selected ability.",
+      },
+    },
+    {
+      name: "TO THE HEART OF HERESY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One ADEPTA SORORITAS unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the turn, improve the Strength characteristic of melee weapons equipped by models in your unit by 1. If your unit is **Righteous**, until the end of the phase, improve the Armour Penetration characteristic of melee weapons equipped by models in your unit by 1 as well.",
+      },
+    },
+    {
+      name: "PATH OF THE RIGHTEOUS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One ADEPTA SORORITAS unit from your army that has not been selected to fight this phase.",
+        effect: 'Until the end of the turn, each time a model in your unit makes a **Pile-in** or **Consolidation** **move**, it can move up to 6" instead of up to 3". When doing so, if your unit is **Righteous**, it does not need to end that move closer to the closest enemy model, provided it ends that move as close as possible to the closest enemy unit.',
+      },
+    },
+    {
+      name: "BASTION OF FAITH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **CELESTIAN** **SACRESANTS** unit that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**. In addition, if your unit is **Righteous**, you can select one other CELESTIAN SACRESANTS unit from your army that is not **Battle-shocked** and is within 6" of your unit. Until the end of the phase, each time an attack targets that CELESTIAN SACRESANTS unit, subtract 1 from the Hit roll as well.',
+      },
+    },
+    {
+      name: "INDEFATIGABLE DEDICATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after an ADEPTA SORORITAS unit from your army **Falls** **Back**.",
+        target: "That ADEPTA SORORITAS unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it Fell Back. If your unit is **Righteous**, until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back instead.",
+      },
+    },
+  ],
+
+  "Talons Of The Emperor": [
+    {
+      name: "HUNT AS ONE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Movement phase.",
+        target: "Up to two **ADEPTUS** **CUSTODES** units from your army.",
+        effect: 'Until the end of the turn, your units are eilgible to shoot and/or declare a charge in a turn in which they **Fell** **Back**.<br><br>**Restrictions:** You can only select two units if one (and only one) of them is an **ANATHEMA** **PSYKANA** unit and both are within 6" of each other.',
+      },
+    },
+    {
+      name: "TALONS INTERLOCKED",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "Up to two **ADEPTUS** **CUSTODES** **INFANTRY** units from your army, and one enemy unit that is an eligible target for all of those units.",
+        effect: 'Until the end of the phase, your units can only target that enemy unit, but each time a model in one of your units makes a ranged attack, improve the Strength and Armour Penetration characteristics of that attack by 1.<br><br>**Restrictions:** You can only select two units if one (and only one) of them is an **ANATHEMA** **PSYKANA** unit and both are within 6" of each other.',
+      },
+    },
+    {
+      name: "EMPYRIC SEVERANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: 'One **ADEPTUS** **CUSTODES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks, and one friendly **ANATHEMA** **PSYKANA** unit within 6" of that ADEPTUS CUSTODES unit.',
+        effect: "Until the end of the phase, your unit has the **Feel** **No** **Pain** **4+** ability against **Psychic** **attacks** and **mortal** **wounds**.",
+      },
+    },
+    {
+      name: "EMPEROR’S EXECUTIONERS",
+      cp: "2 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "Up to two **ADEPTUS** **CUSTODES** units from your army.",
+        effect: 'Until the end of the phase, each time a model in one of your units targets an enemy unit that is below its **Starting** **Strength**, add 1 to the **Wound** **roll**.<br><br>**Restrictions:** You can only select two units if one (and only one) of them is an **ANATHEMA** **PSYKANA** unit and both are within 6" of each other.',
+      },
+    },
+    {
+      name: "TALONED PINCER",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit ends a **Normal**, **Advance** or **Fall** **Back** **move**.",
+        target: 'Up to two **ADEPTUS** **CUSTODES** units from your army that are within 9" of that enemy unit.',
+        effect: 'Your units can make a Normal move of up to 6".<br><br>**Restrictions:** You cannot select units that are within **Engagement** **Range** of one or more enemy units. You can only select two units if one (and only one) of them is an **ANATHEMA** **PSYKANA** unit and both are within 6" of each other.',
+      },
+    },
+    {
+      name: "SHIELD OF HONOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: 'One **ANATHEMA** **PSYKANA** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks, and one other friendly **ADEPTUS** **CUSTODES** **INFANTRY** unit (excluding ANATHEMA PSYKANA units) within 6" of that ANATHEMA PSYKANA INFANTRY unit.',
+        effect: "Until the end of the phase, any attack that targets your ANATHEMA PSYKANA unit must instead target your other ADEPTUS CUSTODES unit (unless it is not an eligible target).",
+      },
+    },
+  ],
+
+  "Shield Host": [
+    {
+      name: "ARCANE GENETIC ALCHEMY",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a **mortal** **wound** has been allocated to an **ADEPTUS** **CUSTODES** model from your army(excluding **ANATHEMA** **PSYKANA** models).",
+        target: "That ADEPTUS CUSTODES model’s unit.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **4+** ability against **mortal** **wounds**.",
+      },
+    },
+    {
+      name: "AVENGE THE FALLEN",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "One ADEPTUS CUSTODES unit from your army (excluding **ANATHEMA** **PSYKANA** units) that is below its **Starting** **Strength**.",
+        effect: "Until the end of the phase, add 1 to the Attacks characteristic of melee weapons equipped by models in that unit. If your unit is **Below** **Half-strength**, until the end of the phase, add 2 to the Attacks characteristic of those melee weapons instead.",
+      },
+    },
+    {
+      name: "UNWAVERING SENTINELS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **ADEPTUS** **CUSTODES** **INFANTRY** unit from your army (excluding **ANATHEMA** **PSYKANA** units) that is within range of an **objective** **marker** you control and that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a melee attack targets your unit, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "MULTIPOTENTIALITY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **ADEPTUS** **CUSTODES** unit from your army that **Fell** **Back** this phase.",
+        effect: "Until the end of your turn, that unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "VIGILANCE ETERNAL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **ADEPTUS** **CUSTODES** **BATTLELINE** unit from your army (excluding **ANATHEMA** **PSYKANA** units) within range of an **objective** **marker** you control.",
+        effect: "That objective marker remains under your control even if you have no models within range of it, until your opponent controls it at the start or end of any turn.",
+      },
+    },
+    {
+      name: "ARCHEOTECH MUNITIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ADEPTUS CUSTODES unit from your army (excluding **ANATHEMA** **PSYKANA** units) that has not been selected to shoot this phase.",
+        effect: "Select either the **[LETHAL** **HITS]** or **[SUSTAINED** **HITS** **1]** ability. Until the end of the phase ranged weapons equipped by models in your unit have the selected ability.",
+      },
+    },
+  ],
+
+  "Null Maiden Vigil": [
+    {
+      name: "DESPERATION’S PRICE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after an enemy PSYKER unit has either finished using a Psychic ability that targets a unit, or finished making **Psychic** **Attacks**.",
+        target: 'One **ANATHEMA** **PSYKANA** unit from your army within 18" of that enemy PSYKER unit.',
+        effect: "That enemy PSYKER unit must take a **Leadership** **test** If the test is passed, that PSYKER unit is **Battle-shocked**; if the test is failed that PSYKER unit suffers 3 **mortal** **wounds** and is Battle-shocked.",
+      },
+    },
+    {
+      name: "WITCH HUNTERS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **ANATHEMA** **PSYKANA** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Select either the **[LETHAL** **HITS]** or **[SUSTAINED** **HITS** **1]** ability. Until the end of the phase, weapons equipped by models in your unit have the selected ability, but models in your unit can only target PSYKER units with their attacks.",
+      },
+    },
+    {
+      name: "ANATHEMA BLADEMASTERY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **VIGILATORS** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes a melee attack, you can re-roll the **Hit** **roll** If the target of that attack is **Battle-shocked** or a PSYKER, you can re-roll the **Wound** **roll** as well.",
+      },
+    },
+    {
+      name: "PSY-CHAFF VOLLEY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **PROSECUTORS** unit from your army that has just shot.",
+        effect: "Select one enemy unit hit by one or more of those attacks. Until the start of your next turn, while your unit is on the battlefield, that enemy unit is prosecuted. While a unit is prosecuted, each time an **ANATHEMA** **PSYKANA** model makes an attack against that unit, improve the Armour Penetration characteristic of that attack by 1. While a PSYKER or **Battle-shocked** unit is prosecuted, each time a model in that unit makes an attack, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "PURGATION SWEEP",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **WITCHSEEKERS** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, add 1 to the Attacks characteristic of **Torrent** weapons equipped by models in your unit. If such a weapon targets a PSYKER or **Battle-shocked** unit this phase, add 2 to its Attacks characteristic instead.",
+      },
+    },
+    {
+      name: "PSYCHIC ABOMINATIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **ANATHEMA** **PSYKANA** **INFANTRY** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'Until the end of the phase, your unit has the **Stealth** ability, and **Battle-shocked** and PSYKER models can only select your unit as a target of a ranged attack if they are within 12".',
+      },
+    },
+  ],
+
+  "Auric Champions": [
+    {
+      name: "SLAYER OF CHAMPIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **ADEPTUS** **CUSTODES** **CHARACTER** unit from your army that has just **destroyed** the unit you selected at the start of your Command phase as the target of your **Assemblage** **of** **Might** ability.",
+        effect: "Select one enemy unit on the battlefield Until the start of your next Command phase, each time an ADEPTUS CUSTODES CHARACTER model from your army makes an attack that target that enemy unit, add 1 to the **Wound** **roll** In addition, if the destroyed unit was a CHARACTER unit, gain 1CP.",
+      },
+    },
+    {
+      name: "SUPERHUMAN RESERVES",
+      cp: "2 CP",
+      rules: {
+        when: "Any phase, just after an **ADEPTUS** **CUSTODES** **WARLORD** model from your army has used an ability on its datasheet or from an Enhancement that says it can only be used Once per battle.",
+        target: "That **ADEPTUS** **CUSTODES** **WARLORD** model.",
+        effect: "Your model can use its Once per battle’ ability one additional time during this battle (but not in the same phase).<br><br>**Restrictions:** You cannot use this Stratagem more than once per battle.",
+      },
+    },
+    {
+      name: "THE EMPEROR’S AUSPICE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **ADEPTUS** **CUSTODES** **CHARACTER** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, CHARACTER models in your unit have the **Feel** **No** **Pain** **4+** ability.",
+      },
+    },
+    {
+      name: "EARNING OF A NAME",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "Up to two **ADEPTUS** **CUSTODES** **CHARACTER** units from your army that have not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a CHARACTER model in either of your units makes an attack that targets a MONSTER or VEHICLE unit, you can re-roll the **Hit** **roll** and you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "VIGIL UNENDING",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **ADEPTUS** **CUSTODES** **CHARACTER** model from your army that was just **destroyed** and has not fought this phase. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Do not remove your destroyed model from play. The destroyed model can fight after the attacking unit has finished making attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "SHOULDER THE MANTLE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, before the Reinforcements step.",
+        target: "One **ADEPTUS** **CUSTODES** **CHARACTER** model from your army that is not leading a unit.",
+        effect: 'Select one friendly unit (excluding **Battle-shocked** and **Attached** units) within 2" horizontally and 5" vertically of your model that it could lead (as described in the Leader section of its datasheet). Your model attaches to that unit as a Leader. Change that unit’s **Starting** **Strength** accordingly.',
+      },
+    },
+  ],
+
+  "Solar Spearhead": [
+    {
+      name: "FLAWLESS CONSTRUCTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **ADEPTUS** **CUSTODES** **VEHICLE** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets a model in your unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "EMPEROR’S VENGEANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One ADEPTUS CUSTODES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 to the result if your unit has the **WALKER** keyword. On a 4+, do not remove it from play; The destroyed model can fight after the attacking unit has finished making its attacks (when doing so, it is assumed to have 1 wound remaining), and is then removed from play.",
+      },
+    },
+    {
+      name: "WRATHFUL ADVANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just before an ADEPTUS CUSTODES unit from your army **Piles** **In**.",
+        target: "That ADEPTUS CUSTODES unit.",
+        effect: 'Until the end of the phase, each time a model in your unit makes a Pile-in move, it can move up to D3+3" instead of up to 3".',
+      },
+    },
+    {
+      name: "UNSTOPPABLE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **ADEPTUS** **CUSTODES** **VEHICLE** or **ADEPTUS** **CUSTODES** **MOUNTED** unit from your army.",
+        effect: "Until the end of the phase, each time a model in your unit makes a move, it can move through terrain features.",
+      },
+    },
+    {
+      name: "RELENTLESS PERSECUTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after an ADEPTUS CUSTODES VEHICLE unit from your army **Advances**.",
+        target: "That **ADEPTUS** **CUSTODES** **VEHICLE** unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it Advanced. If your unit has the **WALKER** keyword, until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Advanced instead.",
+      },
+    },
+    {
+      name: "PUNISHMENT INESCAPABLE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One ADEPTUS CUSTODES unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[IGNORES** **COVER]** ability, and until the end of the phase, each time a model in your unit makes an attack, you can ignore any or all modifiers to that attack’s Ballistic Skill characteristic and/or any or all modifiers to the **Hit** **roll**.",
+      },
+    },
+  ],
+
+  "Lions of the Emperor": [
+    {
+      name: "GILDED CHAMPION",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after an **ADEPTUS** **CUSTODES** **CHARACTER** model from your army has used an ability on its datasheet that states it can only be used ‘once per battle’.",
+        target: "That ADEPTUS CUSTODES CHARACTER model.",
+        effect: "Your model can use that ‘once per battle’ ability one additional time during the battle (but not in the same phase).<br><br>**Restrictions:** You cannot use this Stratagem on the same ADEPTUS CUSTODES CHARACTER model more than once per battle.",
+      },
+    },
+    {
+      name: "DEFIANT TO THE LAST",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One ADEPTUS CUSTODES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 2 to the result if that model has the CHARACTER keyword. On a 4+, do not remove it from play; the destroyed model can fight after the attacking unit has finished making its attacks (when doing so, it is treated as having 1 wound remaining), and is then removed from play.",
+      },
+    },
+    {
+      name: "PEERLESS WARRIOR",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One ADEPTUS CUSTODES unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the **[PRECISION]** ability.",
+      },
+    },
+    {
+      name: "UNLEASH THE LIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **ALLARUS** **CUSTODIANS** or **AQUILON** **CUSTODIANS** unit from your army that is on the battlefield.",
+        effect: "That unit is split into separate units, each containing one model. These new units each have a **Starting** **Strength** of 1.",
+      },
+    },
+    {
+      name: "MANOEUVRE AND FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after an ADEPTUS CUSTODES unit from your army **Falls** **Back**.",
+        target: "That ADEPTUS CUSTODES unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+      },
+    },
+    {
+      name: "SWIFT AS THE EAGLE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
+        target: "One ADEPTUS CUSTODES unit from your army (excluding VEHICLE units) that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'Your unit can make a **Normal** **move** of up to D6".',
+      },
+    },
+  ],
 };
