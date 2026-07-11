@@ -10300,4 +10300,346 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Kauyon": [
+    {
+      name: "A TEMPTING TRAP",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One T’AU EMPIRE unit from your army that has not been selected to shoot this phase. The first time you use this Stratagem, you must also select one **objective** **marker** that is not in your opponent’s deployment zone; until the end of the battle, this becomes your Trap objective marker.",
+        effect: "Until the end of the phase, each time a model in your unit makes a ranged attack that targets an enemy unit within range of your Trap objective marker, add 1 to the **Wound** **roll**.<br><br>**Restrictions:** You cannot use this Stratagem during the first or second battle rounds.",
+      },
+    },
+    {
+      name: "POINT-BLANK AMBUSH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One T’AU EMPIRE unit from your army that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, each time a model in your unit makes a ranged attack that targets an enemy unit within 9", improve the Armour Penetration characteristic of that attack by 1.<br><br>**Restrictions:** You cannot use this Stratagem during the first or second battle rounds.',
+      },
+    },
+    {
+      name: "COORDINATE TO ENGAGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One T’AU EMPIRE unit from your army that has just been selected as an Observer unit (see **For** **the** **Greater** **Good**).",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets their Spotted unit, improve the Ballistic Skill characteristic of that attack by 1 and, if your unit has the **MARKERLIGHT** keyword, that attack has the **[IGNORES** **COVER]** ability.",
+      },
+    },
+    {
+      name: "COMBAT EMBARKATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit has **declared** **a** **charge**.",
+        target: "One **T’AU** **EMPIRE** **INFANTRY** unit from your army that was selected as one of the targets of that charge, and one friendly **TRANSPORT**.",
+        effect: 'Your unit can **embark** within that TRANSPORT. If it does, your opponent can select new targets for that charge.<br><br>**Restrictions:** Every model in your T’AU EMPIRE INFANTRY unit must be within 3" of that TRANSPORT and there must be sufficient **transport** **capacity** to embark the entire unit.',
+      },
+    },
+    {
+      name: "PHOTON GRENADES",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit has **declared** **a** **charge**.",
+        target: "One **T’AU** **EMPIRE** **GRENADES** unit from your army that was selected as one of the targets of that charge.",
+        effect: "That enemy unit must immediately take a **Battle-shock** **test**, and until the end of the phase, subtract 2 from **Charge** **rolls** made for that enemy unit.",
+      },
+    },
+    {
+      name: "WALL OF MIRRORS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **STEALTH**, **GHOSTKEEL** or **COMMANDER** **SHADOWSUN** unit from your army.",
+        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.<br><br>**Restrictions:** You cannot target a unit that is within **Engagement** **Range** of one or more enemy units.",
+      },
+    },
+  ],
+
+  "Mont’ka": [
+    {
+      name: "PINPOINT COUNTER-OFFENSIVE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One T’AU EMPIRE unit (excluding **KROOT** units) from your army that was just **destroyed**. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Until the end of the battle, each time a T’AU EMPIRE unit (excluding KROOT units) from your army makes an attack that targets the enemy unit that just destroyed your unit, you can re-roll the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "AGGRESSIVE MOBILITY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One T’AU EMPIRE unit from your army that has not been selected to move this phase.",
+        effect: 'Until the end of the phase, if your unit **Advances**, do not make an **Advance** **roll** for it. Instead, until the end of the phase, add 6" to the Move characteristic of models in your unit.',
+      },
+    },
+    {
+      name: "FOCUSED FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Shooting phase.",
+        target: "Two T’AU EMPIRE units from your army that have not been selected to shoot this phase, and one enemy unit.",
+        effect: "Until the end of the phase, each time a model in either of your units makes an attack, it can only target that enemy unit (and only if it is an eligible target for that attack), and when resolving that attack, improve the Armour Penetration characteristic by 1.<br><br>**Restrictions:** You cannot use this Stratagem during the fourth or fifth battle rounds.",
+      },
+    },
+    {
+      name: "COMBAT DEBARKATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **T’AU** **EMPIRE** **INFANTRY** unit from your army that **disembarked** from a TRANSPORT this turn.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets the closest enemy unit, you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "PULSE ONSLAUGHT",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **T’AU** **EMPIRE** **INFANTRY** unit (excluding **KROOT** units) from your army that has just shot, and one enemy unit (excluding MONSTERS and VEHICLES) hit by one or more of those attacks.",
+        effect: "Until the end of your opponent’s next turn, that enemy unit is shaken. While a unit is shaken, subtract 2 from its Move characteristic and subtract 2 from **Advance** and **Charge** **rolls** made for it.",
+      },
+    },
+    {
+      name: "COUNTERFIRE DEFENCE SYSTEMS",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One T’AU EMPIRE unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack is allocated to your unit, subtract 1 from the Damage characteristic of that attack.",
+      },
+    },
+  ],
+
+  "Retaliation Cadre": [
+    {
+      name: "FAIL-SAFE DETONATOR",
+      cp: "2 CP",
+      rules: {
+        when: "Any phase, just after a **T’AU** **EMPIRE** **BATTLESUIT** model from your army is **destroyed**.",
+        target: "That destroyed model’s unit. You can use this Stratagem on that unit even if that unit was just destroyed.",
+        effect: 'Before removing your model from play, if it has the **Deadly** **Demise** ability, do not roll for that ability; instead, you can choose whether the result of that roll is a 1 or a 6. If your model does not have the Deadly Demise ability, roll one D6 for each unit within 6" of it: on a 4+, that unit suffers D3 **mortal** **wounds**.',
+      },
+    },
+    {
+      name: "STIMM INJECTORS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **T’AU** **EMPIRE** **BATTLESUIT** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have the **Feel** **No** **Pain** **6+** ability.",
+      },
+    },
+    {
+      name: "THE SHORTENED BLADE",
+      cp: "2 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **T’AU** **EMPIRE** **BATTLESUIT** unit from your army that is arriving using the **Deep** **Strike** ability this phase.",
+        effect: 'Your unit can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy models.<br><br>**Restrictions:** A unit targeted with this Stratagem is not eligible to declare a charge in the same turn.',
+      },
+    },
+    {
+      name: "THE ARRO’KON PROTOCOL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **T’AU** **EMPIRE** **BATTLESUIT** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit that contains 6 or more models, that attack has the **[SUSTAINED** **HITS** **1]** ability. If that attack targets an enemy unit that contains 11 or more models, it has the **[SUSTAINED** **HITS** **2]** ability instead.",
+      },
+    },
+    {
+      name: "THE TORCHSTAR GAMBIT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **T’AU** **EMPIRE** **BATTLESUIT** unit from your army that can FLY whose attacks have been resolved this phase.",
+        effect: "If your unit is not within **Engagement** **Range** of one or more enemy units, it can make a **Normal** **move**. If it does, your unit cannot declare a charge this turn",
+      },
+    },
+    {
+      name: "GRAV-INHIBITOR FIELD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit has **declared** **a** **charge**.",
+        target: "One **T’AU** **EMPIRE** **BATTLESUIT** unit from your army that was selected as a target of that charge.",
+        effect: "That enemy unit must immediately take a **Battle-shock** **test** and you must roll one D6 for each model in that enemy unit: for each 6, that enemy unit suffers 1 **mortal** **wound**.",
+      },
+    },
+  ],
+
+  "Kroot Hunting Pack": [
+    {
+      name: "JOIN THE HUNT",
+      cp: "2 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **KROOT** **INFANTRY** or **KROOT** **HOUNDS** unit from your army that was just **destroyed**. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Add a new unit to your army identical to your destroyed unit, in Strategic Reserves, at its **Starting** **Strength**.<br><br>**Restrictions:** This Stratagem cannot be used to return destroyed **CHARACTER** units to **Attached** **units**. You can only use this Stratagem once per battle.",
+      },
+    },
+    {
+      name: "A TRAP WELL LAID",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **KROOT** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "After your unit has resolved its attacks this phase, select one enemy unit that was hit by one or more of those attacks. Until the end of the phase, each time a KROOT model from your army makes an attack that targets that enemy unit, unless the attacking unit is **Battle-shocked**, improve the Armour Penetration characteristic of that attack by 1.",
+      },
+    },
+    {
+      name: "EMP GRENADES",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy VEHICLE unit is selected to shoot or fight.",
+        target: 'One **KROOT** **GRENADES** unit from your army within 8" of that enemy VEHICLE unit.',
+        effect: "Until the end of the phase, worsen the Weapon Skill and Ballistic Skill characteristics of that enemy VEHICLE unit’s weapons by 1.",
+      },
+    },
+    {
+      name: "THE GRISLY FEAST",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **KROOT** unit from your army that **destroyed** one or more enemy units this phase.",
+        effect: 'In your opponent’s next Command phase, each enemy unit within 6" of your unit must take a **Battle-shock** **test**. If the unit taking that test is **Below** **Half-strength**, subtract 1 from that test. Enemy units affected by this Stratagem do not need to take any other **Battle-shock** **tests** in the same phase.',
+      },
+    },
+    {
+      name: "GUERRILLA WARRIORS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, just after a **KROOT** unit from your army **Falls** **Back**.",
+        target: "That KROOT unit.",
+        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge.",
+      },
+    },
+    {
+      name: "HIDDEN HUNTERS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **KROOT** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18".',
+      },
+    },
+  ],
+
+  "Auxiliary Cadre": [
+    {
+      name: "EXPERIMENTAL MODIFICATIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **KROOT** or **VESPID** **STINGWINGS** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, improve the Armour Penetration characteristic of weapons equipped by models in your unit by 1.",
+      },
+    },
+    {
+      name: "MULTISENSORY SCANNING",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One T’AU EMPIRE unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, re-roll a **Wound** **roll** of 1. If it is a **KROOT** or **VESPID** **STINGWINGS** unit, you can re-roll the Wound roll instead.",
+      },
+    },
+    {
+      name: "INTERLOCKING MANOUEVRES",
+      cp: "1 CP",
+      rules: {
+        when: "End of the Fight phase.",
+        target: "One T’AU EMPIRE unit from your army that was eligible to fight this phase.",
+        effect: 'If your unit is not within **Engagement** **Range** of one or more enemy units, it can make a **Normal** **move** of up to 6". Otherwise, your unit can make a **Fall** **Back** **move**. It cannot **embark** within a **TRANSPORT** at the end of this move if it disembarked from a TRANSPORT this turn.',
+      },
+    },
+    {
+      name: "PHEROMONE WAYPOINTS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **KROOT** or **VESPID** **STINGWINGS** unit from your army that has not been selected to move this phase.",
+        effect: 'Until the end of the phase, each time your unit Advances, do not make an **Advance** **roll** for it. Instead, until the end of the phase, add 6" to the Move characteristic of models in your unit.',
+      },
+    },
+    {
+      name: "ALIEN EXPERTISE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One T’AU EMPIRE unit from your army.",
+        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it **Advanced**. If it is a **KROOT** or **VESPID** **STINGWINGS** unit, until the end of the turn, your unit is eligible to declare a charge in a turn in which it Advanced as well.",
+      },
+    },
+    {
+      name: "GUIDED FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One T’AU EMPIRE unit from your army (excluding **KROOT** and **VESPID** **STINGWINGS** units) that has not been selected to shoot this phase.",
+        effect: 'Until the end of the phase, add 1 to the Strength characteristic of ranged weapons equipped by models in your unit. If your unit is wholly within 9" of one or more KROOT or VESPID STINGWINGS units from your army, add 2 to the Strength characteristic of ranged weapons equipped by models in your unit instead.',
+      },
+    },
+  ],
+
+  "Experimental Prototype Cadre": [
+    {
+      name: "AUTOMATED REPAIR DRONES",
+      cp: "1 CP",
+      rules: {
+        when: "Command phase.",
+        target: "One **T’AU** **EMPIRE** **BATTLESUIT** unit from your army.",
+        effect: "Select one BATTLESUIT model in your unit: that model regains up to D3+1 lost wounds.",
+      },
+    },
+    {
+      name: "REACTIVE IMPACT DAMPENERS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **T’AU** **EMPIRE** **BATTLESUIT** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of your unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "EXPERIMENTAL WEAPONRY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One T’AU EMPIRE unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time you roll one or more dice to determine the number of attacks made with a weapon equipped by a model in your unit, you can re-roll the result.",
+      },
+    },
+    {
+      name: "EXPERIMENTAL AMMUNITION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One T’AU EMPIRE unit from your army that has not been selected to shoot this phase.",
+        effect: "Select one of the following to apply to your unit until the end of the phase:Improve the Strength characteristic of ranged weapons equipped by models in your unit by 1.Improve the Strength and Armour Penetration characteristics of ranged weapons equipped by models in your unit by 1, and those weapons have the **[HAZARDOUS]** ability.RESTRICTIONS: You cannot target the same unit with the Experimental Ammunition and Threat Assessment Analyser Stratagems in the same phase.",
+      },
+    },
+    {
+      name: "THREAT ASSESSMENT ANALYSER",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One T’AU EMPIRE unit from your army that has not been selected to shoot this phase.",
+        effect: "Select the **[SUSTAINED** **HITS** **1]** or **[LETHAL** **HITS]** ability. Until the end of the phase, ranged weapons equipped by models in your unit have the selected ability. You can instead select the **[SUSTAINED** **HITS** **1]**, **[LETHAL** **HITS]** and **[HAZARDOUS]** abilities to apply to those weapons until the end of the phase.<br><br>**Restrictions:** You cannot target the same unit with the Experimental Ammunition and Threat Assessment Analyser Stratagems in the same phase.",
+      },
+    },
+    {
+      name: "NEUROWEB SYSTEM JAMMER",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **T’AU** **EMPIRE** **CRISIS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: 'Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18".',
+      },
+    },
+  ],
 };
