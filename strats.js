@@ -3631,4 +3631,346 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Daemonic Incursion": [
+    {
+      name: "CORRUPT REALSPACE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of any Command phase.",
+        target: "One LEGIONES DAEMONICA unit from your army that is within range of an **objective** **marker** you control.",
+        effect: 'That objective marker is said to be Corrupted and remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn. In addition, while an objective marker is Corrupted and under your control, the area of the battlefield within 6" of that objective marker is considered to be within your army’s **Shadow** **of** **Chaos**.',
+      },
+    },
+    {
+      name: "WARP SURGE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One LEGIONES DAEMONICA unit from your army that is within your army’s **Shadow** **of** **Chaos**.",
+        effect: "Until the end of the phase, your unit is eligible to declare a charge in a turn in which it **Advanced**.",
+      },
+    },
+    {
+      name: "DRAUGHT OF TERROR",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One LEGIONES DAEMONICA unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, improve the Armour Penetration characteristic of weapons equipped by models in that unit by 1. In addition, until the end of the phase, each time such a weapon targets a unit that is **Battle-shocked**, you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "DENIZENS OF THE WARP",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One LEGIONES DAEMONICA unit from your army that is arriving using the **Deep** **Strike** ability this phase.",
+        effect: 'Your unit can be set up anywhere on the battlefield that is more than 6" horizontally away from all enemy models.',
+      },
+    },
+    {
+      name: "THE REALM OF CHAOS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s turn.",
+        target: "Up to two LEGIONES DAEMONICA units from your army that are within your army’s **Shadow** **of** **Chaos**, or one other LEGIONES DAEMONICA unit from your army.",
+        effect: "Remove the targeted units from the battlefield and place them into Strategic Reserves. They will arrive back on the battlefield in the Reinforcements step of your next Movement phase using the **Deep** **Strike** ability.<br><br>**Restrictions:** You cannot target units that are within **Engagement** **Range** of one or more enemy units with this Stratagem.",
+      },
+    },
+    {
+      name: "DAEMONIC INVULNERABILITY",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One LEGIONES DAEMONICA unit from your army that was selected as the target of one or more of that enemy unit’s attacks.",
+        effect: "Until the end of the phase, each time an **invulnerable** **saving** **throw** is made for a model in your unit, re-roll a saving throw of 1.",
+      },
+    },
+  ],
+
+  "Shadow Legion": [
+    {
+      name: "SPITEFUL DEMISE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after a **SHADOW** **LEGION** unit from your army is destroyed, before removing the last model in that unit from the battlefield and before rolling any dice for the **Deadly** **Demise** ability.",
+        target: "That SHADOW LEGION unit. You can use this Stratagem on that unit even though it was just destroyed.",
+        effect: "Roll one D6 for each enemy unit that is within **Engagement** **Range** of the last model in your unit, adding 2 to the result if your unit has the **SLAANESH** keyword: on a 4-5, that enemy unit suffers D3 **mortal** **wounds**; on a 6+, that enemy unit suffers 3 mortal wounds.",
+      },
+    },
+    {
+      name: "CHANNELLED WRATH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **SHADOW** **LEGION** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the **[LANCE]** ability. If your unit has the **KHORNE** keyword, until the end of the phase, improve the Armour Penetration characteristic of those weapons by 1 as well.",
+      },
+    },
+    {
+      name: "DEATH DENIED",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **SHADOW** **LEGION** unit from your army.",
+        effect: "One model in your unit regains up to 3 lost wounds. In addition, If your unit has the **TZEENTCH** keyword, return up to one destroyed model (excluding **CHARACTER** models) to your unit with its full wounds remaining.",
+      },
+    },
+    {
+      name: "ENCROACHING DARKNESS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "Up to one **SHADOW** **LEGION** **HERETIC** **ASTARTES** unit from your army and up to one **SHADOW** **LEGION** **LEGIONES** **DAEMONICA** unit from your army. You can only select units that arrived from Reserves this turn.",
+        effect: "Until the end of the phase, weapons equipped by models in your selected units have the **[IGNORES** **COVER]** ability.",
+      },
+    },
+    {
+      name: "SHADE PATH",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Charge phase, just after an enemy unit **declares** **a** **charge**.",
+        target: "One **SHADOW** **LEGION** unit from your army that was selected as a target of that charge.",
+        effect: "Until the end of the phase, subtract 2 from **Charge** **rolls** made for that enemy unit. In addition, if your unit has the **NURGLE** keyword, that enemy unit must take a **Battle-shock** **test**.",
+      },
+    },
+    {
+      name: "BINDING SHADOW",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "Up to one **SHADOW** **LEGION** **HERETIC** **ASTARTES** unit from your army and up to one **SHADOW** **LEGION** **LEGIONES** **DAEMONICA** unit from your army. You can only select units that are not within **Engagement** **Range** of one or more enemy units.",
+        effect: "Remove those selected units from the battlefield and place them into Strategic Reserves.",
+      },
+    },
+  ],
+
+  "Blood Legion": [
+    {
+      name: "WRATH UNDENIABLE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **LEGIONES** **DAEMONICA** **KHORNE** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed by a melee attack, if that model has not fought this phase, roll one D6: on a 4+, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "GORE‑HUNGRY ONSLAUGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **LEGIONES** **DAEMONICA** **KHORNE** unit from your army.",
+        effect: "Until the end of the phase, each time a model in your unit makes a move, it can move through terrain features.",
+      },
+    },
+    {
+      name: "SKULLS BEGET BLOOD",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **LEGIONES** **DAEMONICA** **KHORNE** **INFANTRY** or **LEGIONES** **DAEMONICA** **KHORNE** **MOUNTED** unit from your army (excluding units that **Fell** **Back** this turn) that is not within **Engagement** **Range** of one or more enemy units.",
+        effect: 'Select one enemy unit that is not within Engagement Range of one or more units from your army and is within 8" of and visible to your unit. Roll six D6: for each 4+, that enemy unit suffers 1 **mortal** **wound**.',
+      },
+    },
+    {
+      name: "BLOOD BEGETS SKULLS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase.",
+        target: "One **LEGIONES** **DAEMONICA** **KHORNE** unit from your army that has not been selected to charge this phase.",
+        effect: "Until the end of the phase, your unit is eligible to declare a charge in a turn in which it **Advanced**.",
+      },
+    },
+    {
+      name: "FOOLS’ FLIGHT",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, just after an enemy unit **Falls** **Back**.",
+        target: 'One **LEGIONES** **DAEMONICA** **KHORNE** unit from your army that is within 6" of that enemy unit and would be eligible to declare a charge against that enemy unit.',
+        effect: "Your unit now declares a charge that targets only that enemy unit, and you resolve that charge. Note that even if that charge is successful, your unit does not receive any **Charge** **bonus** this turn.",
+      },
+    },
+    {
+      name: "SHEATHED IN BRASS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: "One **LEGIONES** **DAEMONICA** **KHORNE** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, models in your unit have a Save characteristic of 3+.",
+      },
+    },
+  ],
+
+  "Legion of Excess": [
+    {
+      name: "THIEVES OF PAIN",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after an attack or **mortal** **wound** is allocated to a model in a **LEGIONES** **DAEMONICA** **SLAANESH** unit from your army (excluding **MONSTERS** and **VEHICLES**).",
+        target: "That LEGIONES DAEMONICA SLAANESH unit.",
+        effect: 'Select one other friendly LEGIONES DAEMONICA SLAANESH unit that is within 9" of and visible to your unit. Until the end of the phase, while the selected unit is on the battlefield, each time a model in your unit would lose a wound, inflict 1 mortal wound on the selected unit instead.',
+      },
+    },
+    {
+      name: "ARCHAGONISTS",
+      cp: "2 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **LEGIONES** **DAEMONICA** **SLAANESH** **MONSTER** unit or up to two **LEGIONES** **DAEMONICA** **SLAANESH** units (excluding **MONSTERS**) from your army that have not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in one of those units makes an attack, add 1 to the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "SENSORY EXCRUCIATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **LEGIONES** **DAEMONICA** **SLAANESH** **MONSTER** unit from your army that is on the battlefield.",
+        effect: "Each unit on the battlefield that is within your army’s **Shadow** **of** **Chaos** must take a **Battle-shock** **test**, subtracting 1 from that test if they are **Below** **Half-strength**.Designer’s Note: This Stratagem forces all friendly and enemy units alike within your army’s Shadow of Chaos to take a Battle-shock test. This can allow a Chaos Daemons player to heal units from their army through the **Daemonic** **Terror** army rule, at the risk of causing some of their own units to become Battle-shocked.",
+      },
+    },
+    {
+      name: "PHANTASMAL LONGING",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **LEGIONES** **DAEMONICA** **SLAANESH** unit from your army.",
+        effect: "Until the end of the phase, each time a model in your unit makes a move, it can move through terrain features.",
+      },
+    },
+    {
+      name: "CAVALCADE OF BLADES",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, just after a **LEGIONES** **DAEMONICA** **SLAANESH** unit from your army ends a **Charge** **move**.",
+        target: "That LEGIONES DAEMONICA SLAANESH unit.",
+        effect: "Select one enemy unit within **Engagement** **Range** of your unit, then roll one D6 for each model in your unit that is within Engagement Range of that enemy unit, or roll six D6 instead if your unit is a MONSTER unit: for each 4+, that enemy unit suffers 1 **mortal** **wound**.",
+      },
+    },
+    {
+      name: "OVERWHELMING EXCESS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **LEGIONES** **DAEMONICA** **SLAANESH** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the **Hit** **roll**.",
+      },
+    },
+  ],
+
+  "Plague Legion": [
+    {
+      name: "SEEPING VIRULENCE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **LEGIONES** **DAEMONICA** **NURGLE** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in that unit makes an attack, an unmodified **Hit** **roll** of 5+ scores a Critical Hit.",
+      },
+    },
+    {
+      name: "FEVER VISIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **LEGIONES** **DAEMONICA** **NURGLE** unit from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, add 1 to the **Hit** **roll**. After your unit has finished making its attacks, select one enemy unit hit by one or more of those attacks; that enemy unit must take a **Battle-shock** **test**.",
+      },
+    },
+    {
+      name: "FOETID RESURGENCE",
+      cp: "2 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **LEGIONES** **DAEMONICA** **NURGLE** unit from your army that is on the battlefield.",
+        effect: "Return up to 1 destroyed model to your unit, or up to D3 destroyed models instead if your unit is a **BATTLELINE** unit, with their full wounds remaining. If it is a **MONSTER** unit, one model in your unit regains up to D3+1 lost wounds instead.",
+      },
+    },
+    {
+      name: "ROT AND RENEWAL",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **LEGIONES** **DAEMONICA** **NURGLE** unit from your army.",
+        effect: "Until the end of the phase, each time a model in your unit makes a move, it can move through terrain features.",
+      },
+    },
+    {
+      name: "MURKSHADOWS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase.",
+        target: "One **LEGIONES** **DAEMONICA** **NURGLE** **INFANTRY** unit from your army.",
+        effect: 'Until the end of the phase, each time your unit makes a **Normal** **move**, add 5" to the Move characteristic of models in your unit.',
+      },
+    },
+    {
+      name: "PLAGUE OF WOES",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Command phase, before selecting any targets for the **Melancholic** **Miasma** Detachment rule.",
+        target: "One **LEGIONES** **DAEMONICA** **NURGLE** unit from your army.",
+        effect: 'Until the end of the phase, after an enemy unit takes a **Battle-shock** **test** as a result of the Melancholic Miasma Detachment rule, select one other enemy unit within 9" of your unit; that enemy unit must take a Battle-shock test.',
+      },
+    },
+  ],
+
+  "Scintillating Legion": [
+    {
+      name: "IMPOSSIBLE ECLIPSE",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **LEGIONES** **DAEMONICA** **TZEENTCH** **MONSTER** unit from your army that is on the battlefield.",
+        effect: "Select No Man’s Land or your opponent’s deployment zone, or spend one **Flux** **token** and select both. Until the end of the phase, the selected areas of the battlefield are within your army’s **Shadow** **of** **Chaos**.",
+      },
+    },
+    {
+      name: "PYROGENESIS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **LEGIONES** **DAEMONICA** **TZEENTCH** unit from your army that has not been selected to shoot or fight that phase.",
+        effect: "Until the end of the phase, add 2 to the Strength characteristic of weapons equipped by models in your unit, or spend one **Flux** **token** and add 3 to the Strength characteristic of those weapons and improve the Armour Penetration characteristic of those weapons by 1 instead.",
+      },
+    },
+    {
+      name: "FLICKERING REALITY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **LEGIONES** **DAEMONICA** **TZEENTCH** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Roll one D6, then you can spend one **Flux** **token** to re-roll the result: until the end of the phase, each time an attack targets your unit, on an unmodified **Hit** **roll** (after any re-roll) of that result, the attack sequence ends, even if the original Hit roll would have been a **Critical** **Hit**.Example: If you roll a 2 and choose to spend one Flux token to re-roll the result, and the re-roll is a 6, then until the end of the phase, each time an attack targets your unit, on an unmodified Hit roll of 6 the attack sequence ends, that attack fails to hit and no Critical Hit effects (e.g. **Lethal** **Hits**) are resolved.",
+      },
+    },
+    {
+      name: "FATEBORNE NIGHTMARES",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **LEGIONES** **DAEMONICA** **TZEENTCH** unit from your army.",
+        effect: "Until the end of the phase, each time a model in your unit makes a move, it can move through terrain features.",
+      },
+    },
+    {
+      name: "FICKLEFIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **LEGIONES** **DAEMONICA** **TZEENTCH** unit from your army that is within **Engagement** **Range** of one or more enemy units.",
+        effect: "Until the end of the phase, enemy units are not considered to be within Engagement Range of your unit for the purposes of selecting targets for, and resolving attacks with, ranged weapons. Until the end of the phase, each time an enemy model is destroyed while its unit is within Engagement Range of your unit, roll one D6: on a 5+, your unit suffers 1 **mortal** **wound** after the attacking unit has finished making its attacks.",
+      },
+    },
+    {
+      name: "DELIRIUM UNMADE",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One **LEGIONES** **DAEMONICA** **TZEENTCH** unit from your army that is not within **Engagement** **Range** of one or more enemy units. Alternatively, you can spend one **Flux** **token** when you use this Stratagem and target up to two LEGIONES DAEMONICA TZEENTCH units from your army instead (including those within Engagement Range of one or more enemy units).",
+        effect: "Remove your units from the battlefield and place them into Strategic Reserves.",
+      },
+    },
+  ],
 };
