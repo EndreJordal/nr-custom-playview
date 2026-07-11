@@ -5170,4 +5170,403 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
+
+  "Virulent Vectorium": [
+    {
+      name: "PUTRID DETONATION",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **DEATH** **GUARD** **VEHICLE** or **DEATH** **GUARD** **MONSTER** model from your army with the **Deadly** **Demise** ability that was just destroyed. You can use this Stratagem on that model even though it was just destroyed.",
+        effect: "Do not roll one D6 to determine whether **mortal** **wounds** are inflicted by your model’s Deadly Demise ability. Instead, mortal wounds are automatically inflicted. In addition, any enemy units that suffer mortal wounds as a result of this Stratagem are Afflicted until the start of your next turn.",
+      },
+    },
+    {
+      name: "DISGUSTINGLY RESILIENT",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **DEATH** **GUARD** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.",
+      },
+    },
+    {
+      name: "PLAGUESURGE",
+      cp: "2 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "Your **DEATH** **GUARD** WARLORD that is on the battlefield.",
+        effect: 'Until the start of your next Command phase, add 3" to the **Contagion** **Range** of models from your army.',
+      },
+    },
+    {
+      name: "LEECHSPORE ERUPTION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **DEATH** **GUARD** model your army that has lost one or more wounds.",
+        effect: 'Select one enemy unit within 3" of your model. Roll a number of D6 equal to the number of wounds your model has lost: for each 5+, that enemy unit suffers one **mortal** **wound** (to a maximum of 6 mortal wounds) and your model regains 1 lost wound (to a maximum of 6 lost wounds).',
+      },
+    },
+    {
+      name: "OVERWHELMING GENEROSITY",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your Shooting phase.",
+        target: "One **DEATH** **GUARD** **CHARACTER** unit from your army.",
+        effect: "Select one enemy unit visible to your unit. Until the end of the phase, each time a DEATH GUARD unit from your army selects that enemy unit as the target of any ranged attacks, you can re-roll the dice to determine how many attacks a weapon equipped by a model in that unit makes.",
+      },
+    },
+    {
+      name: "CREEPING BLIGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DEATH** **GUARD** **INFANTRY** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes a ranged attack that targets an **Afflicted** unit, you can re-roll the **Hit** **roll** and you can re-roll the **Wound** **roll**.",
+      },
+    },
+  ],
+
+  "Mortarion’s Hammer": [
+    {
+      name: "BLIGHTED LAND",
+      cp: "2 CP",
+      rules: {
+        when: "End of your Movement phase.",
+        target: "One **DEATH** **GUARD** **VEHICLE** unit from your army.",
+        effect: 'Select one terrain feature within 24" of and visible to your unit. Until the start of your next turn, enemy units are **Afflicted** while they are within 3" of that terrain feature.',
+      },
+    },
+    {
+      name: "RELENTLESS GRIND",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **DEATH** **GUARD** **VEHICLE** unit from your army that has not been selected to move or charge this phase.",
+        effect: "Until the end of the phase, each time your unit makes a **Normal**, **Advance** or **Charge** **move**, it can move horizontally through terrain features.",
+      },
+    },
+    {
+      name: "DRAWN TO DESPAIR",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DEATH** **GUARD** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a visible enemy unit (excluding AIRCRAFT) within your opponent’s deployment zone, you can re-roll the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "FONT OF FILTH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DEATH** **GUARD** **VEHICLE** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[ASSAULT]** ability.",
+      },
+    },
+    {
+      name: "EYESTINGER STORM",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Command phase.",
+        target: "One **DEATH** **GUARD** **VEHICLE** unit from your army.",
+        effect: "Select one **objective** **marker** visible to one or more models in your unit. Each **Afflicted** enemy unit within range of that objective marker must take a **Battle-shock** **test**. Enemy units affected by this Stratagem do not need to take any other Battle-shock tests in the same phase.",
+      },
+    },
+    {
+      name: "STINKING MIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Charge phase.",
+        target: "One **DEATH** **GUARD** **VEHICLE** unit from your army.",
+        effect: "Until the end of the phase, each time an enemy unit selects your unit as the target of a charge, subtract 2 from the **Charge** **roll** (this is not cumulative with any other negative modifiers to that Charge roll).",
+      },
+    },
+  ],
+
+  "Champions of Contagion": [
+    {
+      name: "BLESSINGS OF FILTH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **DEATH** **GUARD** **Attached** **unit** from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack, an unmodified **Hit** **roll** of 5+ scores a **Critical** **Hit**.",
+      },
+    },
+    {
+      name: "MALIGNANCE MAGNIFIED",
+      cp: "2 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One **DEATH** **GUARD** **Attached** **unit** from your army that has not been selected to shoot or fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a unit that is below its **Starting** **Strength**, you can re-roll the **Hit** **roll** and you can re-roll the **Wound** **roll**.",
+      },
+    },
+    {
+      name: "GROTESQUE FORTITUDE",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **DEATH** **GUARD** **Attached** **unit** from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, add 2 to the Toughness characteristic of models in your unit.",
+      },
+    },
+    {
+      name: "RABID INFUSION",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "One **DEATH** **GUARD** unit from your army that includes two **CHARACTER** models.",
+        effect: "Until the end of the phase, your unit has the **Fights** **First** ability.",
+      },
+    },
+    {
+      name: "MOBILE VECTOR",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, before the Reinforcements step.",
+        target: "One **DEATH** **GUARD** **CHARACTER** unit from your army that is not leading a unit.",
+        effect: 'Select one other friendly **DEATH** **GUARD** unit (excluding **Battle-shocked** units and **Attached** **units** that already have two **Leader** units or one of your CHARACTER units leading it] within 2" horizontally and 5" vertically of your unit that your unit can lead (as described in the Leader section of its datasheet]. Your unit attaches to that unit as a Leader. Change that unit’s **Starting** **Strength** accordingly.',
+      },
+    },
+    {
+      name: "DEATH’S HEADS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **BIOLOGUS** **PUTRIFIER** unit from your army that is not within **Engagement** **Range** of one or more enemy units and has not been selected to shoot this phase.",
+        effect: 'Select one enemy unit (excluding VEHICLES) that is within 8" of and visible to your unit. Until the start of your next turn, that unit has the effect of all Plagues (see **Nurgle’s** **Gift**).',
+      },
+    },
+  ],
+
+  "Tallyband Summoners": [
+    {
+      name: "PERSISTENT PESTS",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase.",
+        target: "One **NURGLINGS** unit from your army that was just destroyed. You can target that unit with this Stratagem even though it was just destroyed.",
+        effect: "Add a new unit to your army identical to your destroyed unit, in Strategic Reserves, at its **Starting** **Strength** and with its full wounds remaining.<br><br>**Restrictions:** You can only use this Stratagem once per battle.",
+      },
+    },
+    {
+      name: "CLUTCHING CORRUPTION",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **DEATH** **GUARD** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit that is within **Engagement** **Range** of one or more **PLAGUE** **LEGIONS** units from your army, you can re-roll the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "ALL IS ROT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **PLAGUE** **LEGIONS** unit from your army that is within **Engagement** **Range** of one or more enemy units.",
+        effect: "Until the end of the phase, enemy units are not considered to be within Engagement Range of your unit for the purposes of selecting targets of ranged weapons. Until the end of the phase, each time an enemy model loses a wound, while that model’s unit is within Engagement Range of your unit, roll one D6: on a 5+, your unit suffers 1 **mortal** **wound** after the attacking unit has finished making its attacks.",
+      },
+    },
+    {
+      name: "FLESHY AVALANCHE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase or your Charge phase.",
+        target: "One **PLAGUE** **LEGIONS** **MONSTER** unit from your army that has not been selected to move or charge this phase.",
+        effect: "Until the end of the phase, each time your unit makes a **Normal**, **Advance** or **Charge** **move**, it can move horizontally through terrain features.",
+      },
+    },
+    {
+      name: "AVATARS OF DECAY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **PLAGUE** **LEGIONS** unit from your army.",
+        effect: 'Until the end of the phase, while an enemy unit is within 6" of your unit, that enemy unit is **Afflicted**.',
+      },
+    },
+    {
+      name: "MIRESLICK",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, when an enemy unit (excluding MONSTERS and VEHICLES) is selected to **Fall** **Back**.",
+        target: "One **PLAGUE** **LEGIONS** unit from your army that is within **Engagement** **Range** of that enemy unit.",
+        effect: "Until the end of the phase, while an enemy unit is within Engagement Range of your unit, each time that unit is selected to Fall Back, it must take a **Leadership** **test**. If that test is failed, that unit must **Remain** **Stationary** this phase instead.",
+      },
+    },
+  ],
+
+  "Shamblerot Vectorium": [
+    {
+      name: "GRIP OF THE WALKING POX",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **POXWALKERS** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "After the attacking unit has fought, roll one D6 for each model from your unit that was destroyed as a result of those attacks: on a 6, the attacking unit suffers 1 **mortal** **wound**. If your unit is not destroyed after the attacking unit has fought, enemy models destroyed as a result of this Stratagem count as enemy models destroyed by an attack made by a model in your unit for the purposes of the Curse of the Walking Pox ability.",
+      },
+    },
+    {
+      name: "SMEARED WITH FILTH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **POXWALKERS** unit from your army that was just destroyed. You can target that unit with this Stratagem even though it was just destroyed.",
+        effect: "Select one enemy unit that made one or more attacks that targeted your unit this phase. Until the end of the battle, that enemy unit is **Afflicted**.",
+      },
+    },
+    {
+      name: "GNAWING HUNGER",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **POXWALKERS** unit from your army.",
+        effect: "Until the end of the turn, add 1 to the Move characteristic of models in your unit, and add 1 to the Attacks and Strength characteristics of melee weapons equipped by models in your unit.",
+      },
+    },
+    {
+      name: "HIDDEN AMONGST THE DEAD",
+      cp: "1 CP",
+      rules: {
+        when: "The Reinforcements step of your Movement phase.",
+        target: "One **POXWALKERS** unit from your army that is in Strategic Reserves and that is not an **Attached** **unit**.",
+        effect: "Until the end of the phase, models in that unit have the **Deep** **Strike** ability.",
+      },
+    },
+    {
+      name: "SHOCK AND HORROR",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, just after a **DEATH** **GUARD** unit from your army ends a **Charge** **move**.",
+        target: "That DEATH GUARD unit.",
+        effect: "Each enemy unit within **Engagement** **Range** of your unit must take a **Battle-shock** **test**, subtracting 1 from that test.",
+      },
+    },
+    {
+      name: "SHAMBLING WALL",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: 'One **DEATH** **GUARD** unit from your army that was selected as the target of one or more of the attacking unit’s attacks, and one friendly **POXWALKERS** unit within 3" of your unit and visible to both your unit and the attacking unit.',
+        effect: "Until the end of the phase, each time you would allocate an attack to a model in your DEATH GUARD unit, if your POXWALKERS unit is visible to the attacking model and is an eligible target for that attack, no **saving** **throw** is made for that attack; instead a number of POXWALKERS from your POXWALKERS unit equal to the Damage characteristic of that attack are destroyed.",
+      },
+    },
+  ],
+
+  "Death Lord’s Chosen": [
+    {
+      name: "BLOOMING PESTILENCE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of any phase.",
+        target: "One **TERMINATOR** unit from your army.",
+        effect: 'Until the end of the phase, add 3" to the **Contagion** **Range** of models in your unit.',
+      },
+    },
+    {
+      name: "GRIM REAPERS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **TERMINATOR** unit from your army that has not been selected to fight this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit (excluding MONSTERS and VEHICLES) you can re-roll the **Hit** **roll**.",
+      },
+    },
+    {
+      name: "UNDYING SPITE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after an enemy unit has selected its targets.",
+        target: "One **TERMINATOR** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6. On a 4+, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+      },
+    },
+    {
+      name: "SIGNAL POX",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One **LORD** OF **VIRULENCE** model from your army.",
+        effect: 'Select one **objective** **marker** within 30" of and visible to your model. Until the start of your next turn, while an enemy unit is within range of that objective marker, that unit is **Afflicted**.',
+      },
+    },
+    {
+      name: "MORTARION'S TEACHINGS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **TERMINATOR** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the **[ASSAULT]** and **[HEAVY]** abilities.",
+      },
+    },
+    {
+      name: "SICKENING IMPACT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, just after a **TERMINATOR** unit from your army ends a **Charge** **move**.",
+        target: "That TERMINATOR unit.",
+        effect: "Select one enemy unit within **Engagement** **Range** of your unit, then roll one D6 for each model in your unit that is within Engagement Range of that enemy unit: for each 2+, that enemy unit suffers 1 **mortal** **wound** (to a maximum of 6 mortal wounds).",
+      },
+    },
+  ],
+
+  "Flyblown Host": [
+    {
+      name: "NAUSEATING PAROXYSMS",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "One **DEATH** **GUARD** **INFANTRY** unit from your army that is within **Engagement** **Range** of one or more enemy units.",
+        effect: "Select one enemy unit within Engagement Range of your unit. That unit must take a **Battle-shock** **test**, subtracting 1 from the result.",
+      },
+    },
+    {
+      name: "VERMIN CLOUD",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase.",
+        target: "One **DEATH** **GUARD** **INFANTRY** unit from your army that has not been selected to fight this phase.",
+        effect: 'Until the end of the phase, each time a model in this unit makes a **Pile-in** or **Consolidation** **move**, it can move up to 6" instead of up to 3".',
+      },
+    },
+    {
+      name: "EYE OF THE SWARM",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DEATH** **GUARD** **INFANTRY** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, ranged weapons equipped by models in your unit (excluding **Blast** **weapons**) have the **[PISTOL]** ability.",
+      },
+    },
+    {
+      name: "DRONING HORROR",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target: "One **DEATH** **GUARD** **INFANTRY** unit from your army that has not been selected to shoot this phase.",
+        effect: "Until the end of the phase, each time a model in your unit makes a ranged attack, re-roll a **Hit** **roll** of 1. If that attack targets a unit within half range, you can re-roll the Hit roll instead.",
+      },
+    },
+    {
+      name: "ENERVATING ONSLAUGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, just after a DEATH GUARD INFANTRY unit from your army makes a **Charge** **move**.",
+        target: "That **DEATH** **GUARD** **INFANTRY** unit.",
+        effect: "Select one enemy unit within **Engagement** **Range** of your unit (excluding MONSTERS and VEHICLES). Roll one D6 for each model in your unit that is within Engagement Range of that unit, adding 1 to the result if that model is not a **CULTIST** or **POXWALKER** model: for each 5+, the selected enemy unit suffers 1 **mortal** **wound** (to a maximum of 6 mortal wounds).",
+      },
+    },
+    {
+      name: "MYPHITIC INVIGORATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
+        target: 'One **DEATH** **GUARD** **INFANTRY** unit from your army that is within 6" of one or more friendly **MYPHITIC** **BLIGHT-HAULER** units and that was selected as the target of one or more of the attacking unit’s attacks.',
+        effect: "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of this unit, subtract 1 from the **Wound** **roll**.",
+      },
+    },
+  ],
 };
