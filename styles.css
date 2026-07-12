@@ -908,6 +908,13 @@ body {
   margin-top: 14px;
 }
 
+/* Sits flush at the top of the stratagem drawer, above the strat grid --
+   overrides the default top margin meant for unit-card contexts. */
+.detachment-rules-block {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
 .abilities-block__body {
   background: var(--bg-page);
   padding: 12px;

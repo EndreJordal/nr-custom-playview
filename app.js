@@ -78,6 +78,9 @@ function formatText(str) {
   // sanitizeHTML escapes the literal <br> markers we author in strats.js —
   // unescape just that one fixed, attribute-less tag, nothing else.
   safeStr = safeStr.replace(/&lt;br&gt;/g, "<br>");
+  // Roster JSON rule/ability text (e.g. detachment rules) uses literal
+  // newlines for line breaks rather than <br> markers.
+  safeStr = safeStr.replace(/\n/g, "<br>");
   return safeStr;
 }
 
@@ -186,7 +189,16 @@ function processArmyList(data) {
             const dp = sub.costs.find(c => c.name === "Detachment Points");
             if (dp) detDP = dp.value;
           }
-          metadata.detachments.push({ name: sub.name, points: detPts, dp: detDP });
+          const rules = (sub.rules || []).map(r => ({
+            name: r.name,
+            desc: r.description,
+          }));
+          metadata.detachments.push({
+            name: sub.name,
+            points: detPts,
+            dp: detDP,
+            rules,
+          });
         }
       });
       return;
@@ -214,7 +226,16 @@ function processArmyList(data) {
         if (dp) detDP = dp.value;
       }
       if (!metadata.detachments.some(d => d.name === selection.name)) {
-        metadata.detachments.push({ name: selection.name, points: detPts, dp: detDP });
+        const rules = (selection.rules || []).map(r => ({
+          name: r.name,
+          desc: r.description,
+        }));
+        metadata.detachments.push({
+          name: selection.name,
+          points: detPts,
+          dp: detDP,
+          rules,
+        });
       }
     }
 
@@ -645,13 +666,37 @@ function renderStratagemSection(metadata) {
   );
   if (detachmentsWithStrats.length === 0) return;
 
-  rosterContainer.appendChild(el("div", "strat-section-header", "Stratagems"));
+  rosterContainer.appendChild(
+    el("div", "strat-section-header", "Detachment Rules &amp; Stratagems"),
+  );
 
   detachmentsWithStrats.forEach(det => {
     rosterContainer.appendChild(
       buildDetachmentBlock(det, STRATAGEM_DATABASE[det.name]),
     );
   });
+}
+
+function buildDetachmentRulesBlock(rules) {
+  const rows = rules
+    .map(
+      r => `
+        <div class="ability-row">
+          <strong class="ability-label">${formatText(r.name)}:</strong>
+          <span class="ability-text ability-text--desc">${formatText(r.desc)}</span>
+        </div>
+      `,
+    )
+    .join("");
+
+  return el(
+    "div",
+    "abilities-block detachment-rules-block",
+    `
+      <div class="abilities-block__header">Detachment Rules</div>
+      <div class="abilities-block__body">${rows}</div>
+    `,
+  );
 }
 
 function buildDetachmentBlock(det, stratsList) {
@@ -671,6 +716,9 @@ function buildDetachmentBlock(det, stratsList) {
   `;
 
   const detDrawer = el("div", "detachment-drawer");
+  if (det.rules && det.rules.length > 0) {
+    detDrawer.appendChild(buildDetachmentRulesBlock(det.rules));
+  }
   const stratGrid = el("div", "strat-grid");
   stratsList.forEach(strat => stratGrid.appendChild(buildStratCard(strat)));
   detDrawer.appendChild(stratGrid);
