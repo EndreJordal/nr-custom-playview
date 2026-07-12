@@ -5,6 +5,17 @@ const rosterContainer = document.getElementById("roster-container");
 let currentlyOpenDrawer = null;
 let currentlyActiveRow = null;
 
+// The last-loaded roster, kept around so attach/unattach actions (which
+// change which units are combined) can re-render the whole dashboard
+// without needing to re-parse or re-upload anything.
+let currentMetadata = null;
+let currentArmyRoster = null;
+
+// User-defined "Attached Units" groupings: { id, memberIds: [unit.id, ...] }.
+// Purely a display construct the user builds by hand -- see attachUnits().
+let attachGroups = [];
+const ATTACH_STORAGE_KEY = "40k_attach_groups";
+
 // Keyword name (uppercase) -> { name, desc, isCore }, rebuilt per roster load.
 let activeKeywordDefs = {};
 let openKeywordTooltip = null;
@@ -221,7 +232,111 @@ function loadRoster(rawData) {
     return;
   }
   activeKeywordDefs = parsed.metadata.keywordDefs || {};
+  currentMetadata = parsed.metadata;
+  currentArmyRoster = parsed.armyRoster;
+  attachGroups = loadAttachGroups(parsed.metadata.rosterId);
   renderDashboard(parsed.metadata, parsed.armyRoster);
+}
+
+// --- ATTACHED UNITS (user-driven combine) ---
+function loadAttachGroups(rosterId) {
+  try {
+    const raw = localStorage.getItem(ATTACH_STORAGE_KEY);
+    if (!raw) return [];
+    const stored = JSON.parse(raw);
+    if (stored.rosterId !== rosterId || !Array.isArray(stored.groups)) return [];
+    return stored.groups;
+  } catch (err) {
+    return [];
+  }
+}
+
+function saveAttachGroups() {
+  localStorage.setItem(
+    ATTACH_STORAGE_KEY,
+    JSON.stringify({ rosterId: currentMetadata?.rosterId, groups: attachGroups }),
+  );
+}
+
+function generateGroupId() {
+  return "combo-" + Math.random().toString(36).slice(2, 10);
+}
+
+// Combining two already-combined groups merges their real member units into
+// one group (reusing one of the two group ids) rather than nesting groups --
+// attachGroups only ever stores flat lists of real unit ids.
+function attachUnits(unitA, unitB) {
+  const groupIdA = unitA.isCombined ? unitA.id : null;
+  const groupIdB = unitB.isCombined ? unitB.id : null;
+  const idsA = unitA.isCombined ? unitA.members.map(m => m.id) : [unitA.id];
+  const idsB = unitB.isCombined ? unitB.members.map(m => m.id) : [unitB.id];
+
+  attachGroups = attachGroups.filter(g => g.id !== groupIdA && g.id !== groupIdB);
+  attachGroups.push({
+    id: groupIdA || groupIdB || generateGroupId(),
+    memberIds: [...idsA, ...idsB],
+  });
+
+  saveAttachGroups();
+  currentlyActiveRow = null;
+  currentlyOpenDrawer = null;
+  renderDashboard(currentMetadata, currentArmyRoster);
+}
+
+// Detaching down to a single remaining member dissolves the group entirely --
+// an "attached unit" of one doesn't mean anything.
+function unattachUnit(groupId, memberUnitId) {
+  const group = attachGroups.find(g => g.id === groupId);
+  if (!group) return;
+  group.memberIds = group.memberIds.filter(id => id !== memberUnitId);
+  if (group.memberIds.length < 2) {
+    attachGroups = attachGroups.filter(g => g.id !== groupId);
+  }
+  saveAttachGroups();
+  currentlyActiveRow = null;
+  currentlyOpenDrawer = null;
+  renderDashboard(currentMetadata, currentArmyRoster);
+}
+
+// Builds the pseudo-units shown under "Attached Units" from the current
+// attachGroups + the flat per-unit armyRoster, and returns what's left over.
+// Stale member ids (e.g. after re-uploading a changed roster) are dropped;
+// groups that fall below 2 valid members are dissolved and the cleanup persisted.
+function buildCombinedUnits(armyRoster) {
+  const unitsById = new Map(armyRoster.map(u => [u.id, u]));
+  let changed = false;
+
+  attachGroups = attachGroups.filter(group => {
+    const validIds = group.memberIds.filter(id => unitsById.has(id));
+    if (validIds.length !== group.memberIds.length) {
+      group.memberIds = validIds;
+      changed = true;
+    }
+    if (validIds.length < 2) {
+      changed = true;
+      return false;
+    }
+    return true;
+  });
+  if (changed) saveAttachGroups();
+
+  const consumedIds = new Set();
+  const combined = attachGroups.map(group => {
+    const members = group.memberIds.map(id => unitsById.get(id));
+    members.forEach(m => consumedIds.add(m.id));
+    return {
+      id: group.id,
+      isCombined: true,
+      members,
+      name: members.map(m => m.name).join(" + "),
+      points: members.reduce((sum, m) => sum + m.points, 0),
+      models: members.reduce((sum, m) => sum + m.models, 0),
+      keywords: Array.from(new Set(members.flatMap(m => m.keywords))),
+    };
+  });
+
+  const remaining = armyRoster.filter(u => !consumedIds.has(u.id));
+  return { combined, remaining };
 }
 
 // --- 3. DATA EXTRACTION ---
@@ -233,6 +348,7 @@ function processArmyList(data) {
 
   const metadata = {
     listName: data.roster.name || "Unnamed Roster",
+    rosterId: data.roster.id || null,
     factionName: forces[0].catalogueName || "Unknown Faction",
     totalPoints: 0,
     pointsLimit: null,
@@ -322,6 +438,7 @@ function processArmyList(data) {
     if (isConfig || selection.type === "upgrade") return;
 
     const flatUnit = {
+      id: selection.id,
       name: selection.name || "Unknown Unit",
       points: 0,
       models: 0,
@@ -527,7 +644,12 @@ function extractNodeData(node, unit, defs) {
 function renderDashboard(metadata, armyRoster) {
   rosterContainer.innerHTML = "";
   rosterContainer.appendChild(buildHeader(metadata));
-  renderUnitSections(armyRoster);
+
+  const { combined, remaining } = buildCombinedUnits(armyRoster);
+  const allTopLevelUnits = [...combined, ...remaining];
+
+  renderAttachedUnitsSection(combined, allTopLevelUnits);
+  renderUnitSections(remaining, allTopLevelUnits);
   renderStratagemSection(metadata);
 }
 
@@ -674,7 +796,17 @@ function buildHeader(metadata) {
   return headerWrapper;
 }
 
-function renderUnitSections(armyRoster) {
+function renderAttachedUnitsSection(combinedUnits, allTopLevelUnits) {
+  if (combinedUnits.length === 0) return;
+  rosterContainer.appendChild(
+    el("div", "category-header category-header--attached", "ATTACHED UNITS"),
+  );
+  combinedUnits.forEach(cu =>
+    rosterContainer.appendChild(buildCombinedUnitRow(cu, allTopLevelUnits)),
+  );
+}
+
+function renderUnitSections(armyRoster, allTopLevelUnits) {
   const groupedBuckets = {};
   CATEGORY_ORDER.forEach(c => (groupedBuckets[c.key] = []));
   const uncategorizedBucket = [];
@@ -694,7 +826,7 @@ function renderUnitSections(armyRoster) {
     if (bucketUnits.length === 0) return;
     rosterContainer.appendChild(el("div", "category-header", catDef.label));
     bucketUnits.forEach(unit =>
-      rosterContainer.appendChild(buildUnitRow(unit)),
+      rosterContainer.appendChild(buildUnitRow(unit, allTopLevelUnits)),
     );
   });
 
@@ -707,12 +839,12 @@ function renderUnitSections(armyRoster) {
       ),
     );
     uncategorizedBucket.forEach(unit =>
-      rosterContainer.appendChild(buildUnitRow(unit)),
+      rosterContainer.appendChild(buildUnitRow(unit, allTopLevelUnits)),
     );
   }
 }
 
-function buildUnitRow(unit) {
+function buildUnitRow(unit, allTopLevelUnits) {
   const row = el("div", "unit-row");
   row.tabIndex = 0;
   row.setAttribute("role", "button");
@@ -741,7 +873,45 @@ function buildUnitRow(unit) {
     closeActiveDrawer();
     currentlyActiveRow = row;
     row.classList.add("unit-row--open");
-    renderInlineTray(row, unit);
+    renderInlineTray(row, unit, allTopLevelUnits);
+  };
+
+  row.addEventListener("click", toggle);
+  row.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggle();
+    }
+  });
+
+  return row;
+}
+
+// Collapsed row for a combined "Attached Units" entry -- deliberately has no
+// statblock preview (there isn't one single statline to show), just name/
+// count/points, same as the top line of a normal unit row.
+function buildCombinedUnitRow(combinedUnit, allTopLevelUnits) {
+  const row = el("div", "unit-row unit-row--combined");
+  row.tabIndex = 0;
+  row.setAttribute("role", "button");
+
+  row.innerHTML = `
+    <div class="unit-row__title">
+      <span class="unit-row__name">${sanitizeHTML(combinedUnit.name)}</span>
+      <span class="unit-row__count">x${sanitizeHTML(combinedUnit.models.toString())}</span>
+      <span class="unit-row__points">${sanitizeHTML(combinedUnit.points.toString())} pts</span>
+    </div>
+  `;
+
+  const toggle = () => {
+    if (currentlyActiveRow === row) {
+      closeActiveDrawer();
+      return;
+    }
+    closeActiveDrawer();
+    currentlyActiveRow = row;
+    row.classList.add("unit-row--open");
+    renderCombinedInlineTray(row, combinedUnit, allTopLevelUnits);
   };
 
   row.addEventListener("click", toggle);
@@ -898,7 +1068,7 @@ function buildStratCard(strat) {
   return card;
 }
 
-function renderInlineTray(targetRow, unit) {
+function renderInlineTray(targetRow, unit, allTopLevelUnits) {
   const inlineDrawer = el("div", "unit-drawer");
   inlineDrawer.innerHTML = `
     <div class="unit-drawer__inner">
@@ -951,6 +1121,9 @@ function renderInlineTray(targetRow, unit) {
       ${buildKeywordsBlock(unit)}
     </div>
   `;
+  inlineDrawer.querySelector(".unit-drawer__inner").appendChild(
+    buildAttachControl(unit, allTopLevelUnits),
+  );
 
   targetRow.insertAdjacentElement("afterend", inlineDrawer);
   currentlyOpenDrawer = inlineDrawer;
@@ -958,6 +1131,260 @@ function renderInlineTray(targetRow, unit) {
     inlineDrawer.style.maxHeight = inlineDrawer.scrollHeight + 50 + "px";
   });
 }
+
+// Drawer body for a combined "Attached Units" entry. Reuses the same section
+// layout as a normal unit (statblock / ranged / melee / enhancements /
+// abilities / keywords) but every section is partitioned into labeled blocks
+// per constituent unit -- nothing is merged or deduped across unit
+// boundaries, since these are still legally separate units standing together.
+function renderCombinedInlineTray(targetRow, combinedUnit, allTopLevelUnits) {
+  const inlineDrawer = el("div", "unit-drawer unit-drawer--combined");
+  const members = combinedUnit.members;
+  inlineDrawer.innerHTML = `
+    <div class="unit-drawer__inner">
+      <div>
+        <div class="weapon-section-header weapon-section-header--ranged">
+          <img src="ranged.png" alt="Ranged Icon" class="weapon-section-header__icon"> RANGED WEAPONS
+        </div>
+        <div class="weapon-table-scroll">
+          <table class="weapon-table">
+            <tr class="weapon-table__head-row">
+              <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
+              <th class="weapon-table__head">RANGE</th>
+              <th class="weapon-table__head">A</th>
+              <th class="weapon-table__head">BS</th>
+              <th class="weapon-table__head">S</th>
+              <th class="weapon-table__head">AP</th>
+              <th class="weapon-table__head">D</th>
+              <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
+            </tr>
+            ${buildCombinedWeaponRows(members, "ranged")}
+          </table>
+        </div>
+      </div>
+
+      <div class="unit-drawer__section">
+        <div class="weapon-section-header weapon-section-header--melee">
+          <img src="melee.png" alt="Melee Icon" class="weapon-section-header__icon weapon-section-header__icon--melee"> MELEE WEAPONS
+        </div>
+        <div class="weapon-table-scroll">
+          <table class="weapon-table">
+            <tr class="weapon-table__head-row">
+              <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
+              <th class="weapon-table__head">RANGE</th>
+              <th class="weapon-table__head">A</th>
+              <th class="weapon-table__head">WS</th>
+              <th class="weapon-table__head">S</th>
+              <th class="weapon-table__head">AP</th>
+              <th class="weapon-table__head">D</th>
+              <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
+            </tr>
+            ${buildCombinedWeaponRows(members, "melee")}
+          </table>
+        </div>
+      </div>
+
+      ${buildCombinedEnhancementsBlock(members)}
+      ${buildCombinedAbilitiesBlock(members)}
+      ${buildCombinedKeywordsBlock(members)}
+    </div>
+  `;
+
+  const inner = inlineDrawer.querySelector(".unit-drawer__inner");
+  inner.insertBefore(
+    buildCombinedStatblockSection(combinedUnit.id, members),
+    inner.firstChild,
+  );
+  inner.appendChild(buildAttachControl(combinedUnit, allTopLevelUnits));
+
+  targetRow.insertAdjacentElement("afterend", inlineDrawer);
+  currentlyOpenDrawer = inlineDrawer;
+  requestAnimationFrame(() => {
+    inlineDrawer.style.maxHeight = inlineDrawer.scrollHeight + 50 + "px";
+  });
+}
+
+// One labeled row per constituent unit, each with its own statblock(s) and
+// an "Unattach from unit" button -- unattaching removes just that one unit
+// from the group and sends it back to its normal category.
+function buildCombinedStatblockSection(groupId, members) {
+  const container = el("div", "unit-drawer__statblock unit-drawer__statblock--combined");
+  members.forEach(m => {
+    const rows = m.statblocks
+      .map(
+        sb => `
+          <div class="statblock-row">
+            <div class="statblock-row__boxes">${buildStatBoxes(sb.stats)}</div>
+            ${m.statblocks.length > 1 ? `<span class="statblock-row__label">${sanitizeHTML(sb.label)}</span>` : ""}
+          </div>
+        `,
+      )
+      .join("");
+
+    const memberBlock = el("div", "combined-statblock-member");
+    memberBlock.innerHTML = `
+      <div class="combined-statblock-member__name">${sanitizeHTML(m.name)}</div>
+      ${rows}
+    `;
+    const unattachBtn = el("button", "unattach-btn", "Unattach from unit");
+    unattachBtn.type = "button";
+    unattachBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      unattachUnit(groupId, m.id);
+    });
+    memberBlock.appendChild(unattachBtn);
+    container.appendChild(memberBlock);
+  });
+  return container;
+}
+
+function buildSubHeaderRow(label) {
+  return `<tr class="weapon-table__subheader-row"><td class="weapon-table__subheader" colspan="8">${sanitizeHTML(label)}</td></tr>`;
+}
+
+function buildCombinedWeaponRows(members, key) {
+  const withProfiles = members.filter(m => m[key].length > 0);
+  if (withProfiles.length === 0) return buildWeaponRows([]);
+  return withProfiles
+    .map(m => buildSubHeaderRow(m.name) + buildWeaponRows(m[key]))
+    .join("");
+}
+
+function buildCombinedEnhancementsBlock(members) {
+  const withEnhancements = members.filter(m => m.enhancements.length > 0);
+  if (withEnhancements.length === 0) return "";
+
+  const sections = withEnhancements
+    .map(m => {
+      const rows = m.enhancements
+        .map(
+          e => `
+            <div class="ability-row">
+              <strong class="enhancement-label">${formatText(e.name)}</strong>
+              <span class="enhancement-cost">${sanitizeHTML(e.cost.toString())} pts</span>
+              <span class="ability-text ability-text--desc">${formatText(e.desc)}</span>
+            </div>
+          `,
+        )
+        .join("");
+      return `
+        <div class="abilities-block__member">
+          <div class="abilities-block__member-header">${sanitizeHTML(m.name)}</div>
+          ${rows}
+        </div>
+      `;
+    })
+    .join("");
+
+  return `
+    <div class="abilities-block">
+      <div class="abilities-block__header abilities-block__header--enhancement">Enhancements</div>
+      <div class="abilities-block__body">${sections}</div>
+    </div>
+  `;
+}
+
+function buildCombinedAbilitiesBlock(members) {
+  const sections = members
+    .map(m => {
+      const coreText = m.coreRules.length > 0 ? buildRuleChips(m.coreRules) : "-";
+      let inner = `<div class="ability-row"><strong class="ability-label ability-label--core">CORE:</strong> <span class="ability-text">${coreText}</span></div>`;
+      if (m.factionRules.length > 0) {
+        inner += `<div class="ability-row"><strong class="ability-label ability-label--faction">FACTION:</strong> <span class="ability-text">${buildRuleChips(m.factionRules)}</span></div>`;
+      }
+      m.abilities.forEach(a => {
+        inner += `<div class="ability-row"><strong class="ability-label">${formatText(a.name)}:</strong> <span class="ability-text ability-text--desc">${formatText(a.desc)}</span></div>`;
+      });
+      return `
+        <div class="abilities-block__member">
+          <div class="abilities-block__member-header">${sanitizeHTML(m.name)}</div>
+          ${inner}
+        </div>
+      `;
+    })
+    .join("");
+
+  return `
+    <div class="abilities-block">
+      <div class="abilities-block__header">Abilities &amp; Rules</div>
+      <div class="abilities-block__body">${sections}</div>
+    </div>
+  `;
+}
+
+function buildCombinedKeywordsBlock(members) {
+  const withKeywords = members.filter(m => m.keywords.length > 0);
+  if (withKeywords.length === 0) return "";
+
+  const sections = withKeywords
+    .map(
+      m => `
+        <div class="keywords-block__member">
+          <div class="keywords-block__member-header">${sanitizeHTML(m.name)}</div>
+          ${buildKeywordBadges(m.keywords.join(","))}
+        </div>
+      `,
+    )
+    .join("");
+
+  return `
+    <div class="keywords-block">
+      <strong class="keywords-block__label">Keywords</strong>
+      ${sections}
+    </div>
+  `;
+}
+
+// Sits at the bottom of every unit drawer, plain or combined. Lists every
+// other top-level entry (including other Attached Units groups, so several
+// units can be folded into one bigger combined unit) as a tap target.
+function buildAttachControl(unit, allTopLevelUnits) {
+  const wrapper = el("div", "attach-control");
+  const candidates = allTopLevelUnits.filter(u => u.id !== unit.id);
+
+  const btn = el("button", "attach-btn", "+ Attach Unit");
+  btn.type = "button";
+
+  const picker = el("div", "attach-picker");
+  candidates.forEach(candidate => {
+    const option = el(
+      "button",
+      "attach-picker__option",
+      sanitizeHTML(candidate.name),
+    );
+    option.type = "button";
+    option.addEventListener("click", e => {
+      e.stopPropagation();
+      attachUnits(unit, candidate);
+    });
+    picker.appendChild(option);
+  });
+
+  if (candidates.length === 0) {
+    btn.disabled = true;
+    btn.title = "No other units to attach";
+  }
+
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    const isOpen = picker.classList.contains("attach-picker--open");
+    document
+      .querySelectorAll(".attach-picker--open")
+      .forEach(p => p.classList.remove("attach-picker--open"));
+    if (!isOpen) picker.classList.add("attach-picker--open");
+  });
+
+  wrapper.appendChild(btn);
+  wrapper.appendChild(picker);
+  return wrapper;
+}
+
+document.addEventListener("click", e => {
+  if (e.target.closest(".attach-control")) return;
+  document
+    .querySelectorAll(".attach-picker--open")
+    .forEach(p => p.classList.remove("attach-picker--open"));
+});
 
 // Only a flat integer A value (e.g. "4") has a meaningful total across
 // models — dice notation like "D3" or "D6+3" can't be multiplied into a

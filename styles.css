@@ -414,6 +414,22 @@ body {
   color: var(--text-tertiary);
 }
 
+/* Deliberately stands out from the plain category headers above/below it --
+   same accent-bar treatment as .strat-section-header, but pinned to the
+   Primary accent (the Detachment header tracks the Secondary accent). */
+.category-header--attached {
+  color: var(--text-primary);
+  gap: 10px;
+}
+
+.category-header--attached::before {
+  content: "";
+  width: 4px;
+  height: 14px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
 /* --- UNIT ROW --- */
 .unit-row {
   display: flex;
@@ -442,6 +458,10 @@ body {
 .unit-row--open:hover {
   background: var(--accent-soft);
   border-color: var(--accent);
+}
+
+.unit-row--combined {
+  border-left: 3px solid var(--accent);
 }
 
 .unit-row:focus-visible,
@@ -786,6 +806,189 @@ body {
 .unit-drawer__statblock .stat-box__value {
   font-size: 22px;
   padding: 6px 0;
+}
+
+/* --- COMBINED UNIT SUB-GROUPING (Attached Units drawer) --- */
+.unit-drawer__statblock--combined {
+  width: 100%;
+  gap: 0;
+}
+
+.combined-statblock-member {
+  width: 100%;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.combined-statblock-member:first-child {
+  padding-top: 0;
+}
+
+.combined-statblock-member:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.combined-statblock-member__name {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.unattach-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle-strong);
+  background: var(--bg-surface-2);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s var(--ease-out-expo), color 0.15s var(--ease-out-expo);
+}
+
+.unattach-btn:hover {
+  background: var(--bg-surface-3);
+  color: var(--text-primary);
+}
+
+/* Full-width divider row inside a shared weapon table, labeling which
+   constituent unit the rows below it belong to. */
+.weapon-table__subheader-row {
+  height: auto;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.weapon-table__subheader {
+  background: var(--bg-surface-2);
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: left;
+  padding: 6px 10px;
+}
+
+/* Same per-member labeling inside the Abilities/Enhancements and Keywords
+   blocks of a combined unit's drawer. */
+.abilities-block__member {
+  margin-bottom: 14px;
+}
+
+.abilities-block__member:last-child {
+  margin-bottom: 0;
+}
+
+.abilities-block__member-header {
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.keywords-block__member {
+  margin-bottom: 10px;
+}
+
+.keywords-block__member:last-child {
+  margin-bottom: 0;
+}
+
+.keywords-block__member-header {
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+/* --- ATTACH CONTROL --- */
+.attach-control {
+  margin-top: 18px;
+  position: relative;
+}
+
+.attach-btn {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border-subtle-strong);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s var(--ease-out-expo), border-color 0.15s var(--ease-out-expo),
+    color 0.15s var(--ease-out-expo);
+}
+
+.attach-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.attach-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.attach-btn:disabled:hover {
+  background: transparent;
+  border-color: var(--border-subtle-strong);
+  color: var(--text-secondary);
+}
+
+.attach-picker {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  min-width: 220px;
+  max-height: 240px;
+  overflow-y: auto;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle-strong);
+  border-radius: var(--radius-md);
+  padding: 6px;
+  z-index: 5;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.attach-picker--open {
+  display: flex;
+}
+
+.attach-picker__option {
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.attach-picker__option:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .weapon-table-scroll {
