@@ -179,11 +179,14 @@ function processArmyList(data) {
       selection.selections.forEach(sub => {
         if (sub.group === "Detachment") {
           let detPts = 0;
+          let detDP = 0;
           if (sub.costs) {
             const p = sub.costs.find(c => c.name === "pts");
             if (p) detPts = p.value;
+            const dp = sub.costs.find(c => c.name === "Detachment Points");
+            if (dp) detDP = dp.value;
           }
-          metadata.detachments.push({ name: sub.name, points: detPts });
+          metadata.detachments.push({ name: sub.name, points: detPts, dp: detDP });
         }
       });
       return;
@@ -203,12 +206,15 @@ function processArmyList(data) {
       STRATAGEM_DATABASE[selection.name]
     ) {
       let detPts = 0;
+      let detDP = 0;
       if (selection.costs) {
         const p = selection.costs.find(c => c.name === "pts");
         if (p) detPts = p.value;
+        const dp = selection.costs.find(c => c.name === "Detachment Points");
+        if (dp) detDP = dp.value;
       }
       if (!metadata.detachments.some(d => d.name === selection.name)) {
-        metadata.detachments.push({ name: selection.name, points: detPts });
+        metadata.detachments.push({ name: selection.name, points: detPts, dp: detDP });
       }
     }
 
@@ -440,10 +446,15 @@ function buildHeader(metadata) {
     } else {
       const detachmentChips = metadata.detachments.length
         ? metadata.detachments
-            .map(
-              d =>
-                `<span class="chip">${sanitizeHTML(d.name)}${d.points > 0 ? ` <span class="chip__meta">${sanitizeHTML(d.points.toString())} pts</span>` : ""}</span>`,
-            )
+            .map(d => {
+              const meta = [];
+              if (d.dp > 0) meta.push(`${sanitizeHTML(d.dp.toString())} DP`);
+              if (d.points > 0) meta.push(`${sanitizeHTML(d.points.toString())} pts`);
+              const metaHTML = meta.length
+                ? ` <span class="chip__meta">${meta.join(" &middot; ")}</span>`
+                : "";
+              return `<span class="chip">${sanitizeHTML(d.name)}${metaHTML}</span>`;
+            })
             .join("")
         : `<span class="chip chip--muted">None selected</span>`;
 
@@ -646,12 +657,16 @@ function renderStratagemSection(metadata) {
 function buildDetachmentBlock(det, stratsList) {
   const wrapper = document.createDocumentFragment();
 
+  const detRowMeta = [];
+  if (det.dp > 0) detRowMeta.push(`${sanitizeHTML(det.dp.toString())} DP`);
+  if (det.points > 0) detRowMeta.push(`${sanitizeHTML(det.points.toString())} pts`);
+
   const detRow = el("div", "detachment-row");
   detRow.tabIndex = 0;
   detRow.setAttribute("role", "button");
   detRow.innerHTML = `
     <span class="detachment-row__name">${sanitizeHTML(det.name)}</span>
-    ${det.points > 0 ? `<span class="detachment-row__points">${sanitizeHTML(det.points.toString())} pts</span>` : ""}
+    ${detRowMeta.length ? `<span class="detachment-row__points">${detRowMeta.join(" &middot; ")}</span>` : ""}
   `;
 
   const detDrawer = el("div", "detachment-drawer");
