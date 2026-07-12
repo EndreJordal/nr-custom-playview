@@ -1207,32 +1207,29 @@ function renderCombinedInlineTray(targetRow, combinedUnit, allTopLevelUnits) {
 // One labeled row per constituent unit, each with its own statblock(s) and
 // an "Unattach from unit" button -- unattaching removes just that one unit
 // from the group and sends it back to its normal category.
+// Mirrors buildStatblockSection's row layout exactly (stat boxes + label,
+// all on one line) -- the only addition is an Unattach button on the same
+// row, to the right of the label.
 function buildCombinedStatblockSection(groupId, members) {
   const container = el("div", "unit-drawer__statblock unit-drawer__statblock--combined");
   members.forEach(m => {
-    const rows = m.statblocks
-      .map(
-        sb => `
-          <div class="statblock-row">
-            <div class="statblock-row__boxes">${buildStatBoxes(sb.stats)}</div>
-            ${m.statblocks.length > 1 ? `<span class="statblock-row__label">${sanitizeHTML(sb.label)}</span>` : ""}
-          </div>
-        `,
-      )
-      .join("");
-
     const memberBlock = el("div", "combined-statblock-member");
-    memberBlock.innerHTML = `
-      <div class="combined-statblock-member__name">${sanitizeHTML(m.name)}</div>
-      ${rows}
-    `;
-    const unattachBtn = el("button", "unattach-btn", "Unattach from unit");
-    unattachBtn.type = "button";
-    unattachBtn.addEventListener("click", e => {
-      e.stopPropagation();
-      unattachUnit(groupId, m.id);
+    m.statblocks.forEach(sb => {
+      const label = m.statblocks.length > 1 ? `${m.name} — ${sb.label}` : m.name;
+      const row = el("div", "statblock-row");
+      row.innerHTML = `
+        <div class="statblock-row__boxes">${buildStatBoxes(sb.stats)}</div>
+        <span class="statblock-row__label">${sanitizeHTML(label)}</span>
+      `;
+      const unattachBtn = el("button", "unattach-btn", "Unattach from unit");
+      unattachBtn.type = "button";
+      unattachBtn.addEventListener("click", e => {
+        e.stopPropagation();
+        unattachUnit(groupId, m.id);
+      });
+      row.appendChild(unattachBtn);
+      memberBlock.appendChild(row);
     });
-    memberBlock.appendChild(unattachBtn);
     container.appendChild(memberBlock);
   });
   return container;
