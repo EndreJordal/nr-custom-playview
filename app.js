@@ -85,6 +85,14 @@ function sanitizeHTML(str) {
   return temp.innerHTML;
 }
 
+// sanitizeHTML only escapes &, <, > -- safe for text content, but rule names
+// like `Scouts 8"` contain a literal " that would otherwise break out of a
+// double-quoted HTML attribute. Use this instead of sanitizeHTML whenever
+// building an attribute value (e.g. data-keyword="...").
+function escapeAttr(str) {
+  return sanitizeHTML(str).replace(/"/g, "&quot;");
+}
+
 function formatText(str) {
   if (!str) return "";
   let safeStr = sanitizeHTML(str);
@@ -911,7 +919,7 @@ function resolveKeywordDef(rawName) {
 function buildKeywordBadge(rawName, forceKind) {
   const def = resolveKeywordDef(rawName);
   const kind = def ? forceKind || (def.isCore ? "core" : "faction") : "none";
-  const dataAttr = def ? ` data-keyword="${sanitizeHTML(rawName)}"` : "";
+  const dataAttr = def ? ` data-keyword="${escapeAttr(rawName)}"` : "";
   return `<span class="keyword-badge keyword-badge--${kind}"${dataAttr}>${formatText(rawName)}</span>`;
 }
 
