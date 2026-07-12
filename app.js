@@ -46,6 +46,16 @@ if ("serviceWorker" in navigator && !isLocalDev) {
       console.error("Service worker registration failed:", err);
     });
   });
+
+  // When a new service worker takes control (after an update), the assets
+  // already in memory/DOM are still the old version -- reload once so the
+  // user actually sees the update instead of needing a manual refresh.
+  let swRefreshing = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (swRefreshing) return;
+    swRefreshing = true;
+    window.location.reload();
+  });
 }
 
 // --- 1. INITIALIZATION & CACHING ---
