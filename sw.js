@@ -1,4 +1,4 @@
-const CACHE_NAME = "nr-playview-v45";
+const CACHE_NAME = "nr-playview-v46";
 
 // Relative (not root-absolute) so this works whether the site is served
 // from a domain root (Netlify) or a subpath (GitHub Pages project sites,

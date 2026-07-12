@@ -257,7 +257,7 @@ function processArmyList(data) {
     // Dynamic Detachment Extractor: Captures Name and Inherent Points Costs
     if (selection.name === "Detachment" && selection.selections) {
       selection.selections.forEach(sub => {
-        if (sub.group === "Detachment") {
+        if (sub.group === "Detachment" || sub.group === "Detachments") {
           let detPts = 0;
           let detDP = 0;
           if (sub.costs) {
