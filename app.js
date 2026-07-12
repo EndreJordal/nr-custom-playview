@@ -555,6 +555,7 @@ function buildAccentPickerRow() {
       const opt = document.createElement("option");
       opt.value = c.hex;
       opt.textContent = c.name;
+      opt.style.color = c.hex;
       if (c.hex.toLowerCase() === (prefs[slot.key] || "").toLowerCase()) {
         opt.selected = true;
       }
@@ -562,12 +563,14 @@ function buildAccentPickerRow() {
     });
 
     select.style.borderColor = prefs[slot.key];
+    select.style.color = prefs[slot.key];
     select.addEventListener("change", () => {
       const newPrefs = loadAccentPrefs();
       newPrefs[slot.key] = select.value;
       localStorage.setItem(ACCENT_STORAGE_KEY, JSON.stringify(newPrefs));
       applyAccentPrefs(newPrefs);
       select.style.borderColor = select.value;
+      select.style.color = select.value;
     });
 
     wrap.appendChild(label);
