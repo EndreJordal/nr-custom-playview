@@ -881,7 +881,7 @@ function buildWeaponRows(weaponList) {
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.s)}</td>
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.ap)}</td>
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.d)}</td>
-          <td class="weapon-table__cell weapon-table__cell--keywords">${buildKeywordBadges(w.keywords)}</td>
+          <td class="weapon-table__cell weapon-table__cell--keywords">${buildKeywordBadges(w.keywords, "weapon")}</td>
         </tr>
       `,
     )
@@ -902,24 +902,30 @@ function resolveKeywordDef(rawName) {
   return stem ? activeKeywordDefs[stem] || null : null;
 }
 
-function buildKeywordBadge(rawName, badgeClass) {
+// Badge color signals what a keyword *is* and whether it's tappable:
+// teal = weapon-ability keyword, orange = CORE rule, violet = FACTION rule,
+// grey = no definition found (not interactive). forceKind pins weapon-table
+// badges to teal regardless of the underlying rule's page/isCore flag --
+// everywhere else (CORE/FACTION rows, the bottom Keywords block) the color
+// is derived from the definition itself.
+function buildKeywordBadge(rawName, forceKind) {
   const def = resolveKeywordDef(rawName);
-  const cls = def ? `${badgeClass} ${badgeClass}--interactive` : badgeClass;
+  const kind = def ? forceKind || (def.isCore ? "core" : "faction") : "none";
   const dataAttr = def ? ` data-keyword="${sanitizeHTML(rawName)}"` : "";
-  return `<span class="${cls}"${dataAttr}>${formatText(rawName)}</span>`;
+  return `<span class="keyword-badge keyword-badge--${kind}"${dataAttr}>${formatText(rawName)}</span>`;
 }
 
-function buildKeywordBadges(keywords) {
+function buildKeywordBadges(keywords, forceKind) {
   if (!keywords || !keywords.trim()) {
     return `<span class="weapon-table__no-keywords">-</span>`;
   }
   return (
-    `<div class="weapon-keywords">` +
+    `<div class="keyword-badge-row">` +
     keywords
       .split(",")
       .map(k => {
         const cleanK = k.trim();
-        return cleanK ? buildKeywordBadge(cleanK, "weapon-keyword-badge") : "";
+        return cleanK ? buildKeywordBadge(cleanK, forceKind) : "";
       })
       .join("") +
     `</div>`
@@ -950,16 +956,16 @@ function buildEnhancementsBlock(unit) {
 }
 
 function buildRuleChips(names) {
-  return names.map(n => buildKeywordBadge(n, "rule-chip")).join("");
+  return `<div class="keyword-badge-row">${names.map(n => buildKeywordBadge(n)).join("")}</div>`;
 }
 
 function buildAbilitiesBlock(unit) {
   const coreText =
     unit.coreRules.length > 0 ? buildRuleChips(unit.coreRules) : "-";
-  let innerContent = `<div class="ability-row"><strong class="ability-label ability-label--core">CORE:</strong> <span class="ability-text rule-chip-row">${coreText}</span></div>`;
+  let innerContent = `<div class="ability-row"><strong class="ability-label ability-label--core">CORE:</strong> <span class="ability-text">${coreText}</span></div>`;
 
   if (unit.factionRules.length > 0) {
-    innerContent += `<div class="ability-row"><strong class="ability-label ability-label--faction">FACTION:</strong> <span class="ability-text rule-chip-row">${buildRuleChips(unit.factionRules)}</span></div>`;
+    innerContent += `<div class="ability-row"><strong class="ability-label ability-label--faction">FACTION:</strong> <span class="ability-text">${buildRuleChips(unit.factionRules)}</span></div>`;
   }
 
   unit.abilities.forEach(a => {
@@ -1010,9 +1016,14 @@ function closeKeywordTooltip() {
 }
 
 function openKeywordTooltipFor(anchor, def) {
+  // Reuse the badge's own color class so the popover header matches what
+  // was tapped (teal/orange/violet), instead of recomputing the kind.
+  const kind = ["weapon", "core", "faction"].find(k =>
+    anchor.classList.contains(`keyword-badge--${k}`),
+  );
   const tooltip = el(
     "div",
-    "keyword-tooltip",
+    `keyword-tooltip${kind ? ` keyword-tooltip--${kind}` : ""}`,
     `
       <div class="keyword-tooltip__name">${sanitizeHTML(def.name)}</div>
       <div class="keyword-tooltip__desc">${formatText(def.desc)}</div>

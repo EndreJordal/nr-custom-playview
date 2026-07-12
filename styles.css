@@ -24,6 +24,8 @@
   --accent-amber-soft: rgba(242, 181, 68, 0.17);
   --accent-danger: #f87171; /* semantic warning: opponent's turn */
   --accent-danger-soft: rgba(248, 113, 113, 0.16);
+  --accent-violet: #b794f6; /* faction/army-specific keyword badges */
+  --accent-violet-soft: rgba(183, 148, 246, 0.18);
 
   /* Stratagem-card exception palette (deliberately outside the core system) */
   --strat-blue: #3a5ba0; /* "your turn" stratagems */
@@ -882,17 +884,22 @@ body {
   color: var(--text-tertiary);
 }
 
-.weapon-keywords {
+.keyword-badge-row {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
   padding: 2px 0;
 }
 
-.weapon-keyword-badge {
-  background: var(--accent-soft);
+/* --- KEYWORD BADGES & TOOLTIPS --- */
+/* Color signals what a keyword *is* and whether it's tappable: teal =
+   weapon-ability keyword, orange = CORE rule, violet = FACTION rule, grey =
+   no definition found (static, not interactive). Used identically in the
+   weapon tables, the CORE/FACTION rows, and the bottom Keywords block. */
+.keyword-badge {
+  background: var(--bg-surface-3);
   border: 1px solid transparent;
-  color: var(--accent);
+  color: var(--text-tertiary);
   padding: 2px 7px;
   border-radius: var(--radius-sm);
   font-family: var(--font-sans);
@@ -903,45 +910,60 @@ body {
   white-space: nowrap;
 }
 
-/* --- KEYWORD TOOLTIPS --- */
-/* Shared by weapon keyword badges and CORE/FACTION rule chips: a subtle
-   dotted underline signals "tap for definition" without adding visual
-   weight to the many keywords that have no matching entry. */
-.weapon-keyword-badge--interactive,
-.rule-chip--interactive {
+.keyword-badge--weapon,
+.keyword-badge--core,
+.keyword-badge--faction {
   cursor: pointer;
   border-bottom: 1px dotted currentColor;
   transition: background-color 0.15s var(--ease-out-expo);
 }
 
-.weapon-keyword-badge--interactive:hover,
-.rule-chip--interactive:hover {
+.keyword-badge--weapon {
   background: var(--accent-soft);
+  color: var(--accent);
 }
 
+.keyword-badge--core {
+  background: var(--accent-amber-soft);
+  color: var(--accent-amber);
+}
+
+.keyword-badge--faction {
+  background: var(--accent-violet-soft);
+  color: var(--accent-violet);
+}
+
+.keyword-badge--weapon:hover {
+  background: rgba(45, 212, 191, 0.28);
+}
+
+.keyword-badge--core:hover {
+  background: rgba(242, 181, 68, 0.28);
+}
+
+.keyword-badge--faction:hover {
+  background: rgba(183, 148, 246, 0.3);
+}
+
+/* Open/tapped state -- solid fill, wins over the kind color above
+   regardless of declaration order since it's applied as an extra class. */
 .keyword-badge--active {
-  background: var(--accent);
-  color: var(--bg-page);
   border-bottom-color: transparent;
 }
 
-.rule-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+.keyword-badge--active.keyword-badge--weapon {
+  background: var(--accent);
+  color: var(--bg-page);
 }
 
-.rule-chip {
-  background: transparent;
-  border: none;
-  color: inherit;
-  padding: 0;
-  font: inherit;
-  display: inline;
+.keyword-badge--active.keyword-badge--core {
+  background: var(--accent-amber);
+  color: var(--bg-page);
 }
 
-.rule-chip:not(:last-child)::after {
-  content: ", ";
+.keyword-badge--active.keyword-badge--faction {
+  background: var(--accent-violet);
+  color: var(--bg-page);
 }
 
 .keyword-tooltip {
@@ -975,6 +997,14 @@ body {
   color: var(--accent);
   text-transform: uppercase;
   margin-bottom: 4px;
+}
+
+.keyword-tooltip--core .keyword-tooltip__name {
+  color: var(--accent-amber);
+}
+
+.keyword-tooltip--faction .keyword-tooltip__name {
+  color: var(--accent-violet);
 }
 
 .keyword-tooltip__desc {
@@ -1019,10 +1049,17 @@ body {
 
 .ability-label--core,
 .ability-label--faction {
-  color: var(--text-tertiary);
   font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.ability-label--core {
+  color: var(--accent-amber);
+}
+
+.ability-label--faction {
+  color: var(--accent-violet);
 }
 
 .enhancement-label {
