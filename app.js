@@ -660,7 +660,7 @@ function buildDetachmentBlock(det, stratsList) {
   const detRowMeta = [];
   if (det.dp > 0) detRowMeta.push(`${sanitizeHTML(det.dp.toString())} DP`);
   if (det.points > 0) detRowMeta.push(`${sanitizeHTML(det.points.toString())} pts`);
-  detRowMeta.push(`${stratsList.length} strat${stratsList.length === 1 ? "" : "s"}`);
+  detRowMeta.push(`${stratsList.length} stratagem${stratsList.length === 1 ? "" : "s"}`);
 
   const detRow = el("div", "detachment-row");
   detRow.tabIndex = 0;
