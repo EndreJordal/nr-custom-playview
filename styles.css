@@ -1193,6 +1193,31 @@ body {
     justify-content: space-between;
   }
 
+  /* The actions column was floating right-aligned as its own narrow block
+     (button row + vertically-stacked pickers), leaving a lopsided gap to
+     its left. Stretch it to the header's full width so both rows below
+     it -- and the 3 accent pickers, laid out horizontally instead of
+     stacked -- spread evenly like the rest of the mobile header does. */
+  .roster-header__actions-col {
+    align-items: stretch;
+  }
+
+  .accent-picker-row {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .accent-picker {
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .accent-picker__select {
+    width: 100%;
+    min-width: 0;
+  }
+
   /* The row can't fit name + count + points alongside 7 stat boxes at this
      width — keep it drawer-only on mobile regardless of open/closed state. */
   .unit-row__stats {
