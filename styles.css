@@ -255,6 +255,55 @@ body {
   flex-shrink: 0;
 }
 
+.roster-header__actions-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.accent-picker-row {
+  display: flex;
+  gap: 8px;
+}
+
+.roster-header--collapsed .accent-picker-row {
+  display: none;
+}
+
+.accent-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.accent-picker__label {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.accent-picker__select {
+  background: var(--bg-surface-3);
+  border: 2px solid var(--border-subtle-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+.accent-picker__select:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 1px;
+}
+
 .roster-header__upload-btn {
   padding: 9px 16px;
   background: var(--bg-surface-3);

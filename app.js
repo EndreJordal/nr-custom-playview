@@ -10,6 +10,58 @@ let activeKeywordDefs = {};
 let openKeywordTooltip = null;
 let openKeywordAnchor = null;
 
+// --- ACCENT COLOR PREFERENCES ---
+// Curated palette, all legible against --bg-page (#19191c). Excludes red/
+// coral since --accent-danger is a fixed semantic color (stratagem
+// opponent's-turn theme, over-budget points) and isn't user-configurable.
+const ACCENT_PALETTE = [
+  { name: "Teal", hex: "#2dd4bf" },
+  { name: "Amber", hex: "#f2b544" },
+  { name: "Violet", hex: "#b794f6" },
+  { name: "Sky Blue", hex: "#60a5fa" },
+  { name: "Emerald", hex: "#34d399" },
+  { name: "Pink", hex: "#f472b6" },
+  { name: "Cyan", hex: "#22d3ee" },
+  { name: "Indigo", hex: "#818cf8" },
+  { name: "Gold", hex: "#fbbf24" },
+];
+
+const DEFAULT_ACCENTS = { primary: "#2dd4bf", secondary: "#f2b544", tertiary: "#b794f6" };
+const ACCENT_STORAGE_KEY = "40k_accent_prefs";
+const ACCENT_SLOTS = [
+  { key: "primary", label: "Primary Accent", cssVar: "--accent", cssSoftVar: "--accent-soft" },
+  { key: "secondary", label: "Secondary Accent", cssVar: "--accent-amber", cssSoftVar: "--accent-amber-soft" },
+  { key: "tertiary", label: "Tertiary Accent", cssVar: "--accent-violet", cssSoftVar: "--accent-violet-soft" },
+];
+
+function hexToRgba(hex, alpha) {
+  const h = hex.replace("#", "");
+  const r = parseInt(h.substring(0, 2), 16);
+  const g = parseInt(h.substring(2, 4), 16);
+  const b = parseInt(h.substring(4, 6), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function loadAccentPrefs() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(ACCENT_STORAGE_KEY));
+    return { ...DEFAULT_ACCENTS, ...(saved || {}) };
+  } catch {
+    return { ...DEFAULT_ACCENTS };
+  }
+}
+
+function applyAccentPrefs(prefs) {
+  ACCENT_SLOTS.forEach(slot => {
+    const hex = prefs[slot.key] || DEFAULT_ACCENTS[slot.key];
+    document.documentElement.style.setProperty(slot.cssVar, hex);
+    document.documentElement.style.setProperty(slot.cssSoftVar, hexToRgba(hex, 0.17));
+  });
+}
+
+// Apply as early as possible so there's no flash of the default palette.
+applyAccentPrefs(loadAccentPrefs());
+
 const CORE_WEAPON_KEYWORDS = [
   "ASSAULT",
   "HEAVY",
@@ -486,6 +538,46 @@ function formatPointsLabel(metadata) {
   return metadata.pointsLimit ? `${used} / ${metadata.pointsLimit}` : used;
 }
 
+function buildAccentPickerRow() {
+  const prefs = loadAccentPrefs();
+  const row = el("div", "accent-picker-row");
+  // Selects live inside the header, which toggles collapsed/expanded on
+  // click -- stop the click here so picking a color doesn't also collapse it.
+  row.addEventListener("click", e => e.stopPropagation());
+
+  ACCENT_SLOTS.forEach(slot => {
+    const wrap = el("div", "accent-picker");
+    const label = el("label", "accent-picker__label", slot.label);
+    const select = document.createElement("select");
+    select.className = "accent-picker__select";
+
+    ACCENT_PALETTE.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c.hex;
+      opt.textContent = c.name;
+      if (c.hex.toLowerCase() === (prefs[slot.key] || "").toLowerCase()) {
+        opt.selected = true;
+      }
+      select.appendChild(opt);
+    });
+
+    select.style.borderColor = prefs[slot.key];
+    select.addEventListener("change", () => {
+      const newPrefs = loadAccentPrefs();
+      newPrefs[slot.key] = select.value;
+      localStorage.setItem(ACCENT_STORAGE_KEY, JSON.stringify(newPrefs));
+      applyAccentPrefs(newPrefs);
+      select.style.borderColor = select.value;
+    });
+
+    wrap.appendChild(label);
+    wrap.appendChild(select);
+    row.appendChild(wrap);
+  });
+
+  return row;
+}
+
 function buildHeader(metadata) {
   const headerWrapper = el("div", "roster-header");
   const leftMetaBlock = el("div", "roster-header__meta");
@@ -562,8 +654,12 @@ function buildHeader(metadata) {
   actions.appendChild(uploadBtn);
   actions.appendChild(el("span", "roster-header__chevron"));
 
+  const actionsCol = el("div", "roster-header__actions-col");
+  actionsCol.appendChild(actions);
+  actionsCol.appendChild(buildAccentPickerRow());
+
   headerWrapper.appendChild(leftMetaBlock);
-  headerWrapper.appendChild(actions);
+  headerWrapper.appendChild(actionsCol);
 
   let collapsed = false;
   headerWrapper.addEventListener("click", () => {
