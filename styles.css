@@ -903,6 +903,87 @@ body {
   white-space: nowrap;
 }
 
+/* --- KEYWORD TOOLTIPS --- */
+/* Shared by weapon keyword badges and CORE/FACTION rule chips: a subtle
+   dotted underline signals "tap for definition" without adding visual
+   weight to the many keywords that have no matching entry. */
+.weapon-keyword-badge--interactive,
+.rule-chip--interactive {
+  cursor: pointer;
+  border-bottom: 1px dotted currentColor;
+  transition: background-color 0.15s var(--ease-out-expo);
+}
+
+.weapon-keyword-badge--interactive:hover,
+.rule-chip--interactive:hover {
+  background: var(--accent-soft);
+}
+
+.keyword-badge--active {
+  background: var(--accent);
+  color: var(--bg-page);
+  border-bottom-color: transparent;
+}
+
+.rule-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.rule-chip {
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0;
+  font: inherit;
+  display: inline;
+}
+
+.rule-chip:not(:last-child)::after {
+  content: ", ";
+}
+
+.keyword-tooltip {
+  position: fixed;
+  z-index: 1000;
+  max-width: min(280px, calc(100vw - 16px));
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 10px 12px;
+  animation: keyword-tooltip-in 0.15s var(--ease-out-expo);
+}
+
+@keyframes keyword-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.keyword-tooltip__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.keyword-tooltip__desc {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
 /* --- ABILITIES BLOCK --- */
 .abilities-block {
   margin-top: 14px;

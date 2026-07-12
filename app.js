@@ -5,6 +5,11 @@ const rosterContainer = document.getElementById("roster-container");
 let currentlyOpenDrawer = null;
 let currentlyActiveRow = null;
 
+// Keyword name (uppercase) -> { name, desc, isCore }, rebuilt per roster load.
+let activeKeywordDefs = {};
+let openKeywordTooltip = null;
+let openKeywordAnchor = null;
+
 const CORE_WEAPON_KEYWORDS = [
   "ASSAULT",
   "HEAVY",
@@ -155,6 +160,7 @@ function loadRoster(rawData) {
     dropZone.style.display = "flex";
     return;
   }
+  activeKeywordDefs = parsed.metadata.keywordDefs || {};
   renderDashboard(parsed.metadata, parsed.armyRoster);
 }
 
@@ -172,6 +178,7 @@ function processArmyList(data) {
     pointsLimit: null,
     detachments: [],
     forceDispositions: [],
+    keywordDefs: {},
   };
 
   if (data.roster.costs) {
@@ -272,7 +279,7 @@ function processArmyList(data) {
       keywords: new Set(),
     };
 
-    extractNodeData(selection, flatUnit);
+    extractNodeData(selection, flatUnit, metadata.keywordDefs);
     flatUnit.keywords = Array.from(flatUnit.keywords);
     if (flatUnit.statblocks.length === 0) {
       flatUnit.statblocks.push({
@@ -292,7 +299,7 @@ function stripCount({ count, ...rest }) {
   return rest;
 }
 
-function extractNodeData(node, unit) {
+function extractNodeData(node, unit, defs) {
   let nodePoints = 0;
   if (node.costs) {
     const pts = node.costs.find(c => c.name === "pts");
@@ -325,6 +332,17 @@ function extractNodeData(node, unit) {
           upperRule.startsWith(kw + " ") ||
           upperRule.startsWith(kw + "-"),
       );
+
+      // Register every rule's definition for keyword tooltips, keyed by its
+      // own name (e.g. "Anti", "Synapse") -- weapon keyword badges resolve
+      // compound text like "Anti-Monster 5+" back to this base name.
+      if (rule.description && !defs[upperRule]) {
+        defs[upperRule] = {
+          name: ruleName,
+          desc: rule.description,
+          isCore: !!rule.page,
+        };
+      }
 
       if (!isWeaponRule) {
         if (rule.page) {
@@ -439,7 +457,9 @@ function extractNodeData(node, unit) {
   }
 
   if (node.selections) {
-    node.selections.forEach(childNode => extractNodeData(childNode, unit));
+    node.selections.forEach(childNode =>
+      extractNodeData(childNode, unit, defs),
+    );
   }
 }
 
@@ -868,6 +888,27 @@ function buildWeaponRows(weaponList) {
     .join("");
 }
 
+// Resolves a keyword's tooltip definition. Handles both exact names (e.g.
+// "Synapse") and compound weapon-keyword text with a trailing value (e.g.
+// "Anti-Monster 5+", "Sustained Hits 1") by falling back to the base
+// CORE_WEAPON_KEYWORDS stem those are built from.
+function resolveKeywordDef(rawName) {
+  if (!rawName) return null;
+  const upper = rawName.trim().toUpperCase();
+  if (activeKeywordDefs[upper]) return activeKeywordDefs[upper];
+  const stem = CORE_WEAPON_KEYWORDS.find(
+    kw => upper === kw || upper.startsWith(kw + " ") || upper.startsWith(kw + "-"),
+  );
+  return stem ? activeKeywordDefs[stem] || null : null;
+}
+
+function buildKeywordBadge(rawName, badgeClass) {
+  const def = resolveKeywordDef(rawName);
+  const cls = def ? `${badgeClass} ${badgeClass}--interactive` : badgeClass;
+  const dataAttr = def ? ` data-keyword="${sanitizeHTML(rawName)}"` : "";
+  return `<span class="${cls}"${dataAttr}>${formatText(rawName)}</span>`;
+}
+
 function buildKeywordBadges(keywords) {
   if (!keywords || !keywords.trim()) {
     return `<span class="weapon-table__no-keywords">-</span>`;
@@ -878,9 +919,7 @@ function buildKeywordBadges(keywords) {
       .split(",")
       .map(k => {
         const cleanK = k.trim();
-        return cleanK
-          ? `<span class="weapon-keyword-badge">${formatText(cleanK)}</span>`
-          : "";
+        return cleanK ? buildKeywordBadge(cleanK, "weapon-keyword-badge") : "";
       })
       .join("") +
     `</div>`
@@ -910,13 +949,17 @@ function buildEnhancementsBlock(unit) {
   `;
 }
 
+function buildRuleChips(names) {
+  return names.map(n => buildKeywordBadge(n, "rule-chip")).join("");
+}
+
 function buildAbilitiesBlock(unit) {
   const coreText =
-    unit.coreRules.length > 0 ? formatText(unit.coreRules.join(", ")) : "-";
-  let innerContent = `<div class="ability-row"><strong class="ability-label ability-label--core">CORE:</strong> <span class="ability-text">${coreText}</span></div>`;
+    unit.coreRules.length > 0 ? buildRuleChips(unit.coreRules) : "-";
+  let innerContent = `<div class="ability-row"><strong class="ability-label ability-label--core">CORE:</strong> <span class="ability-text rule-chip-row">${coreText}</span></div>`;
 
   if (unit.factionRules.length > 0) {
-    innerContent += `<div class="ability-row"><strong class="ability-label ability-label--faction">FACTION:</strong> <span class="ability-text">${formatText(unit.factionRules.join(", "))}</span></div>`;
+    innerContent += `<div class="ability-row"><strong class="ability-label ability-label--faction">FACTION:</strong> <span class="ability-text rule-chip-row">${buildRuleChips(unit.factionRules)}</span></div>`;
   }
 
   unit.abilities.forEach(a => {
@@ -953,3 +996,78 @@ function closeActiveDrawer() {
   currentlyOpenDrawer = null;
   currentlyActiveRow = null;
 }
+
+// --- KEYWORD TOOLTIPS ---
+function closeKeywordTooltip() {
+  if (openKeywordTooltip) {
+    openKeywordTooltip.remove();
+    openKeywordTooltip = null;
+  }
+  if (openKeywordAnchor) {
+    openKeywordAnchor.classList.remove("keyword-badge--active");
+    openKeywordAnchor = null;
+  }
+}
+
+function openKeywordTooltipFor(anchor, def) {
+  const tooltip = el(
+    "div",
+    "keyword-tooltip",
+    `
+      <div class="keyword-tooltip__name">${sanitizeHTML(def.name)}</div>
+      <div class="keyword-tooltip__desc">${formatText(def.desc)}</div>
+    `,
+  );
+  document.body.appendChild(tooltip);
+
+  const anchorRect = anchor.getBoundingClientRect();
+  const tipRect = tooltip.getBoundingClientRect();
+  const margin = 8;
+
+  let left = anchorRect.left;
+  if (left + tipRect.width > window.innerWidth - margin) {
+    left = window.innerWidth - tipRect.width - margin;
+  }
+  if (left < margin) left = margin;
+
+  let top = anchorRect.bottom + 6;
+  if (top + tipRect.height > window.innerHeight - margin) {
+    // No room below -- flip above the anchor instead.
+    top = anchorRect.top - tipRect.height - 6;
+    if (top < margin) top = margin;
+  }
+
+  tooltip.style.left = `${left}px`;
+  tooltip.style.top = `${top}px`;
+
+  anchor.classList.add("keyword-badge--active");
+  openKeywordTooltip = tooltip;
+  openKeywordAnchor = anchor;
+}
+
+// Single delegated handler: works identically for mouse clicks and touch
+// taps, so there's no separate mobile interaction path to maintain. Tapping
+// the same keyword again, tapping elsewhere, or scrolling closes it.
+document.addEventListener("click", e => {
+  const anchor = e.target.closest("[data-keyword]");
+  if (anchor) {
+    e.stopPropagation();
+    const reopening = openKeywordAnchor === anchor;
+    closeKeywordTooltip();
+    if (reopening) return;
+    const def = resolveKeywordDef(anchor.dataset.keyword);
+    if (def) openKeywordTooltipFor(anchor, def);
+    return;
+  }
+  if (openKeywordTooltip && !e.target.closest(".keyword-tooltip")) {
+    closeKeywordTooltip();
+  }
+});
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (openKeywordTooltip) closeKeywordTooltip();
+  },
+  { passive: true, capture: true },
+);
