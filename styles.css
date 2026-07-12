@@ -27,8 +27,11 @@
   --accent-violet: #b794f6; /* faction/army-specific keyword badges */
   --accent-violet-soft: rgba(183, 148, 246, 0.18);
 
-  /* Stratagem-card exception palette (deliberately outside the core system) */
+  /* Stratagem-card exception palette (deliberately outside the core system) --
+     stratagem timing colors are fixed and must NOT move when the user picks
+     a different accent palette. */
   --strat-blue: #3a5ba0; /* "your turn" stratagems */
+  --strat-teal: #2dd4bf; /* "any phase" / neutral-timing stratagems */
 
   /* Radius scale */
   --radius-sm: 6px;
@@ -645,7 +648,7 @@ body {
 }
 
 .strat-theme-neutral {
-  --strat-color: var(--accent);
+  --strat-color: var(--strat-teal);
 }
 
 .strat-card {
