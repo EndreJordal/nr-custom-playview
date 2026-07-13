@@ -203,21 +203,90 @@ fileInput.addEventListener("change", e => {
   if (e.target.files.length) handleFile(e.target.files[0]);
 });
 
+// --- .ros (BattleScribe XML) SUPPORT ---
+// New Recruit's .ros export is a straight XML mirror of its JSON export --
+// same tree, attributes instead of object keys. Converting it into the exact
+// same nested shape the JSON path produces means processArmyList never needs
+// to know which format the roster originally came from.
+const XML_NUMERIC_ATTRS = new Set([
+  "value",
+  "number",
+  "page",
+  "catalogueRevision",
+  "gameSystemRevision",
+  "battleScribeVersion",
+]);
+const XML_BOOLEAN_ATTRS = new Set(["hidden", "primary"]);
+
+// Wrapper element tag -> the tag name of the items inside it. BattleScribe's
+// schema doesn't pluralize consistently (costLimits/costLimit vs costs/cost),
+// so this has to be an explicit map rather than a naming rule.
+const XML_CHILD_COLLECTIONS = {
+  costs: "cost",
+  costLimits: "costLimit",
+  forces: "force",
+  rules: "rule",
+  selections: "selection",
+  profiles: "profile",
+  categories: "category",
+  characteristics: "characteristic",
+};
+
+function xmlElementToObject(el) {
+  const obj = {};
+  Array.from(el.attributes).forEach(attr => {
+    if (XML_NUMERIC_ATTRS.has(attr.name)) obj[attr.name] = Number(attr.value);
+    else if (XML_BOOLEAN_ATTRS.has(attr.name)) obj[attr.name] = attr.value === "true";
+    else obj[attr.name] = attr.value;
+  });
+
+  if (el.tagName === "characteristic") {
+    obj.$text = el.textContent;
+    return obj;
+  }
+
+  Array.from(el.children).forEach(child => {
+    if (child.tagName === "description") {
+      obj.description = child.textContent;
+      return;
+    }
+    const itemTag = XML_CHILD_COLLECTIONS[child.tagName];
+    if (itemTag) {
+      obj[child.tagName] = Array.from(child.children)
+        .filter(item => item.tagName === itemTag)
+        .map(xmlElementToObject);
+    }
+  });
+
+  return obj;
+}
+
+function parseRosXML(xmlText) {
+  const doc = new DOMParser().parseFromString(xmlText, "application/xml");
+  if (doc.querySelector("parsererror")) return null;
+  const rosterEl = doc.querySelector("roster");
+  if (!rosterEl) return null;
+  return { roster: xmlElementToObject(rosterEl) };
+}
+
 function handleFile(file) {
-  if (file.type !== "application/json" && !file.name.endsWith(".json")) {
-    alert("Please upload a valid JSON file.");
+  const isJSON = file.type === "application/json" || file.name.endsWith(".json");
+  const isROS = file.name.endsWith(".ros");
+  if (!isJSON && !isROS) {
+    alert("Please upload a valid JSON or .ros file.");
     return;
   }
   const reader = new FileReader();
   reader.onload = e => {
     try {
-      const rawData = JSON.parse(e.target.result);
+      const rawData = isROS ? parseRosXML(e.target.result) : JSON.parse(e.target.result);
+      if (!rawData) throw new Error("Empty or unparseable roster file");
       localStorage.setItem("40k_roster_cache", JSON.stringify(rawData));
       dropZone.style.display = "none";
       loadRoster(rawData);
     } catch (err) {
-      console.error("JSON Parsing Error:", err);
-      alert("Failed to parse JSON. Is the file corrupted?");
+      console.error("Roster parsing error:", err);
+      alert("Failed to parse the file. Is it a valid New Recruit export?");
     }
   };
   reader.readAsText(file);
@@ -226,7 +295,7 @@ function handleFile(file) {
 function loadRoster(rawData) {
   const parsed = processArmyList(rawData);
   if (!parsed) {
-    alert("This JSON file doesn't look like a valid army roster export.");
+    alert("This file doesn't look like a valid army roster export.");
     localStorage.removeItem("40k_roster_cache");
     dropZone.style.display = "flex";
     return;
