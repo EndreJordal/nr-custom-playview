@@ -301,31 +301,30 @@ body {
   flex-shrink: 0;
 }
 
-.accent-picker-row {
+.accent-picker-group {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
+  gap: 6px;
 }
 
-.roster-header--collapsed .accent-picker-row {
+.roster-header--collapsed .accent-picker-group {
   display: none;
 }
 
-.accent-picker {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 3px;
-}
-
-.accent-picker__label {
+.accent-picker-group__label {
   font-family: var(--font-sans);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-tertiary);
+}
+
+.accent-picker-row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
 
 .accent-picker__select {
@@ -337,11 +336,51 @@ body {
   font-size: 11px;
   font-weight: 600;
   padding: 4px 6px;
-  min-width: 96px;
+  min-width: 80px;
   cursor: pointer;
 }
 
 .accent-picker__select:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 1px;
+}
+
+/* --- RECENT ROSTERS (header) --- */
+.header-recent-rosters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.roster-header--collapsed .header-recent-rosters {
+  display: none;
+}
+
+.header-recent-rosters__label {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.header-recent-rosters__select {
+  background: var(--bg-surface-3);
+  border: 2px solid var(--border-subtle-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 8px;
+  min-width: 220px;
+  max-width: 280px;
+  cursor: pointer;
+}
+
+.header-recent-rosters__select:focus-visible {
   outline: 2px solid var(--text-primary);
   outline-offset: 1px;
 }
@@ -1462,27 +1501,34 @@ body {
     justify-content: space-between;
   }
 
-  /* The actions column was floating right-aligned as its own narrow block
-     (button row + vertically-stacked pickers), leaving a lopsided gap to
-     its left. Stretch it to the header's full width so both rows below
-     it -- and the 3 accent pickers, laid out horizontally instead of
-     stacked -- spread evenly like the rest of the mobile header does. */
+  /* The actions column was floating right-aligned as its own narrow block,
+     leaving a lopsided gap to its left. Stretch it to the header's full
+     width so the rows below it spread evenly like the rest of the mobile
+     header does. */
   .roster-header__actions-col {
     align-items: stretch;
   }
 
+  .header-recent-rosters {
+    align-items: stretch;
+  }
+
+  .header-recent-rosters__select {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .accent-picker-group {
+    align-items: stretch;
+  }
+
   .accent-picker-row {
-    flex-direction: row;
     justify-content: space-between;
   }
 
-  .accent-picker {
-    align-items: center;
-    flex: 1;
-    min-width: 0;
-  }
-
   .accent-picker__select {
+    flex: 1;
     width: 100%;
     min-width: 0;
   }

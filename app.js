@@ -434,6 +434,8 @@ function loadRoster(rawData) {
   currentArmyRoster = parsed.armyRoster;
   attachGroups = recordRosterAsRecent(rawData, parsed.metadata);
   dropZone.style.display = "none";
+  const recentPicker = document.getElementById("recent-rosters-container");
+  if (recentPicker) recentPicker.innerHTML = "";
   renderDashboard(parsed.metadata, parsed.armyRoster);
 }
 
@@ -862,18 +864,24 @@ function formatPointsLabel(metadata) {
   return metadata.pointsLimit ? `${used} / ${metadata.pointsLimit}` : used;
 }
 
+// One shared label + a single row of 3 compact selects, rather than each
+// accent getting its own label+select stack -- the individual identity
+// (Primary/Secondary/Tertiary) is still there via each select's title
+// tooltip, just not taking up its own line.
 function buildAccentPickerRow() {
   const prefs = loadAccentPrefs();
-  const row = el("div", "accent-picker-row");
+  const group = el("div", "accent-picker-group");
   // Selects live inside the header, which toggles collapsed/expanded on
   // click -- stop the click here so picking a color doesn't also collapse it.
-  row.addEventListener("click", e => e.stopPropagation());
+  group.addEventListener("click", e => e.stopPropagation());
+  group.appendChild(el("label", "accent-picker-group__label", "Accent Colors"));
+
+  const row = el("div", "accent-picker-row");
 
   ACCENT_SLOTS.forEach(slot => {
-    const wrap = el("div", "accent-picker");
-    const label = el("label", "accent-picker__label", slot.label);
     const select = document.createElement("select");
     select.className = "accent-picker__select";
+    select.title = slot.label;
 
     ACCENT_PALETTE.forEach(c => {
       const opt = document.createElement("option");
@@ -897,12 +905,47 @@ function buildAccentPickerRow() {
       select.style.color = select.value;
     });
 
-    wrap.appendChild(label);
-    wrap.appendChild(select);
-    row.appendChild(wrap);
+    row.appendChild(select);
   });
 
-  return row;
+  group.appendChild(row);
+  return group;
+}
+
+// Lets the user jump straight to another recently-viewed roster from inside
+// the header, without going through "Upload Different Roster". Excludes the
+// currently active roster (switching to itself is a no-op) and disappears
+// entirely if that leaves nothing to switch to.
+function buildRecentRostersHeaderControl() {
+  const recents = loadRecentRosters().filter(r => r.rosterId !== currentMetadata?.rosterId);
+  if (recents.length === 0) return null;
+
+  const wrap = el("div", "header-recent-rosters");
+  wrap.addEventListener("click", e => e.stopPropagation());
+  wrap.appendChild(el("label", "header-recent-rosters__label", "Recent Rosters"));
+
+  const select = document.createElement("select");
+  select.className = "header-recent-rosters__select";
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Switch roster…";
+  select.appendChild(placeholder);
+
+  recents.forEach(entry => {
+    const opt = document.createElement("option");
+    opt.value = entry.rosterId;
+    opt.textContent = `${entry.listName} — ${entry.factionName} (${formatRelativeTime(entry.savedAt)})`;
+    select.appendChild(opt);
+  });
+
+  select.addEventListener("change", () => {
+    const chosen = recents.find(r => r.rosterId === select.value);
+    if (chosen) loadRoster(chosen.rawData);
+  });
+
+  wrap.appendChild(select);
+  return wrap;
 }
 
 function buildHeader(metadata) {
@@ -981,6 +1024,8 @@ function buildHeader(metadata) {
   actions.appendChild(el("span", "roster-header__chevron"));
 
   const actionsCol = el("div", "roster-header__actions-col");
+  const recentPicker = buildRecentRostersHeaderControl();
+  if (recentPicker) actionsCol.appendChild(recentPicker);
   actionsCol.appendChild(actions);
   actionsCol.appendChild(buildAccentPickerRow());
 
