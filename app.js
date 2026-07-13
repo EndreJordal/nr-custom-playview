@@ -1290,7 +1290,7 @@ function buildCombinedAbilitiesBlock(members) {
         inner += `<div class="ability-row"><strong class="ability-label ability-label--faction">FACTION:</strong> <span class="ability-text">${buildRuleChips(m.factionRules)}</span></div>`;
       }
       m.abilities.forEach(a => {
-        inner += `<div class="ability-row"><strong class="ability-label">${formatText(a.name)}:</strong> <span class="ability-text ability-text--desc">${formatText(a.desc)}</span></div>`;
+        inner += `<div class="ability-row"><strong class="ability-label">${formatText(a.name)}:</strong> <span class="ability-text ability-text--desc">${buildAbilityDescHTML(a.desc)}</span></div>`;
       });
       return `
         <div class="abilities-block__member">
@@ -1490,6 +1490,47 @@ function buildRuleChips(names) {
   return `<div class="keyword-badge-row">${names.map(n => buildKeywordBadge(n)).join("")}</div>`;
 }
 
+// Some abilities (e.g. a Leader's "can be attached to..." list) are just a
+// long run of bullet lines. Past 3 of them, collapse the rest behind a
+// "Show more" toggle rather than dumping the whole list into the drawer.
+const LIST_BULLET_RE = /^\s*[-•●■▪]\s*/;
+
+function buildAbilityDescHTML(desc) {
+  const lines = (desc || "").split("\n");
+  const bulletIndices = lines
+    .map((line, i) => (LIST_BULLET_RE.test(line) ? i : -1))
+    .filter(i => i !== -1);
+
+  if (bulletIndices.length <= 3) return formatText(desc);
+
+  const cutoff = bulletIndices[2];
+  const visible = lines.slice(0, cutoff + 1).join("\n");
+  const hidden = lines.slice(cutoff + 1).join("\n");
+  const hiddenCount = bulletIndices.length - 3;
+  const toggleId = "ability-more-" + Math.random().toString(36).slice(2, 9);
+
+  return `
+    ${formatText(visible)}
+    <span class="ability-desc-hidden" id="${toggleId}" hidden>${formatText(hidden)}</span>
+    <br><button type="button" class="ability-show-more" data-target="${toggleId}" data-hidden-count="${hiddenCount}">Show ${hiddenCount} more</button>
+  `;
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".ability-show-more");
+  if (!btn) return;
+  e.stopPropagation();
+  const hiddenSpan = document.getElementById(btn.dataset.target);
+  if (!hiddenSpan) return;
+  if (hiddenSpan.hasAttribute("hidden")) {
+    hiddenSpan.removeAttribute("hidden");
+    btn.textContent = "Show less";
+  } else {
+    hiddenSpan.setAttribute("hidden", "");
+    btn.textContent = `Show ${btn.dataset.hiddenCount} more`;
+  }
+});
+
 function buildAbilitiesBlock(unit) {
   const coreText =
     unit.coreRules.length > 0 ? buildRuleChips(unit.coreRules) : "-";
@@ -1500,7 +1541,7 @@ function buildAbilitiesBlock(unit) {
   }
 
   unit.abilities.forEach(a => {
-    innerContent += `<div class="ability-row"><strong class="ability-label">${formatText(a.name)}:</strong> <span class="ability-text ability-text--desc">${formatText(a.desc)}</span></div>`;
+    innerContent += `<div class="ability-row"><strong class="ability-label">${formatText(a.name)}:</strong> <span class="ability-text ability-text--desc">${buildAbilityDescHTML(a.desc)}</span></div>`;
   });
 
   return `

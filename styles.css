@@ -1341,6 +1341,22 @@ body {
   line-height: 1.45;
 }
 
+.ability-show-more {
+  margin-top: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.ability-show-more:hover {
+  text-decoration: underline;
+}
+
 /* --- KEYWORDS BLOCK --- */
 .keywords-block {
   background: var(--bg-surface-2);
