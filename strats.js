@@ -1,4 +1,113 @@
 const STRATAGEM_DATABASE = {
+  // Not a real detachment -- every army has access to these regardless of
+  // faction or detachment choice. app.js's renderStratagemSection() renders
+  // this one specially: always shown, always last, no DP/points on its face.
+  "Core Stratagems": [
+    {
+      name: "COMMAND RE-ROLL",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, just after you make one of the following rolls for a friendly unit or model:<br><br>• Advance roll<br><br>• Charge roll<br><br>• Damage roll<br><br>• Hazard roll<br><br>• Hit roll<br><br>• Save roll<br><br>• Wound roll<br><br>• A roll to determine the number of attacks generated with a weapon.",
+        target: "That unit or model.",
+        effect:
+          "You re-roll that roll. If you are rolling more than one dice together, select one of those dice to re-roll (excluding charge rolls, which you must re-roll in full).",
+      },
+    },
+    {
+      name: "EPIC CHALLENGE",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, just after a friendly **CHARACTER** unit is selected to fight.",
+        target: "That **CHARACTER** unit.",
+        effect:
+          "Select one **CHARACTER** model in your unit. Until the end of the phase, that model's melee weapons have the **[PRECISION]** ability.",
+      },
+    },
+    {
+      name: "INSANE BRAVERY",
+      cp: "1 CP",
+      rules: {
+        when: "Battle-shock step of your Command phase, just before you make a battle-shock roll for a friendly unit.",
+        target: "That unit.",
+        effect:
+          "That battle-shock roll is automatically successful.<br><br>**Restrictions:** You cannot use this Stratagem more than once per battle.",
+      },
+    },
+    {
+      name: "EXPLOSIVES",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase.",
+        target:
+          "One friendly unengaged **EXPLOSIVES/GRENADES** unit that is eligible to shoot and did not make an advance move this turn.",
+        effect:
+          'Resolve the following sequence:<br><br>1. Select one **EXPLOSIVES/GRENADES** model in your unit.<br><br>2. Select one unengaged enemy unit within 8" of and visible to that model.<br><br>3. Roll six D6: for each 4+, that enemy unit suffers 1 mortal wound.',
+      },
+    },
+    {
+      name: "CRUSHING IMPACT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, just after a friendly **MONSTER/VEHICLE** unit ends a charge move.",
+        target: "That **MONSTER/VEHICLE** unit.",
+        effect:
+          "Resolve the following sequence:<br><br>1. Select one enemy unit engaged with your unit.<br><br>2. Select one model in your unit engaged with that enemy unit.<br><br>3. Roll a number of D6 equal to the T characteristic of that model: for each 1, your unit suffers 1 mortal wound; for each 5+, that enemy unit suffers 1 mortal wound (to a maximum of 6 mortal wounds per unit).",
+      },
+    },
+    {
+      name: "RAPID INGRESS",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent's Movement phase.",
+        target:
+          "One friendly unit that is in strategic reserves (excluding **AIRCRAFT**).",
+        effect:
+          "Your unit makes an ingress move.<br><br>**Restrictions:** You cannot use this Stratagem during the first battle round.",
+      },
+    },
+    {
+      name: "FIRE OVERWATCH",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent's Movement phase.",
+        target: "One friendly unengaged unit (excluding **TITANIC** units).",
+        effect:
+          'Your unit shoots using snap shooting:<br><br>• You can only target one visible enemy unit within 24" of your unit (and only if it is an eligible target).<br><br>• Each attack only hits on an unmodified hit roll of 6 (irrespective of the attacking weapon\'s BS characteristic or any modifiers).<br><br>• You cannot re-roll hit rolls.<br><br>Until the end of the phase, your unit is not eligible to start an action.',
+      },
+    },
+    {
+      name: "SMOKESCREEN",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent's Shooting phase.",
+        target: "One friendly **SMOKE** unit.",
+        effect:
+          "Until the end of the phase, each time an attack targets either your **SMOKE** unit, or a unit that is not fully visible to the attacking model because of one or more models in your **SMOKE** unit, the target has the benefit of cover against that attack.",
+      },
+    },
+    {
+      name: "HEROIC INTERVENTION",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent's Charge phase.",
+        target:
+          'One friendly unengaged unit within 12" of one or more enemy units. You can only select a **VEHICLE** unit if it is a **CHARACTER/WALKER** unit.',
+        effect:
+          'Resolve a charge with your unit. While doing so, before making the charge roll, you must select one of the following modes:<br><br>• **Leap to Defend:** When selecting charge targets, you can only select enemy units that made a charge move this phase and are within the maximum distance.<br><br>• **Into the Fray (+1CP):** When making the charge roll, if the result is greater than 6 (after modifiers), change it to 6. When selecting charge targets, you can select any enemy units that are within 6" of your unit and within the maximum distance.',
+      },
+    },
+    {
+      name: "COUNTEROFFENSIVE",
+      cp: "2 CP",
+      rules: {
+        when: "Fight step of your opponent's Fight phase, just after an enemy unit has resolved its attacks.",
+        target: "One friendly unit that is eligible to fight.",
+        effect:
+          "Until the end of the phase, your unit has the **Fights First** ability and it must be the next unit you select to fight.",
+      },
+    },
+  ],
+
   "Talons of the Norn Queen": [
     {
       name: "CATALYTIC BIOFORTIFICATION",

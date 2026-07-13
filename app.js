@@ -1240,7 +1240,8 @@ function renderStratagemSection(metadata) {
   const detachmentsWithStrats = metadata.detachments.filter(
     det => STRATAGEM_DATABASE[det.name],
   );
-  if (detachmentsWithStrats.length === 0) return;
+  const coreStrats = STRATAGEM_DATABASE["Core Stratagems"];
+  if (detachmentsWithStrats.length === 0 && !coreStrats) return;
 
   rosterContainer.appendChild(
     el("div", "strat-section-header", "Detachment Rules &amp; Stratagems"),
@@ -1251,6 +1252,21 @@ function renderStratagemSection(metadata) {
       buildDetachmentBlock(det, STRATAGEM_DATABASE[det.name]),
     );
   });
+
+  // Every army has access to these regardless of faction/detachment, so
+  // it always renders last, below whichever detachment drawers exist --
+  // reuses buildDetachmentBlock as-is (dp/points both 0 means neither
+  // shows on the closed row, and no rules array means no fake
+  // "Detachment Rules" block, so this comes out looking like a normal
+  // detachment drawer minus the parts that don't apply).
+  if (coreStrats) {
+    rosterContainer.appendChild(
+      buildDetachmentBlock(
+        { name: "Core Stratagems", dp: 0, points: 0, rules: [] },
+        coreStrats,
+      ),
+    );
+  }
 }
 
 function buildDetachmentRulesBlock(rules) {
