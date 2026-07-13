@@ -310,10 +310,19 @@ function el(tag, className, html) {
 }
 
 // Maps a stratagem's timing window to a CSS theme class for its card accent color
+// Only the initial timing clause (up to the first comma/period) decides
+// ownership -- e.g. "End of your opponent's Movement phase" should flag red
+// just as much as "Your opponent's Movement phase" does, since both name
+// the same timing window, just phrased differently. Text after that first
+// clause is often just describing which unit is affected ("...from your
+// army"), not whose turn it is, and checking the whole string would
+// false-positive plenty of "Any phase, ..." reactive stratagems (usable on
+// either player's turn) into looking like your-turn-only ones.
 function getStratTheme(whenText) {
   const txt = (whenText || "").trim().toLowerCase();
-  if (txt.startsWith("your opponent")) return "strat-theme-opponent";
-  if (txt.startsWith("your")) return "strat-theme-yours";
+  const timingClause = txt.split(/[,.]/)[0];
+  if (timingClause.includes("your opponent")) return "strat-theme-opponent";
+  if (timingClause.includes("your")) return "strat-theme-yours";
   return "strat-theme-neutral";
 }
 
