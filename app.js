@@ -916,13 +916,12 @@ function buildAccentPickerRow() {
 // the header, without going through "Upload Different Roster". Excludes the
 // currently active roster (switching to itself is a no-op) and disappears
 // entirely if that leaves nothing to switch to.
+// Returns just the <select> (no wrapping label) -- it sits inline next to
+// the Upload button in the header's switcher row. Returns null when there's
+// nothing to switch to (only the active roster known so far).
 function buildRecentRostersHeaderControl() {
   const recents = loadRecentRosters().filter(r => r.rosterId !== currentMetadata?.rosterId);
   if (recents.length === 0) return null;
-
-  const wrap = el("div", "header-recent-rosters");
-  wrap.addEventListener("click", e => e.stopPropagation());
-  wrap.appendChild(el("label", "header-recent-rosters__label", "Recent Rosters"));
 
   const select = document.createElement("select");
   select.className = "header-recent-rosters__select";
@@ -944,8 +943,7 @@ function buildRecentRostersHeaderControl() {
     if (chosen) loadRoster(chosen.rawData);
   });
 
-  wrap.appendChild(select);
-  return wrap;
+  return select;
 }
 
 function buildHeader(metadata) {
@@ -1007,30 +1005,30 @@ function buildHeader(metadata) {
 
   renderMeta(false);
 
-  const uploadBtn = el(
-    "button",
-    "roster-header__upload-btn",
-    "Upload Different Roster",
-  );
+  const uploadBtn = el("button", "roster-header__upload-btn", "Upload");
   uploadBtn.id = "clear-roster-btn";
   uploadBtn.type = "button";
-  uploadBtn.addEventListener("click", e => {
-    e.stopPropagation();
-    showDropZone();
-  });
 
-  const actions = el("div", "roster-header__actions");
-  actions.appendChild(uploadBtn);
-  actions.appendChild(el("span", "roster-header__chevron"));
+  // Recent-roster select + Upload button read as one paired control, so they
+  // share a single stopPropagation rather than each needing their own.
+  const switcher = el("div", "roster-header__switcher");
+  switcher.addEventListener("click", e => e.stopPropagation());
+  const recentSelect = buildRecentRostersHeaderControl();
+  if (recentSelect) switcher.appendChild(recentSelect);
+  switcher.appendChild(uploadBtn);
+  uploadBtn.addEventListener("click", () => showDropZone());
 
   const actionsCol = el("div", "roster-header__actions-col");
-  const recentPicker = buildRecentRostersHeaderControl();
-  if (recentPicker) actionsCol.appendChild(recentPicker);
-  actionsCol.appendChild(actions);
+  actionsCol.appendChild(switcher);
   actionsCol.appendChild(buildAccentPickerRow());
+
+  // Sits in the header's own top-right corner (not the actions column) so
+  // it stays put regardless of how tall the switcher/accent rows get.
+  const chevron = el("span", "roster-header__chevron");
 
   headerWrapper.appendChild(leftMetaBlock);
   headerWrapper.appendChild(actionsCol);
+  headerWrapper.appendChild(chevron);
 
   let collapsed = false;
   headerWrapper.addEventListener("click", () => {

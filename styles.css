@@ -174,6 +174,7 @@ body {
 
 /* --- ROSTER HEADER --- */
 .roster-header {
+  position: relative;
   width: 100%;
   background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle);
@@ -286,13 +287,6 @@ body {
   letter-spacing: 0.08em;
 }
 
-.roster-header__actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
-}
-
 .roster-header__actions-col {
   display: flex;
   flex-direction: column;
@@ -345,39 +339,37 @@ body {
   outline-offset: 1px;
 }
 
-/* --- RECENT ROSTERS (header) --- */
-.header-recent-rosters {
+/* --- ROSTER SWITCHER (Recent Rosters select + Upload button, header) --- */
+.roster-header__switcher {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 3px;
+  align-items: center;
+  gap: 8px;
 }
 
-.roster-header--collapsed .header-recent-rosters {
+.roster-header--collapsed .roster-header__switcher {
   display: none;
 }
 
-.header-recent-rosters__label {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-}
-
+/* Same height, border weight, radius and font-size as the Upload button
+   below so the pair reads as one coherent control, not two mismatched
+   widgets bolted together. */
 .header-recent-rosters__select {
   background: var(--bg-surface-3);
-  border: 2px solid var(--border-subtle-strong);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle-strong);
+  border-radius: var(--radius-md);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 5px 8px;
-  min-width: 220px;
-  max-width: 280px;
+  padding: 9px 12px;
+  min-width: 190px;
+  max-width: 260px;
   cursor: pointer;
+  transition: border-color 0.2s var(--ease-out-expo);
+}
+
+.header-recent-rosters__select:hover {
+  border-color: var(--accent);
 }
 
 .header-recent-rosters__select:focus-visible {
@@ -390,7 +382,7 @@ body {
   background: var(--bg-surface-3);
   color: var(--text-secondary);
   border: 1px solid var(--border-subtle-strong);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   cursor: pointer;
   font-size: 13px;
   font-weight: 600;
@@ -410,16 +402,20 @@ body {
 }
 
 /* Expand/collapse indicator — points up when open (click to collapse),
-   down when collapsed (click to expand). */
+   down when collapsed (click to expand). Pinned to the header's own
+   top-right corner (not the actions column) so it stays put regardless
+   of how tall the switcher/accent rows get, with its own breathing room
+   instead of being squeezed in next to other controls. */
 .roster-header__chevron {
+  position: absolute;
+  top: 14px;
+  right: 16px;
   width: 9px;
   height: 9px;
   border-right: 2px solid var(--text-secondary);
   border-bottom: 2px solid var(--text-secondary);
   transform: rotate(225deg);
   transition: transform 0.25s var(--ease-out-expo), border-color 0.2s var(--ease-out-expo);
-  flex-shrink: 0;
-  margin: 3px;
 }
 
 .roster-header:hover .roster-header__chevron {
@@ -427,7 +423,9 @@ body {
 }
 
 .roster-header--collapsed .roster-header__chevron {
-  transform: rotate(45deg);
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 /* --- CHIPS --- */
@@ -1497,10 +1495,6 @@ body {
     font-size: 20px;
   }
 
-  .roster-header__actions {
-    justify-content: space-between;
-  }
-
   /* The actions column was floating right-aligned as its own narrow block,
      leaving a lopsided gap to its left. Stretch it to the header's full
      width so the rows below it spread evenly like the rest of the mobile
@@ -1509,14 +1503,14 @@ body {
     align-items: stretch;
   }
 
-  .header-recent-rosters {
-    align-items: stretch;
-  }
-
   .header-recent-rosters__select {
-    width: 100%;
+    flex: 1;
     min-width: 0;
     max-width: none;
+  }
+
+  .roster-header__upload-btn {
+    flex-shrink: 0;
   }
 
   .accent-picker-group {
