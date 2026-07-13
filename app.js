@@ -13,8 +13,11 @@ let currentArmyRoster = null;
 
 // User-defined "Attached Units" groupings: { id, memberIds: [unit.id, ...] }.
 // Purely a display construct the user builds by hand -- see attachUnits().
+// Lives inside that roster's own entry in the recent-rosters list (see
+// RECENT_ROSTERS_KEY below) so each roster remembers its own combos.
 let attachGroups = [];
-const ATTACH_STORAGE_KEY = "40k_attach_groups";
+const RECENT_ROSTERS_KEY = "40k_recent_rosters";
+const MAX_RECENT_ROSTERS = 10;
 
 // Keyword name (uppercase) -> { name, desc, isCore }, rebuilt per roster load.
 let activeKeywordDefs = {};
@@ -127,17 +130,146 @@ if ("serviceWorker" in navigator && !isLocalDev) {
 }
 
 // --- 1. INITIALIZATION & CACHING ---
-document.addEventListener("DOMContentLoaded", () => {
-  const cachedData = localStorage.getItem("40k_roster_cache");
-  if (!cachedData) return;
-
+// One-time migration from the pre-recents-list single-roster cache. Wraps
+// whatever was cached (plus its combine-state, if any) into the first entry
+// of the new recents list, then retires the old keys.
+(function migrateOldRosterCache() {
+  if (localStorage.getItem(RECENT_ROSTERS_KEY)) return;
+  const oldRaw = localStorage.getItem("40k_roster_cache");
+  if (!oldRaw) return;
   try {
-    const rawData = JSON.parse(cachedData);
-    dropZone.style.display = "none";
-    loadRoster(rawData);
+    const rawData = JSON.parse(oldRaw);
+    const rosterId = rawData?.roster?.id;
+    if (!rosterId) return;
+    let groups = [];
+    try {
+      const oldAttach = JSON.parse(localStorage.getItem("40k_attach_groups") || "null");
+      if (oldAttach?.rosterId === rosterId && Array.isArray(oldAttach.groups)) {
+        groups = oldAttach.groups;
+      }
+    } catch (err) {
+      // No usable old combine-state -- fine, just start with none.
+    }
+    const entry = {
+      rosterId,
+      listName: rawData.roster.name || "Unnamed Roster",
+      factionName: rawData.roster.forces?.[0]?.catalogueName || "Unknown Faction",
+      savedAt: Date.now(),
+      rawData,
+      attachGroups: groups,
+    };
+    localStorage.setItem(RECENT_ROSTERS_KEY, JSON.stringify([entry]));
   } catch (err) {
-    console.error("Cached roster is corrupted, clearing it:", err);
+    // Corrupted old cache -- nothing worth migrating.
+  } finally {
     localStorage.removeItem("40k_roster_cache");
+    localStorage.removeItem("40k_attach_groups");
+  }
+})();
+
+function loadRecentRosters() {
+  try {
+    const raw = localStorage.getItem(RECENT_ROSTERS_KEY);
+    const list = raw ? JSON.parse(raw) : [];
+    return Array.isArray(list) ? list : [];
+  } catch (err) {
+    return [];
+  }
+}
+
+function saveRecentRosters(list) {
+  localStorage.setItem(RECENT_ROSTERS_KEY, JSON.stringify(list));
+}
+
+// Adds/refreshes this roster as the most-recently-used entry, preserving its
+// existing combine-state if it was already known, then evicts down to
+// MAX_RECENT_ROSTERS. Returns the entry's attachGroups for the caller to
+// adopt as the active session's combine-state.
+function recordRosterAsRecent(rawData, metadata) {
+  const current = loadRecentRosters();
+  const existing = current.find(r => r.rosterId === metadata.rosterId);
+  const rest = current.filter(r => r.rosterId !== metadata.rosterId);
+  const entry = {
+    rosterId: metadata.rosterId,
+    listName: metadata.listName,
+    factionName: metadata.factionName,
+    savedAt: Date.now(),
+    rawData,
+    attachGroups: existing ? existing.attachGroups : [],
+  };
+  saveRecentRosters([entry, ...rest].slice(0, MAX_RECENT_ROSTERS));
+  return entry.attachGroups;
+}
+
+function formatRelativeTime(timestamp) {
+  const diffMin = Math.floor((Date.now() - timestamp) / 60000);
+  if (diffMin < 1) return "just now";
+  if (diffMin < 60) return `${diffMin} min ago`;
+  const diffHr = Math.floor(diffMin / 60);
+  if (diffHr < 24) return `${diffHr} hr ago`;
+  const diffDay = Math.floor(diffHr / 24);
+  if (diffDay < 7) return `${diffDay}d ago`;
+  return new Date(timestamp).toLocaleDateString();
+}
+
+// Populates the drop-zone's "Recent Rosters" picker. Called whenever the
+// drop zone becomes visible, since the list can change between visits.
+function renderRecentRostersPicker() {
+  const container = document.getElementById("recent-rosters-container");
+  if (!container) return;
+  const recents = loadRecentRosters();
+  if (recents.length === 0) {
+    container.innerHTML = "";
+    return;
+  }
+
+  container.innerHTML = `<label class="recent-rosters__label" for="recent-rosters-select">Recent Rosters</label>`;
+
+  const select = document.createElement("select");
+  select.id = "recent-rosters-select";
+  select.className = "recent-rosters__select";
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Choose a recent roster…";
+  select.appendChild(placeholder);
+
+  recents.forEach(entry => {
+    const opt = document.createElement("option");
+    opt.value = entry.rosterId;
+    opt.textContent = `${entry.listName} — ${entry.factionName} (${formatRelativeTime(entry.savedAt)})`;
+    select.appendChild(opt);
+  });
+
+  select.addEventListener("change", () => {
+    const chosen = recents.find(r => r.rosterId === select.value);
+    if (chosen) loadRoster(chosen.rawData);
+  });
+
+  container.appendChild(select);
+}
+
+// Resets session state and shows the drop zone with a fresh Recent Rosters
+// list -- used both after a failed parse and when the user explicitly asks
+// to switch rosters.
+function showDropZone() {
+  currentMetadata = null;
+  currentArmyRoster = null;
+  activeKeywordDefs = {};
+  attachGroups = [];
+  currentlyActiveRow = null;
+  currentlyOpenDrawer = null;
+  rosterContainer.innerHTML = "";
+  dropZone.style.display = "flex";
+  renderRecentRostersPicker();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const recents = loadRecentRosters();
+  if (recents.length > 0) {
+    loadRoster(recents[0].rawData);
+  } else {
+    renderRecentRostersPicker();
   }
 });
 
@@ -281,8 +413,6 @@ function handleFile(file) {
     try {
       const rawData = isROS ? parseRosXML(e.target.result) : JSON.parse(e.target.result);
       if (!rawData) throw new Error("Empty or unparseable roster file");
-      localStorage.setItem("40k_roster_cache", JSON.stringify(rawData));
-      dropZone.style.display = "none";
       loadRoster(rawData);
     } catch (err) {
       console.error("Roster parsing error:", err);
@@ -296,35 +426,24 @@ function loadRoster(rawData) {
   const parsed = processArmyList(rawData);
   if (!parsed) {
     alert("This file doesn't look like a valid army roster export.");
-    localStorage.removeItem("40k_roster_cache");
-    dropZone.style.display = "flex";
+    showDropZone();
     return;
   }
   activeKeywordDefs = parsed.metadata.keywordDefs || {};
   currentMetadata = parsed.metadata;
   currentArmyRoster = parsed.armyRoster;
-  attachGroups = loadAttachGroups(parsed.metadata.rosterId);
+  attachGroups = recordRosterAsRecent(rawData, parsed.metadata);
+  dropZone.style.display = "none";
   renderDashboard(parsed.metadata, parsed.armyRoster);
 }
 
 // --- ATTACHED UNITS (user-driven combine) ---
-function loadAttachGroups(rosterId) {
-  try {
-    const raw = localStorage.getItem(ATTACH_STORAGE_KEY);
-    if (!raw) return [];
-    const stored = JSON.parse(raw);
-    if (stored.rosterId !== rosterId || !Array.isArray(stored.groups)) return [];
-    return stored.groups;
-  } catch (err) {
-    return [];
-  }
-}
-
 function saveAttachGroups() {
-  localStorage.setItem(
-    ATTACH_STORAGE_KEY,
-    JSON.stringify({ rosterId: currentMetadata?.rosterId, groups: attachGroups }),
-  );
+  const list = loadRecentRosters();
+  const entry = list.find(r => r.rosterId === currentMetadata?.rosterId);
+  if (!entry) return;
+  entry.attachGroups = attachGroups;
+  saveRecentRosters(list);
 }
 
 function generateGroupId() {
@@ -854,8 +973,7 @@ function buildHeader(metadata) {
   uploadBtn.type = "button";
   uploadBtn.addEventListener("click", e => {
     e.stopPropagation();
-    localStorage.removeItem("40k_roster_cache");
-    location.reload();
+    showDropZone();
   });
 
   const actions = el("div", "roster-header__actions");
