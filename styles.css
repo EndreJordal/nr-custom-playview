@@ -184,7 +184,7 @@ body {
   margin-bottom: 22px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
   box-shadow: var(--shadow-md);
   cursor: pointer;
