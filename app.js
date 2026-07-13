@@ -367,6 +367,20 @@ function unattachUnit(groupId, memberUnitId) {
   renderDashboard(currentMetadata, currentArmyRoster);
 }
 
+// An empty/whitespace-only answer clears the custom name, reverting the
+// combined unit to its auto-generated "A + B" name.
+function renameCombinedUnit(groupId, currentName) {
+  const answer = window.prompt("Rename unit", currentName);
+  if (answer === null) return;
+  const group = attachGroups.find(g => g.id === groupId);
+  if (!group) return;
+  group.customName = answer.trim() || undefined;
+  saveAttachGroups();
+  currentlyActiveRow = null;
+  currentlyOpenDrawer = null;
+  renderDashboard(currentMetadata, currentArmyRoster);
+}
+
 // Builds the pseudo-units shown under "Attached Units" from the current
 // attachGroups + the flat per-unit armyRoster, and returns what's left over.
 // Stale member ids (e.g. after re-uploading a changed roster) are dropped;
@@ -397,7 +411,7 @@ function buildCombinedUnits(armyRoster) {
       id: group.id,
       isCombined: true,
       members,
-      name: members.map(m => m.name).join(" + "),
+      name: group.customName || members.map(m => m.name).join(" + "),
       points: members.reduce((sum, m) => sum + m.points, 0),
       models: members.reduce((sum, m) => sum + m.models, 0),
       keywords: Array.from(new Set(members.flatMap(m => m.keywords))),
@@ -972,6 +986,10 @@ function buildCombinedUnitRow(combinedUnit, allTopLevelUnits) {
     </div>
   `;
 
+  const nameEl = row.querySelector(".unit-row__name");
+  const renameBtn = buildRenameControl(combinedUnit);
+  nameEl.parentNode.insertBefore(renameBtn, nameEl);
+
   const toggle = () => {
     if (currentlyActiveRow === row) {
       closeActiveDrawer();
@@ -992,6 +1010,27 @@ function buildCombinedUnitRow(combinedUnit, allTopLevelUnits) {
   });
 
   return row;
+}
+
+const RENAME_ICON_SVG = `
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+  </svg>
+`;
+
+// Sits to the left of the name specifically so it's not adjacent to the rest
+// of the row's tap target -- reduces the chance of an accidental rename tap
+// when the intent was to open/close the drawer.
+function buildRenameControl(combinedUnit) {
+  const btn = el("button", "rename-btn", RENAME_ICON_SVG);
+  btn.type = "button";
+  btn.title = "Rename unit";
+  btn.setAttribute("aria-label", "Rename unit");
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    renameCombinedUnit(combinedUnit.id, combinedUnit.name);
+  });
+  return btn;
 }
 
 function buildStatBoxes(stats, sizeClass = "") {
