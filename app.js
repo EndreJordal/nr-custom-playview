@@ -5,16 +5,18 @@ const rosterContainer = document.getElementById("roster-container");
 let currentlyOpenDrawer = null;
 let currentlyActiveRow = null;
 
-// The last-loaded roster, kept around so attach/unattach actions (which
-// change which units are combined) can re-render the whole dashboard
-// without needing to re-parse or re-upload anything.
+// The last-loaded roster, kept around so renaming a combined unit can
+// re-render the whole dashboard without needing to re-parse or re-upload.
 let currentMetadata = null;
 let currentArmyRoster = null;
 
-// User-defined "Attached Units" groupings: { id, memberIds: [unit.id, ...] }.
-// Purely a display construct the user builds by hand -- see attachUnits().
-// Lives inside that roster's own entry in the recent-rosters list (see
-// RECENT_ROSTERS_KEY below) so each roster remembers its own combos.
+// "Attached Units" groupings: { id, memberIds: [unit.id, ...], customName? }.
+// Membership is derived automatically from New Recruit's own leader data
+// (see processArmyList's suggestedAttachGroups, applied in
+// recordRosterAsRecent) -- the viewer only lets you rename a group, not
+// change who's in it. Lives inside that roster's own entry in the
+// recent-rosters list (see RECENT_ROSTERS_KEY below) so each roster
+// remembers its own custom names.
 let attachGroups = [];
 const RECENT_ROSTERS_KEY = "40k_recent_rosters";
 const MAX_RECENT_ROSTERS = 10;
@@ -189,13 +191,26 @@ function recordRosterAsRecent(rawData, metadata) {
   const current = loadRecentRosters();
   const existing = current.find(r => r.rosterId === metadata.rosterId);
   const rest = current.filter(r => r.rosterId !== metadata.rosterId);
+
+  // Group membership always comes fresh from this parse's own suggestions --
+  // only a custom display name can survive a reload, carried over from a
+  // previously-saved group with the exact same members.
+  const attachGroups = metadata.suggestedAttachGroups.map(group => {
+    const prior = existing?.attachGroups.find(
+      g =>
+        g.memberIds.length === group.memberIds.length &&
+        g.memberIds.every(id => group.memberIds.includes(id)),
+    );
+    return prior?.customName ? { ...group, customName: prior.customName } : group;
+  });
+
   const entry = {
     rosterId: metadata.rosterId,
     listName: metadata.listName,
     factionName: metadata.factionName,
     savedAt: Date.now(),
     rawData,
-    attachGroups: existing ? existing.attachGroups : [],
+    attachGroups,
   };
   saveRecentRosters([entry, ...rest].slice(0, MAX_RECENT_ROSTERS));
   return entry.attachGroups;
@@ -448,7 +463,12 @@ function loadRoster(rawData) {
   renderDashboard(parsed.metadata, parsed.armyRoster);
 }
 
-// --- ATTACHED UNITS (user-driven combine) ---
+// --- ATTACHED UNITS ---
+// Membership is always derived automatically from New Recruit's own
+// leader/bodyguard data (metadata.suggestedAttachGroups, set by
+// recordRosterAsRecent) -- there's no manual attach/unattach in the viewer,
+// that's New Recruit's job during roster building. The only thing this app
+// lets you customize is a combined unit's display name.
 function saveAttachGroups() {
   const list = loadRecentRosters();
   const entry = list.find(r => r.rosterId === currentMetadata?.rosterId);
@@ -459,42 +479,6 @@ function saveAttachGroups() {
 
 function generateGroupId() {
   return "combo-" + Math.random().toString(36).slice(2, 10);
-}
-
-// Combining two already-combined groups merges their real member units into
-// one group (reusing one of the two group ids) rather than nesting groups --
-// attachGroups only ever stores flat lists of real unit ids.
-function attachUnits(unitA, unitB) {
-  const groupIdA = unitA.isCombined ? unitA.id : null;
-  const groupIdB = unitB.isCombined ? unitB.id : null;
-  const idsA = unitA.isCombined ? unitA.members.map(m => m.id) : [unitA.id];
-  const idsB = unitB.isCombined ? unitB.members.map(m => m.id) : [unitB.id];
-
-  attachGroups = attachGroups.filter(g => g.id !== groupIdA && g.id !== groupIdB);
-  attachGroups.push({
-    id: groupIdA || groupIdB || generateGroupId(),
-    memberIds: [...idsA, ...idsB],
-  });
-
-  saveAttachGroups();
-  currentlyActiveRow = null;
-  currentlyOpenDrawer = null;
-  renderDashboard(currentMetadata, currentArmyRoster);
-}
-
-// Detaching down to a single remaining member dissolves the group entirely --
-// an "attached unit" of one doesn't mean anything.
-function unattachUnit(groupId, memberUnitId) {
-  const group = attachGroups.find(g => g.id === groupId);
-  if (!group) return;
-  group.memberIds = group.memberIds.filter(id => id !== memberUnitId);
-  if (group.memberIds.length < 2) {
-    attachGroups = attachGroups.filter(g => g.id !== groupId);
-  }
-  saveAttachGroups();
-  currentlyActiveRow = null;
-  currentlyOpenDrawer = null;
-  renderDashboard(currentMetadata, currentArmyRoster);
 }
 
 // An empty/whitespace-only answer clears the custom name, reverting the
@@ -513,26 +497,10 @@ function renameCombinedUnit(groupId, currentName) {
 
 // Builds the pseudo-units shown under "Attached Units" from the current
 // attachGroups + the flat per-unit armyRoster, and returns what's left over.
-// Stale member ids (e.g. after re-uploading a changed roster) are dropped;
-// groups that fall below 2 valid members are dissolved and the cleanup persisted.
+// attachGroups is always derived from this same armyRoster's own ids (see
+// recordRosterAsRecent), so every member id here is guaranteed valid.
 function buildCombinedUnits(armyRoster) {
   const unitsById = new Map(armyRoster.map(u => [u.id, u]));
-  let changed = false;
-
-  attachGroups = attachGroups.filter(group => {
-    const validIds = group.memberIds.filter(id => unitsById.has(id));
-    if (validIds.length !== group.memberIds.length) {
-      group.memberIds = validIds;
-      changed = true;
-    }
-    if (validIds.length < 2) {
-      changed = true;
-      return false;
-    }
-    return true;
-  });
-  if (changed) saveAttachGroups();
-
   const consumedIds = new Set();
   const combined = attachGroups.map(group => {
     const members = group.memberIds.map(id => unitsById.get(id));
@@ -568,6 +536,12 @@ function processArmyList(data) {
     detachments: [],
     forceDispositions: [],
     keywordDefs: {},
+    // Leader/bodyguard pairings New Recruit itself reports via each unit's
+    // `associations` ("Leading" -> the led unit's own selection id). Only
+    // consulted by recordRosterAsRecent() the first time a given roster is
+    // seen -- once the user has their own attachGroups saved for it, their
+    // choices (including manually detaching a suggested pair) always win.
+    suggestedAttachGroups: [],
   };
 
   if (data.roster.costs) {
@@ -678,6 +652,15 @@ function processArmyList(data) {
       });
     }
     armyRoster.push(flatUnit);
+
+    (selection.associations || []).forEach(assoc => {
+      if (assoc.name === "Leading" && assoc.to) {
+        metadata.suggestedAttachGroups.push({
+          id: generateGroupId(),
+          memberIds: [selection.id, assoc.to],
+        });
+      }
+    });
   });
 
   return { metadata, armyRoster };
@@ -859,10 +842,9 @@ function renderDashboard(metadata, armyRoster) {
   rosterContainer.appendChild(buildHeader(metadata));
 
   const { combined, remaining } = buildCombinedUnits(armyRoster);
-  const allTopLevelUnits = [...combined, ...remaining];
 
-  renderAttachedUnitsSection(combined, allTopLevelUnits);
-  renderUnitSections(remaining, allTopLevelUnits);
+  renderAttachedUnitsSection(combined);
+  renderUnitSections(remaining);
   renderStratagemSection(metadata);
 }
 
@@ -1049,17 +1031,17 @@ function buildHeader(metadata) {
   return headerWrapper;
 }
 
-function renderAttachedUnitsSection(combinedUnits, allTopLevelUnits) {
+function renderAttachedUnitsSection(combinedUnits) {
   if (combinedUnits.length === 0) return;
   rosterContainer.appendChild(
     el("div", "category-header category-header--attached", "ATTACHED UNITS"),
   );
   combinedUnits.forEach(cu =>
-    rosterContainer.appendChild(buildCombinedUnitRow(cu, allTopLevelUnits)),
+    rosterContainer.appendChild(buildCombinedUnitRow(cu)),
   );
 }
 
-function renderUnitSections(armyRoster, allTopLevelUnits) {
+function renderUnitSections(armyRoster) {
   const groupedBuckets = {};
   CATEGORY_ORDER.forEach(c => (groupedBuckets[c.key] = []));
   const uncategorizedBucket = [];
@@ -1079,7 +1061,7 @@ function renderUnitSections(armyRoster, allTopLevelUnits) {
     if (bucketUnits.length === 0) return;
     rosterContainer.appendChild(el("div", "category-header", catDef.label));
     bucketUnits.forEach(unit =>
-      rosterContainer.appendChild(buildUnitRow(unit, allTopLevelUnits)),
+      rosterContainer.appendChild(buildUnitRow(unit)),
     );
   });
 
@@ -1092,12 +1074,12 @@ function renderUnitSections(armyRoster, allTopLevelUnits) {
       ),
     );
     uncategorizedBucket.forEach(unit =>
-      rosterContainer.appendChild(buildUnitRow(unit, allTopLevelUnits)),
+      rosterContainer.appendChild(buildUnitRow(unit)),
     );
   }
 }
 
-function buildUnitRow(unit, allTopLevelUnits) {
+function buildUnitRow(unit) {
   const row = el("div", "unit-row");
   row.tabIndex = 0;
   row.setAttribute("role", "button");
@@ -1126,7 +1108,7 @@ function buildUnitRow(unit, allTopLevelUnits) {
     closeActiveDrawer();
     currentlyActiveRow = row;
     row.classList.add("unit-row--open");
-    renderInlineTray(row, unit, allTopLevelUnits);
+    renderInlineTray(row, unit);
   };
 
   row.addEventListener("click", toggle);
@@ -1143,7 +1125,7 @@ function buildUnitRow(unit, allTopLevelUnits) {
 // Collapsed row for a combined "Attached Units" entry -- deliberately has no
 // statblock preview (there isn't one single statline to show), just name/
 // count/points, same as the top line of a normal unit row.
-function buildCombinedUnitRow(combinedUnit, allTopLevelUnits) {
+function buildCombinedUnitRow(combinedUnit) {
   const row = el("div", "unit-row unit-row--combined");
   row.tabIndex = 0;
   row.setAttribute("role", "button");
@@ -1168,7 +1150,7 @@ function buildCombinedUnitRow(combinedUnit, allTopLevelUnits) {
     closeActiveDrawer();
     currentlyActiveRow = row;
     row.classList.add("unit-row--open");
-    renderCombinedInlineTray(row, combinedUnit, allTopLevelUnits);
+    renderCombinedInlineTray(row, combinedUnit);
   };
 
   row.addEventListener("click", toggle);
@@ -1362,7 +1344,7 @@ function buildStratCard(strat) {
   return card;
 }
 
-function renderInlineTray(targetRow, unit, allTopLevelUnits) {
+function renderInlineTray(targetRow, unit) {
   const inlineDrawer = el("div", "unit-drawer");
   inlineDrawer.innerHTML = `
     <div class="unit-drawer__inner">
@@ -1415,9 +1397,6 @@ function renderInlineTray(targetRow, unit, allTopLevelUnits) {
       ${buildKeywordsBlock(unit)}
     </div>
   `;
-  inlineDrawer.querySelector(".unit-drawer__inner").appendChild(
-    buildAttachControl(unit, allTopLevelUnits),
-  );
 
   targetRow.insertAdjacentElement("afterend", inlineDrawer);
   currentlyOpenDrawer = inlineDrawer;
@@ -1431,7 +1410,7 @@ function renderInlineTray(targetRow, unit, allTopLevelUnits) {
 // abilities / keywords) but every section is partitioned into labeled blocks
 // per constituent unit -- nothing is merged or deduped across unit
 // boundaries, since these are still legally separate units standing together.
-function renderCombinedInlineTray(targetRow, combinedUnit, allTopLevelUnits) {
+function renderCombinedInlineTray(targetRow, combinedUnit) {
   const inlineDrawer = el("div", "unit-drawer unit-drawer--combined");
   const members = combinedUnit.members;
   inlineDrawer.innerHTML = `
@@ -1486,10 +1465,9 @@ function renderCombinedInlineTray(targetRow, combinedUnit, allTopLevelUnits) {
 
   const inner = inlineDrawer.querySelector(".unit-drawer__inner");
   inner.insertBefore(
-    buildCombinedStatblockSection(combinedUnit.id, members),
+    buildCombinedStatblockSection(members),
     inner.firstChild,
   );
-  inner.appendChild(buildAttachControl(combinedUnit, allTopLevelUnits));
 
   targetRow.insertAdjacentElement("afterend", inlineDrawer);
   currentlyOpenDrawer = inlineDrawer;
@@ -1498,13 +1476,10 @@ function renderCombinedInlineTray(targetRow, combinedUnit, allTopLevelUnits) {
   });
 }
 
-// One labeled row per constituent unit, each with its own statblock(s) and
-// an "Unattach from unit" button -- unattaching removes just that one unit
-// from the group and sends it back to its normal category.
+// One labeled row per constituent unit, each with its own statblock(s).
 // Mirrors buildStatblockSection's row layout exactly (stat boxes + label,
-// all on one line) -- the only addition is an Unattach button on the same
-// row, to the right of the label.
-function buildCombinedStatblockSection(groupId, members) {
+// all on one line), just grouped per member.
+function buildCombinedStatblockSection(members) {
   const container = el("div", "unit-drawer__statblock unit-drawer__statblock--combined");
   members.forEach(m => {
     const memberBlock = el("div", "combined-statblock-member");
@@ -1515,13 +1490,6 @@ function buildCombinedStatblockSection(groupId, members) {
         <div class="statblock-row__boxes">${buildStatBoxes(sb.stats)}</div>
         <span class="statblock-row__label">${sanitizeHTML(label)}</span>
       `;
-      const unattachBtn = el("button", "unattach-btn", "Unattach from unit");
-      unattachBtn.type = "button";
-      unattachBtn.addEventListener("click", e => {
-        e.stopPropagation();
-        unattachUnit(groupId, m.id);
-      });
-      row.appendChild(unattachBtn);
       memberBlock.appendChild(row);
     });
     container.appendChild(memberBlock);
@@ -1625,57 +1593,6 @@ function buildCombinedKeywordsBlock(members) {
     </div>
   `;
 }
-
-// Sits at the bottom of every unit drawer, plain or combined. Lists every
-// other top-level entry (including other Attached Units groups, so several
-// units can be folded into one bigger combined unit) as a tap target.
-function buildAttachControl(unit, allTopLevelUnits) {
-  const wrapper = el("div", "attach-control");
-  const candidates = allTopLevelUnits.filter(u => u.id !== unit.id);
-
-  const btn = el("button", "attach-btn", "+ Attach Unit");
-  btn.type = "button";
-
-  const picker = el("div", "attach-picker");
-  candidates.forEach(candidate => {
-    const option = el(
-      "button",
-      "attach-picker__option",
-      sanitizeHTML(candidate.name),
-    );
-    option.type = "button";
-    option.addEventListener("click", e => {
-      e.stopPropagation();
-      attachUnits(unit, candidate);
-    });
-    picker.appendChild(option);
-  });
-
-  if (candidates.length === 0) {
-    btn.disabled = true;
-    btn.title = "No other units to attach";
-  }
-
-  btn.addEventListener("click", e => {
-    e.stopPropagation();
-    const isOpen = picker.classList.contains("attach-picker--open");
-    document
-      .querySelectorAll(".attach-picker--open")
-      .forEach(p => p.classList.remove("attach-picker--open"));
-    if (!isOpen) picker.classList.add("attach-picker--open");
-  });
-
-  wrapper.appendChild(btn);
-  wrapper.appendChild(picker);
-  return wrapper;
-}
-
-document.addEventListener("click", e => {
-  if (e.target.closest(".attach-control")) return;
-  document
-    .querySelectorAll(".attach-picker--open")
-    .forEach(p => p.classList.remove("attach-picker--open"));
-});
 
 // Only a flat integer A value (e.g. "4") has a meaningful total across
 // models — dice notation like "D3" or "D6+3" can't be multiplied into a
