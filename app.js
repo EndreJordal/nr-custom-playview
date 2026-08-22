@@ -111,6 +111,12 @@ const CATEGORY_ORDER = [
   { key: "DEDICATED TRANSPORT", label: "DEDICATED TRANSPORTS" },
 ];
 
+// New Recruit reports both flavors of "forms an attached unit with its
+// bodyguard" as `associations` entries: a Leader ("Leading") and a non-Leader
+// support character, e.g. a Cryptek ("Supporting") -- both work identically
+// for auto-attach purposes.
+const ATTACHMENT_ASSOCIATION_NAMES = new Set(["Leading", "Supporting"]);
+
 // --- 0. PWA SERVICE WORKER ---
 const isLocalDev = ["localhost", "127.0.0.1"].includes(location.hostname);
 if ("serviceWorker" in navigator && !isLocalDev) {
@@ -536,11 +542,12 @@ function processArmyList(data) {
     detachments: [],
     forceDispositions: [],
     keywordDefs: {},
-    // Leader/bodyguard pairings New Recruit itself reports via each unit's
-    // `associations` ("Leading" -> the led unit's own selection id). Only
-    // consulted by recordRosterAsRecent() the first time a given roster is
-    // seen -- once the user has their own attachGroups saved for it, their
-    // choices (including manually detaching a suggested pair) always win.
+    // Leader/bodyguard and support/bodyguard pairings New Recruit itself
+    // reports via each unit's `associations` (ATTACHMENT_ASSOCIATION_NAMES
+    // -> the attached unit's own selection id). Only consulted by
+    // recordRosterAsRecent() the first time a given roster is seen -- once
+    // the user has their own attachGroups saved for it, their choices
+    // (including manually detaching a suggested pair) always win.
     suggestedAttachGroups: [],
   };
 
@@ -654,7 +661,7 @@ function processArmyList(data) {
     armyRoster.push(flatUnit);
 
     (selection.associations || []).forEach(assoc => {
-      if (assoc.name === "Leading" && assoc.to) {
+      if (ATTACHMENT_ASSOCIATION_NAMES.has(assoc.name) && assoc.to) {
         metadata.suggestedAttachGroups.push({
           id: generateGroupId(),
           memberIds: [selection.id, assoc.to],
