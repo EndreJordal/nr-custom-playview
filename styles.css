@@ -2,22 +2,28 @@
   color-scheme: dark;
 
   /* Surfaces (elevation ladder — each step slightly lighter) */
-  --bg-page: #19191c; /* dark grey, not black */
-  --bg-surface-1: #212126; /* panels: header, cards, drawers */
-  --bg-surface-2: #29292f; /* rows, chips */
-  --bg-surface-3: #333339; /* hover / active state */
-  --bg-inset: #141417; /* recessed elements: stat values, table body */
+  --bg-page: #17171a; /* dark grey, not black */
+  --bg-surface-1: #1f1f24; /* panels: header, cards, drawers */
+  --bg-surface-2: #26262c; /* rows, chips */
+  --bg-surface-3: #303037; /* hover / active state */
+  --bg-inset: #121215; /* recessed elements: stat values, table body */
 
   /* Borders — low-contrast alpha, not solid hues */
-  --border-subtle: rgba(255, 255, 255, 0.09);
-  --border-subtle-strong: rgba(255, 255, 255, 0.17);
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-subtle-strong: rgba(255, 255, 255, 0.14);
+  /* 1px inner top highlight on raised surfaces — reads as a lit edge */
+  --edge-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
   /* Text */
-  --text-primary: #f6f6f8;
-  --text-secondary: #b5b5c0;
-  --text-tertiary: #84848f;
+  --text-primary: #f4f4f7;
+  --text-secondary: #b3b3bf;
+  --text-tertiary: #7f7f8c;
+  --text-on-accent: #111114;
 
-  /* Accents — used sparingly and with intent */
+  /* Accents — used sparingly and with intent. The three user-pickable ones
+     (--accent, --accent-amber, --accent-violet) and their -soft variants are
+     overwritten at runtime by app.js's applyAccentPrefs(); anything derived
+     from them below uses color-mix() so it follows the user's palette. */
   --accent: #2dd4bf; /* primary: interactive / highlighted stats */
   --accent-soft: rgba(45, 212, 191, 0.16);
   --accent-amber: #f2b544; /* currency: points, CP cost */
@@ -30,18 +36,22 @@
   /* Stratagem-card exception palette (deliberately outside the core system) --
      stratagem timing colors are fixed and must NOT move when the user picks
      a different accent palette. */
-  --strat-blue: #3a5ba0; /* "your turn" stratagems */
+  --strat-blue: #5b8def; /* "your turn" stratagems */
   --strat-teal: #2dd4bf; /* "any phase" / neutral-timing stratagems */
 
   /* Radius scale */
+  --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 10px;
-  --radius-lg: 16px;
+  --radius-lg: 14px;
   --radius-pill: 999px;
 
   /* Elevation shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
-  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.25);
+
+  /* Vertical rhythm between stacked rows (unit rows, detachment rows) */
+  --row-gap: 6px;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -59,9 +69,13 @@ body {
   background: var(--bg-page);
   color: var(--text-primary);
   font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.4;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
   margin: 0;
-  padding: 32px 20px;
+  padding: 32px 20px 64px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,14 +92,21 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--bg-surface-3);
+  border: 2px solid var(--bg-page);
   border-radius: var(--radius-pill);
+}
+
+select,
+button {
+  font-family: var(--font-sans);
 }
 
 /* --- DRAG & DROP ZONE --- */
 #drop-zone {
   width: 100%;
   max-width: 600px;
-  height: 200px;
+  min-height: 220px;
+  padding: 28px 20px;
   border: 1.5px dashed var(--border-subtle-strong);
   border-radius: var(--radius-lg);
   background: var(--bg-surface-1);
@@ -93,10 +114,25 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  text-align: center;
   cursor: pointer;
   transition: border-color 0.2s var(--ease-out-expo), background 0.2s var(--ease-out-expo),
     box-shadow 0.2s var(--ease-out-expo);
+}
+
+/* Upload glyph, drawn as a mask so it takes the current text color. */
+#drop-zone::before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='17 8 12 3 7 8'/%3E%3Cline x1='12' y1='3' x2='12' y2='15'/%3E%3C/svg%3E")
+    center / 22px no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='17 8 12 3 7 8'/%3E%3Cline x1='12' y1='3' x2='12' y2='15'/%3E%3C/svg%3E")
+    center / 22px no-repeat;
+  background-color: var(--text-tertiary);
+  transition: background-color 0.2s var(--ease-out-expo);
 }
 
 #drop-zone:hover,
@@ -106,11 +142,17 @@ body {
   box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
+#drop-zone:hover::before,
+#drop-zone.dragover::before {
+  background-color: var(--accent);
+}
+
 #drop-zone h2 {
   margin: 0;
   font-size: 17px;
   font-weight: 600;
-  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
   transition: color 0.2s var(--ease-out-expo);
 }
 
@@ -133,29 +175,29 @@ body {
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  margin-top: 16px;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 20px;
 }
 
 .recent-rosters__label {
   color: var(--text-tertiary);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .recent-rosters__select {
   width: 100%;
-  padding: 10px 14px;
+  padding: 11px 14px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle-strong);
   background: var(--bg-surface-1);
   color: var(--text-primary);
-  font-family: var(--font-sans);
   font-size: 14px;
   cursor: pointer;
+  transition: border-color 0.2s var(--ease-out-expo);
 }
 
 .recent-rosters__select:hover {
@@ -163,30 +205,35 @@ body {
 }
 
 /* --- ROSTER CONTAINER --- */
+/* No flex gap here: each row type owns its own bottom margin so an open
+   unit row can sit flush against its drawer. */
 #roster-container {
   width: 100%;
   max-width: 860px;
-  margin-top: 30px;
+  margin-top: 28px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+}
+
+#roster-container:empty {
+  display: none;
 }
 
 /* --- ROSTER HEADER --- */
 .roster-header {
   position: relative;
   width: 100%;
-  background: var(--bg-surface-2);
+  background: linear-gradient(180deg, var(--bg-surface-2), var(--bg-surface-1));
   border: 1px solid var(--border-subtle);
   border-top: 3px solid var(--accent);
   border-radius: var(--radius-lg);
   padding: 22px 28px;
-  margin-bottom: 22px;
+  margin-bottom: 26px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  box-shadow: var(--shadow-md);
+  gap: 24px;
+  box-shadow: var(--shadow-md), var(--edge-highlight);
   cursor: pointer;
   transition: padding 0.25s var(--ease-out-expo), background 0.25s var(--ease-out-expo),
     border-color 0.2s var(--ease-out-expo);
@@ -194,61 +241,69 @@ body {
 
 .roster-header:hover {
   border-color: var(--border-subtle-strong);
+  border-top-color: var(--accent);
 }
 
 .roster-header--collapsed {
-  padding: 12px 22px;
-  background: var(--bg-page);
+  padding: 12px 44px 12px 22px;
+  background: var(--bg-surface-1);
+  box-shadow: var(--shadow-sm);
   align-items: center;
 }
 
 .roster-header__meta {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   min-width: 0;
 }
 
 .roster-header__collapsed-row {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 14px;
+  align-items: center;
+  gap: 6px 12px;
 }
 
 .roster-header__meta-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  gap: 8px 12px;
 }
 
 .roster-header__name {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 800;
+  line-height: 1.15;
   color: var(--text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
 }
 
 .roster-header__name--collapsed {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .roster-header__points {
   display: inline-flex;
   align-items: center;
-  padding: 3px 10px;
+  padding: 3px 11px;
   border-radius: var(--radius-pill);
   background: var(--accent-amber-soft);
   color: var(--accent-amber);
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
 }
 
 .roster-header__points--collapsed {
-  font-size: 12px;
-  padding: 2px 8px;
+  font-size: 13px;
+  padding: 1px 9px;
 }
 
 /* Over the declared points limit for this battle size. */
@@ -258,11 +313,11 @@ body {
 }
 
 .roster-header__faction {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-secondary);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .roster-header__faction--collapsed {
@@ -279,19 +334,20 @@ body {
   gap: 6px;
 }
 
-.roster-header__tag-label {
+.roster-header__tag-label,
+.accent-picker-group__label {
   font-size: 10px;
   font-weight: 700;
   color: var(--text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
 }
 
 .roster-header__actions-col {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 14px;
   flex-shrink: 0;
 }
 
@@ -306,31 +362,24 @@ body {
   display: none;
 }
 
-.accent-picker-group__label {
-  font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-tertiary);
-}
-
 .accent-picker-row {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 6px;
 }
 
+/* app.js sets each select's border and text color inline to its chosen
+   accent -- kept to a 1px border here so the trio reads as quiet swatches
+   rather than three loud outlined boxes. */
 .accent-picker__select {
-  background: var(--bg-surface-3);
-  border: 2px solid var(--border-subtle-strong);
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle-strong);
   border-radius: var(--radius-sm);
   color: var(--text-primary);
-  font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
-  padding: 4px 6px;
-  min-width: 80px;
+  padding: 5px 6px;
+  min-width: 84px;
   cursor: pointer;
 }
 
@@ -343,7 +392,7 @@ body {
 .roster-header__switcher {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .roster-header--collapsed .roster-header__switcher {
@@ -353,19 +402,24 @@ body {
 /* Same height, border weight, radius and font-size as the Upload button
    below so the pair reads as one coherent control, not two mismatched
    widgets bolted together. */
-.header-recent-rosters__select {
+.header-recent-rosters__select,
+.roster-header__upload-btn {
+  height: 36px;
   background: var(--bg-surface-3);
   border: 1px solid var(--border-subtle-strong);
   border-radius: var(--radius-md);
   color: var(--text-primary);
-  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 600;
-  padding: 9px 12px;
+  cursor: pointer;
+  transition: background 0.2s var(--ease-out-expo), color 0.2s var(--ease-out-expo),
+    border-color 0.2s var(--ease-out-expo);
+}
+
+.header-recent-rosters__select {
+  padding: 0 10px;
   min-width: 190px;
   max-width: 260px;
-  cursor: pointer;
-  transition: border-color 0.2s var(--ease-out-expo);
 }
 
 .header-recent-rosters__select:hover {
@@ -378,17 +432,24 @@ body {
 }
 
 .roster-header__upload-btn {
-  padding: 9px 16px;
-  background: var(--bg-surface-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
   color: var(--text-secondary);
-  border: 1px solid var(--border-subtle-strong);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
   white-space: nowrap;
-  transition: background 0.2s var(--ease-out-expo), color 0.2s var(--ease-out-expo),
-    border-color 0.2s var(--ease-out-expo);
+}
+
+/* Small upload arrow ahead of the label. */
+.roster-header__upload-btn::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='17 8 12 3 7 8'/%3E%3Cline x1='12' y1='3' x2='12' y2='15'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='17 8 12 3 7 8'/%3E%3Cline x1='12' y1='3' x2='12' y2='15'/%3E%3C/svg%3E")
+    center / contain no-repeat;
 }
 
 .roster-header__upload-btn:hover {
@@ -410,10 +471,10 @@ body {
   position: absolute;
   top: 14px;
   right: 16px;
-  width: 9px;
-  height: 9px;
-  border-right: 2px solid var(--text-secondary);
-  border-bottom: 2px solid var(--text-secondary);
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--text-tertiary);
+  border-bottom: 2px solid var(--text-tertiary);
   transform: rotate(225deg);
   transition: transform 0.25s var(--ease-out-expo), border-color 0.2s var(--ease-out-expo);
 }
@@ -424,8 +485,8 @@ body {
 
 .roster-header--collapsed .roster-header__chevron {
   top: 50%;
-  right: 14px;
-  transform: translateY(-50%) rotate(45deg);
+  right: 18px;
+  transform: translateY(-70%) rotate(45deg);
 }
 
 /* --- CHIPS --- */
@@ -438,12 +499,12 @@ body {
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   padding: 3px 10px;
   border-radius: var(--radius-pill);
   background: var(--bg-surface-3);
   border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-size: 12px;
   font-weight: 600;
   white-space: nowrap;
@@ -452,12 +513,13 @@ body {
 .chip__meta {
   color: var(--text-tertiary);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 12.5px;
 }
 
 .chip--accent {
   background: var(--accent-soft);
-  border-color: transparent;
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
   color: var(--accent);
 }
 
@@ -468,22 +530,34 @@ body {
 }
 
 /* --- CATEGORY HEADERS --- */
+/* Label followed by a hairline rule filling the rest of the row. */
 .category-header {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  color: var(--text-secondary);
-  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 16px 2px 8px 2px;
+  padding: 18px 2px 10px 2px;
   width: 100%;
-  border-bottom: 1px solid var(--border-subtle);
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
+  gap: 12px;
+}
+
+.category-header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.roster-header + .category-header {
+  padding-top: 0;
 }
 
 .category-header--uncategorized {
   color: var(--text-tertiary);
+  opacity: 0.8;
 }
 
 /* Deliberately stands out from the plain category headers above/below it --
@@ -496,22 +570,26 @@ body {
 
 .category-header--attached::before {
   content: "";
-  width: 4px;
-  height: 14px;
+  width: 3px;
+  height: 13px;
   border-radius: 2px;
   background: var(--accent);
 }
 
 /* --- UNIT ROW --- */
 .unit-row {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+  min-height: 58px;
   background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 13px 18px;
-  margin-bottom: 8px;
+  padding: 10px 16px 10px 18px;
+  margin-bottom: var(--row-gap);
+  box-shadow: var(--edge-highlight);
   cursor: pointer;
   transition: background 0.18s var(--ease-out-expo), border-color 0.18s var(--ease-out-expo),
     transform 0.18s var(--ease-out-expo);
@@ -526,14 +604,24 @@ body {
   transform: scale(0.997);
 }
 
+/* Open row joins its drawer into one card: square bottom corners, no gap,
+   and an accent edge on the left running down into the drawer. */
 .unit-row--open,
 .unit-row--open:hover {
-  background: var(--accent-soft);
-  border-color: var(--accent);
+  background: var(--bg-surface-2);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  border-bottom-color: var(--border-subtle);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  margin-bottom: 0;
+  box-shadow: inset 3px 0 0 var(--accent), var(--edge-highlight);
+}
+
+.unit-row--open .unit-row__name {
+  color: var(--accent);
 }
 
 .unit-row--combined {
-  border-left: 3px solid var(--accent);
+  box-shadow: inset 3px 0 0 var(--accent), var(--edge-highlight);
 }
 
 .rename-btn {
@@ -541,8 +629,9 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
+  margin-left: -6px;
   padding: 0;
   border: none;
   background: transparent;
@@ -559,7 +648,9 @@ body {
 
 .unit-row:focus-visible,
 .detachment-row:focus-visible,
-.roster-header__upload-btn:focus-visible {
+.roster-header__upload-btn:focus-visible,
+.rename-btn:focus-visible,
+.ability-show-more:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
@@ -572,31 +663,36 @@ body {
 }
 
 .unit-row__name {
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color 0.18s var(--ease-out-expo);
 }
 
 .unit-row__count {
   display: inline-flex;
-  padding: 1px 7px;
+  padding: 0 7px;
   border-radius: var(--radius-pill);
   background: var(--bg-surface-3);
   color: var(--text-secondary);
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   flex-shrink: 0;
 }
 
 .unit-row__points {
   color: var(--accent-amber);
   font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 14.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
   flex-shrink: 0;
 }
 
@@ -606,17 +702,19 @@ body {
   padding: 1px 8px;
   border-radius: var(--radius-pill);
   background: var(--accent-amber-soft);
+  border: 1px solid color-mix(in srgb, var(--accent-amber) 30%, transparent);
   color: var(--accent-amber);
-  font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
   flex-shrink: 0;
 }
 
 .unit-row__stats {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   flex-shrink: 0;
 }
 
@@ -638,7 +736,7 @@ body {
   color: var(--text-tertiary);
   font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   margin-bottom: 3px;
 }
 
@@ -652,30 +750,32 @@ body {
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
   width: 100%;
   text-align: center;
   padding: 4px 0;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-subtle);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .stat-box--highlight .stat-box__value {
   color: var(--accent);
-  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg-inset));
+  border-color: color-mix(in srgb, var(--accent) 60%, transparent);
 }
 
 /* --- STRATAGEMS SECTION --- */
 .strat-section-header {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 10px 2px;
+  padding: 10px 2px 12px;
   width: 100%;
-  border-bottom: 1px solid var(--border-subtle);
-  margin-bottom: 14px;
-  margin-top: 28px;
+  margin-top: 30px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -683,23 +783,45 @@ body {
 
 .strat-section-header::before {
   content: "";
-  width: 4px;
-  height: 14px;
+  width: 3px;
+  height: 13px;
   border-radius: 2px;
   background: var(--accent-amber);
+}
+
+.strat-section-header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
 }
 
 .detachment-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 14px 18px;
-  margin-bottom: 8px;
+  padding: 14px 16px 14px 18px;
+  margin-bottom: var(--row-gap);
+  box-shadow: var(--edge-highlight);
   cursor: pointer;
   transition: background 0.18s var(--ease-out-expo), border-color 0.18s var(--ease-out-expo);
+}
+
+/* Chevron on the right edge, rotates when the drawer opens. */
+.detachment-row::after {
+  content: "";
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  margin: 0 4px 3px 2px;
+  border-right: 2px solid var(--text-tertiary);
+  border-bottom: 2px solid var(--text-tertiary);
+  transform: rotate(45deg);
+  transition: transform 0.25s var(--ease-out-expo), border-color 0.2s var(--ease-out-expo);
 }
 
 .detachment-row:hover {
@@ -707,26 +829,39 @@ body {
   border-color: var(--border-subtle-strong);
 }
 
+.detachment-row:hover::after {
+  border-color: var(--accent-amber);
+}
+
 .detachment-row--open {
   background: var(--bg-surface-2);
   border-color: var(--border-subtle-strong);
+  box-shadow: inset 3px 0 0 var(--accent-amber), var(--edge-highlight);
+}
+
+.detachment-row--open::after {
+  transform: rotate(225deg);
+  margin-bottom: -3px;
 }
 
 .detachment-row__name {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
+  margin-right: auto;
 }
 
 .detachment-row__points {
   display: inline-flex;
-  padding: 3px 10px;
+  padding: 2px 10px;
   border-radius: var(--radius-pill);
   background: var(--accent-amber-soft);
   color: var(--accent-amber);
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .detachment-drawer {
@@ -734,19 +869,19 @@ body {
   box-sizing: border-box;
   overflow: hidden;
   max-height: 0px;
-  padding: 0 10px;
+  padding: 0 4px;
   transition: max-height 0.3s var(--ease-out-expo), padding 0.3s var(--ease-out-expo);
 }
 
 .detachment-drawer--open {
-  padding: 10px 10px 16px 10px;
+  padding: 6px 4px 18px 4px;
 }
 
 /* --- STRATAGEM CARD GRID --- */
 .strat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
   width: 100%;
   padding-bottom: 4px; /* Prevents card bottom shadows from being clipped */
   box-sizing: border-box;
@@ -767,61 +902,76 @@ body {
 .strat-card {
   background: var(--bg-surface-1);
   border: 1px solid var(--border-subtle);
-  border-left: 3px solid var(--strat-color);
   border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-sm), inset 3px 0 0 var(--strat-color);
 }
 
+/* Header carries a faint wash of the timing color, fading out to the right. */
 .strat-card__header {
-  padding: 10px 14px;
+  padding: 10px 14px 10px 17px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--strat-color) 14%, transparent),
+    transparent 75%
+  );
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .strat-card__name {
   font-size: 12.5px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .strat-card__cp {
   flex-shrink: 0;
   font-family: var(--font-display);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
-  color: var(--strat-color);
-  background: color-mix(in srgb, var(--strat-color) 15%, transparent);
-  padding: 2px 9px;
+  color: color-mix(in srgb, var(--strat-color) 75%, white);
+  background: color-mix(in srgb, var(--strat-color) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--strat-color) 40%, transparent);
+  padding: 0 9px;
   border-radius: var(--radius-pill);
+  white-space: nowrap;
 }
 
 .strat-card__body {
-  padding: 14px;
+  padding: 12px 14px 14px 17px;
   font-size: 13px;
+  line-height: 1.45;
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 8px;
   flex-grow: 1;
 }
 
 .strat-label {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-tertiary);
+  margin-right: 2px;
 }
 
 .strat-value {
   color: var(--text-secondary);
+}
+
+.strat-value strong,
+.ability-text--desc strong {
+  color: var(--text-primary);
+  font-weight: 700;
 }
 
 .strat-value--effect {
@@ -833,19 +983,20 @@ body {
 .unit-drawer {
   width: 100%;
   background: var(--bg-surface-1);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
   border-top: none;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
+  box-shadow: inset 3px 0 0 var(--accent), var(--shadow-md);
   box-sizing: border-box;
   overflow: hidden;
   max-height: 0px;
   transition: max-height 0.3s var(--ease-out-expo);
-  padding: 0px 16px;
-  margin-bottom: 8px;
+  padding: 0px 18px 0 20px;
+  margin-bottom: 14px;
 }
 
 .unit-drawer__inner {
-  padding: 14px 0 20px 0;
+  padding: 16px 0 20px 0;
 }
 
 .unit-drawer__section {
@@ -877,28 +1028,29 @@ body {
 .statblock-row__boxes {
   display: flex;
   flex-shrink: 0;
-  gap: 9px;
+  gap: 8px;
 }
 
 .statblock-row__label {
-  font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .unit-drawer__statblock .stat-box {
-  width: 51px;
+  width: 50px;
 }
 
 .unit-drawer__statblock .stat-box__label {
-  font-size: 13px;
-  margin-bottom: 4px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
 }
 
 .unit-drawer__statblock .stat-box__value {
   font-size: 22px;
-  padding: 6px 0;
+  padding: 7px 0 5px;
+  border-radius: var(--radius-md);
 }
 
 /* --- COMBINED UNIT SUB-GROUPING (Attached Units drawer) --- */
@@ -913,7 +1065,7 @@ body {
   gap: 8px;
   width: 100%;
   padding: 14px 0;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px dashed var(--border-subtle-strong);
 }
 
 .combined-statblock-member:first-child {
@@ -934,12 +1086,12 @@ body {
 
 .weapon-table__subheader {
   background: var(--bg-surface-2);
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-align: left;
   padding: 6px 10px;
 }
@@ -947,7 +1099,7 @@ body {
 /* Same per-member labeling inside the Abilities/Enhancements and Keywords
    blocks of a combined unit's drawer. */
 .abilities-block__member {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .abilities-block__member:last-child {
@@ -955,15 +1107,22 @@ body {
 }
 
 .abilities-block__member-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   color: var(--text-primary);
-  font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 8px;
-  padding-bottom: 4px;
-  border-bottom: 1px solid var(--border-subtle-strong);
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+.abilities-block__member-header::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle-strong);
 }
 
 .keywords-block__member {
@@ -975,12 +1134,11 @@ body {
 }
 
 .keywords-block__member-header {
-  color: var(--text-tertiary);
-  font-family: var(--font-sans);
+  color: var(--text-secondary);
   font-size: 10.5px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   margin-bottom: 6px;
 }
 
@@ -992,38 +1150,35 @@ body {
 .weapon-section-header,
 .abilities-block__header {
   background: var(--bg-surface-2);
-  color: var(--text-secondary);
+  color: var(--text-primary);
   font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.07em;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 7px 10px;
+  padding: 8px 12px;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   border: 1px solid var(--border-subtle);
   border-bottom: none;
-  border-left: 3px solid var(--border-subtle-strong);
+  box-shadow: inset 3px 0 0 var(--border-subtle-strong);
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
 }
 
 .weapon-section-header--ranged {
-  border-left-color: var(--accent);
+  box-shadow: inset 3px 0 0 var(--accent);
 }
 
-.weapon-section-header--melee {
-  border-left-color: var(--accent-amber);
-}
-
+.weapon-section-header--melee,
 .abilities-block__header--enhancement {
-  border-left-color: var(--accent-amber);
+  box-shadow: inset 3px 0 0 var(--accent-amber);
 }
 
 .weapon-section-header__icon {
   width: 15px;
   height: 15px;
   display: block;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .weapon-section-header__icon--melee {
@@ -1036,25 +1191,28 @@ body {
   table-layout: fixed;
   border-collapse: collapse;
   font-family: var(--font-display);
-  font-size: 13px;
-  background: var(--bg-page);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-inset);
   border: 1px solid var(--border-subtle);
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   overflow: hidden;
 }
 
 .weapon-table__head-row {
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle-strong);
   color: var(--text-tertiary);
+  font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 10.5px;
-  letter-spacing: 0.03em;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
   text-align: center;
-  height: 30px;
+  height: 28px;
 }
 
 .weapon-table__head {
   width: 6%;
+  font-weight: 700;
 }
 
 .weapon-table__head--name {
@@ -1073,6 +1231,11 @@ body {
   border-bottom: 1px solid var(--border-subtle);
   text-align: center;
   height: 40px;
+  transition: background 0.12s ease;
+}
+
+.weapon-table__row:hover {
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .weapon-table__row:last-child {
@@ -1087,9 +1250,10 @@ body {
 
 .weapon-table__cell--name {
   font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
   font-size: 13px;
+  line-height: 1.3;
   text-align: left;
   padding-left: 10px;
 }
@@ -1104,19 +1268,20 @@ body {
 .weapon-table__cell-total {
   color: var(--text-tertiary);
   font-weight: 600;
+  font-size: 0.85em;
 }
 
 /* How many models in the unit carry this exact profile, e.g. "x10". */
 .weapon-table__count-badge {
   display: inline-flex;
-  padding: 1px 6px;
+  padding: 0 6px;
   border-radius: var(--radius-pill);
   background: var(--bg-surface-3);
   color: var(--text-secondary);
   font-family: var(--font-display);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  vertical-align: middle;
+  vertical-align: 1px;
 }
 
 .weapon-table__cell--keywords {
@@ -1126,6 +1291,7 @@ body {
 
 .weapon-table__empty {
   font-family: var(--font-sans);
+  font-size: 12.5px;
   color: var(--text-tertiary);
   padding: 10px;
   text-align: left;
@@ -1147,16 +1313,19 @@ body {
 /* Color signals what a keyword *is* and whether it's tappable: teal =
    weapon-ability keyword, orange = CORE rule, violet = FACTION rule, grey =
    no definition found (static, not interactive). Used identically in the
-   weapon tables, the CORE/FACTION rows, and the bottom Keywords block. */
+   weapon tables, the CORE/FACTION rows, and the bottom Keywords block.
+   Tappable kinds get a tinted border; the grey kind has none. */
 .keyword-badge {
+  --kw-color: var(--text-tertiary);
   background: var(--bg-surface-3);
   border: 1px solid transparent;
-  color: var(--text-tertiary);
+  color: var(--kw-color);
   padding: 2px 7px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   font-family: var(--font-sans);
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 600;
+  line-height: 1.35;
   letter-spacing: 0.02em;
   display: inline-block;
   white-space: nowrap;
@@ -1166,68 +1335,60 @@ body {
 .keyword-badge--core,
 .keyword-badge--faction {
   cursor: pointer;
-  border-bottom: 1px dotted currentColor;
-  transition: background-color 0.15s var(--ease-out-expo);
+  background: color-mix(in srgb, var(--kw-color) 14%, transparent);
+  border-color: color-mix(in srgb, var(--kw-color) 32%, transparent);
+  transition: background-color 0.15s var(--ease-out-expo), border-color 0.15s var(--ease-out-expo),
+    color 0.15s var(--ease-out-expo);
 }
 
 .keyword-badge--weapon {
-  background: var(--accent-soft);
-  color: var(--accent);
+  --kw-color: var(--accent);
 }
 
 .keyword-badge--core {
-  background: var(--accent-amber-soft);
-  color: var(--accent-amber);
+  --kw-color: var(--accent-amber);
 }
 
 .keyword-badge--faction {
-  background: var(--accent-violet-soft);
-  color: var(--accent-violet);
+  --kw-color: var(--accent-violet);
 }
 
-.keyword-badge--weapon:hover {
-  background: rgba(45, 212, 191, 0.28);
-}
-
-.keyword-badge--core:hover {
-  background: rgba(242, 181, 68, 0.28);
-}
-
+.keyword-badge--weapon:hover,
+.keyword-badge--core:hover,
 .keyword-badge--faction:hover {
-  background: rgba(183, 148, 246, 0.3);
+  background: color-mix(in srgb, var(--kw-color) 26%, transparent);
+  border-color: color-mix(in srgb, var(--kw-color) 55%, transparent);
 }
 
-/* Open/tapped state -- solid fill, wins over the kind color above
-   regardless of declaration order since it's applied as an extra class. */
-.keyword-badge--active {
-  border-bottom-color: transparent;
-}
-
-.keyword-badge--active.keyword-badge--weapon {
-  background: var(--accent);
-  color: var(--bg-page);
-}
-
-.keyword-badge--active.keyword-badge--core {
-  background: var(--accent-amber);
-  color: var(--bg-page);
-}
-
+/* Open/tapped state -- solid fill in the badge's own kind color. */
+.keyword-badge--active.keyword-badge--weapon,
+.keyword-badge--active.keyword-badge--core,
 .keyword-badge--active.keyword-badge--faction {
-  background: var(--accent-violet);
-  color: var(--bg-page);
+  background: var(--kw-color);
+  border-color: var(--kw-color);
+  color: var(--text-on-accent);
 }
 
 .keyword-tooltip {
+  --kw-color: var(--accent);
   position: fixed;
   z-index: 1000;
-  max-width: min(280px, calc(100vw - 16px));
-  background: var(--bg-surface-1);
+  max-width: min(300px, calc(100vw - 16px));
+  background: var(--bg-surface-2);
   border: 1px solid var(--border-subtle-strong);
+  border-top: 2px solid var(--kw-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-  padding: 10px 12px;
+  padding: 10px 13px 12px;
   animation: keyword-tooltip-in 0.15s var(--ease-out-expo);
+}
+
+.keyword-tooltip--core {
+  --kw-color: var(--accent-amber);
+}
+
+.keyword-tooltip--faction {
+  --kw-color: var(--accent-violet);
 }
 
 @keyframes keyword-tooltip-in {
@@ -1244,25 +1405,16 @@ body {
 .keyword-tooltip__name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  color: var(--accent);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--kw-color);
   text-transform: uppercase;
   margin-bottom: 4px;
 }
 
-.keyword-tooltip--core .keyword-tooltip__name {
-  color: var(--accent-amber);
-}
-
-.keyword-tooltip--faction .keyword-tooltip__name {
-  color: var(--accent-violet);
-}
-
 .keyword-tooltip__desc {
-  font-family: var(--font-sans);
   font-size: 12.5px;
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--text-secondary);
 }
 
@@ -1275,19 +1427,20 @@ body {
    overrides the default top margin meant for unit-card contexts. */
 .detachment-rules-block {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .abilities-block__body {
-  background: var(--bg-page);
-  padding: 12px;
+  background: var(--bg-inset);
+  padding: 12px 14px;
   border: 1px solid var(--border-subtle);
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   font-size: 13px;
+  line-height: 1.5;
 }
 
 .ability-row {
-  margin-bottom: 9px;
+  margin-bottom: 10px;
 }
 
 .ability-row:last-child {
@@ -1299,11 +1452,14 @@ body {
   font-weight: 700;
 }
 
+/* CORE / FACTION rows: small caps label sitting above its chip row. */
 .ability-label--core,
 .ability-label--faction {
-  font-size: 11px;
-  letter-spacing: 0.05em;
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  margin-bottom: 4px;
 }
 
 .ability-label--core {
@@ -1322,14 +1478,15 @@ body {
 .enhancement-cost {
   display: inline-flex;
   align-items: center;
-  padding: 1px 8px;
+  padding: 0 8px;
   margin: 0 6px;
   border-radius: var(--radius-pill);
   background: var(--accent-amber-soft);
   color: var(--accent-amber);
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
+  vertical-align: 1px;
 }
 
 .ability-text {
@@ -1337,31 +1494,32 @@ body {
 }
 
 .ability-text--desc {
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .ability-show-more {
   margin-top: 6px;
-  padding: 0;
-  border: none;
-  background: none;
+  padding: 2px 8px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
   color: var(--accent);
-  font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.15s var(--ease-out-expo);
 }
 
 .ability-show-more:hover {
-  text-decoration: underline;
+  background: color-mix(in srgb, var(--accent) 26%, transparent);
 }
 
 /* --- KEYWORDS BLOCK --- */
 .keywords-block {
-  background: var(--bg-surface-2);
+  background: transparent;
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px 12px;
   font-size: 12px;
   margin-top: 14px;
 }
@@ -1370,10 +1528,19 @@ body {
   display: block;
   color: var(--text-tertiary);
   font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.05em;
+  font-size: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
 /* Mobile responsive collapse */
@@ -1387,26 +1554,38 @@ body {
   .roster-header {
     flex-direction: column;
     align-items: stretch;
-    padding: 16px 18px;
-    gap: 14px;
+    padding: 18px 16px 16px;
+    gap: 16px;
   }
 
   .roster-header--collapsed {
     flex-direction: row;
     align-items: center;
-    padding: 10px 16px;
+    padding: 10px 40px 10px 16px;
   }
 
   .roster-header__name {
-    font-size: 20px;
+    font-size: 22px;
+    padding-right: 24px; /* clear the chevron */
+  }
+
+  .roster-header__name--collapsed {
+    font-size: 15px;
+    padding-right: 0;
   }
 
   /* The actions column was floating right-aligned as its own narrow block,
      leaving a lopsided gap to its left. Stretch it to the header's full
      width so the rows below it spread evenly like the rest of the mobile
-     header does. */
+     header does. A hairline separates it from the roster meta above. */
   .roster-header__actions-col {
     align-items: stretch;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .roster-header--collapsed .roster-header__actions-col {
+    display: none;
   }
 
   .header-recent-rosters__select {
@@ -1439,28 +1618,75 @@ body {
     display: none;
   }
 
+  .unit-row {
+    min-height: 52px;
+    padding: 10px 16px;
+  }
+
+  /* Attached-unit names are long ("A + B + C + D") -- let them wrap onto a
+     second line instead of truncating after the first unit. */
+  .unit-row--combined .unit-row__name {
+    white-space: normal;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
   /* Edge-to-edge: drop the outer gutter and square off the cards that would
      otherwise float with rounded corners in the middle of a narrow screen. */
   body {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 16px 0 48px;
+  }
+
+  #drop-zone,
+  #recent-rosters-container {
+    width: calc(100% - 32px);
+  }
+
+  #drop-zone {
+    margin-top: 16px;
+  }
+
+  #roster-container {
+    margin-top: 0;
   }
 
   .roster-header,
   .unit-row,
+  .unit-row--open,
   .detachment-row,
   .unit-drawer {
     border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .roster-header {
+    border-top-width: 3px;
+    margin-bottom: 18px;
+  }
+
+  .category-header,
+  .strat-section-header {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   /* Reclaim a bit more width for the weapon tables by tightening the
      drawer's own inset. */
   .unit-drawer {
+    padding-left: 11px;
+    padding-right: 8px;
+  }
+
+  .detachment-drawer,
+  .detachment-drawer--open {
     padding-left: 8px;
     padding-right: 8px;
   }
 
-  /* The desktop drawer statblock (51px boxes) is too wide for a phone's
+  /* The desktop drawer statblock (50px boxes) is too wide for a phone's
      drawer content area — scale it back down so 7 boxes still fit on
      one line without wrapping or overflowing. */
   .unit-drawer__statblock .stat-box {
@@ -1476,15 +1702,21 @@ body {
   }
 
   .unit-drawer__statblock .stat-box__value {
-    font-size: 17px;
-    padding: 5px 0;
+    font-size: 18px;
+    padding: 5px 0 4px;
+    border-radius: var(--radius-sm);
   }
 
   /* Tighter weapon table columns so most rows fit without the horizontal
      scroll fallback — numeric columns only need a couple of characters. */
   .weapon-table {
     min-width: 100%;
-    font-size: 12.5px;
+    font-size: 13px;
+  }
+
+  .weapon-table__head-row {
+    font-size: 8.5px;
+    letter-spacing: 0.04em;
   }
 
   .weapon-table__head {
@@ -1509,5 +1741,38 @@ body {
   .weapon-table__cell--keywords {
     padding-right: 6px;
   }
+
+  /* Narrow keyword column: let long badges ("Devastating Wounds") wrap
+     inside the cell instead of spilling past the table edge. */
+  .weapon-table .keyword-badge {
+    white-space: normal;
+    overflow-wrap: break-word;
+    padding: 2px 5px;
+  }
 }
 
+/* --- DATA CREDIT (below the stratagem drawers) --- */
+.data-credit {
+  margin-top: 14px;
+  padding: 0 2px;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  text-align: right;
+}
+
+.data-credit a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-subtle-strong);
+}
+
+.data-credit a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .data-credit {
+    padding: 0 16px;
+  }
+}
