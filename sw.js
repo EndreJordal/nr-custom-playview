@@ -1,4 +1,4 @@
-const CACHE_NAME = "nr-playview-v63";
+const CACHE_NAME = "nr-playview-v64";
 
 // Relative (not root-absolute) because GitHub Pages serves this project from
 // a subpath (/nr-custom-playview/) — these resolve against sw.js's own URL,
@@ -20,7 +20,14 @@ const CORE_ASSETS = [
 
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(CORE_ASSETS)),
+    // cache: "reload" skips the browser's HTTP cache -- GitHub Pages lets
+    // browsers keep files for 10 minutes, so without it an install right
+    // after a deploy could store stale copies under the new cache version.
+    caches
+      .open(CACHE_NAME)
+      .then(cache =>
+        cache.addAll(CORE_ASSETS.map(url => new Request(url, { cache: "reload" }))),
+      ),
   );
   self.skipWaiting();
 });
