@@ -1,8 +1,8 @@
 const CACHE_NAME = "nr-playview-v63";
 
-// Relative (not root-absolute) so this works whether the site is served
-// from a domain root (Netlify) or a subpath (GitHub Pages project sites,
-// e.g. /nr-custom-playview/) — these resolve against sw.js's own URL.
+// Relative (not root-absolute) because GitHub Pages serves this project from
+// a subpath (/nr-custom-playview/) — these resolve against sw.js's own URL,
+// so they also keep working if the site is ever served from a domain root.
 const CORE_ASSETS = [
   "./",
   "./index.html",
