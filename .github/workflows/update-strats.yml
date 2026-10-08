@@ -1,0 +1,38 @@
+name: Update stratagems from Wahapedia
+
+on:
+  schedule:
+    - cron: "17 4 * * *" # daily, 04:17 UTC
+  workflow_dispatch: # "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-strats
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Regenerate strats.js
+        run: node scripts/update-strats.mjs | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- strats.js; then
+            echo "No stratagem changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add strats.js sw.js
+          git commit -m "Update stratagems from Wahapedia"
+          git push

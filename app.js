@@ -601,10 +601,7 @@ function processArmyList(data) {
     }
 
     // Fallback pass if a top-level selection matches a detachment name directly
-    if (
-      typeof STRATAGEM_DATABASE !== "undefined" &&
-      STRATAGEM_DATABASE[selection.name]
-    ) {
+    if (findStratagems(selection.name)) {
       let detPts = 0;
       let detDP = 0;
       if (selection.costs) {
@@ -1254,11 +1251,34 @@ function buildStatblockSection(unit) {
   `;
 }
 
+// strats.js is generated from Wahapedia, whose detachment names don't always
+// match New Recruit's exactly in capitalization or apostrophe style (e.g.
+// "Company Of Hunters" vs "Company of Hunters", ' vs ’) -- look names up
+// with both normalized away.
+let stratagemIndex = null;
+
+function normalizeDetachmentName(name) {
+  return name.trim().toLowerCase().replace(/[‘’ʼ]/g, "'");
+}
+
+function findStratagems(detachmentName) {
+  if (typeof STRATAGEM_DATABASE === "undefined" || !detachmentName) return null;
+  if (!stratagemIndex) {
+    stratagemIndex = new Map(
+      Object.entries(STRATAGEM_DATABASE).map(([name, strats]) => [
+        normalizeDetachmentName(name),
+        strats,
+      ]),
+    );
+  }
+  return stratagemIndex.get(normalizeDetachmentName(detachmentName)) || null;
+}
+
 function renderStratagemSection(metadata) {
   if (typeof STRATAGEM_DATABASE === "undefined") return;
 
-  const detachmentsWithStrats = metadata.detachments.filter(
-    det => STRATAGEM_DATABASE[det.name],
+  const detachmentsWithStrats = metadata.detachments.filter(det =>
+    findStratagems(det.name),
   );
   const coreStrats = STRATAGEM_DATABASE["Core Stratagems"];
   if (detachmentsWithStrats.length === 0 && !coreStrats) return;
@@ -1269,7 +1289,7 @@ function renderStratagemSection(metadata) {
 
   detachmentsWithStrats.forEach(det => {
     rosterContainer.appendChild(
-      buildDetachmentBlock(det, STRATAGEM_DATABASE[det.name]),
+      buildDetachmentBlock(det, findStratagems(det.name)),
     );
   });
 
@@ -1288,6 +1308,15 @@ function renderStratagemSection(metadata) {
     );
   }
 
+  // strats.js is generated from Wahapedia's data export, which asks for a
+  // credit wherever the data is published.
+  rosterContainer.appendChild(
+    el(
+      "div",
+      "data-credit",
+      'Stratagems powered by <a href="https://wahapedia.ru/wh40k11ed/" target="_blank" rel="noopener">Wahapedia</a>',
+    ),
+  );
 }
 
 function buildDetachmentRulesBlock(rules) {
