@@ -111,11 +111,12 @@ const CATEGORY_ORDER = [
   { key: "DEDICATED TRANSPORT", label: "DEDICATED TRANSPORTS" },
 ];
 
-// New Recruit reports both flavors of "forms an attached unit with its
-// bodyguard" as `associations` entries: a Leader ("Leading") and a non-Leader
-// support character, e.g. a Cryptek ("Supporting") -- both work identically
-// for auto-attach purposes.
-const ATTACHMENT_ASSOCIATION_NAMES = new Set(["Leading", "Supporting"]);
+// New Recruit reports every "forms an attached unit with" link as an
+// `associations` entry with action "group". The name varies -- "Leading" for
+// a Leader, "Supporting" for e.g. a Cryptek, and faction-specific ones like
+// "Canoptek Retinue" (Tomb Crawlers -> Orikan) -- so match on the action, not
+// the name.
+const ATTACHMENT_ASSOCIATION_ACTION = "group";
 
 // --- 0. PWA SERVICE WORKER ---
 const isLocalDev = ["localhost", "127.0.0.1"].includes(location.hostname);
@@ -392,6 +393,7 @@ const XML_CHILD_COLLECTIONS = {
   profiles: "profile",
   categories: "category",
   characteristics: "characteristic",
+  associations: "association",
 };
 
 function xmlElementToObject(el) {
@@ -542,12 +544,10 @@ function processArmyList(data) {
     detachments: [],
     forceDispositions: [],
     keywordDefs: {},
-    // Leader/bodyguard and support/bodyguard pairings New Recruit itself
-    // reports via each unit's `associations` (ATTACHMENT_ASSOCIATION_NAMES
-    // -> the attached unit's own selection id). Only consulted by
-    // recordRosterAsRecent() the first time a given roster is seen -- once
-    // the user has their own attachGroups saved for it, their choices
-    // (including manually detaching a suggested pair) always win.
+    // Attached units New Recruit itself reports via each unit's
+    // `associations` (see ATTACHMENT_ASSOCIATION_ACTION), with chained links
+    // merged into one group -- see buildAttachGroups(). Membership is
+    // re-derived on every load by recordRosterAsRecent().
     suggestedAttachGroups: [],
   };
 
@@ -562,6 +562,7 @@ function processArmyList(data) {
   }
 
   const armyRoster = [];
+  const attachLinks = []; // [fromId, toId] pairs, merged after the loop
 
   selections.forEach(selection => {
     // Dynamic Detachment Extractor: Captures Name and Inherent Points Costs
@@ -661,16 +662,37 @@ function processArmyList(data) {
     armyRoster.push(flatUnit);
 
     (selection.associations || []).forEach(assoc => {
-      if (ATTACHMENT_ASSOCIATION_NAMES.has(assoc.name) && assoc.to) {
-        metadata.suggestedAttachGroups.push({
-          id: generateGroupId(),
-          memberIds: [selection.id, assoc.to],
-        });
+      if (assoc.action === ATTACHMENT_ASSOCIATION_ACTION && assoc.to) {
+        attachLinks.push([selection.id, assoc.to]);
       }
     });
   });
 
+  metadata.suggestedAttachGroups = buildAttachGroups(attachLinks, armyRoster);
   return { metadata, armyRoster };
+}
+
+// Merges pairwise attach links into whole attached units: links that share a
+// unit belong together, e.g. Overlord -> Warriors, Orikan -> Warriors and
+// Tomb Crawlers -> Orikan form one 4-unit group, so no unit ends up shown
+// in two groups. Links to a unit that isn't in armyRoster (e.g. one skipped
+// as an upgrade) are dropped. Members come out in roster order.
+function buildAttachGroups(links, armyRoster) {
+  const rosterIds = new Set(armyRoster.map(u => u.id));
+  const groupOf = new Map(); // unit id -> Set of member ids (shared per group)
+  links.forEach(([a, b]) => {
+    if (!rosterIds.has(a) || !rosterIds.has(b) || a === b) return;
+    const groupA = groupOf.get(a);
+    const groupB = groupOf.get(b);
+    if (groupA && groupA === groupB) return;
+    const merged = new Set([...(groupA || [a]), ...(groupB || [b])]);
+    merged.forEach(id => groupOf.set(id, merged));
+  });
+
+  return Array.from(new Set(groupOf.values())).map(members => ({
+    id: generateGroupId(),
+    memberIds: armyRoster.filter(u => members.has(u.id)).map(u => u.id),
+  }));
 }
 
 // Drops the running tally so two weapon entries can be compared by their
@@ -1265,6 +1287,7 @@ function renderStratagemSection(metadata) {
       ),
     );
   }
+
 }
 
 function buildDetachmentRulesBlock(rules) {
