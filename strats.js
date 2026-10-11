@@ -2543,7 +2543,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "End of your opponent’s Charge phase.",
         target: "One Agents of the Imperium Infantry unit from your army that is within 6\" of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units.",
-        effect: "Your unit can declare a charge. When doing so, you must select one or more of those enemy units as the targets of that charge, and your unit does not receive a Charge bonus this turn. In addition, if it is a Callidus Assassin unit and it makes a Charge move as a result of this Stratagem, until the end of the turn, each time a model in your unit makes a melee attack, add 1 to the Wound roll.",
+        effect: "Your unit can declare a charge. When doing so, you must select one or more of those enemy units as the targets of that charge. In addition, if it is a CALLIDUS ASSASSIN unit and it makes a Charge move as a result of this Stratagem, until the end of the turn, each time a model in your unit makes a melee attack, add 1 to the Wound roll",
       },
     },
   ],
@@ -2944,7 +2944,7 @@ const STRATAGEM_DATABASE = {
   "Cavalcade of Chaos": [
     {
       name: "FROM BEYOND THE VEIL",
-      cp: "1 CP",
+      cp: "2 CP",
       rules: {
         when: "End of the Movement phase, from the start of the battle.",
         target: "One friendly LEGIONES DAEMONICA MOUNTED unit in strategic reserves.",
@@ -3028,12 +3028,12 @@ const STRATAGEM_DATABASE = {
   ],
   "Legion of Excess": [
     {
-      name: "THIEVES OF PAIN",
+      name: "RAPTUROUS AGONY",
       cp: "1 CP",
       rules: {
-        when: "Any phase, when an enemy unit targets a friendly LEGIONES DAEMONICA SLAANESH unit (excluding MONSTER/VEHICLE units), or when a friendly **LEGIONES** **DAEMONICA** **SLAANESH** unit (excluding **MONSTER**/**VEHICLE** units) suffers a mortal wound.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly LEGIONES DAEMONICA SLAANESH unit (excluding MONSTER/VEHICLE units).",
         target: "That **LEGIONES** **DAEMONICA** **SLAANESH** unit.",
-        effect: "Select one other friendly **LEGIONES** **DAEMONICA** **SLAANESH** unit that is within 9\" of and visible to your unit. Until the end of the phase, while the selected unit is on the battlefield, each time a model in your unit would lose a wound, inflict 1 **mortal wound** on the selected unit instead.",
+        effect: "Attacks that target your unit with a **S** greater than your unit’s **T** have -1 to wound rolls.",
       },
     },
     {
@@ -3051,7 +3051,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Your Command phase.",
         target: "One Legiones Daemonica Slaanesh Monster unit from your army that is on the battlefield.",
-        effect: "Each unit on the battlefield that is within your army’s Shadow of Chaos must take a Battle-shock test, subtracting 1 from that test if they are Below Half-strength.<br><br>**Designer’s Note:** ^^This Stratagem forces all friendly and enemy units alike within your army’s Shadow of Chaos to take a Battle-shock test. This can allow a Chaos Daemons player to heal units from their army through the Daemonic Terror army rule, at the risk of causing some of their own units to become Battle-shocked.^^",
+        effect: "Each unit on the battlefield that is within your army’s Shadow of Chaos must take a Battle-shock test, subtracting 1 from that test if they are Below Half-strength.<br><br>**Designer’s Note:** ^^This Stratagem forces all friendly and enemy units alike within your army’s Shadow of Chaos to take a Battle-shock test. This can allow a Chaos Daemons player to heal units from their army through the Daemonic Manifestation army rule, at the risk of causing some of their own units to become Battle-shocked.^^",
       },
     },
     {
@@ -5478,8 +5478,8 @@ const STRATAGEM_DATABASE = {
       name: "VENGEFUL SURGE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One EMPEROR’S CHILDREN CHARACTER unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
+        when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly unengaged EMPEROR’S CHILDREN CHARACTER unit this phase has shot.",
+        target: "That **EMPEROR’S** **CHILDREN** **CHARACTER** unit.",
         effect: "Your unit can make a surge move of up to D6\". If your unit is not your army’s Favoured Champions, you can re-roll the dice to determine the distance of that **surge move**.",
       },
     },
@@ -8549,79 +8549,23 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
-  "1st Company Task Force": [
-    {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "HEROES OF THE CHAPTER",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One ADEPTUS ASTARTES TERMINATOR, BLADEGUARD VETERAN SQUAD, STERNGUARD VETERAN SQUAD or VANGUARD VETERAN SQUAD unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Hit roll. If your unit is Below Half-strength, add 1 to the Wound roll as well.",
-      },
-    },
-    {
-      name: "TERRIFYING PROFICIENCY",
-      cp: "1 CP",
-      rules: {
-        when: "Your Fight phase.",
-        target: "One ADEPTUS ASTARTES TERMINATOR, BLADEGUARD VETERAN SQUAD, STERNGUARD VETERAN SQUAD or VANGUARD VETERAN SQUAD unit from your army that made a Charge move this turn and destroyed one or more enemy units this phase.",
-        effect: "In your opponent’s next Command phase, each enemy unit within 6\" of your unit must take a Battle-shock test. If the unit taking that test is Below Half-strength, subtract 1 from that test. Enemy units affected by this Stratagem do not need to take any other Battle-shock tests in the same phase.",
-      },
-    },
-    {
-      name: "DUTY AND HONOUR",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One ADEPTUS ASTARTES TERMINATOR, BLADEGUARD VETERAN SQUAD, STERNGUARD VETERAN SQUAD or VANGUARD VETERAN SQUAD unit from your army within range of an objective marker you control.",
-        effect: "That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn.",
-      },
-    },
-    {
-      name: "ORBITAL TELEPORTARIUM",
-      cp: "1 CP",
-      rules: {
-        when: "End of your opponent’s Fight phase.",
-        target: "One ADEPTUS ASTARTES TERMINATOR unit from your army.",
-        effect: "Remove your unit from the battlefield and place it into Strategic Reserves. It will arrive back on the battlefield in the Reinforcements step of your next Movement phase using the Deep Strike ability.<br><br>**Restrictions:** You cannot select a unit that is within Engagement Range of one or more enemy units.",
-      },
-    },
-    {
-      name: "LEGENDARY FORTITUDE",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Charge phase, just after an enemy unit ends a Charge move.",
-        target: "One ADEPTUS ASTARTES TERMINATOR, BLADEGUARD VETERAN SQUAD, STERNGUARD VETERAN SQUAD or VANGUARD VETERAN SQUAD unit from your army within Engagement Range of that enemy unit.",
-        effect: "Until the end of the turn, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.",
-      },
-    },
-  ],
   "Angelic Inheritors": [
-    {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
     {
       name: "FOCUSED FURY",
       cp: "1 CP",
       rules: {
-        when: "Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability. If your unit is a Character unit, until the end of the phase, those weapons have the [LANCE] ability as well.",
+        when: "Fight phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to fight.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s melee attacks:<br><br>• Have [LETHAL HITS].<br>• Or: If your unit is a Character unit, have [LETHAL HITS], [LANCE].",
+      },
+    },
+    {
+      name: "STRIKE NOW FOR GLORY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase when a friendly Adeptus Astartes unit is selected to attack.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s ranged attacks have [SUSTAINED HITS 1].",
       },
     },
     {
@@ -8629,26 +8573,17 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "Your Command phase.",
-        target: "One Adeptus Astartes Infantry unit from your army.",
-        effect: "Select one non-**CHARACTER** model in your unit. Until the start of your next Command phase, your model has the Character keyword.<br><br>**Designer’s Note:** ^^While in effect, your model’s unit is therefore a **CHARACTER** unit, meaning it can interact with the Legacy of the Angel Detachment rule, in addition to other rules that interact with **CHARACTER** units.^^",
+        target: "One friendly Adeptus Astartes Infantry unit.",
+        effect: "Your unit has **CHARACTER** until the start of your next Command phase.",
       },
     },
     {
-      name: "STRIKE NOW FOR GLORY",
+      name: "MEASURED STRATEGIST",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability.",
-      },
-    },
-    {
-      name: "IN THE SHADOW OF GREAT WINGS",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One Adeptus Astartes Character unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, your unit can only be selected as the target of a ranged attack if the attacking model is within 18\".",
+        when: "Your Command phase.",
+        target: "One friendly Adeptus Astartes Character unit.",
+        effect: "Select one combat doctrine. That **combat doctrine** is active for your unit until the start of your next Command phase.",
       },
     },
     {
@@ -8656,167 +8591,46 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "End of your opponent’s Fight phase.",
-        target: "One Adeptus Astartes Jump Pack unit from your army. You cannot target a unit that is within Engagement Range of one or more enemy units, unless it is The Sanguinor.",
-        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+        target: "One friendly The Sanguinor/unengaged Adeptus Astartes Jump Pack unit.",
+        effect: "Place your unit in strategic reserves.",
+      },
+    },
+    {
+      name: "IN THE SHADOW OF GREAT WINGS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly Adeptus Astartes Character unit.",
+        target: "That **ADEPTUS** **ASTARTES** **CHARACTER** unit.",
+        effect: "Your unit has:<br><br>• Stealth.<br>• -3\" detection range.",
       },
     },
   ],
-  "Anvil Siege Force": [
+  "Assault Brethren": [
     {
       name: "ARMOUR OF CONTEMPT",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Attacks that target your unit have -1 **AP** until that enemy unit has attacked.",
       },
     },
     {
-      name: "RIGID DISCIPLINE",
+      name: "GENE-WROUGHT MIGHT",
       cp: "1 CP",
       rules: {
-        when: "End of the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that is within Engagement Range of one or more enemy units.",
-        effect: "Your unit can immediately make a Fall Back move of up to 6\".<br><br>**Restrictions:** When making that move, your unit must end that move either wholly within your deployment zone or within range of an objective marker.",
+        when: "Fight phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to fight.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s melee attacks have:<br><br>• [Lance].<br>• Or: If the assault doctrine is active for your unit, [Lance] and +1 **AP**.",
       },
     },
     {
-      name: "NOT ONE BACKWARDS STEP",
+      name: "DUTY IN DEATH",
       cp: "1 CP",
       rules: {
-        when: "Your Command phase.",
-        target: "One ADEPTUS ASTARTES INFANTRY unit from your army within range of an objective marker.",
-        effect: "Until the end of the turn, double the Objective Control characteristic of models in your unit, but it must Remain Stationary this turn.",
-      },
-    },
-    {
-      name: "NO THREAT TOO GREAT",
-      cp: "2 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a ranged attack that targets a **MONSTER** or **VEHICLE** unit, you can re-roll the Wound roll.",
-      },
-    },
-    {
-      name: "BATTLE DRILL RECALL",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability. If your unit Remained Stationary this turn, then until the end of the phase, each time a model in your unit makes a ranged attack, a successful unmodified Hit roll of 5+ scores a Critical Hit.",
-      },
-    },
-    {
-      name: "HAIL OF VENGEANCE",
-      cp: "2 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has resolved its attacks.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that had one or more of its models destroyed as a result of the attacking unit’s attacks.",
-        effect: "Your unit can shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.",
-      },
-    },
-  ],
-  "Armoured Speartip": [
-    {
-      name: "MACHINE WRATH",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase, just after a Heavy Transport unit from your army with the Deadly Demise ability is destroyed.",
-        target: "That **HEAVY** **TRANSPORT** unit, if you rolled a 6 for its Deadly Demise ability. You can use this Stratagem on that unit even though it was just destroyed.",
-        effect: "Your unit can make a Normal or Fall Back move before its Deadly Demise ability is resolved, and before any embarked units perform an Emergency Disembarkation. When making this move, your unit can move through enemy models (excluding **MONSTERS** and **VEHICLES**) and can move within Engagement Range of such models, but cannot end that move within Engagement Range of them, and any Desperate Escape test is automatically passed.",
-      },
-    },
-    {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "RAPID EMBARKATION",
-      cp: "1 CP",
-      rules: {
-        when: "End of the Fight phase.",
-        target: "One Adeptus Astartes Infantry unit from your army that is not within Engagement Range of one or more enemy units, and one friendly Heavy Transport it is able to embark within.",
-        effect: "If your **ADEPTUS** **ASTARTES** **INFANTRY** unit is wholly within 6\" of that **HEAVY** **TRANSPORT**, it can embark within it. Your unit can embark within that **TRANSPORT** in a turn it disembarked from a **TRANSPORT**.",
-      },
-    },
-    {
-      name: "CERAMITE SLEDGEHAMMER",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One Adeptus Astartes Transport unit from your army that has not been selected to move this phase.",
-        effect: "Until the end of the phase, each time your unit makes a Normal or Advance move, it can move horizontally through terrain features. In addition, if your unit is a Heavy Transport, when making this move, your unit can move through enemy models (excluding **MONSTERS** and **VEHICLES**) and can move within Engagement Range of such models, but cannot end that move within Engagement Range of them, and any Desperate Escape test is automatically passed.",
-      },
-    },
-    {
-      name: "ADVANCED DEPLOYMENT",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One Adeptus Astartes Transport unit from your army that has not been selected to move this phase.",
-        effect: "Until the end of the phase, units can disembark from your **TRANSPORT** after it has Advanced. Units that do so make a shock disembark move (Core Rules, 18.07) for that disembarkation.",
-      },
-    },
-    {
-      name: "PURGATION DOCTRINE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Hit roll (if your unit disembarked from a Heavy Transport this turn, add 1 to the Wound roll as well).",
-      },
-    },
-  ],
-  "Bastion Task Force": [
-    {
-      name: "CODEX DISCIPLINE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit, re-roll a Hit roll of 1. If that target is auspex scanned, re-roll a Wound roll of 1 as well.",
-      },
-    },
-    {
-      name: "GUIDED DISRUPTION",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase, just after an Adeptus Astartes Battleline unit from your army has finished making its attacks.",
-        target: "That **ADEPTUS** **ASTARTES** **BATTLELINE** unit.",
-        effect: "When an enemy unit is auspex scanned as a result of those attacks this turn, if that enemy unit does not have the **MONSTER** or **VEHICLE** keywords, until the start of your next turn, it is pinned. While a unit is pinned, subtract 2 from that unit’s Move characteristic and subtract 2 from Charge rolls made for that unit.",
-      },
-    },
-    {
-      name: "LIGHT OF VENGEANCE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Select the [LETHAL HITS] or [SUSTAINED HITS 1] ability. Until the end of the phase, weapons equipped by models in your unit have that ability while targeting an auspex scanned unit or if the bearer has the Battleline keyword.",
-      },
-    },
-    {
-      name: "SHOCK BOMBARDMENT",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase, just after an Adeptus Astartes Battleline unit from your army finished making its attacks.",
-        target: "That **ADEPTUS** **ASTARTES** **BATTLELINE** unit.",
-        effect: "When an enemy unit is auspex scanned as a result of those attacks this turn, until the start of your next turn, it is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll.",
-      },
-    },
-    {
-      name: "HERESY UNDONE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or your Charge phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit (excluding Battleline units) from your army.",
-        effect: "Until the end of the phase, your unit is eligible to shoot and declare a charge in a turn in which it Advanced or Fell Back. If it does, every target of that charge and every target of those attacks must be an auspex scanned unit.",
+        when: "Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "When a model in your unit is destroyed, if your unit has not been selected to fight this phase, roll one D6, with +1 to that roll if the assault doctrine is active for your unit:<br><br>• On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield.",
       },
     },
   ],
@@ -8825,9 +8639,36 @@ const STRATAGEM_DATABASE = {
       name: "ARMOUR OF CONTEMPT",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Attacks that target your unit have -1 **AP** until that enemy unit has attacked.",
+      },
+    },
+    {
+      name: "KRAKEN ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
+        target: "That **KILL** **TEAM** unit.",
+        effect: "Your unit’s ranged attacks:<br><br>• Have +6\" **R**.<br>• Have +1 **S**.",
+      },
+    },
+    {
+      name: "HELLFIRE ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
+        target: "That **KILL** **TEAM** unit.",
+        effect: "Your unit’s ranged attacks (excluding [DEVASTATING WOUNDS] attacks) have [ANTI-non-VEHICLE 4+].",
+      },
+    },
+    {
+      name: "DRAGONFIRE ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
+        target: "That **KILL** **TEAM** unit.",
+        effect: "Your unit’s ranged attacks:<br><br>• Can re-roll wound rolls of 1.<br>• Have [IGNORES COVER].",
       },
     },
     {
@@ -8835,35 +8676,8 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "Your Command phase.",
-        target: "Up to two Kill Team units from your army, or one other **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "For each unit targeted, select Furor Tactics, Malleus Tactics or Purgatus Tactics. Until the start of your next Command phase, that Mission Tactic is active for that unit instead of any Mission Tactic that is active for your army.",
-      },
-    },
-    {
-      name: "HELLFIRE ROUNDS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One Kill Team unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons (excluding Devastating Wounds weapons) equipped by models in your unit have the [ANTI-INFANTRY 2+] and [ANTI-MONSTER 5+] abilities.<br><br>**Restrictions:** You cannot select any units that have already been targeted with either the Kraken Rounds or Dragonfire Rounds Stratagems this phase.",
-      },
-    },
-    {
-      name: "KRAKEN ROUNDS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One Kill Team unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, improve the Armour Penetration characteristic of ranged weapons equipped by models in your unit by 1 and improve the Range characteristic of those weapons by 6\".<br><br>**Restrictions:** You cannot select any units that have already been targeted with either the Dragonfire Rounds or Hellfire Rounds Stratagems this phase.",
-      },
-    },
-    {
-      name: "DRAGONFIRE ROUNDS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One Kill Team unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the [ASSAULT] and [IGNORES COVER] abilities.<br><br>**Restrictions:** You cannot select any units that have already been targeted with either the Kraken Rounds or Hellfire Rounds Stratagems this phase.",
+        target: "One friendly **ADEPTUS** **ASTARTES** unit.",
+        effect: "Select one combat doctrine. That **combat doctrine** is active for your unit until the start of your next Command phase.",
       },
     },
     {
@@ -8871,8 +8685,8 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "End of your opponent’s Fight phase.",
-        target: "Up to two Kill Team units from your army, or one other Adeptus Astartes Infantry unit from your army, if those units are not within Engagement Range of one or more enemy units.",
-        effect: "Remove those units from the battlefield and place them into Strategic Reserves. Until the end of your next Movement phase, models in those units that do not have the Deep Strike ability have the Deep Strike ability.",
+        target: "One friendly unengaged ADEPTUS ASTARTES INFANTRY unit.",
+        effect: "• Place your unit in strategic reserves.<br>• If your unit has Kill Team, your unit has Deep Strike until the end of your next Movement phase.",
       },
     },
   ],
@@ -8881,27 +8695,18 @@ const STRATAGEM_DATABASE = {
       name: "ARMOUR OF CONTEMPT",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Attacks that target your unit have -1 **AP** until that enemy unit has attacked.",
       },
     },
     {
-      name: "TACTICAL FORESIGHT",
+      name: "EXEMPLARY VIGILANCE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than or equal to the Toughness characteristic of that unit, subtract 1 from the Wound roll.",
-      },
-    },
-    {
-      name: "COURAGE AND HONOUR!",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability. If your unit is under the effects of the Assault Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons by 1 as well.",
+        when: "Your Shooting phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to shoot.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s ranged attacks have [IGNORES COVER].",
       },
     },
     {
@@ -8909,26 +8714,35 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "Your Command phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Select the Devastator Doctrine, Tactical Doctrine or Assault Doctrine. Until the start of your next Command phase, that Combat Doctrine is active for your unit instead of any other Combat Doctrine that is active for your army, even if you have already selected that Combat Doctrine this battle.",
+        target: "One friendly **ADEPTUS** **ASTARTES** unit.",
+        effect: "Select one combat doctrine. That **combat doctrine** is active for your unit until the start of your next Command phase.",
       },
     },
     {
-      name: "EXEMPLARY VIGILANCE",
+      name: "COURAGE AND HONOUR!",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the [IGNORES COVER] ability. If your unit is under the effects of the Devastator Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons by 1 as well.",
+        when: "Fight phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to fight.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s melee attacks have [Lance].",
       },
     },
     {
       name: "PRACTICAL TACTICS",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.",
-        target: "One Adeptus Astartes Infantry or Adeptus Astartes Mounted unit from your army that is not within Engagement Range of one or more enemy units and is within 8\" of the enemy unit that just ended that move.",
-        effect: "Your unit can make a Normal move of up to D6\", or a Normal move of up to 6\" instead if it is under the effects of the Tactical Doctrine.",
+        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged Adeptus Astartes Infantry/Mounted unit.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**/**MOUNTED** unit.",
+        effect: "Your unit can make a normal move of up to D3+3\".",
+      },
+    },
+    {
+      name: "TACTICAL FORESIGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Attacks that target your unit with a **S** greater than this unit’s **T** have -1 to wound rolls.",
       },
     },
   ],
@@ -8938,223 +8752,82 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "Command phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that is within Engagement Range of one or more enemy units.",
-        effect: "Until the start of your next Command phase, add 1 to the Objective Control characteristics of models in your unit.",
-      },
-    },
-    {
-      name: "PRIORITY STRIKE",
-      cp: "2 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One Adeptus Astartes Infantry or Adeptus Astartes Mounted unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a **CHARACTER**, **MONSTER** or **VEHICLE** unit, you can re-roll the Wound roll.",
-      },
-    },
-    {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        target: "One friendly **ADEPTUS** **ASTARTES** unit that is within range of an objective.",
+        effect: "Your unit has +1 **OC** until the end of the turn.",
       },
     },
     {
       name: "STAND TO THE END",
       cp: "1 CP",
       rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 to the result if it is an **ENTRENCHED** unit: on a 4+, do not remove it from play. That destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit (excluding **MONSTER**/**VEHICLE** units).",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "• Attacks that target your unit with a **S** greater than your unit’s **T** have -1 to wound rolls.<br>• Or: If your unit is entrenched, attacks that target your unit have -1 to wound rolls.",
       },
     },
     {
       name: "AUGMENTED TARGETING",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Select either the [SUSTAINED HITS 1] or [LETHAL HITS] abilities. Until the end of the phase, ranged weapons equipped by models in your unit have the selected ability. If your unit is **ENTRENCHED**, until the end of the phase, ranged weapons equipped by models in your unit have the [SUSTAINED HITS 1] and [LETHAL HITS] abilities instead.",
+        when: "Your Shooting phase or the Fight phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to attack.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s attacks have:<br><br>• [LETHAL HITS].<br>• Or: [SUSTAINED HITS 1].<br>• Or: If your unit is entrenched, [LETHAL HITS] and [SUSTAINED HITS 1].",
+      },
+    },
+    {
+      name: "ESTABLISH SUPREMACY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly entrenched ADEPTUS ASTARTES INFANTRY unit is selected to make a consolidation move.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
+        effect: "You can select the objective consolidation mode for that **consolidation move**, regardless of that **consolidation move**’s Before Moving restrictions.<br><br>**Designer’s Note:** ^^This means your unit can move out of engagement range with enemy units, provided it meets the conditions of the objective consolidation mode.^^",
+      },
+    },
+    {
+      name: "PRIORITY STRIKE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase, when a friendly Adeptus Astartes Infantry/Mounted unit is selected to attack.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**/**MOUNTED** unit.",
+        effect: "Your unit’s attacks that target a **MONSTER**/**VEHICLE** unit, have +1 to wound rolls.",
       },
     },
     {
       name: "EVASIVE REPOSITIONING",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
-        target: "One Adeptus Astartes Infantry or Adeptus Astartes Mounted unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Your unit can make a Normal move of up to D6\". If your unit is **ENTRENCHED**, you can re-roll the D6 to determine how far your unit can move.",
+        when: "Your opponent’s Shooting phase, when an enemy unit has shot.",
+        target: "One friendly unengaged Adeptus Astartes Infantry/Mounted unit that lost a wound as a result of those attacks.",
+        effect: "• Your unit can make a normal move of up to D6\".<br>• Or: If your unit is entrenched, your unit can make a normal move of up to D3+3\".Your unit is not able to embark within a **TRANSPORT** until the end of the turn.",
       },
     },
   ],
   "Champions of Fenris": [
     {
-      name: "WOLF TOTEMS",
+      name: "CHAMPION'S GUIDANCE",
       cp: "1 CP",
       rules: {
-        when: "Any phase, when a friendly ADEPTUS ASTARTES INFANTRY CHARACTER unit suffers a mortal wound.",
-        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** **CHARACTER** unit.",
-        effect: "Your unit has Feel No Pain 5+ against **mortal wounds**.",
+        when: "Fight phase, when a friendly Adeptus Astartes Character unit is selected to fight.",
+        target: "That **ADEPTUS** **ASTARTES** **CHARACTER** unit.",
+        effect: "Your unit’s melee attacks can re-roll hit rolls of 1 and wound rolls of 1.",
       },
     },
     {
-      name: "RUNES OF CLAIMING",
-      cp: "1 CP",
+      name: "HEROIC RESOLVE",
+      cp: "2 CP",
       rules: {
-        when: "End of your Movement phase.",
-        target: "One friendly ADEPTUS ASTARTES INFANTRY CHARACTER unit.",
-        effect: "Select one objective your unit is controlling. That **objective** is secured.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly Adeptus Astartes Character unit.",
+        target: "That **ADEPTUS** **ASTARTES** **CHARACTER** unit.",
+        effect: "Attacks that target your unit have -1 **D** until that enemy unit has attacked.",
       },
     },
     {
-      name: "STALK BETWEEN WORLDS",
+      name: "BIRTH OF A SAGA",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly ADEPTUS ASTARTES INFANTRY CHARACTER unit.",
-        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** **CHARACTER** unit.",
-        effect: "Your unit has Stealth.",
-      },
-    },
-  ],
-  "Companions of Vehemence": [
-    {
-      name: "DEVOUT PUSH",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Adeptus Astartes Infantry unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Pile-in or Consolidation move, it can move up to 6\" instead of up to 3\".<br><br>**Restrictions:** A unit cannot be targeted with this and the Hearts Hardened to Duty Stratagem in the same phase unless it has the Chaplain or Judiciar keywords.",
-      },
-    },
-    {
-      name: "HEARTS HARDENED TO DUTY",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, just before an Adeptus Astartes Infantry unit from your army Consolidates.",
-        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Consolidation move, it does not need to end that move closer to the closest enemy model (or the closest enemy unit if the Suffer Not the Unclean to Live Vow is active for it).",
-      },
-    },
-    {
-      name: "FOR THE EMPEROR'S HONOUR!",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Adeptus Astartes Infantry unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the [PRECISION] ability.",
-      },
-    },
-    {
-      name: "PIOUS ENMITY",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Chaplain or Judiciar unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a melee attack that targets an enemy unit, re-roll a Hit roll of 1. If that target is a **MONSTER** or **VEHICLE** unit, re-roll a Wound roll of 1 as well.",
-      },
-    },
-    {
-      name: "HERESY BEGETS RETRIBUTION",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.",
-        target: "One CHAPLAIN or JUDICIAR unit from your army that is within 8\" of that enemy unit and is not within Engagement Range of one or more enemy units.",
-        effect: "Your unit can make a surge move of up to D6\".",
-      },
-    },
-    {
-      name: "DREAD CRUSADERS",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Charge phase, just after an enemy unit declares a charge.",
-        target: "One Adeptus Astartes Infantry unit from your army that was selected as one of the targets of that charge.",
-        effect: "That enemy unit must take a Battle-shock test, subtracting 1 from the result.",
-      },
-    },
-  ],
-  "Company of Hunters": [
-    {
-      name: "HUNTERS’ TRAIL",
-      cp: "1 CP",
-      rules: {
-        when: "Command phase.",
-        target: "One Ravenwing Mounted unit from your army that is within range of an objective marker you control.",
-        effect: "That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn.",
-      },
-    },
-    {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "TALON STRIKE",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, when a friendly ADEPTUS ASTARTES unit is selected to fight.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Your unit’s melee attacks have [LANCE].",
-      },
-    },
-    {
-      name: "DEATH ON THE WIND",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, when a friendly **ADEPTUS** **ASTARTES** unit ends an advance move.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "That **advance move** does not prevent your unit from being eligible to declare a charge.",
-      },
-    },
-    {
-      name: "HIGH-SPEED FOCUS",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One Ravenwing unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.",
-      },
-    },
-    {
-      name: "RAPID REAPPRAISAL",
-      cp: "1 CP",
-      rules: {
-        when: "End of your opponent’s Fight phase.",
-        target: "One Ravenwing unit from your army that is not within Engagement Range of one or more enemy units.",
-        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
-      },
-    },
-  ],
-  "Dark Age Arsenal": [
-    {
-      name: "SEARING BURSTS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase, when a friendly HELLBLASTER SQUAD unit has shot.",
-        target: "That **HELLBLASTER** **SQUAD** unit.",
-        effect: "Select one enemy unit hit by your unit’s **plasma** ranged attacks. That enemy unit is **seared** until the start of your next turn:<br><br>• While a unit is **seared**, that unit has -2\" **M**.",
-      },
-    },
-    {
-      name: "NO SACRIFICE TOO GREAT",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to shoot.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Your unit’s [HAZARDOUS] plasma ranged attacks have +1 **S**.",
-      },
-    },
-    {
-      name: "REVELATION OF GUILT",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to shoot.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Your unit’s **plasma** ranged attacks have +1 to hit rolls.",
+        when: "Your Command phase.",
+        target: "One friendly **ADEPTUS** **ASTARTES** unit (excluding Monster/Vehicle units).",
+        effect: "Until the start of your next Command phase, your unit has **CHARACTER**.",
       },
     },
   ],
@@ -9163,83 +8836,94 @@ const STRATAGEM_DATABASE = {
       name: "SKYBORNE SURVEILLANCE",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase, when a friendly RAVENWING FLY unit has shot.",
+        when: "Your Shooting phase, when a friendly Ravenwing Fly unit has shot.",
         target: "That **RAVENWING** **FLY** unit.",
         effect: "Visible enemy units within 6\" of your unit have +3\" detection range.",
-      },
-    },
-    {
-      name: "WINGS OF SHADOW",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly RAVENWING FLY unit.",
-        target: "That **RAVENWING** **FLY** unit.",
-        effect: "Your unit has Stealth.",
       },
     },
     {
       name: "WE ARE VENGEANCE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly unengaged RAVENWING FLY unit has shot.",
+        when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly unengaged Ravenwing Fly unit has shot.",
         target: "That **RAVENWING** **FLY** unit.",
         effect: "Your unit can make a normal move of up to D3+3\".",
       },
     },
+    {
+      name: "WINGS OF SHADOW",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly Ravenwing Fly/Mounted unit.",
+        target: "That **RAVENWING** **FLY**/**MOUNTED** unit.",
+        effect: "Your unit has Stealth.",
+      },
+    },
   ],
-  "Emperor’s Shield": [
+  "Deathwatch Support": [
+    {
+      name: "KRAKEN ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
+        target: "That **KILL** **TEAM** unit.",
+        effect: "Your unit’s ranged attacks have:<br><br>• Have +6\" **R**.<br>• Have +1 **S**.",
+      },
+    },
+    {
+      name: "DRAGONFIRE ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
+        target: "That **KILL** **TEAM** unit.",
+        effect: "Your unit’s ranged attacks:<br><br>• Can re-roll wound rolls of 1.<br>• Have [IGNORES COVER].",
+      },
+    },
+    {
+      name: "HELLFIRE ROUNDS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase when a KILL TEAM unit is selected to shoot.",
+        target: "That **KILL** **TEAM** unit.",
+        effect: "Your unit’s ranged attacks (excluding [DEVASTATING WOUNDS] attacks) have [ANTI-non-VEHICLE 4+].",
+      },
+    },
+    {
+      name: "BLACKSTAR EXTRACTION",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Fight phase.",
+        target: "One friendly unengaged KILL TEAM unit.",
+        effect: "Place your unit in strategic reserves.",
+      },
+    },
+  ],
+  "Devastator Brethren": [
     {
       name: "ARMOUR OF CONTEMPT",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Attacks that target your unit have -1 **AP** until that enemy unit has attacked.",
       },
     },
     {
-      name: "FURY OF THE FIRST",
+      name: "STORM OF FIRE",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One Adeptus Astartes Terminator, Bladeguard Veteran Squad, Sternguard Veteran Squad or Vanguard Veteran Squad unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Hit roll. If your unit is below its Starting Strength, add 1 to the Wound roll as well.",
+        when: "Your Shooting phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to shoot.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s ranged attacks have:<br><br>• [Ignores Cover].<br>• Or: If the devastator doctrine is active for your unit, [Ignores Cover] and +1 **AP**.",
       },
     },
     {
-      name: "OBDURATE VENGEANCE",
-      cp: "1 CP",
+      name: "HAIL OF VENGEANCE",
+      cp: "2 CP",
       rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One Adeptus Astartes Terminator, Bladeguard Veteran Squad, Sternguard Veteran Squad or Vanguard Veteran Squad unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6: on a 3+, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.",
-      },
-    },
-    {
-      name: "WRATHFUL CONQUERORS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One Adeptus Astartes Terminator, Bladeguard Veteran Squad, Sternguard Veteran Squad or Vanguard Veteran Squad unit from your army within range of an objective marker you control.",
-        effect: "That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any phase.",
-      },
-    },
-    {
-      name: "DISCIPLINED EXTERMINATION",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One Adeptus Astartes Terminator, Bladeguard Veteran Squad, Sternguard Veteran Squad or Vanguard Veteran Squad unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the [IGNORES COVER] ability and improve the Armour Penetration characteristic of such weapons by 1.",
-      },
-    },
-    {
-      name: "DROPSHIP EXTRACTION",
-      cp: "1 CP",
-      rules: {
-        when: "End of your opponent’s Fight phase.",
-        target: "One Adeptus Astartes Terminator unit from your army. You cannot target a unit that is within Engagement Range of one or more enemy units.",
-        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+        when: "Your opponent’s Shooting phase, when an enemy unit has shot, if those attacks destroyed a model in a friendly **ADEPTUS** **ASTARTES** unit.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit shoots using normal shooting, but while doing so your unit can only target that enemy unit.",
       },
     },
   ],
@@ -9248,7 +8932,7 @@ const STRATAGEM_DATABASE = {
       name: "JUDGEMENT OF THE GOLDEN HOST",
       cp: "1 CP",
       rules: {
-        when: "Your Charge phase, when a friendly SANGUINARY GUARD unit from your army ends a charge move.",
+        when: "Your Charge phase, when a friendly Sanguinary Guard unit form your army ends a charge move.",
         target: "That **SANGUINARY** **GUARD** unit.",
         effect: "Select one enemy unit engaged with your unit. Roll one D6 for each model in your unit **engaged** with that enemy unit:<br><br>• For each 3+, that enemy unit suffers 1 mortal wound.",
       },
@@ -9257,7 +8941,7 @@ const STRATAGEM_DATABASE = {
       name: "INEXORABLE VALOUR",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Movement phase, when an enemy unit that was engaged with a friendly SANGUINARY GUARD unit ends a fall-back move, if that **SANGUINARY** **GUARD** unit is unengaged.",
+        when: "Your opponent’s Movement phase, when an enemy unit that was engaged with a friendly Sanguinary Guard unit ends a fall-back move, if that **SANGUINARY** **GUARD** unit is unengaged.",
         target: "That **SANGUINARY** **GUARD** unit.",
         effect: "Your unit can make a normal move of up to D3+3\".",
       },
@@ -9266,150 +8950,123 @@ const STRATAGEM_DATABASE = {
       name: "BLINDING BLURS OF VENGEANCE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly SANGUINARY GUARD unit.",
+        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly Sanguinary Guard unit.",
         target: "That **SANGUINARY** **GUARD** unit.",
-        effect: "Your unit has Stealth.",
+        effect: "Your unit has:<br><br>• Stealth.<br>• -3\" detection range.",
       },
     },
   ],
-  "Firestorm Assault Force": [
+  "Fist of the God-Emperor": [
     {
-      name: "ARMOUR OF CONTEMPT",
+      name: "DOCTRINAL FLEXIBILITY",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your Command phase.",
+        target: "One friendly Crusader Squad unit.",
+        effect: "Select one combat doctrine. That **combat doctrine** is active for your unit until the start of your next Command phase.",
       },
     },
     {
-      name: "CRUCIBLE OF BATTLE",
+      name: "ANGELS DEFIANT",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One ADEPTUS ASTARTES INFANTRY unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets the closest eligible target within 6\", add 1 to the Wound roll.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly CRUSADER SQUAD unit.",
+        target: "That **CRUSADER** **SQUAD** unit.",
+        effect: "Attacks that target your unit with a **S** greater than your unit’s **T** have -1 to wound rolls.",
       },
     },
     {
-      name: "RAPID EMBARKATION",
+      name: "AVOWED DESTRUCTION",
       cp: "1 CP",
       rules: {
-        when: "End of the Fight phase.",
-        target: "One ADEPTUS ASTARTES TRANSPORT unit from your army that has no models embarked within it, and one ADEPTUS ASTARTES INFANTRY unit from your army wholly within 6\" of that **TRANSPORT**.",
-        effect: "Your **INFANTRY** unit can embark within that **TRANSPORT**.<br><br>**Restrictions:** You cannot target an **INFANTRY** unit that is within Engagement Range of one or more enemy units, that cannot normally embark within that **TRANSPORT**, or that disembarked from a **TRANSPORT** this turn.",
-      },
-    },
-    {
-      name: "IMMOLATION PROTOCOLS",
-      cp: "2 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, Torrent weapons equipped by models in that unit have the [DEVASTATING WOUNDS] ability.",
-      },
-    },
-    {
-      name: "ONSLAUGHT OF FIRE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that disembarked from a **TRANSPORT** this turn and has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a ranged attack that targets the closest eligible target within 12\", add 1 to the Hit roll. If one or more enemy models are destroyed as the result of any of those attacks, select one of those destroyed models; that destroyed model’s unit must take a Battle-shock test.",
-      },
-    },
-    {
-      name: "BURNING VENGEANCE",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has resolved its attacks.",
-        target: "One ADEPTUS ASTARTES TRANSPORT unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "One unit embarked within that **TRANSPORT** can disembark as if it were your Movement phase, and can then shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.",
+        when: "The Fight phase, when a friendly CRUSADER SQUAD unit is selected to fight.",
+        target: "That **CRUSADER** **SQUAD** unit.",
+        effect: "Your unit’s melee attacks:<br><br>• Have [LETHAL HITS].<br>• Or: Have [SUSTAINED HITS 1].",
       },
     },
   ],
   "Forgefather’s Seekers": [
     {
-      name: "ARMOUR OF CONTEMPT",
+      name: "BLAZING EARTH",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Start of your opponent’s Charge phase.",
+        target: "One friendly unengaged **ADEPTUS** **ASTARTES** unit equipped with one or more Torrent/Melta weapons.",
+        effect: "Select one visible enemy unit within 12\" of your unit. That enemy unit has -1 to charge rolls.",
+      },
+    },
+    {
+      name: "WRATH AND RUIN",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One friendly Adeptus Astartes Infantry unit.",
+        effect: "The assault doctrine or tactical doctrine is active for your unit, until the start of your next Command phase.",
+      },
+    },
+    {
+      name: "FORGED IN FIRE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly engaged **ADEPTUS** **ASTARTES** unit is selected to shoot.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s Torrent weapons:<br><br>• Do not have [Blast].<br>• Have [Close-Quarters].<br>• Have +1 **A**.",
+      },
+    },
+    {
+      name: "IMMOLATION PROTOCOLS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly Adeptus Astartes infantry unit is selected to attack.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**.",
+        effect: "Your unit’s ranged [TORRENT] attacks have +1 **AP**.",
       },
     },
     {
       name: "CRUCIBLE OF BATTLE",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One Adeptus Astartes Infantry unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets the closest eligible target within 6\", add 1 to the Wound roll.",
-      },
-    },
-    {
-      name: "WRATHFUL INFERNO",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after an Adeptus Astartes Infantry unit from your army Falls Back.",
-        target: "That unit.",
-        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it Fell Back.",
-      },
-    },
-    {
-      name: "IMMOLATION PROTOCOLS",
-      cp: "2 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, Torrent weapons equipped by models in your unit have the [DEVASTATING WOUNDS] ability.",
+        when: "Your Shooting phase or the Fight phase, when a friendly Adeptus Astartes infantry unit is selected to attack an enemy unit within 6\".",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
+        effect: "Your unit’s attacks can:<br><br>• Re-roll hit rolls of 1.<br>• Re-roll wound rolls of 1.",
       },
     },
     {
       name: "BURNING VENGEANCE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
-        target: "One Adeptus Astartes Transport unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "One unit embarked within that **TRANSPORT** can disembark as if it were your Movement phase, and can then shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.",
-      },
-    },
-    {
-      name: "BLAZING EARTH",
-      cp: "1 CP",
-      rules: {
-        when: "Start of your opponent’s Charge phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army equipped with one or more Torrent weapons.",
-        effect: "Select one enemy unit (excluding **MONSTERS** and **VEHICLES** and units with the **FLY** keyword) within 12\" of and visible to your unit. Until the end of the phase, each time that enemy unit declares a charge, subtract 2 from the Charge roll (this is not cumulative with any other negative modifiers to that Charge roll).",
+        when: "Your opponent’s Shooting phase, when an enemy unit has shot a friendly Adeptus Astartes Transport unit.",
+        target: "One friendly **ADEPTUS** **ASTARTES** unit embarked within that **ADEPTUS** **ASTARTES** **TRANSPORT** unit.",
+        effect: "Your **ADEPTUS** **ASTARTES** unit can:<br><br>• Make a disembark move.<br>• Shoot using normal shooting, but when doing so your unit can only target that enemy unit.",
       },
     },
   ],
-  "Fulguris Task Force": [
+  "Gauntlet Task Force": [
     {
-      name: "DATA-LINK AUGURY",
+      name: "AGGRESSIVE DISEMBARKATION",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase, when a friendly SPEEDER unit is selected to shoot.",
-        target: "That **SPEEDER** unit.",
-        effect: "Select one enemy unit within 24\" of your unit. That enemy unit has +6\" detection range until your unit has shot.",
+        when: "Any phase, when a friendly **ADEPTUS** **ASTARTES** unit embarked within a Transport is selected to move.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "While making that move, each model in your unit can be set up within the **set-up distance** of that **TRANSPORT**.<br><br>^^This allows you to set up your unit within the **set-up distance** of your **TRANSPORT**, instead of wholly within that distance.^^",
       },
     },
     {
-      name: "REACTIVE EVASION",
+      name: "DUTY IS NEVER DONE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged SPEEDER unit.",
-        target: "That **SPEEDER** unit.",
-        effect: "Your unit can make a normal move of up to D3+3\".",
+        when: "End of the Fight phase.",
+        target: "One friendly unengaged Adeptus Astartes Infantry unit that was eligible to fight this phase, is wholly within 6\" of a friendly Transport unit, and is eligible to embark within that **TRANSPORT** unit.",
+        effect: "Your unit embarks within that **TRANSPORT** unit.",
       },
     },
     {
-      name: "ANTI-GRAV SURGE",
+      name: "STORM AND SECURE",
       cp: "1 CP",
       rules: {
-        when: "End of your opponent’s Fight phase.",
-        target: "One friendly unengaged SPEEDER unit.",
-        effect: "Place your unit in strategic reserves.",
+        when: "End of your Movement phase.",
+        target: "One friendly Adeptus Astartes Transport unit that has an Adeptus Astartes Battleline unit embarked within it.",
+        effect: "Select one objective your unit is controlling. That **objective** is secured.",
       },
     },
   ],
@@ -9418,27 +9075,27 @@ const STRATAGEM_DATABASE = {
       name: "ARMOUR OF CONTEMPT",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Attacks that target your unit have -1 **AP** until that enemy unit has attacked.",
       },
     },
     {
-      name: "ONLY IN DEATH DOES DUTY END",
-      cp: "2 CP",
-      rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, do not remove it from play. The destroyed model can fight after the attacking model’s unit has finished making its attacks, and is then removed from play.",
-      },
-    },
-    {
-      name: "HONOUR THE CHAPTER",
+      name: "A WORTHY DEATH",
       cp: "1 CP",
       rules: {
-        when: "Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability. If your unit is under the effects of the Assault Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons by 1 as well.",
+        when: "Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "When a model in your unit is destroyed, if your unit has not been selected to fight this phase, roll one D6:<br><br>• On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield.",
+      },
+    },
+    {
+      name: "MIGHT OF ANGELS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to fight.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s melee attacks have [Lance].",
       },
     },
     {
@@ -9446,505 +9103,171 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "Your Command phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Select the Devastator Doctrine, Tactical Doctrine or Assault Doctrine. Until the start of your next Command phase, that Combat Doctrine is active for that unit instead of any other Combat Doctrine that is active for your army, even if you have already selected that doctrine this battle.",
+        target: "One friendly **ADEPTUS** **ASTARTES** unit.",
+        effect: "Select one combat doctrine. That **combat doctrine** is active for your unit until the start of your next Command phase.",
       },
     },
     {
-      name: "STORM OF FIRE",
+      name: "STORM OF DEVASTATION",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the [IGNORES COVER] ability. If your unit is under the effects of the Devastator Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons by 1 as well.",
-      },
-    },
-    {
-      name: "SQUAD TACTICS",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.",
-        target: "One Adeptus Astartes Infantry or Adeptus Astartes Mounted unit from your army that is within 8\" of the enemy unit that just ended that move.",
-        effect: "Your unit can make a Normal move of up to D6\", or a Normal move of up to 6\" instead if it is under the effects of the Tactical Doctrine.<br><br>**Restrictions:** You cannot select a unit that is within Engagement Range of one or more enemy units.",
-      },
-    },
-  ],
-  "Godhammer Assault Force": [
-    {
-      name: "A CEASELESS CAUSE",
-      cp: "1 CP",
-      rules: {
-        when: "End of the Fight phase.",
-        target: "One Adeptus Astartes Infantry unit from your army that was eligible to fight this phase.",
-        effect: "If your unit is not within Engagement Range of one or more enemy units, it can make a Normal move of up to 6\". It cannot embark within a Transport at the end of this move if it disembarked from a **TRANSPORT** this turn.",
-      },
-    },
-    {
-      name: "UNCOMPROMISING EGRESS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One Land Raider model from your army that has not been selected to move this phase.",
-        effect: "One **ADEPTUS** **ASTARTES** unit embarked within your **LAND** **RAIDER** can disembark. When doing so, models in that unit can be set up anywhere on the battlefield wholly within 6\" of your **LAND** **RAIDER** and can be set up within Engagement Range of one or more enemy units.",
-      },
-    },
-    {
-      name: "GAUNTLET OF THE GOD-EMPEROR",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One Adeptus Astartes Vehicle model from your army that has not been selected to move this phase.",
-        effect: "Until the end of the phase, each time your model makes a Normal or Advance move, it can move horizontally through terrain features.",
-      },
-    },
-    {
-      name: "FOCUSED HATRED",
-      cp: "1 CP",
-      rules: {
-        when: "Your Charge phase, just after you make a Charge roll for an **ADEPTUS** **ASTARTES** unit from your army that disembarked from a Transport this turn.",
+        when: "Your Shooting phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to shoot.",
         target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Until the end of the phase, each time your unit makes a Charge move, models in your unit can move through models (when doing so, its models can move within Engagement Range of enemy models, but they can only end that move within Engagement Range of enemy models if those enemy models belong to a unit that your unit declared a charge against this turn).",
+        effect: "Your unit’s ranged attacks have [IGNORES COVER].",
       },
     },
     {
-      name: "CONDEMNATORY INFO-SCREED",
+      name: "RESPONSIVE TACTICS",
       cp: "1 CP",
       rules: {
-        when: "Your Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, if it disembarked from a Transport this turn, re-roll a Wound roll of 1. If that **TRANSPORT** has the Land Raider keyword, you can re-roll the Wound roll instead.",
-      },
-    },
-    {
-      name: "BLESSED HULL",
-      cp: "2 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One Adeptus Astartes Vehicle unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.",
+        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged Adeptus Astartes Infantry/Mounted unit.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**/**MOUNTED** unit.",
+        effect: "Your unit can make a normal move of up to D6\".",
       },
     },
   ],
-  "Hammer of Avernii": [
+  "Gravis Linebreaker Force": [
     {
-      name: "ARMOUR OF CONTEMPT",
+      name: "ANNIHILATING FORCE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your Shooting phase or the Fight phase, when a friendly Gravis unit is selected to attack.",
+        target: "That **GRAVIS** unit.",
+        effect: "Your unit’s attacks have [Lethal Hits].",
       },
     },
     {
-      name: "RUTHLESS BUTCHERY",
+      name: "PURGATION PUSH",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One Adeptus Astartes Dreadnought, Terminator, Bladeguard Veteran Squad, Sternguard Veteran Squad or Vanguard Veteran Squad unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Hit roll. If your unit is below Starting Strength, add 1 to the Wound roll as well.",
+        when: "Your Shooting phase, when a friendly Gravis unit has shot.",
+        target: "That **GRAVIS** unit.",
+        effect: "• If your unit is unengaged, your unit can make a normal move of up to 5\", and must end that move within range of an objective.<br>• Your unit is not eligible to declare a charge or embark within a Transport until the end of the turn.",
       },
     },
     {
-      name: "DOMINATOR BEACON",
+      name: "ARMOURED IMPACT",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase.",
-        target: "One Adeptus Astartes Dreadnought, Terminator, Bladeguard Veteran Squad, Sternguard Veteran Squad or Vanguard Veteran Squad unit from your army within range of an objective marker you control.",
-        effect: "That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the end of a phase.",
-      },
-    },
-    {
-      name: "COGITATED FEROCITY",
-      cp: "1 CP",
-      rules: {
-        when: "Your Fight phase.",
-        target: "One Adeptus Astartes Dreadnought, Terminator, Bladeguard Veteran Squad, Sternguard Veteran Squad or Vanguard Veteran Squad unit from your army that has not been selected to fight this phase.",
-        effect: "Select either the [SUSTAINED HITS 1] or [LETHAL HITS] abilities. Until the end of the phase, melee weapons equipped by models in your unit have the selected ability.",
-      },
-    },
-    {
-      name: "AUGMETIC FORTITUDE",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Charge phase, just after an enemy unit ends a Charge move.",
-        target: "One Adeptus Astartes Terminator, Bladeguard Veteran Squad, Sternguard Veteran Squad or Vanguard Veteran Squad unit from your army within Engagement Range of that enemy unit.",
-        effect: "Until the end of the turn, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.",
-      },
-    },
-    {
-      name: "DROPSHIP EXTRACTION",
-      cp: "1 CP",
-      rules: {
-        when: "End of your opponent’s Fight phase.",
-        target: "One Adeptus Astartes Terminator unit from your army. You cannot target a unit that is within Engagement Range of one or more enemy units.",
-        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+        when: "Your Charge phase, when a friendly Gravis unit ends a charge move.",
+        target: "That **GRAVIS** unit.",
+        effect: "When your unit ends a **charge move**, you can select one enemy unit engaged with your unit. If you do, roll one D6 for each model in your unit **engaged** with that enemy unit:<br><br>• For each 3+, that enemy unit suffers 1 mortal wound.",
       },
     },
   ],
-  "Headhunter Task Force": [
+  "Gravis Siege Force": [
     {
-      name: "ARMOUR OF CONTEMPT",
+      name: "ANNIHILATING FORCE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your Shooting phase or the Fight phase, when a friendly Gravis unit is selected to attack.",
+        target: "That **GRAVIS** unit.",
+        effect: "Your unit’s attacks have [Lethal Hits].",
       },
     },
     {
-      name: "TARGET WEAK POINT",
+      name: "STAND UNYIELDING",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase.",
-        target: "One Tank Ace unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a ranged attack that targets a **MONSTER** or **VEHICLE** unit, improve the Armour Penetration characteristic of that attack by 1.<br><br>**Restrictions:** A unit cannot be targeted with this and the Kill Shot Stratagem in the same phase.",
+        when: "End of your Movement phase.",
+        target: "One friendly Gravis unit.",
+        effect: "Select one objective your unit is controlling. That **objective** is secured.",
       },
     },
     {
-      name: "KILL SHOT",
+      name: "SUPPRESSION VOLLEYS",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase.",
-        target: "One Tank Ace unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a **MONSTER** or **VEHICLE** unit, re-roll a Wound roll of 1. If the target unit is below its Starting Strength, you can re-roll the Wound roll instead.<br><br>**Restrictions:** A unit cannot be targeted with this and the Target Weak Point Stratagem in the same phase.",
-      },
-    },
-    {
-      name: "RAPID GUNNERY",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, your unit is eligible to shoot in a turn in which it Fell Back.",
-      },
-    },
-    {
-      name: "REACTIVE REPOSITIONING",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.",
-        target: "One Tank Ace unit from your army (excluding units containing one or more models with a Wounds characteristic of 16+) that is within 8\" of that enemy unit.",
-        effect: "Your unit can make a Normal move of up to D6\".",
-      },
-    },
-    {
-      name: "MACHINE VENGEANCE",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
-        target: "One Tank Ace unit from your army (excluding units containing one or more models with a Wounds characteristic of 16+) that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Your unit can shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is visible and an eligible target.",
+        when: "Your Shooting phase, when a friendly Gravis unit has shot.",
+        target: "That **GRAVIS** unit.",
+        effect: "Select one enemy unit hit by those attacks. That enemy unit makes a battle-shock roll, with -1 to that **battle-shock roll**.",
       },
     },
   ],
   "Inner Circle Task Force": [
     {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "MARTIAL MASTERY",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Deathwing Infantry unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, re-roll a Wound roll of 1. If your unit is within range of your Vowed objective marker, you can re-roll the Wound roll instead.",
-      },
-    },
-    {
       name: "DUTY UNTO DEATH",
       cp: "1 CP",
       rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One Deathwing unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 if your unit is within range of your Vowed objective marker. On a 4+, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
+        when: "Fight phase, when an enemy unit targets a friendly Deathwing unit.",
+        target: "That **DEATHWING** unit.",
+        effect: "When a model in your unit is destroyed, if your unit has not been selected to fight this phase, roll one D6, with +1 to that roll if your unit is engaged with an enemy unit within range of your vowed objective:<br><br>• On a 4+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield.",
       },
     },
     {
       name: "RELIC TELEPORTARIUM",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase.",
-        target: "One Deathwing unit from your army that is arriving using the Deep Strike ability this phase.",
-        effect: "Your unit can be set up anywhere on the battlefield that is more than 6\" horizontally away from all enemy models.<br><br>**Restrictions:** Until the end of the turn, your unit is not eligible to declare a charge.",
+        when: "Your Movement phase, when a friendly Deathwing unit with the Deep Strike ability is selected to make an ingress move.",
+        target: "That **DEATHWING** unit.",
+        effect: "• Your unit can be set up more than 6\" horizontally from all enemy units (instead of more than 8\").<br>• Your unit is not eligible to declare a charge until the end of this turn.",
       },
     },
     {
       name: "WRATH OF THE LION",
       cp: "1 CP",
       rules: {
-        when: "Your Charge phase.",
-        target: "One Deathwing INFANTRY unit from your army that just ended a Charge move.",
-        effect: "Select one enemy unit within Engagement Range of your unit and roll one D6 for each model in your unit, adding 1 to the result if that enemy unit is within range of your Vowed objective marker: for each 4+, that enemy unit suffers 1 mortal wound (to a maximum of 3 mortal wounds).",
-      },
-    },
-    {
-      name: "UNMATCHED FORTITUDE",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One Deathwing Infantry unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than your unit’s Toughness characteristic, subtract 1 from the Wound roll.",
+        when: "Your Charge phase, when a friendly Deathwing unit ends a charge move.",
+        target: "That **DEATHWING** unit.",
+        effect: "Select one enemy unit engaged with your unit. If you do, roll one D6 for each model in your unit **engaged** with that enemy unit:<br><br>• For each 3+, that enemy unit suffers 1 mortal wound (to a maximum of 6 **mortal wounds**).",
       },
     },
   ],
-  "Interrogation Conclave": [
+  "Ironclad Champions": [
     {
-      name: "EXACTING PUNISHMENT",
+      name: "ADAMANTINE TERROR",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase or the Fight phase, when a friendly CHAPLAIN unit is selected to attack.",
-        target: "That **CHAPLAIN** unit.",
-        effect: "Your unit’s attacks have [PRECISION].",
+        when: "Start of the Fight phase.",
+        target: "One friendly Dreadnought unit.",
+        effect: "Each enemy unit engaged with your unit makes a battle-shock roll, with -1 to that **battle-shock roll**.",
       },
     },
     {
-      name: "TERRIFYING ZEAL",
+      name: "MERCY IS WEAKNESS",
       cp: "1 CP",
       rules: {
-        when: "Your Charge phase, when a friendly CHAPLAIN unit ends a charge move.",
-        target: "That **CHAPLAIN** unit.",
-        effect: "Select one enemy unit (excluding **MONSTER**/**VEHICLE** units) engaged with your unit. That enemy unit makes a leadership roll:<br><br>• If that **leadership roll** fails, that enemy unit’s attacks have -1 to hit rolls until the end of the turn.",
+        when: "Your Shooting phase or the Fight phase, when a friendly Dreadnought unit is selected to attack.",
+        target: "That **DREADNOUGHT** unit.",
+        effect: "Your unit’s attacks have:<br><br>• [lethal hits].<br>• Or: [Sustained Hits 1].",
       },
     },
     {
-      name: "WAGES OF COWARDICE",
+      name: "UPSTOPPABLE ADVANCE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Movement phase, when an enemy unit that was engaged with a friendly CHAPLAIN unit ends a fall-back move, if that **CHAPLAIN** unit is unengaged.",
-        target: "That **CHAPLAIN** unit.",
-        effect: "Your unit can make a normal move of up to D3+3\".",
+        when: "Your Movement/Charge phase, when a friendly Dreadnought unit is selected to move or declares a charge.",
+        target: "That **DREADNOUGHT** unit.",
+        effect: "Your unit has Mobile.",
       },
     },
   ],
   "Ironstorm Spearhead": [
     {
-      name: "UNBOWED CONVICTION",
+      name: "LAYERED CERAMITE",
       cp: "1 CP",
       rules: {
-        when: "Command phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that is below its Starting Strength.",
-        effect: "Until the end of the turn, your unit can ignore any or all modifiers to its characteristics and/or to any roll or test made for it (excluding modifiers to saving throws).",
+        when: "Any phase, when a friendly Adeptus Astartes Vehicle unit suffers a mortal wound.",
+        target: "That **ADEPTUS** **ASTARTES** **VEHICLE** unit.",
+        effect: "Your unit has Feel No Pain 5+ against **mortal wounds**.",
       },
     },
     {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "MERCY IS WEAKNESS",
-      cp: "2 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack that targets a unit that is below its Starting Strength, that attack has the [SUSTAINED HITS 1] ability, and when making such an attack, if the attacking model is a **VEHICLE**, a successful unmodified Hit roll of 5+ scores a Critical Hit.",
-      },
-    },
-    {
-      name: "VENGEFUL ANIMUS",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase, just after an ADEPTUS ASTARTES VEHICLE model from your army with the Deadly Demise ability is destroyed.",
-        target: "That **ADEPTUS** **ASTARTES** **VEHICLE** model. You can use this Stratagem on that model even though it was just destroyed.",
-        effect: "Do not roll one D6 to determine whether mortal wounds are inflicted by your model’s Deadly Demise ability. Instead, mortal wounds are automatically inflicted.",
-      },
-    },
-    {
-      name: "ANCIENT FURY",
+      name: "MIGHT OF THE MACHINE SPIRIT",
       cp: "1 CP",
       rules: {
         when: "Your Command phase.",
-        target: "One ADEPTUS ASTARTES WALKER model from your army.",
-        effect: "Until the start of your next Command phase, improve your model’s Move, Toughness, Leadership and Objective Control characteristics by 1 and each time your model makes an attack, add 1 to the Hit roll.",
+        target: "One friendly Adeptus Astartes Vehicle unit (excluding Dedicated Transport/Fly/Walker units).",
+        effect: "Until the start of your next Command phase, your unit can ignore modifiers to your unit’s:<br><br>• **M**.<br>• **BS**.<br>• Hit rolls and wound rolls.",
       },
     },
     {
-      name: "POWER OF THE MACHINE SPIRIT",
+      name: "HEADHUNTER DOCTRINE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has resolved its attacks.",
-        target: "One ADEPTUS ASTARTES VEHICLE unit from your army that was reduced to Below Half-strength as a result of the attacking unit’s attacks.",
-        effect: "Your unit can shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.",
-      },
-    },
-  ],
-  "Legacy of Grace": [
-    {
-      name: "MARTIAL PARAGON",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase, when a friendly ADEPTUS ASTARTES CHARACTER unit is selected to attack.",
-        target: "That **ADEPTUS** **ASTARTES** **CHARACTER** unit.",
-        effect: "Your unit’s attacks have:<br><br>• [LETHAL HITS].<br>• **OR:** [SUSTAINED HITS 1].",
-      },
-    },
-    {
-      name: "SOUL-DARKENED FURY",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Movement phase, when an enemy unit is selected to make a fall-back move, if that unit is engaged with a friendly ADEPTUS ASTARTES CHARACTER unit.",
-        target: "That **ADEPTUS** **ASTARTES** **CHARACTER** unit.",
-        effect: "When an enemy unit **engaged** with your unit is selected to make a **fall-back move**, that enemy unit must use the desperate escape mode, with -1 to those hazard rolls if that enemy unit is battle-shocked.",
-      },
-    },
-    {
-      name: "AURA OF THE ANGEL’S GRACE",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly ADEPTUS ASTARTES CHARACTER unit.",
-        target: "That **CHARACTER** unit.",
-        effect: "Your unit has 5+ InSv.",
-      },
-    },
-  ],
-  "Legends of Saga and Song": [
-    {
-      name: "FANGS OF THE PACK",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, when a friendly ADEPTUS ASTARTES TERMINATOR unit is selected to fight.",
-        target: "That **ADEPTUS** **ASTARTES** **TERMINATOR** unit.",
-        effect: "Your unit’s melee attacks have [PRECISION].",
-      },
-    },
-    {
-      name: "CHILLING HOWL",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Command phase.",
-        target: "One friendly WOLF GUARD TERMINATORS unit.",
-        effect: "Select one enemy unit within 6\" of your unit. That enemy unit makes a battle-shock roll, with -1 to that **battle-shock roll** if that enemy unit is at or below half-strength.",
-      },
-    },
-    {
-      name: "WINGS OF THE BLIZZARD",
-      cp: "1 CP",
-      rules: {
-        when: "End of your opponent’s Fight phase.",
-        target: "One friendly unengaged ADEPTUS ASTARTES TERMINATOR unit.",
-        effect: "Place your unit in strategic reserves.",
-      },
-    },
-  ],
-  "Liberator Assault Group": [
-    {
-      name: "ANGELIC GRACE",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase, just after an **ADEPTUS** **ASTARTES** unit from your army has a mortal wound allocated to it.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Until the end of the phase, models in your unit have the Feel No Pain 5+ ability against mortal wounds.",
-      },
-    },
-    {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "SAVAGE ECHOES",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Charge phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was just charged by an enemy unit.",
-        effect: "Select either the Strength or Attacks characteristic of melee weapons equipped by models in your unit. Until the end of the turn, add 1 to the selected characteristic. You can instead choose for your unit to give in to the Red Thirst; if it does, it becomes Battle-shocked (but the effects of this Stratagem still apply to it) and until the end of the turn, add 1 to the Strength and Attacks characteristics of melee weapons equipped by models in your unit.",
-      },
-    },
-    {
-      name: "RED RAMPAGE",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to fight this phase.",
-        effect: "Select either the [LANCE] or [LETHAL HITS] abilities. Until the end of the phase, melee weapons equipped by models in your unit have the selected ability. You can instead choose for your unit to give in to the Red Thirst; if it does, then it becomes Battle-shocked (but the effects of this Stratagem still apply to it) and until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] and [LETHAL HITS] abilities.",
-      },
-    },
-    {
-      name: "AGGRESSIVE ONSLAUGHT",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after an Adeptus Astartes unit from your army has Advanced.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Until the end of the turn, your unit is eligible to either shoot or declare a charge, even though it Advanced. You can instead choose for your unit to give in to the Red Thirst; if it does, it becomes Battle-shocked (but the effects of this Stratagem still apply to it) and until the end of the turn, your unit is eligible to both shoot and declare a charge, even though it Advanced.",
-      },
-    },
-    {
-      name: "RELENTLESS ASSAULT",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after an **ADEPTUS** **ASTARTES** unit from your army Falls Back.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Until the end of the turn, your unit is eligible to either shoot or declare a charge even though it Fell Back. You can instead choose for your unit to give in to the Red Thirst; if it does, it becomes Battle-shocked (but the effects of this Stratagem still apply to it) and until the end of the turn, your unit is eligible to both shoot and declare a charge, even though it Fell Back.",
-      },
-    },
-  ],
-  "Lion’s Blade Task Force": [
-    {
-      name: "OVERPOWERING EXACTION",
-      cp: "1 CP",
-      rules: {
-        when: "Command phase or the start of the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Select one enemy unit within Engagement Range of your unit. That enemy unit must take a Battle-shock test. When doing so, if your unit has the Deathwing or Ravenwing keyword, subtract 1 from the result.<br><br>**Restrictions:** You can only use this Stratagem once per battle round.",
-      },
-    },
-    {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "STRENGTH IN UNITY",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "If that enemy unit is within Engagement Range of one or more Ravenwing units from your army, until the end of the phase, each time a model in that enemy unit makes an attack, subtract 1 from the Hit roll. If that enemy unit is within Engagement Range of one or more Deathwing units from your army, until the end of the phase, each time a model in that enemy unit makes an attack, if the Strength characteristic of that attack is greater than the Toughness characteristic of the target, subtract 1 from the Wound roll.<br><br>**Restrictions:** A unit cannot be targeted by this and the Armour of Contempt Stratagem in the same phase.",
-      },
-    },
-    {
-      name: "KNIGHTS OF IRON",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase or your Charge phase.",
-        target: "One Ravenwing unit from your army.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Normal, Advance or Charge move, it can move horizontally through terrain features.",
-      },
-    },
-    {
-      name: "ILLUMINATING FIRE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase, just after a **RAVENWING** unit from your army has selected its targets.",
-        target: "That Ravenwing unit.",
-        effect: "Select one enemy unit within 12\" of your unit that was selected as the target of one or more of the attacking unit’s attacks. Until the end of the phase, each time a friendly Deathwing unit makes an attack that targets that enemy unit, add 1 to the Wound roll.",
-      },
-    },
-    {
-      name: "INESCAPABLE WRATH",
-      cp: "2 CP",
-      rules: {
-        when: "End of your opponent’s Charge phase.",
-        target: "One Deathwing Infantry or Deathwing Walker unit from your army that is within 6\" of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units if it were your Charge phase.",
-        effect: "Your unit now declares a charge that only targets one or more of those enemy units, and you resolve that charge.<br><br>**Restrictions:** Note that even if this charge is successful, your unit does not receive any Charge bonus this turn.",
+        when: "Your Shooting phase, when a friendly Adeptus Astartes Vehicle unit (excluding Dedicated Transport/Fly/Walker units) is selected to shoot.",
+        target: "That **ADEPTUS** **ASTARTES** **VEHICLE** unit.",
+        effect: "Your unit’s ranged attacks have [Lethal Hits: Monster/Vehicle].",
       },
     },
   ],
@@ -9953,522 +9276,320 @@ const STRATAGEM_DATABASE = {
       name: "SLAYERS OF ABOMINATIONS",
       cp: "1 CP",
       rules: {
-        when: "Fight phase, when a friendly SWORD BRETHREN SQUAD unit is selected to fight.",
+        when: "Fight phase, when a friendly Sword Brethren Squad unit is selected to fight.",
         target: "That **SWORD** **BRETHREN** **SQUAD** unit.",
         effect: "Your unit’s melee attacks that target a **MONSTER**/**VEHICLE** unit have +2 **S**.",
-      },
-    },
-    {
-      name: "BLADE OF DETESTATION",
-      cp: "1 CP",
-      rules: {
-        when: "Your Charge phase, when a friendly SWORD BRETHREN SQUAD unit ends a charge move.",
-        target: "That **SWORD** **BRETHREN** **SQUAD** unit.",
-        effect: "Select one enemy unit engaged with your unit. Roll one D6 for each model in your unit engaged with that enemy unit:<br><br>• For each 4+, that enemy unit suffers 1 mortal wound (to a maximum of 6 **mortal wounds**).",
       },
     },
     {
       name: "UNSPARING EXECUTION",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Movement phase, when a unit is selected to make a fall-back move, if that unit is engaged with a friendly SWORD BRETHREN SQUAD unit.",
+        when: "Your opponent’s Movement phase, when a unit is selected to make a fall-back move, if that unit is engaged with a friendly Sword Brethren Squad unit.",
         target: "That **SWORD** **BRETHREN** **SQUAD** unit.",
-        effect: "When an enemy unit **engaged** with your unit is selected to make a **fall-back move**, that enemy unit must use the desperate escape mode, with -1 to those hazard rolls if that enemy unit is battle-shocked.",
+        effect: "When an enemy unit **engaged** with your unit is selected to make a **fall-back move** , that enemy unit must use the desperate escape mode, with -1 to those hazard rolls if that enemy unit is battle-shocked.",
+      },
+    },
+    {
+      name: "BLADE OF DETESTATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Charge phase, when a friendly Sword Brethren Squad unit ends a charge move.",
+        target: "That **SWORD** **BRETHREN** **SQUAD**.",
+        effect: "Select one enemy unit engaged with your unit. Roll one D6 for each model in your unit **engaged** with that enemy unit:<br><br>• For each 4+, that enemy unit suffers 1 mortal wound (to a maximum of 6 **mortal wounds**).",
       },
     },
   ],
-  "Orbital Assault Force": [
+  "Medusa's Wrath": [
     {
-      name: "SUPPRESSION STRAFING",
+      name: "METHODICAL BRUTALITY",
       cp: "1 CP",
       rules: {
-        when: "Command phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Select one enemy unit visible to and within 18\" of your unit. That enemy unit takes a Battle-shock test. When doing so, subtract 1 from that test and, if that test is failed, until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll.<br><br>**Restrictions:** You cannot use this Stratagem more than once per battle round.",
+        when: "Your Shooting phase or the Fight phase when a friendly **ADEPTUS** **ASTARTES** unit is selected to attack.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "• If your unit is a **VEHICLE** unit, have +1 to wound rolls.",
       },
     },
     {
-      name: "TACTICAL DECAPITATION",
+      name: "SPIRITS OF IRON",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, weapons equipped by models in your unit have the [PRECISION] ability and each time a model in your unit makes an attack that targets a **CHARACTER** unit, add 1 to the Hit roll.",
+        when: "Any phase, when a friendly **ADEPTUS** **ASTARTES** unit suffers a mortal wound.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit has Feel no pain 5+ against **mortal wounds**.",
       },
     },
     {
-      name: "SHOCK ONSLAUGHT",
+      name: "VENGEFUL ANIMUS",
       cp: "1 CP",
       rules: {
-        when: "Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Pile-in or Consolidation move, it can move up to 6\" instead of up to 3\".",
+        when: "Any phase, when a friendly ADEPTUS ASTARTES VEHICLE unit is destroyed, before rolling for deadly demise.",
+        target: "That friendly **ADEPTUS** **ASTARTES** **VEHICLE** unit.",
+        effect: "Change any **deadly demise rolls** made for this unit to an unmodified 6.",
       },
     },
     {
-      name: "AUTO‑SENSE COORDINATION",
+      name: "ANCIENT FURY",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Select the [LETHAL HITS] or [SUSTAINED HITS 1] ability. Until the end of the phase, weapons equipped by models in your unit have this ability in a turn in which they disembarked from a Drop Pod or while targeting an enemy unit within 12\".",
+        when: "Your Command phase.",
+        target: "One friendly ADEPTUS ASTARTES DREADNOUGHT unit.",
+        effect: "Until the start of your next Command phase, your unit has:<br><br>• +1\" **M**.<br>• +1 **T**.<br>• +1 **Ld**.<br>• +1 **OC**.<br>• +1 to hit rolls.",
       },
     },
     {
-      name: "BLIND SCREEN",
+      name: "UNBOWED CONVICTION",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit (excluding Titanic units) from your army that was selected as the target of one or more of the attacking unit’s attacks and one friendly Adeptus Astartes Smoke Vehicle or Drop Pod unit within 9\" of it.",
-        effect: "Until the end of the phase, models in your units have the Stealth ability and each time a ranged attack targets one of your units, models in that unit have the Benefit of Cover against that attack.",
+        when: "Your Command phase.",
+        target: "One friendly **ADEPTUS** **ASTARTES** unit that is below starting strength.",
+        effect: "Until the start of your next Command phase, your unit can ignore modifiers to your unit’s:<br><br>• **BS** and **WS**.<br>• Hit rolls and Wound rolls.",
       },
     },
     {
-      name: "ONWARD FOR THE EMPEROR",
+      name: "POWER OF THE MACHINE SPIRIT",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly unengaged Adeptus Astartes Vehicle unit has shot.",
+        target: "That **ADEPTUS** **ASTARTES** **VEHICLE** unit.",
+        effect: "Your unit shoots using:<br><br>• Snap shooting.<br>• Or: If your unit is at half-strength/below half-strength, normal shooting.While doing so your unit can only target that enemy unit.",
+      },
+    },
+  ],
+  "Phobos Shadow Force": [
+    {
+      name: "STRIKE FROM THE SHADOWS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase, when a friendly hidden Phobos unit is selected to attack.",
+        target: "That **PHOBOS** unit.",
+        effect: "Your unit’s attacks have:<br><br>• +1 **S**.<br>• [Lethal Hits].",
+      },
+    },
+    {
+      name: "MORTIS SNARES",
+      cp: "1 CP",
+      rules: {
+        when: "End of your Movement phase.",
+        target: "One friendly unengaged Phobos/Scout Squad unit.",
+        effect: "If your unit is controlling an objective, that **objective** is **snared**. While an **objective** is **snared**, when an enemy unit ends a move within range of that **objective**, roll one D6:<br><br>• On a 2+, that enemy unit suffers D6 mortal wounds. <br>• That **objective** is no longer **snared**.",
+      },
+    },
+    {
+      name: "TACTICAL WITHDRAWAL",
       cp: "1 CP",
       rules: {
         when: "End of your opponent’s Fight phase.",
-        target: "One Adeptus Astartes Infantry unit from your army that was not set up on the battlefield this turn and one friendly Transport it is able to embark within.",
-        effect: "If your **ADEPTUS** **ASTARTES** unit is wholly within 6\" of that **TRANSPORT**, it can embark within it.",
+        target: "One friendly unengaged Phobos/Scout SQUAD unit.",
+        effect: "Place your unit in strategic reserves.",
       },
     },
   ],
-  "Rage-cursed Onslaught": [
+  "Phobos Shock Force": [
     {
-      name: "A GRIM WARNING",
+      name: "STRIKE FROM THE SHADOWS",
       cp: "1 CP",
       rules: {
-        when: "Any phase.",
-        target: "One Blood Angels unit from your army that was just destroyed while it was within range of one or more objective markers you controlled at the end of the previous phase. You can use this Stratagem on that unit even though it was just destroyed.",
-        effect: "Select one of those objective markers. That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
+        when: "Your Shooting phase or the Fight phase, when a friendly hidden Phobos unit is selected to attack.",
+        target: "That **PHOBOS** unit.",
+        effect: "Your unit’s attacks have:<br><br>• +1 **S**.<br>• [Lethal Hits].",
       },
     },
     {
-      name: "ARMOUR OF CONTEMPT",
+      name: "TRANSHUMAN REACTIONS",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged Phobos unit.",
+        target: "That **PHOBOS** unit.",
+        effect: "Your unit can make a normal move of:<br><br>• Up to D6\".<br>• Or: If the tactical doctrine is active for your unit, up to 6\".",
       },
     },
     {
-      name: "INSENSATE RAMPAGE",
+      name: "UMBRAL EVASION",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One Death Company unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, models in your unit have the Feel No Pain 5+ ability.",
-      },
-    },
-    {
-      name: "LIMB FROM LIMB",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that made a Charge move this turn.",
-        effect: "Select either the Strength or Armour Penetration characteristic of melee weapons equipped by models in your unit. Until the end of the phase, add 1 to the selected characteristic. You can instead choose for your unit to give in to the Red Thirst; if it does, it becomes Battle-shocked (but the effects of this Stratagem still apply to it), and until the end of the phase, add 1 to the Strength and Armour Penetration characteristics of melee weapons equipped by models in your unit.",
-      },
-    },
-    {
-      name: "DEATHLESS DUTY",
-      cp: "2 CP",
-      rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One Death Company unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.",
-      },
-    },
-    {
-      name: "RED WRATH",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after an **ADEPTUS** **ASTARTES** unit from your army Advances.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Until the end of the turn, your unit is eligible to either shoot or declare a charge in a turn in which it Advanced. You can instead choose for your unit to give in to the Red Thirst; if it does, it becomes Battle-shocked (but the effects of this Stratagem still apply to it), and until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Advanced.",
-      },
-    },
-  ],
-  "Reclamation Force": [
-    {
-      name: "CRUSADING CONQUERORS",
-      cp: "1 CP",
-      rules: {
-        when: "End of the Command phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Until the start of the next Command phase, add 1 to the Objective Control characteristic of models in your unit.",
-      },
-    },
-    {
-      name: "FURIOUS DEDICATION",
-      cp: "1 CP",
-      rules: {
-        when: "Your Charge phase or the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not declared a charge or been selected to fight this phase.",
-        effect: "Until the end of the turn, add 2 to Charge rolls made for your unit and add 1 to the Attacks characteristic of melee weapons equipped by models in your unit.<br><br>**Restrictions:** You cannot use this Stratagem more than once per turn.",
-      },
-    },
-    {
-      name: "FIGHT TO THE END",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6: on a 4+, do not remove the destroyed model from play; it can fight after the attacking unit has finished making its attacks, and is then removed from play.",
-      },
-    },
-    {
-      name: "SCIONS OF GUILLIMAN",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after an **ADEPTUS** **ASTARTES** unit from your army ends a Fall Back move.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
-      },
-    },
-    {
-      name: "ULTRAMARIAN DESTINY",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Select one objective marker you control that your unit is within range of. That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
-      },
-    },
-    {
-      name: "MARCHING EVER ON",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit Falls Back.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was within Engagement Range of that enemy unit at the start of the phase.",
-        effect: "Your unit can make a Normal move of up to D6\"+1.",
+        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly Phobos unit.",
+        target: "That **PHOBOS** unit.",
+        effect: "Ranged attacks that target your unit have -1 to hit rolls.",
       },
     },
   ],
   "Saga of the Beastslayer": [
     {
-      name: "UNBRIDLED FEROCITY",
+      name: "UNBRIDLED FEROICITY",
       cp: "1 CP",
       rules: {
-        when: "Fight phase.",
-        target: "One Space Wolves unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Wound roll.",
+        when: "Fight phase, when a friendly Blood Claws/Thunderwolf Cavalry/Wulfen unit is selected to fight.",
+        target: "That **BLOOD** **CLAWS**/**THUNDERWOLF** **CAVALRY**/**WULFEN** unit.",
+        effect: "Your unit’s melee attacks have [LANCE].",
       },
     },
     {
-      name: "SHOCK CAVALRY",
+      name: "CO-ORDINATED STRIKE",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase or your Charge phase.",
-        target: "One Thunderwolf Cavalry unit from your army that has not been selected to move or declared a charge this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Normal, Advance, Fall Back or Charge move, it can move through models (excluding **TITANIC** models) and sections of terrain features that are 4\" or less in height. When doing so, it can move within Engagement Range of enemy models, but unless it is making a Charge move, it cannot end that move within Engagement Range of them.",
-      },
-    },
-    {
-      name: "PINNING FIRE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, after your unit has shot, select one enemy **CHARACTER**, **MONSTER**, or **VEHICLE** unit hit by one or more of those attacks. Until the start of your next Shooting phase, that unit is pinned. While a unit is pinned, subtract 2\" from its Move characteristic and subtract 2 from Charge rolls made for it.",
-      },
-    },
-    {
-      name: "THUNDEROUS PURSUIT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that is within 8\" of that enemy unit and not within Engagement Range of one or more enemy units.",
-        effect: "Your unit can make a Normal move of up to D6\". If your unit has the Space Wolves Infantry or Thunderwolf Cavalry keywords, it can make a Normal move of up to 6\" instead.",
+        when: "End of your opponent’s Fight phase.",
+        target: "One unengaged Blood Claws/Thunderwolf Cavalry/Wulfen unit that is within 9\" of one or more battlefield edges.",
+        effect: "Place your unit in strategic reserves.",
       },
     },
     {
       name: "IMPETUOSITY",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly unengaged WULFEN INFANTRY**/**BLOOD CLAWS unit this phase has shot.",
-        target: "That **WULFEN** **INFANTRY/BLOOD** **CLAWS** unit.",
+        when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly unengaged Blood Claws/Thunderwolf Cavalry/Wulfen unit has shot.",
+        target: "That **BLOOD** **CLAWS**/**THUNDERWOLF** **CAVALRY**/**WULFEN** unit.",
         effect: "Your unit can make a surge move of up to D6\".",
-      },
-    },
-    {
-      name: "COORDINATED STRIKE",
-      cp: "1 CP",
-      rules: {
-        when: "End of your opponent’s Fight phase.",
-        target: "One Space Wolves unit from your army that is wholly within 9\" of one or more battlefield edges and not within Engagement Range of one or more enemy units.",
-        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
-      },
-    },
-  ],
-  "Saga of the Bold": [
-    {
-      name: "INSPIRING PRESENCE",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Adeptus Astartes Character unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] ability.",
-      },
-    },
-    {
-      name: "CHAMPION’S GUIDANCE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One Space Wolves Character unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, you can re-roll the Hit roll.",
-      },
-    },
-    {
-      name: "BIRTH OF A SAGA",
-      cp: "1 CP",
-      rules: {
-        when: "Your Command phase.",
-        target: "One Wolf Guard Headtaker or Wolf Guard Terminator Pack Leader model from your army.",
-        effect: "Until the start of your next Command phase, your model has the **CHARACTER** keyword.<br><br>**Designer’s Note:** ^^While in effect, your model’s unit is therefore a **CHARACTER** unit, meaning it can interact with the Heroes All rule, in addition to other rules that interact with **CHARACTER** units.^^",
-      },
-    },
-    {
-      name: "ALPHA STRIKE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Charge phase.",
-        target: "One Adeptus Astartes Character unit from your army.",
-        effect: "Until the end of the phase, your unit is eligible to declare a charge in a turn in which it Advanced.",
-      },
-    },
-    {
-      name: "HEROIC RESOLVE",
-      cp: "2 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One Space Wolves Character unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.",
-      },
-    },
-    {
-      name: "COUNTERCHARGE",
-      cp: "2 CP",
-      rules: {
-        when: "End of your opponent’s Charge phase.",
-        target: "One Adeptus Astartes Character unit from your army that is within 6\" of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units if it were your Charge phase.",
-        effect: "Your unit now declares a charge that targets only one or more of those enemy units, and you resolve that charge as if it were your Charge phase. Note that even if this charge is successful, your unit does not receive any Charge bonus this turn.",
       },
     },
   ],
   "Saga of the Great Wolf": [
     {
-      name: "THE FOE FORESEEN",
+      name: "EYE OF THE PACK",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Your Shooting phase, or the Fight phase, when a friendly Adeptus Astartes Infantry unit is selected to attack.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
+        effect: "Your unit’s attacks can re-roll wound rolls of 1 and 2.",
       },
     },
     {
-      name: "GRIMNAR’S COMMAND",
+      name: "WOLF TOTEMS",
       cp: "1 CP",
       rules: {
-        when: "Your Command phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Select one Hunting Pack from the Master of Wolves Detachment rule. Until the start of your next Command phase, that Hunting Pack is active for your unit instead of any other Hunting Pack that is active, even if you have already selected that Hunting Pack this battle.",
+        when: "Any phase, when a friendly Adeptus Astartes Infantry/Mounted unit suffers a mortal wound.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**/**MOUNTED** unit.",
+        effect: "Your unit has Feel No Pain 5+ against **mortal wounds**.",
+      },
+    },
+    {
+      name: "FANGS OF THE PACK",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly Adeptus Astartes Infantry/Mounted unit is selected to fight.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**/**MOUNTED** unit.",
+        effect: "Your unit’s melee attacks have [Precision].",
       },
     },
     {
       name: "FENRISIAN FEROCITY",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase or your Charge phase.",
-        target: "One Adeptus Astartes Mounted or Adeptus Astartes Walker unit from your army that has not been selected to move or charge this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Normal, Advance, Fall Back or Charge move, it can move horizontally through models (excluding **TITANIC** models) and terrain features. When doing so, it can move within Engagement Range of enemy models, but cannot end a Normal, Advance or Fall Back move within Engagement Range of them.",
+        when: "Your Movement/Charge phase, when a friendly Adeptus Astartes Mounted/Walker unit is selected to move or declares a charge.",
+        target: "That **ADEPTUS** **ASTARTES** **MOUNTED**/**WALKER** unit.",
+        effect: "Your unit has Mobile.",
       },
     },
     {
-      name: "UNRELENTING HUNTERS",
+      name: "GRIMNAR'S COMMAND",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to move this phase.",
-        effect: "Until the end of the turn, your unit is eligible to declare a charge in a turn in which it Fell Back. If your unit is a Space Wolves unit, until the end of the turn, it is eligible to declare a charge in a turn in which it Advanced or Fell Back.",
-      },
-    },
-    {
-      name: "EYE OF THE PACK",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, you can add 1 to the Wound roll.",
+        when: "Your Command phase.",
+        target: "One friendly **ADEPTUS** **ASTARTES** unit (excluding Monster/Vehicle units).",
+        effect: "Select one combat doctrine. That **combat doctrine** is active for your unit until the start of your next Command phase.",
       },
     },
     {
       name: "BATTLE INSTINCTS",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
-        target: "One Space Wolves unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Your unit can make a Normal move of up to D6\".",
-      },
-    },
-  ],
-  "Saga of the Hunter": [
-    {
-      name: "HUNTERS’ TRAIL",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Space Wolves unit (excluding Monsters and Vehicles) from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Pile-in or Consolidation move, it can move up to 6\" instead of up to 3\". When doing so, it does not need to end that move closer to the closest enemy model, provided it ends that move as close as possible to the closest enemy unit.",
-      },
-    },
-    {
-      name: "TERRITORIAL ADVANTAGE",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, just after an enemy unit is destroyed by an **ADEPTUS** **ASTARTES** unit from your army.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Select one objective marker you control that your unit is within range of. That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
-      },
-    },
-    {
-      name: "OVERWHELMING ONSLAUGHT",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "Two **ADEPTUS** **ASTARTES** units from your army within Engagement Range of that enemy unit, or one Space Wolves Beasts unit from your army within Engagement Range of that enemy unit.",
-        effect: "Until the end of the phase, each time a model in that enemy unit makes an attack, subtract 1 from the Hit roll.",
-      },
-    },
-    {
-      name: "CHOSEN PREY",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after a Space Wolves unit from your army Falls Back.",
-        target: "That **SPACE** **WOLVES** unit.",
-        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
-      },
-    },
-    {
-      name: "BOUNDING ADVANCE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase or your Charge phase.",
-        target: "One Space Wolves Infantry or Space Wolves Beasts unit from your army that has not been selected to move or declared a charge this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Normal, Advance, Fall Back or Charge move, it can move through models (excluding Titanic models). When doing so, it can move within Engagement Range of enemy models, but unless it is making a Charge move, it cannot end that move within Engagement Range of them.",
-      },
-    },
-    {
-      name: "MARKED FOR DESTRUCTION",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "Two **ADEPTUS** **ASTARTES** units from your army (excluding Beasts) that have not been selected to shoot this phase.",
-        effect: "Select one enemy unit visible to both of your units. Until the end of the phase, models in your units can only target that enemy unit (and only if it is an eligible target) and each time a model in one of your units makes an attack, re-roll a Wound roll of 1.",
+        when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly unengaged Adeptus Astartes Infantry/Mounted unit has shot.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**/**MOUNTED** unit.",
+        effect: "Your unit can make a normal move of up to D3+3\".",
       },
     },
   ],
   "Shadowmark Talon": [
     {
-      name: "ARMOUR OF CONTEMPT",
+      name: "INTO DARKNESS",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "LAY LOW THE TYRANTS",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Adeptus Astartes Infantry unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the [PRECISION] ability.",
-      },
-    },
-    {
-      name: "FEINT AND THRUST",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back. If it is a Phobos or Scout Squad unit, it is also eligible to shoot and declare a charge in a turn in which it Advanced.",
-      },
-    },
-    {
-      name: "STUNNING FUSILLADE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One Adeptus Astartes Infantry unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a ranged attack that targets an enemy unit that is more than 12\" away, improve the Ballistic Skill and Armour Penetration characteristics of that attack by 1. If one or more enemy models are destroyed as a result of those attacks, select one of those destroyed models; that destroyed model’s unit must take a Battle-shock test.",
+        when: "End of your opponent’s Fight phase.",
+        target: "One unengaged Adeptus Astartes Infantry unit.",
+        effect: "Place your unit in strategic reserves.",
       },
     },
     {
       name: "RAPTORIAL VIGILANCE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.",
-        target: "One Adeptus Astartes Infantry or Adeptus Astartes Mounted unit from your army that is within 8\" of the enemy unit that just ended that move. You cannot target a unit that is within Engagement Range of one or more enemy units.",
-        effect: "Your unit can make a Normal move of up to D6\", or up to 6\" instead if it is a Phobos or Scout Squad unit.",
+        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged Adeptus Astartes Infantry unit.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
+        effect: "Your unit can make a normal move of:<br><br>• Up to D6\".<br>• Or: If your unit is a Phobos/Scout Squad unit, up to 6\".",
       },
     },
     {
-      name: "INTO DARKNESS",
+      name: "MURDEROUS FUSILLADE",
       cp: "1 CP",
       rules: {
-        when: "End of your opponent’s Fight phase.",
-        target: "Up to two Phobos and/or Scout Squad units from your army, or one other Adeptus Astartes Infantry unit from your army. You cannot target a unit that is within Engagement Range of one or more enemy units.",
-        effect: "Remove those units from the battlefield and place them into Strategic Reserves.",
+        when: "Your Shooting phase, when a friendly Adeptus Astartes Infantry unit that made an ingress move this turn is selected to shoot.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
+        effect: "Your unit’s ranged attacks have:<br><br>• +1 **BS**.<br>• +1 **AP**.",
+      },
+    },
+    {
+      name: "SUPPRESSED WEAPONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly Adeptus Astartes Infantry unit has shot.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
+        effect: "Those attacks do not prevent your unit from being hidden.",
+      },
+    },
+    {
+      name: "FEINT AND THRUST",
+      cp: "1 CP",
+      rules: {
+        when: "Your Command phase.",
+        target: "One friendly Adeptus Astartes Infantry unit.",
+        effect: "The tactical doctrine is active for your unit in addition to any other combat doctrine, until the start of your next Command phase.",
+      },
+    },
+    {
+      name: "LAY LOW THE TYRANTS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly Adeptus Astartes Infantry unit is selected to fight.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**.",
+        effect: "Your unit’s melee attacks have [Precision].",
       },
     },
   ],
   "Spearpoint Task Force": [
     {
-      name: "ARMOUR OF CONTEMPT",
+      name: "EVASIVE MANOEUVERS",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "SPEAR THRUST AND SABRE SWING",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to fight this phase.",
-        effect: "Select either the [LANCE] or [LETHAL HITS] ability. Until the end of the phase, melee weapons equipped by models in your unit have the selected ability. If it is a **MOUNTED** unit, until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] and [LETHAL HITS] abilities instead.",
+        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly Adeptus Astartes Mounted/Speeder unit.",
+        target: "That **ADEPTUS** **ASTARTES** **MOUNTED**/**SPEEDER** unit.",
+        effect: "Ranged attacks that target your unit have -1 to wound rolls.",
       },
     },
     {
       name: "MOBILE LETHALITY",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it Advanced or Fell Back.",
+        when: "Your Movement phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to make an advance/fall-back move.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "• That **fall-back move** does not prevent your unit from being eligible to shoot.<br>• Your unit’s ranged attacks have [ASSAULT].",
       },
     },
     {
-      name: "HUNTER’S INSTINCTS",
+      name: "FLAWLESS RIDERS",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.",
-        target: "One Adeptus Astartes Infantry unit or Adeptus Astartes Mounted unit from your army that is within 8\" of that enemy unit. You cannot target a unit that is within Engagement Range of one or more enemy units.",
-        effect: "Your unit can make a Normal move of up to 6\".",
+        when: "Your Movement/Charge phase, when a friendly Adeptus Astartes mounted unit is selected to move or declares a charge.",
+        target: "That **ADEPTUS** **ASTARTES** **MOUNTED** unit.",
+        effect: "Your unit has Mobile.",
       },
     },
     {
-      name: "EVASIVE MANOEUVRES",
+      name: "SPEAR THRUST AND SABRE SWING",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One Adeptus Astartes Mounted or Adeptus Astartes Fly Vehicle unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the Wound roll.",
+        when: "Fight phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to fight.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit’s melee attacks:<br><br>• Have [LETHAL HITS].<br>• Or: Have [LANCE].<br>• Or: If your unit has Mounted, have [LETHAL HITS] and [LANCE].",
       },
     },
     {
@@ -10476,431 +9597,218 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "End of your opponent’s Fight phase.",
-        target: "One Adeptus Astartes Mounted or Adeptus Astartes Fly Vehicle unit from your army that is not within Engagement Range of one or more enemy units.",
-        effect: "Remove your unit from the battlefield and place it into Strategic Reserves.",
+        target: "One friendly unengaged Adeptus Astartes Mounted/Speeder unit.",
+        effect: "Place your unit in strategic reserves.",
+      },
+    },
+    {
+      name: "HUNTER'S INSTINCTS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged Adeptus Astartes Infantry/Mounted/Speeder unit.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**/**MOUNTED**/**SPEEDER** unit.",
+        effect: "Your unit can make a normal move of up to D3+3\".",
       },
     },
   ],
   "Stormlance Task Force": [
     {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "BLITZING FUSILLADE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the [ASSAULT] ability. If such a weapon already has this ability, until the end of the phase, that weapon has the [SUSTAINED HITS 1] ability as well.",
-      },
-    },
-    {
-      name: "FULL THROTTLE",
-      cp: "2 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One ADEPTUS ASTARTES MOUNTED or ADEPTUS ASTARTES VEHICLE unit (excluding WALKERS) from your army.",
-        effect: "Until the end of the phase, if your unit Advances, do not make an Advance roll for it. Instead, until the end of the phase, add 6\" to the Move characteristic of models in your unit, or 9\" instead if your unit is **MOUNTED**.",
-      },
-    },
-    {
-      name: "SHOCK ASSAULT",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to fight.",
-        target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Your unit’s melee attacks have [LANCE].",
-      },
-    },
-    {
-      name: "RIDE HARD, RIDE FAST",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One ADEPTUS ASTARTES MOUNTED or ADEPTUS ASTARTES FLY VEHICLE unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the Wound roll.",
-      },
-    },
-    {
       name: "WIND-SWIFT EVASION",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.",
-        target: "One Adeptus Astartes Infantry or Adeptus Astartes Mounted unit from your army that is within 8\" of that enemy unit.",
-        effect: "Your unit can make a Normal move of up to 6\".<br><br>**Restrictions:** You cannot select a unit that is within Engagement Range of one or more enemy units.",
+        when: "End of the Fight phase.",
+        target: "One friendly Adeptus Astartes Mounted unit that was eligible to fight this phase.",
+        effect: "• If your unit is unengaged, your unit can make a normal move.<br>• Or: If your unit is engaged, your unit can make a fall-back move.",
+      },
+    },
+    {
+      name: "SUDDEN ONSLAUGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly Adeptus Astartes Mounted/Speeder unit is selected to make an advance move.",
+        target: "That **ADEPTUS** **ASTARTES** **MOUNTED**/**SPEEDER** unit.",
+        effect: "Your unit can change its advance rolls to a 6.",
+      },
+    },
+    {
+      name: "HURTLING TARGETS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase, when an enemy unit targets a friendly Adeptus Astartes Mounted/Speeder unit.",
+        target: "That **ADEPTUS** **ASTARTES** **MOUNTED**/**SPEEDER** unit.",
+        effect: "Ranged attacks that target your unit have -1 to hit rolls.",
       },
     },
   ],
-  "Subversion Assets": [
-    {
-      name: "ADAPTIVE OPERATIONS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase, when a friendly PHOBOS**/**SCOUT SQUAD unit starts an action.",
-        target: "That **PHOBOS/SCOUT** **SQUAD** unit.",
-        effect: "That action does not prevent your unit from being eligible to shoot.",
-      },
-    },
-    {
-      name: "STRIKE FROM THE SHADOWS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase, when a friendly PHOBOS**/**SCOUT SQUAD unit has shot.",
-        target: "That **PHOBOS/SCOUT** **SQUAD** unit.",
-        effect: "Those ranged attacks do not prevent your unit from being hidden.",
-      },
-    },
-    {
-      name: "CLOAKED POSITION",
-      cp: "1 CP",
-      rules: {
-        when: "Start of your opponent’s Movement phase.",
-        target: "One friendly unengaged PHOBOS**/**SCOUT SQUAD unit.",
-        effect: "Your unit has -3\" detection range until the end of the turn.",
-      },
-    },
-  ],
-  "The Angelic Host": [
-    {
-      name: "UNBRIDLED ARDOUR",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was just destroyed. You can use this Stratagem on that unit even though it was just destroyed.",
-        effect: "Until the end of the battle, each time a friendly Sanguinary Guard unit makes an attack that targets the enemy unit that just destroyed your unit, you can re-roll the Hit roll and you can re-roll the Wound roll.",
-      },
-    },
+  "Tactical Brethren": [
     {
       name: "ARMOUR OF CONTEMPT",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "ANGEL’S SACRIFICE",
-      cp: "1 CP",
-      rules: {
-        when: "Start of the Fight phase.",
-        target: "One Adeptus Astartes Jump Pack unit from your army.",
-        effect: "Until the end of the phase, each time an enemy model within Engagement Range of your unit selects its targets, it must select your unit as the target of all of its attacks.",
-      },
-    },
-    {
-      name: "MARTIAL EXEMPLARS",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Adeptus Astartes Jump Pack unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the [LETHAL HITS] and [PRECISION] abilities.",
-      },
-    },
-    {
-      name: "DESCENT OF ANGELS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One Adeptus Astartes Jump Pack unit from your army that is arriving using the Deep Strike ability this phase.",
-        effect: "Your unit can be set up anywhere on the battlefield that is more than 6\" horizontally away from all enemy units.<br><br>**Restrictions:** A unit targeted by this Stratagem is not eligible to declare a charge in the same turn.",
-      },
-    },
-    {
-      name: "DEATH FROM THE SKIES",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after an Adeptus Astartes Jump Pack unit from your army Advances or Falls Back.",
-        target: "That **ADEPTUS** **ASTARTES** **JUMP** **PACK** unit.",
-        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Advanced or Fell Back.",
-      },
-    },
-  ],
-  "The Lost Brethren": [
-    {
-      name: "GLORIOUS SACRIFICE",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase.",
-        target: "One Death Company unit from your army that was just destroyed while it was within range of an objective marker you controlled. You can use this Stratagem on that unit even though it was just destroyed.",
-        effect: "That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn.",
-      },
-    },
-    {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "FINAL RETRIBUTION",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One Death Company unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 to the result if your unit is within 12\" of one or more friendly Chaplain models; on a 4+, do not remove it from play. The destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play.",
-      },
-    },
-    {
-      name: "FURIOUS ONSLAUGHT",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Death Company unit from your army, just before that unit Piles-in.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Pile-in move, it can move up to D3+3\" instead of up to 3\". If your unit is within 12\" of one or more friendly Chaplain models, or if it is below Starting Strength, it can move up to 6\" instead. In either case, it can only do so provided your unit ends that Pile-in move in Unit Coherency and within Engagement Range of one or more enemy units.",
-      },
-    },
-    {
-      name: "LOST TO RAGE",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Death Company unit from your army that is below Starting Strength and has not been selected to fight this phase.",
-        effect: "Until the end of the phase, improve the Attacks, Stength and Armour Penetration characteristics of melee weapons equipped by models in your unit by 1 and, unless your unit is within 12\" of one or more friendly Chaplain models, until the end of the phase, those weapons have the [HAZARDOUS] ability.",
-      },
-    },
-    {
-      name: "WRATHFUL RAMPAGE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after a Death Company unit from your army Advances.",
-        target: "That **DEATH** **COMPANY** unit.",
-        effect: "Until the end of the turn, your unit is eligible to declare a charge in a turn in which it Advanced. If your unit is within 12\" of one or more friendly Chaplain models, or it is below its Starting Strength, until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Advanced.",
-      },
-    },
-  ],
-  "Unforgiven Task Force": [
-    {
-      name: "ARMOUR OF CONTEMPT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
-      },
-    },
-    {
-      name: "UNFORGIVEN FURY",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, weapons equipped by models in your unit have the [LETHAL HITS] ability. In addition, if one or more **ADEPTUS** **ASTARTES** units from your army are currently Battle-shocked, until the end of the phase, each time a model in your unit makes an attack, a successful unmodified Hit roll of 5+ scores a Critical Hit.",
-      },
-    },
-    {
-      name: "INTRACTABLE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after an **ADEPTUS** **ASTARTES** unit from your army Falls Back.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly **ADEPTUS** **ASTARTES** unit.",
         target: "That **ADEPTUS** **ASTARTES** unit.",
-        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+        effect: "Attacks that target your unit have -1 **AP** until that enemy unit has attacked.",
       },
     },
     {
-      name: "FIRE DISCIPLINE",
+      name: "DOMINATION FIRE",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in that unit have the [ASSAULT], [HEAVY] and [IGNORES COVER] abilities.",
+        when: "Your Shooting phase, when a friendly **ADEPTUS** **ASTARTES** unit has shot.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Select one enemy unit hit by those attacks. That enemy unit is **suppressed** until the start of your next turn:<br><br>• While a unit is **suppressed**, that unit’s attacks have -1 to hit rolls.",
       },
     },
     {
-      name: "GRIM RETRIBUTION",
+      name: "MASTERFUL TACTICS",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that had one or more models destroyed as a result of the attacking unit’s attacks.",
-        effect: "Your unit can shoot as if it were your Shooting phase, but it must target the enemy unit that just attacked it, and can only do so if that enemy unit is an eligible target.",
-      },
-    },
-    {
-      name: "UNBREAKABLE LINES",
-      cp: "2 CP",
-      rules: {
-        when: "Your opponent’s Charge phase, just after an enemy unit ends a Charge move.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army within Engagement Range of that enemy unit.",
-        effect: "Until the end of the turn, each time an attack targets your unit, subtract 1 from the Wound roll.",
+        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged Adeptus Astartes Infantry/Mounted unit.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**/**MOUNTED** unit.",
+        effect: "Your unit can make a normal move of:<br><br>• Up to D6\".<br>• Or: If the tactical doctrine is active for your unit, up to 6\".",
       },
     },
   ],
-  "Vanguard Spearhead": [
+  "Tacticus Attack Force": [
     {
-      name: "A DEADLY PRIZE",
+      name: "RELENTLESS ASSAULT",
       cp: "1 CP",
       rules: {
-        when: "Start of the Command phase.",
-        target: "One ADEPTUS ASTARTES INFANTRY or ADEPTUS ASTARTES MOUNTED unit from your army within range of an objective marker you control.",
-        effect: "That objective marker is said to be Sabotaged, and remains under your control even if you have no models within range of it, until your opponent controls it at the start or end of any turn. While an objective marker is Sabotaged and under your control, each time an enemy unit ends a Normal, Advance, Fall Back or Charge move within range of that objective marker, roll one D6: on a 2+, that enemy unit suffers D3 mortal wounds.",
+        when: "Your Shooting phase or the Fight phase, when a friendly Tacticus unit is selected to attack.",
+        target: "That **TACTICUS** unit.",
+        effect: "Your unit’s attacks have:<br><br>• [Sustained Hits 1: non-Monster/Vehicle].<br>• Or: [Lethal Hits: Monster/Vehicle].",
       },
     },
     {
-      name: "ARMOUR OF CONTEMPT",
+      name: "TRANSHUMAN SWIFTNESS",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "Fight phase, when an enemy unit has fought.",
+        target: "One friendly Tacticus unit that is within range of an objective and is eligible to fight.",
+        effect: "Your unit has Fights First and must be the next unit you select to fight.",
       },
     },
     {
-      name: "SURGICAL STRIKES",
+      name: "TACTICAL FOCUS",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly Tacticus unit is selected to make a consolidation move.",
+        target: "That **TACTICUS** unit.",
+        effect: "When making that **consolidation move**, your unit can move up to D3+3\".",
+      },
+    },
+  ],
+  "Tacticus Firestorm Force": [
+    {
+      name: "FOR THE EMPEROR!",
+      cp: "1 CP",
+      rules: {
+        when: "Command phase.",
+        target: "One friendly Tacticus unit that is within range of an objective.",
+        effect: "Your unit has +1 **OC** until the end of the turn.",
+      },
+    },
+    {
+      name: "RELENTLESS ASSAULT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase, when a friendly Tacticus unit is selected to attack.",
+        target: "That **TACTICUS** unit.",
+        effect: "Your unit’s attacks have:<br><br>• [Sustained Hits 1: non-Monster/Vehicle].<br>• Or: [Lethal Hits: Monster/Vehicle].",
+      },
+    },
+    {
+      name: "POINT-BLANK BRUTALITY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly engaged Tacticus unit is selected to shoot.",
+        target: "That **TACTICUS** unit.",
+        effect: "Your unit’s ranged attacks (excluding [Blast] attacks) have:<br><br>• [Close-Quarters].<br>• [Ignores Cover].",
+      },
+    },
+  ],
+  "Terminator Storm Force": [
+    {
+      name: "TACTICAL DREADNOUGHT FORTITUDE",
       cp: "2 CP",
       rules: {
-        when: "Fight phase.",
-        target: "One ADEPTUS ASTARTES INFANTRY unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the [PRECISION] ability.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly adeptus astartes Terminator unit.",
+        target: "That **ADEPTUS** **ASTARTES** **TERMINATOR** unit.",
+        effect: "Attacks that target your unit have -1 **D** until that enemy unit has attacked.",
       },
     },
     {
-      name: "STRIKE FROM THE SHADOWS",
+      name: "MERCILESS VETERANS",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase.",
-        target: "One ADEPTUS ASTARTES INFANTRY unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a ranged attack that targets an enemy unit that is more than 12\" away, improve the Ballistic Skill and Armour Penetration characteristics of that attack by 1. If one or more enemy models are destroyed as a result of those attacks, select one of those destroyed models; that destroyed model’s unit must take a Battle-shock test.",
+        when: "Your Shooting phase, when a friendly adeptus astartes Terminator unit is selected to shoot.",
+        target: "That **ADEPTUS** **ASTARTES** **TERMINATOR** unit.",
+        effect: "Your unit’s ranged attacks have:<br><br>• [Lethal Hits].<br>• [Sustained Hits 1].",
       },
     },
     {
-      name: "CALCULATED FEINT",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Charge phase, just after an enemy unit declares a charge.",
-        target: "One friendly ADEPTUS ASTARTES INFANTRY unit within 12\" of that enemy unit.",
-        effect: "Your unit can make a Normal move of up to D6\", or up to 6\" instead if it is a PHOBOS or SCOUT SQUAD unit.<br><br>**Restrictions:** You cannot select a unit that is within Engagement Range of one or more enemy units.",
-      },
-    },
-    {
-      name: "GUERRILLA TACTICS",
+      name: "GUNSHIP EXTRACTION",
       cp: "1 CP",
       rules: {
         when: "End of your opponent’s Fight phase.",
-        target: "Up to two PHOBOS and/or SCOUT SQUAD units from your army, or one other ADEPTUS ASTARTES INFANTRY unit from your army.",
-        effect: "Remove those units from the battlefield and place them into Strategic Reserves.<br><br>**Restrictions:** Each unit selected for this Stratagem must be more than 3\" away from all enemy models.",
+        target: "One friendly unengaged adeptus astartes terminator unit.",
+        effect: "Place your unit in strategic reserves.",
       },
     },
   ],
-  "Vengeful Hosts": [
+  "Vow-sworn Crusaders": [
     {
-      name: "METEORIC ONSLAUGHT",
+      name: "DREAD CRUSADERS",
       cp: "1 CP",
       rules: {
-        when: "Fight phase, when a friendly ADEPTUS ASTARTES FLY INFANTRY unit that made a charge move this turn is selected to attack.",
-        target: "That friendly **ADEPTUS** **ASTARTES** **FLY** **INFANTRY** unit.",
-        effect: "Your unit’s melee attacks have +1 **S**.",
+        when: "Your opponent’s Charge phase, when an enemy unit selects charge targets.",
+        target: "One Adeptus Astartes Infantry unit that was selected as a charge target by that enemy unit this phase.",
+        effect: "That enemy unit must make a battle-shock roll, with -1 to that **battle-shock roll**.",
       },
     },
     {
-      name: "PURGE BY SECTORS",
+      name: "FOR THE EMPEROR'S HONOUR!",
       cp: "1 CP",
       rules: {
-        when: "End of the Fight phase.",
-        target: "One friendly unengaged ADEPTUS ASTARTES FLY INFANTRY unit that was eligible to fight this phase.",
-        effect: "Your unit can make a normal move of up to D3+3\".",
+        when: "The Fight phase, when a friendly Adeptus Astartes Infantry unit is selected to fight.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
+        effect: "Your unit’s melee attacks have [PRECISION].",
       },
     },
     {
-      name: "KNOW NO FEAR",
+      name: "HERESY BEGETS RETRIBUTION",
       cp: "1 CP",
       rules: {
-        when: "Your Command phase.",
-        target: "One friendly battle-shocked **ADEPTUS** **ASTARTES** unit. You can target that unit with this **stratagem** even though it is **battle-shocked**.",
-        effect: "Your unit is no longer **battle-shocked**.",
-      },
-    },
-  ],
-  "Veterans of the Fang": [
-    {
-      name: "GRIZZLED KILLERS",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, when a friendly GREY HUNTERS unit is selected to fight.",
-        target: "That **GREY** **HUNTERS** unit.",
-        effect: "Your unit’s melee attacks have:<br><br>• [SUSTAINED HITS 1].<br>• **OR:** [LETHAL HITS].",
-      },
-    },
-    {
-      name: "ICY CALM",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, when a friendly GREY HUNTERS unit is selected to make an advance**/**fall-back move.",
-        target: "That **GREY** **HUNTERS** unit.",
-        effect: "That move does not prevent your unit from being eligible to start an action.",
-      },
-    },
-    {
-      name: "BLADE-KEEN SENSES",
-      cp: "1 CP",
-      rules: {
-        when: "Start of your Shooting phase.",
-        target: "One friendly unengaged GREY HUNTERS unit.",
-        effect: "Select one visible enemy unit within 24\" of your unit. That enemy unit has +6\" detection range.",
-      },
-    },
-  ],
-  "Vindication Task Force": [
-    {
-      name: "REFUSAL TO YIELD",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase, just after an Ancient model from your army is destroyed.",
-        target: "That **ANCIENT** model. You can use this Stratagem on that model even though it was just destroyed.",
-        effect: "At the end of the phase, set your model back up on the battlefield, as close as possible to where it was destroyed and not within Engagement Range of one or more enemy units, with its full wounds remaining.<br><br>**Restrictions:** You cannot target the same model with this Stratagem more than once per battle.",
-      },
-    },
-    {
-      name: "LITANIES OF PURGATION",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes an attack, if that model’s unit is within range of one or more objective markers or the target unit is within range of one or more objective markers, improve the Armour Penetration characteristic of that attack by 1.",
+        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly Adeptus Astartes Infantry unit.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
+        effect: "Your unit can make a surge move of up to D6\".",
       },
     },
     {
       name: "SPOOR OF THE UNHOLY",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the [IGNORES COVER] ability and each time a model in your unit makes an attack, you can ignore any or all modifiers to the following: that attack’s Ballistic Skill or Weapon Skill characteristic; the Hit roll.",
+        when: "Your Shooting phase or the Fight phase, when a friendly **ADEPTUS** **ASTARTES** unit is selected to attack.",
+        target: "That **ADEPTUS** **ASTARTES** unit.",
+        effect: "Your unit can ignore modifiers to your unit’s:<br><br>• **BS** and **WS**.<br>• Hit rolls.",
       },
     },
     {
-      name: "RECLAIM OUR HONOUR!",
+      name: "PIOUS ENMITY",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit destroys an Ancient model from your army that has not been targeted with the Refusal to Yield Stratagem this phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army visible to that enemy unit.",
-        effect: "Until the end of the battle, each time an **ADEPTUS** **ASTARTES** model from your army makes an attack that targets that enemy unit, add 1 to the Hit roll.<br><br>**Restrictions:** You cannot target that **ANCIENT** model with the Refusal to Yield Stratagem this phase.",
+        when: "Fight phase, when a friendly Chaplain/Judiciar unit is selected to fight.",
+        target: "That **CHAPLIN**/**JUDICIAR** unit.",
+        effect: "• Your unit’s melee attacks can re-roll hit rolls of 1.<br>• Or: Your unit’s melee attacks that target a **MONSTER**/**VEHICLE** unit can re-roll **hit rolls** of 1 and wound rolls of 1.",
       },
     },
     {
-      name: "RECITATION OF THE REVERED",
+      name: "DEVOUT PUSH",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One Ancient unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll.",
-      },
-    },
-    {
-      name: "PERFERVID INTERVENTION",
-      cp: "2 CP",
-      rules: {
-        when: "End of your opponent’s Charge phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that is within 6\" of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units if it were your Charge phase.",
-        effect: "Your unit now declares a charge that only targets one or more of those enemy units, and you resolve that charge.<br><br>**Restrictions:** Note that even if this charge is successful, your unit does not receive any Charge bonus this turn.",
+        when: "Fight phase, when a friendly Adeptus Astartes Infantry unit is selected to make a pile-in/consolidation move.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY** unit.",
+        effect: "When making that **pile-in**/**consolidation move**, your unit can move up to D3+3\".",
       },
     },
   ],
@@ -10909,25 +9817,25 @@ const STRATAGEM_DATABASE = {
       name: "DEATH BEGETS VENGEANCE",
       cp: "1 CP",
       rules: {
-        when: "Any phase, when a friendly DEATH COMPANY unit is destroyed by an enemy unit.",
+        when: "Any phase, when a friendly Death Company unit is destroyed by an enemy unit.",
         target: "That enemy unit.",
-        effect: "That enemy unit is hated until the end of the battle:<br>While a unit is **hated**, friendly **DEATH** **COMPANY** units’ attacks that target that unit have +1 to wound rolls.",
+        effect: "That enemy unit is hated until the end of the battle:<br><br>• While a unit is hated, friendly **DEATH** **COMPANY** units’ attacks that target that unit have +1 to wound rolls.",
       },
     },
     {
       name: "NO BARRIER TO RETRIBUTION",
       cp: "1 CP",
       rules: {
-        when: "Your Movement or your Charge phase, when a friendly DEATH COMPANY DREADNOUGHT unit is selected to make a normal**/**advance**/**charge move.",
+        when: "Your Movement or your Charge phase, when a friendly Death Company Dreadnought unit is selected to make a normal/advance/charge move.",
         target: "That **DEATH** **COMPANY** **DREADNOUGHT** unit.",
-        effect: "Your unit has MOBILE.",
+        effect: "Your unit has Mobile.",
       },
     },
     {
       name: "RAGE-FUELLED RESPONSE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly unengaged DEATH COMPANY unit has shot.",
+        when: "Your opponent’s Shooting phase, when an enemy unit that targeted a friendly unengaged Death Company unit has shot.",
         target: "That **DEATH** **COMPANY** unit.",
         effect: "Your unit can make a surge move of up to D6\".",
       },
@@ -10935,86 +9843,57 @@ const STRATAGEM_DATABASE = {
   ],
   "Wrath of the Rock": [
     {
-      name: "INESCAPABLE JUSTICE",
-      cp: "2 CP",
+      name: "IN SACRIFICE, VICTORY",
+      cp: "1 CP",
       rules: {
-        when: "Any phase, just after your Oath of Moment target is destroyed.",
-        target: "One Adeptus Astartes Character unit that is on the battlefield.",
-        effect: "Select one enemy unit within 12\" and visible to your unit. That enemy unit becomes your Oath of Moment target until the start of your next Command phase.",
+        when: "Any phase, when a friendly Deathwing/Ravenwing unit within range of an objective is destroyed.",
+        target: "That **DEATHWING**/**RAVENWING** unit. You can target that unit with this stratagem even though it is destroyed.",
+        effect: "Select one **objective**:<br><br>• That no enemy units (excluding **AIRCRAFT** units) are within range of.<br>• That your unit was controlling at the end of the previous phase.That **objective** is secured.",
       },
     },
     {
-      name: "LION’S WILL",
+      name: "LION'S WILL",
       cp: "1 CP",
       rules: {
         when: "Command phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that is within Engagement Range of one or more enemy units.",
-        effect: "Until the start of your next Command phase, add 1 to the Objective Control characteristic of models in your unit. In addition, until the end of the turn, if your unit does not have the Deathwing, Ravenwing or Vehicle keyword, each time a model in your unit makes an attack, add 1 to the Hit roll.",
+        target: "One friendly **ADEPTUS** **ASTARTES** unit that is within range of an objective.",
+        effect: "Your unit has +1 **OC** until the end of the turn.",
       },
     },
     {
-      name: "ARMOUR OF CONTEMPT",
+      name: "INESCAPABLE JUSTICE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        when: "The Fight phase, when a friendly Adeptus Astartes unit is selected to fight.",
+        target: "That Adeptus Astartes unit.",
+        effect: "Your unit's melee attacks have [Precision].",
       },
     },
     {
       name: "TACTICAL MASTERY",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army.",
-        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Advanced. If your unit has the Ravenwing keyword, it is also eligible to shoot and declare a charge in a turn in which it Fell Back.",
+        when: "Your Command phase.",
+        target: "One friendly Deathwing/Ravenwing unit.",
+        effect: "Select one combat doctrine. That **combat doctrine** is active for your unit until the start of your next Command phase.",
+      },
+    },
+    {
+      name: "KNIGHTS OF IRON",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement/Charge phase, when a friendly Ravenwing unit is selected to move or declares a charge.",
+        target: "That **RAVENWING** unit.",
+        effect: "Your unit has Mobile.",
       },
     },
     {
       name: "RELICS OF THE DARK AGE",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase.",
-        target: "One Adeptus Astartes Infantry or Adeptus Astartes Mounted unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, add 2 to the Strength characteristic of ranged weapons equipped by models in your unit.",
-      },
-    },
-    {
-      name: "LEONINE AGGRESSION",
-      cp: "1 CP",
-      rules: {
-        when: "End of your opponent’s Charge phase.",
-        target: "One **ADEPTUS** **ASTARTES** unit from your army within 3\" of one or more enemy units, or one Deathwing unit from your army within 6\" of one or more enemy units.",
-        effect: "Your unit now declares a charge that only targets one or more of those enemy units, and you resolve that charge.<br><br>**Restrictions:** Note that even if this charge is successful, your unit does not receive any Charge bonus this turn.",
-      },
-    },
-  ],
-  "Wrathful Procession": [
-    {
-      name: "FUELLED BY FAITH",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase, when a friendly CHAPLAIN unit suffers a mortal wound.",
-        target: "That **CHAPLAIN** unit.",
-        effect: "Your unit has Feel No Pain 4+ against **mortal wounds**.",
-      },
-    },
-    {
-      name: "CASTIGATE THE DEMAGOGUES",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, when a friendly CHAPLAIN unit is selected to fight.",
-        target: "That **CHAPLAIN** unit.",
-        effect: "Your unit’s melee attacks have [PRECISION].",
-      },
-    },
-    {
-      name: "RITE OF PERFERVID WRATH",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, when a friendly CHAPLAIN unit is selected to fight.",
-        target: "That **CHAPLAIN** unit.",
-        effect: "Your unit’s melee attacks have +1 **S**.",
+        when: "Your Shooting phase, when a friendly Adeptus Astartes Infantry/Mounted unit is selected to shoot.",
+        target: "That **ADEPTUS** **ASTARTES** **INFANTRY**/**MOUNTED** unit.",
+        effect: "Your unit’s ranged attacks have +2 **S**.",
       },
     },
   ],
@@ -11495,7 +10374,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Start of the Fight phase.",
         target: "One friendly engaged THOUSAND SONS PSYKER unit.",
-        effect: "Select one enemy unit engaged with your unit. Roll six D6:<br><br>• For each 4+, that enemy unit suffers 1 mortal wound.",
+        effect: "Start of the Fight phase. One friendly engaged Thousand Sons Psyker unit. Select one enemy unit engaged with your unit. Roll six D6: For each 4+, that enemy unit suffers 1 mortal wound.",
       },
     },
     {
@@ -11529,11 +10408,11 @@ const STRATAGEM_DATABASE = {
     },
     {
       name: "INFERNAL FUSILLADE",
-      cp: "2 CP",
+      cp: "1 CP",
       rules: {
         when: "Your Shooting phase.",
         target: "One Thousand Sons Psyker unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, all inferno bolt pistols, inferno boltguns, inferno combi-bolters and inferno combi-weapons equipped by models in your unit have the [PSYCHIC] ability and a Strength characteristic of 5.",
+        effect: "Until the end of the phase, all inferno bolt pistols, inferno boltguns, inferno combi-bolters and inferno combi-weapons equipped by models in your unit have the [PSYCHIC] ability.",
       },
     },
     {
@@ -11560,7 +10439,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Your opponent’s Charge phase, just after an enemy unit ends a Charge move.",
         target: "One Rubric Marines unit from your army within Engagement Range of that enemy unit.",
-        effect: "Until the end of the turn, each time an attack targets your unit, subtract 1 from the Wound roll.",
+        effect: "Until the end of the turn, attacks that target your unit with a **S** greater than your unit’s **T** have -1 to wound rolls.",
       },
     },
   ],
