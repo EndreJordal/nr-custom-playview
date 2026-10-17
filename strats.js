@@ -98,408 +98,264 @@ const STRATAGEM_DATABASE = {
       },
     },
   ],
-  "Auric Champions": [
-    {
-      name: "SLAYER OF CHAMPIONS",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase.",
-        target: "One Adeptus Custodes Character unit from your army that has just destroyed the unit you selected at the start of your Command phase as the target of your Assemblage of Might ability.",
-        effect: "Select one enemy unit on the battlefield Until the start of your next Command phase, each time an **ADEPTUS** **CUSTODES** **CHARACTER** model from your army makes an attack that target that enemy unit, add 1 to the Wound roll In addition, if the destroyed unit was a **CHARACTER** unit, gain 1CP.",
-      },
-    },
-    {
-      name: "SUPERHUMAN RESERVES",
-      cp: "2 CP",
-      rules: {
-        when: "Any phase, just after an Adeptus Custodes Warlord model from your army has used an ability on its datasheet or from an Enhancement that says it can only be used Once per battle.",
-        target: "That Adeptus Custodes Warlord model.",
-        effect: "Your model can use its Once per battle’ ability one additional time during this battle (but not in the same phase).<br><br>**Restrictions:** You cannot use this Stratagem more than once per battle.",
-      },
-    },
-    {
-      name: "THE EMPEROR’S AUSPICE",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One Adeptus Custodes Character unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, **CHARACTER** models in your unit have the Feel No Pain 4+ ability.",
-      },
-    },
-    {
-      name: "EARNING OF A NAME",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "Up to two Adeptus Custodes Character units from your army that have not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a **CHARACTER** model in either of your units makes an attack that targets a **MONSTER** or **VEHICLE** unit, you can re-roll the Hit roll and you can re-roll the Wound roll.",
-      },
-    },
-    {
-      name: "VIGIL UNENDING",
-      cp: "2 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Adeptus Custodes Character model from your army that was just destroyed and has not fought this phase. You can use this Stratagem on that unit even though it was just destroyed.",
-        effect: "Do not remove your destroyed model from play. The destroyed model can fight after the attacking unit has finished making attacks, and is then removed from play.",
-      },
-    },
-    {
-      name: "SHOULDER THE MANTLE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, before the Reinforcements step.",
-        target: "One Adeptus Custodes Character model from your army that is not leading a unit.",
-        effect: "Select one friendly unit (excluding Battle-shocked and Attached units) within 2\" horizontally and 5\" vertically of your model that it could lead (as described in the Leader section of its datasheet). Your model attaches to that unit as a Leader. Change that unit’s Starting Strength accordingly.",
-      },
-    },
-  ],
-  "Lions of the Emperor": [
-    {
-      name: "GILDED CHAMPION",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase, just after an Adeptus Custodes Character model from your army has used an ability on its datasheet that states it can only be used ‘once per battle’.",
-        target: "That **ADEPTUS** **CUSTODES** **CHARACTER** model.",
-        effect: "Your model can use that ‘once per battle’ ability one additional time during the battle (but not in the same phase).<br><br>**Restrictions:** You cannot use this Stratagem on the same **ADEPTUS** **CUSTODES** **CHARACTER** model more than once per battle.",
-      },
-    },
-    {
-      name: "DEFIANT TO THE LAST",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **CUSTODES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 2 to the result if that model has the **CHARACTER** keyword. On a 4+, do not remove it from play; the destroyed model can fight after the attacking unit has finished making its attacks (when doing so, it is treated as having 1 wound remaining), and is then removed from play.",
-      },
-    },
-    {
-      name: "PEERLESS WARRIOR",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One **ADEPTUS** **CUSTODES** unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, melee weapons equipped by models in your unit have the [PRECISION] ability.",
-      },
-    },
-    {
-      name: "UNLEASH THE LIONS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Command phase.",
-        target: "One Allarus Custodians or Aquilon Custodians unit from your army that is on the battlefield.",
-        effect: "That unit is split into separate units, each containing one model. These new units each have a Starting Strength of 1.",
-      },
-    },
+  "Aquilan Shield": [
     {
       name: "MANOEUVRE AND FIRE",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase, just after an **ADEPTUS** **CUSTODES** unit from your army Falls Back.",
+        when: "Your Movement phase, when a friendly Adeptus Custodes unit is selected to make a fall-back move.",
         target: "That **ADEPTUS** **CUSTODES** unit.",
-        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
+        effect: "That move does not prevent your unit from being eligible to shoot/declare a charge.",
+      },
+    },
+    {
+      name: "TIP OF THE TALON",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly Adeptus Custodes unit is selected to shoot.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "Your unit’s ranged attacks that target an enemy unit within 9\" of your unit have +1 **S**.",
+      },
+    },
+    {
+      name: "RAPID REACTIONS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, when an enemy unit ends a fall-back move.",
+        target: "One friendly Adeptus Custodes Infantry unit that was engaged with that enemy unit at the start of the phase.",
+        effect: "Your unit shoots using normal shooting, but while doing so your unit can only target that enemy unit.",
+      },
+    },
+  ],
+  "Auric Champions": [
+    {
+      name: "GILDED CHAMPION",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, when a friendly Adeptus Custodes Character model has used a (Once per battle, per unit) datasheet ability.",
+        target: "That **ADEPTUS** **CUSTODES** **CHARACTER** model.",
+        effect: "Your model can use that (Once per battle, per unit) datasheet ability one additional time, but not in the same phase.<br><br>**Restrictions:** You cannot use this **stratagem** on the same **ADEPTUS** **CUSTODES** **CHARACTER** model more than once per battle.",
+      },
+    },
+    {
+      name: "DUTY UNTO DEATH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when an enemy unit targets a friendly Adeptus Custodes unit.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "When a model in your unit is destroyed, if your unit has not been selected to fight this phase, roll one D6, with +1 to that roll if that model is a Character model:<br><br>• On a 3+, do not remove that model from the battlefield. When your unit has fought, or at the end of the phase (whichever comes first), that model is removed from the battlefield.",
+      },
+    },
+  ],
+  "Dread Host": [
+    {
+      name: "LIGHTNING WRATH",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly Adeptus Custodes unit is selected to make a pile-in move.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "When making that **pile-in move**, your unit can move up to D3+3\".",
+      },
+    },
+    {
+      name: "GOLDEN LIGHT OF THE MOIRAIDES",
+      cp: "2 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly Adeptus Custodes unit is selected to make an ingress move.",
+        target: "That **ADEPTUS** **CUSTODES** Unit.",
+        effect: "Until the start of your next turn:<br><br>• Attacks that target your unit have -1 to hit rolls.<br>• Enemy units cannot target your unit with snap shooting attacks.",
+      },
+    },
+    {
+      name: "PRETERNATURAL RAPIDITY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly Adeptus Custodes unit ends an advance move.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "That **advance move** does not prevent your unit from being eligible to declare a charge.",
+      },
+    },
+  ],
+  "Emissaries Imperatus": [
+    {
+      name: "BEARERS OF HIS LIGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly Adeptus Custodes unit is selected to fight.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "Your unit’s melee attacks can ignore modifiers to hit rolls and wound rolls.",
+      },
+    },
+    {
+      name: "SLAYERS OF NIGHTMARES",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly Adeptus Custodes unit is selected to fight.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "Your unit’s melee attacks that target a unit with a **T** greater than this unit’s **T** have +1 to wound rolls.",
+      },
+    },
+    {
+      name: "SELFLESS SERVICE",
+      cp: "1 CP",
+      rules: {
+        when: "End of your opponent’s Charge phase.",
+        target: "One friendly unengaged Adeptus Custodes unit within 6\" of an enemy unit. You can only select a **VEHICLE** unit if it is a **CHARACTER**/**WALKER** unit.",
+        effect: "Declare a charge with your unit:<br><br>• When making the charge roll, if the result is greater than 6 (after modifiers), change it to 6.<br>• When selecting charge targets, you can select any enemy units that are within 6\" of your unit and within the **maximum distance**.",
+      },
+    },
+  ],
+  "Emperor’s Chosen": [
+    {
+      name: "IN AURAMITE CLAD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly Adeptus Custodes unit (excluding Custodian Wardens units).",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "Attacks that target your unit have -1 **AP** until that enemy unit has attacked.",
+      },
+    },
+    {
+      name: "SUPERHUMAN FOCUS",
+      cp: "1 CP",
+      rules: {
+        when: "End of any phase.",
+        target: "One friendly Adeptus Custodes unit that is not readied.",
+        effect: "Your unit is **readied**.<br><br>**Restrictions:** You cannot select the same unit as the target of this **stratagem** more than once per battle round.",
+      },
+    },
+    {
+      name: "IMPENETRABLE BASTION",
+      cp: "1 CP",
+      rules: {
+        when: "End of your Movement phase.",
+        target: "One friendly Adeptus Custodes unit (excluding Monster/Vehicle units).",
+        effect: "Select one objective your unit is controlling. That **objective** is secured.",
+      },
+    },
+  ],
+  "Grav-Assault Force": [
+    {
+      name: "VICTORY BEFORE DEATH",
+      cp: "1 CP",
+      rules: {
+        when: "Any phase, when a friendly grav-assault unit within range of an objective is destroyed.",
+        target: "That **GRAV-ASSAULT** unit. You can target that unit with this **stratagem** even though it is **destroyed**.",
+        effect: "Select one **objective** that:<br><br>• Your unit was controlling when it was **destroyed**.<br>• Has no enemy units (excluding **AIRCRAFT** units) within range of it.That **objective** is secured.",
+      },
+    },
+    {
+      name: "ADVANCED STABILISERS",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly grav-assault unit is selected to shoot.",
+        target: "That **GRAV-ASSAULT** unit.",
+        effect: "Your unit’s ranged attacks have [Assault].",
+      },
+    },
+    {
+      name: "INEVITABLE ANNIHILATION",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly grav-assault unit is selected to shoot.",
+        target: "That **GRAV-ASSAULT** unit.",
+        effect: "Your unit can ignore modifiers to your unit’s:<br><br>• **BS**.<br>• Hit rolls.",
+      },
+    },
+  ],
+  "Guardians of the Throne": [
+    {
+      name: "SHIELD OF HONOUR",
+      cp: "1 CP",
+      rules: {
+        when: "Start of the Fight phase.",
+        target: "One friendly Adeptus Custodes Infantry/Mounted unit.",
+        effect: "When an enemy model engaged with your unit selects targets, if that enemy model does not select your unit as the target of all of its attacks, that enemy model’s attacks have:<br><br>• -1 to hit rolls.<br>• -1 to wound rolls.",
+      },
+    },
+    {
+      name: "SUPERHUMAN FOCUS",
+      cp: "1 CP",
+      rules: {
+        when: "End of any phase.",
+        target: "One friendly Adeptus Custodes unit that is not readied.",
+        effect: "Your unit is **readied**.<br><br>**Restrictions:** You cannot select the same unit as the target of this Stratagem more than once per battle round.",
+      },
+    },
+    {
+      name: "IN AURAMITE CLAD",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly Adeptus Custodes unit (excluding Custodian Wardens units).",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "Attacks that target your unit have -1 **AP** until that enemy unit has attacked.",
+      },
+    },
+    {
+      name: "PRIME TARGET",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly Adeptus Custodes unit is selected to shoot.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "Your unit’s ranged attacks can:<br><br>• Re-roll one hit roll.<br>• Re-roll one wound roll.<br>• Re-roll one damage roll.",
+      },
+    },
+    {
+      name: "UNLIMITED ENDURANCE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly Adeptus Custodes unit ends an advance move.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "Until the end of the turn:<br><br>• Your unit’s ranged attacks have [Assault].<br>• That **advance move** does not prevent your unit from being eligible to declare a charge.",
       },
     },
     {
       name: "SWIFT AS THE EAGLE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has shot.",
-        target: "One **ADEPTUS** **CUSTODES** unit from your army (excluding **VEHICLE** units) that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Your unit can make a Normal move of up to D6\".",
+        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged Trusted Sentinel unit.",
+        target: "That **TRUSTED** **SENTINEL** unit.",
+        effect: "Your unit can make a normal move of up to D3+3\".",
       },
     },
   ],
-  "Might of the Moritoi": [
+  "Honoured Companions": [
     {
-      name: "FLAWLESS CONSTRUCTION",
+      name: "EMPEROR'S DOMAIN",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly ADEPTUS CUSTODES WALKER unit.",
-        target: "That **ADEPTUS** **CUSTODES** **WALKER** unit.",
-        effect: "Attacks that target your unit with a **S** greater than your unit’s **T** have -1 to wound rolls.",
-      },
-    },
-    {
-      name: "UNSTOPPABLE ADVANCE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, when a friendly ADEPTUS CUSTODES WALKER unit is selected to move.",
-        target: "That **ADEPTUS** **CUSTODES** **WALKER** unit.",
-        effect: "Your unit has MOBILE.",
-      },
-    },
-    {
-      name: "PRIORITISED ERADICATION",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase, when a friendly TELEMON HEAVY DREADNOUGHT unit is selected to shoot.",
-        target: "That **TELEMON** **HEAVY** **DREADNOUGHT** unit.",
-        effect: "Your unit’s:<br><br>• Arachnus Storm Cannon weapons have [RAPID FIRE 6].<br>• Iliastus Accelerator Culverin weapons have [RAPID FIRE 2].",
-      },
-    },
-  ],
-  "Null Maiden Vigil": [
-    {
-      name: "DESPERATION’S PRICE",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase, just after an enemy **PSYKER** unit has either finished using a Psychic ability that targets a unit, or finished making Psychic Attacks.",
-        target: "One Anathema Psykana unit from your army within 18\" of that enemy **PSYKER** unit.",
-        effect: "That enemy **PSYKER** unit must take a Leadership test If the test is passed, that **PSYKER** unit is Battle-shocked; if the test is failed that **PSYKER** unit suffers 3 mortal wounds and is Battle-shocked.",
-      },
-    },
-    {
-      name: "WITCH HUNTERS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase or the Fight phase.",
-        target: "One Anathema Psykana unit from your army that has not been selected to shoot or fight this phase.",
-        effect: "Select either the [LETHAL HITS] or [SUSTAINED HITS 1] ability. Until the end of the phase, weapons equipped by models in your unit have the selected ability, but models in your unit can only target **PSYKER** units with their attacks.",
-      },
-    },
-    {
-      name: "ANATHEMA BLADEMASTERY",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase.",
-        target: "One Vigilators unit from your army that has not been selected to fight this phase.",
-        effect: "Until the end of the phase, each time a model in your unit makes a melee attack, you can re-roll the Hit roll If the target of that attack is Battle-shocked or a **PSYKER**, you can re-roll the Wound roll as well.",
-      },
-    },
-    {
-      name: "PSY-CHAFF VOLLEY",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One Prosecutors unit from your army that has just shot.",
-        effect: "Select one enemy unit hit by one or more of those attacks. Until the start of your next turn, while your unit is on the battlefield, that enemy unit is prosecuted. While a unit is prosecuted, each time an Anathema Psykana model makes an attack against that unit, improve the Armour Penetration characteristic of that attack by 1. While a **PSYKER** or Battle-shocked unit is prosecuted, each time a model in that unit makes an attack, subtract 1 from the Hit roll.",
-      },
-    },
-    {
-      name: "PURGATION SWEEP",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One Witchseekers unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, add 1 to the Attacks characteristic of Torrent weapons equipped by models in your unit. If such a weapon targets a **PSYKER** or Battle-shocked unit this phase, add 2 to its Attacks characteristic instead.",
-      },
-    },
-    {
-      name: "PSYCHIC ABOMINATIONS",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One Anathema Psykana Infantry unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, your unit has the Stealth ability, and Battle-shocked and **PSYKER** models can only select your unit as a target of a ranged attack if they are within 12\".",
-      },
-    },
-  ],
-  "Shield Host": [
-    {
-      name: "ARCANE GENETIC ALCHEMY",
-      cp: "1 CP",
-      rules: {
-        when: "Any phase, just after a mortal wound has been allocated to an Adeptus Custodes model from your army(excluding Anathema Psykana models).",
-        target: "That **ADEPTUS** **CUSTODES** model’s unit.",
-        effect: "Until the end of the phase, models in your unit have the Feel No Pain 4+ ability against mortal wounds.",
+        when: "Fight phase, when a friendly Trusted Sentinel unit is selected to make a consolidation move.",
+        target: "That **TRUSTED** **SENTINEL** unit.",
+        effect: "You can select the objective **consolidation mode** for that **consolidation move**, regardless of that **consolidation move**’s Before Moving restrictions.<br><br>^^This means your unit can move out of engagement range with enemy units, provided it meets the conditions of the **objective consolidation mode**.^^",
       },
     },
     {
       name: "AVENGE THE FALLEN",
       cp: "1 CP",
       rules: {
-        when: "Start of the Fight phase.",
-        target: "One **ADEPTUS** **CUSTODES** unit from your army (excluding Anathema Psykana units) that is below its Starting Strength.",
-        effect: "Until the end of the phase, add 1 to the Attacks characteristic of melee weapons equipped by models in that unit. If your unit is Below Half-strength, until the end of the phase, add 2 to the Attacks characteristic of those melee weapons instead.",
+        when: "Fight phase, when a friendly Trusted Sentinel unit that is below starting strength is selected to fight.",
+        target: "That **TRUSTED** **SENTINEL** unit.",
+        effect: "Your unit’s melee attacks (excluding those made by Character models) have +2 **A**.",
       },
     },
     {
-      name: "UNWAVERING SENTINELS",
+      name: "SWIFT AS THE EAGLE",
       cp: "1 CP",
       rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One Adeptus Custodes Infantry unit from your army (excluding Anathema Psykana units) that is within range of an objective marker you control and that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a melee attack targets your unit, subtract 1 from the Hit roll.",
-      },
-    },
-    {
-      name: "MULTIPOTENTIALITY",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One Adeptus Custodes unit from your army that Fell Back this phase.",
-        effect: "Until the end of your turn, that unit is eligible to shoot and declare a charge in a turn in which it Fell Back.",
-      },
-    },
-    {
-      name: "VIGILANCE ETERNAL",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase.",
-        target: "One Adeptus Custodes Battleline unit from your army (excluding Anathema Psykana units) within range of an objective marker you control.",
-        effect: "That objective marker remains under your control even if you have no models within range of it, until your opponent controls it at the start or end of any turn.",
-      },
-    },
-    {
-      name: "ARCHEOTECH MUNITIONS",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **CUSTODES** unit from your army (excluding Anathema Psykana units) that has not been selected to shoot this phase.",
-        effect: "Select either the [LETHAL HITS] or [SUSTAINED HITS 1] ability. Until the end of the phase ranged weapons equipped by models in your unit have the selected ability.",
+        when: "Your opponent’s Movement phase, when an enemy unit ends a move within 8\" of a friendly unengaged Trusted Sentinel unit.",
+        target: "That **TRUSTED** **SENTINEL** unit.",
+        effect: "Your unit can make a normal move of up to D3+3\".",
       },
     },
   ],
-  "Silent Hunters": [
+  "Lions of the Emperor": [
     {
-      name: "DEATHSONG SCYTHES",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, when a friendly VIGILATORS unit is selected to fight.",
-        target: "That **VIGILATORS** unit.",
-        effect: "• Your unit’s melee attacks have [LANCE].<br>• Your unit’s melee attacks that target a **PSYKER** unit have +1 **A**.",
-      },
-    },
-    {
-      name: "UMBRAL PROSECUTION",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase, when a friendly PROSECUTORS unit is selected to shoot.",
-        target: "That **PROSECUTORS** unit.",
-        effect: "Your unit’s Boltgun weapons have:<br><br>• [RAPID FIRE 2].<br>• +1 **AP**.",
-      },
-    },
-    {
-      name: "SYNCHRONISED INFERNO",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase, when a friendly WITCHSEEKERS unit is selected to shoot.",
-        target: "That **WITCHSEEKERS** unit.",
-        effect: "Your unit’s [TORRENT] ranged attacks have [BLAST 1].",
-      },
-    },
-  ],
-  "Solar Spearhead": [
-    {
-      name: "FLAWLESS CONSTRUCTION",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One Adeptus Custodes Vehicle unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time an attack targets a model in your unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of your unit, subtract 1 from the Wound roll.",
-      },
-    },
-    {
-      name: "EMPEROR’S VENGEANCE",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, just after an enemy unit has selected its targets.",
-        target: "One **ADEPTUS** **CUSTODES** unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 to the result if your unit has the Walker keyword. On a 4+, do not remove it from play; The destroyed model can fight after the attacking unit has finished making its attacks (when doing so, it is assumed to have 1 wound remaining), and is then removed from play.",
-      },
-    },
-    {
-      name: "WRATHFUL ADVANCE",
-      cp: "1 CP",
-      rules: {
-        when: "Fight phase, just before an **ADEPTUS** **CUSTODES** unit from your army Piles In.",
-        target: "That **ADEPTUS** **CUSTODES** unit.",
-        effect: "Until the end of the phase, each time a model in your unit makes a Pile-in move, it can move up to D3+3\" instead of up to 3\".",
-      },
-    },
-    {
-      name: "UNSTOPPABLE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase or your Charge phase.",
-        target: "One Adeptus Custodes Vehicle or Adeptus Custodes Mounted unit from your army.",
-        effect: "Until the end of the phase, each time a model in your unit makes a move, it can move through terrain features.",
-      },
-    },
-    {
-      name: "RELENTLESS PERSECUTION",
-      cp: "1 CP",
-      rules: {
-        when: "Your Movement phase, just after an **ADEPTUS** **CUSTODES** **VEHICLE** unit from your army Advances.",
-        target: "That Adeptus Custodes Vehicle unit.",
-        effect: "Until the end of the turn, your unit is eligible to shoot in a turn in which it Advanced. If your unit has the Walker keyword, until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Advanced instead.",
-      },
-    },
-    {
-      name: "PUNISHMENT INESCAPABLE",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "One **ADEPTUS** **CUSTODES** unit from your army that has not been selected to shoot this phase.",
-        effect: "Until the end of the phase, ranged weapons equipped by models in your unit have the [IGNORES COVER] ability, and until the end of the phase, each time a model in your unit makes an attack, you can ignore any or all modifiers to that attack’s Ballistic Skill characteristic and/or any or all modifiers to the Hit roll.",
-      },
-    },
-  ],
-  "Talons Of The Emperor": [
-    {
-      name: "HUNT AS ONE",
-      cp: "1 CP",
-      rules: {
-        when: "Start of your Movement phase.",
-        target: "Up to two ADEPTUS CUSTODES units from your army.",
-        effect: "Until the end of the turn, your units are eilgible to shoot and/or declare a charge in a turn in which they Fell Back.<br><br>**Restrictions:** You can only select two units if one (and only one) of them is an ANATHEMA PSYKANA unit and both are within 6\" of each other.",
-      },
-    },
-    {
-      name: "TALONS INTERLOCKED",
-      cp: "1 CP",
-      rules: {
-        when: "Your Shooting phase.",
-        target: "Up to two ADEPTUS CUSTODES INFANTRY units from your army, and one enemy unit that is an eligible target for all of those units.",
-        effect: "Until the end of the phase, your units can only target that enemy unit, but each time a model in one of your units makes a ranged attack, improve the Strength and Armour Penetration characteristics of that attack by 1.<br><br>**Restrictions:** You can only select two units if one (and only one) of them is an ANATHEMA PSYKANA unit and both are within 6\" of each other.",
-      },
-    },
-    {
-      name: "EMPYRIC SEVERANCE",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
-        target: "One ADEPTUS CusTODES unit from your army that was selected as the target of one or more of the attacking unit’s attacks, and one friendly ANATHEMA PSYKANA unit within 6\" of that **ADEPTUS** **CUSTODES** unit.",
-        effect: "Until the end of the phase, your unit has the Feel No Pain 4+ ability against Psychic attacks and mortal wounds.",
-      },
-    },
-    {
-      name: "EMPEROR’S EXECUTIONERS",
+      name: "VIGIL UNENDING",
       cp: "2 CP",
       rules: {
-        when: "Start of the Fight phase.",
-        target: "Up to two Adeptus Custodes units from your army.",
-        effect: "Until the end of the phase, each time a model in one of your units targets an enemy unit that is below its Starting Strength, add 1 to the Wound roll.<br><br>**Restrictions:** You can only select two units if one (and only one) of them is an Anathema Psykana unit and both are within 6\" of each other.",
-      },
-    },
-    {
-      name: "TALONED PINCER",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.",
-        target: "Up to two Adeptus Custodes units from your army that are within 8\" of that enemy unit.",
-        effect: "Your units can make a Normal move of up to 6\".<br><br>**Restrictions:** You cannot select units that are within Engagement Range of one or more enemy units. You can only select two units if one (and only one) of them is an Anathema Psykana unit and both are within 6\" of each other.",
-      },
-    },
-    {
-      name: "SHIELD OF HONOUR",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
-        target: "One Anathema Psykana Infantry unit from your army that was selected as the target of one or more of the attacking unit’s attacks, and one other friendly Adeptus Custodes Infantry unit (excluding **ANATHEMA** **PSYKANA** units) within 6\" of that **ANATHEMA** **PSYKANA** **INFANTRY** unit.",
-        effect: "Until the end of the phase, any attack that targets your **ANATHEMA** **PSYKANA** unit must instead target your other **ADEPTUS** **CUSTODES** unit (unless it is not an eligible target).",
-      },
-    },
-  ],
-  "Tharanatoi Hammerblow": [
-    {
-      name: "HARDENED RESOLVE",
-      cp: "1 CP",
-      rules: {
-        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly ADEPTUS CUSTODES TERMINATORADEPTUS CUSTODES TERMINATOR unit.",
+        when: "Your opponent’s Shooting phase or the Fight phase, when an enemy unit targets a friendly Adeptus Custodes Terminator unit.",
         target: "That **ADEPTUS** **CUSTODES** **TERMINATOR** unit.",
-        effect: "Your unit has +1 **T**.",
+        effect: "Attacks that target your unit have -1 **D** until that enemy unit has attacked.",
       },
     },
     {
@@ -507,17 +363,133 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "Your Command phase.",
-        target: "One friendly ALLARUS CUSTODIANS/AQUILON CUSTODIANS unit that is on the battlefield.",
+        target: "One friendly Adeptus Custodes Terminator unit that has 2+ models.",
         effect: "Your unit is split into separate units, each containing one model. These new units each have a starting strength of 1.",
       },
     },
     {
-      name: "ELECTROEXORCIST SATURATION",
+      name: "FURY OF THE EMPEROR",
       cp: "1 CP",
       rules: {
-        when: "Your Shooting phase, when a friendly **ADEPTUS** **CUSTODES** **TERMINATOR** unit is selected to shoot.",
-        target: "That ADEPTUS CUSTODES TERMINATOR unit.",
-        effect: "Your unit’s Ballistus Grenade Launcher weapons have D3+3 **A**.",
+        when: "Your Charge phase, when a friendly Adeptus Custodes Terminator unit that made an ingress move this turn is selected to declare a charge.",
+        target: "That **ADEPTUS** **CUSTODES** **TERMINATOR** unit.",
+        effect: "Your unit has +2 to charge rolls.",
+      },
+    },
+  ],
+  "Might of the Moritoi": [
+    {
+      name: "HONOURED INTERRED",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase or the Fight phase.",
+        target: "One friendly Adeptus Custodes Dreadnought unit.",
+        effect: "Your unit has the following ability:<br>**Honoured Interred (Aura):** Friendly Adeptus Custodes units within 6\" of this unit can re-roll hit rolls of 1.",
+      },
+    },
+    {
+      name: "UNCEASING ONSLAUGHT",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly Adeptus Custodes Dreadnought unit ends an advance move.",
+        target: "That **ADEPTUS** **CUSTODES** **DREADNOUGHT** unit.",
+        effect: "• Your unit’s ranged attacks have [Assault] until the end of the turn.<br>• That move does not prevent your unit from being eligible to declare a charge.",
+      },
+    },
+    {
+      name: "UNSTOPPABLE MOMENTUM",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement/Charge phase, when a friendly Adeptus Custodes Dreadnought unit is selected to move or declares a charge.",
+        target: "That **ADEPTUS** **CUSTODES** **DREADNOUGHT** unit.",
+        effect: "Your unit has Mobile.",
+      },
+    },
+  ],
+  "Null Maiden Vigil": [
+    {
+      name: "ANATHEMA BLADEMASTERY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly Vigilator squad unit is selected to fight.",
+        target: "That **VIGILATOR** **SQUAD** unit.",
+        effect: "Your unit’s attacks have:<br><br>• [Sustained Hits 1]<br>• Or: [Lethal Hits].",
+      },
+    },
+    {
+      name: "PSY-CHAFF VOLLEY",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly Prosecutor squad unit has shot.",
+        target: "That **PROSECUTOR** **SQUAD** unit.",
+        effect: "Select one enemy unit hit by those attacks. That unit is **prosecuted** until the end of the turn:<br><br>• Attacks that target a **prosecuted** unit have +1 **AP**.",
+      },
+    },
+    {
+      name: "PURGATION SWEEP",
+      cp: "1 CP",
+      rules: {
+        when: "Your Shooting phase, when a friendly Witchseeker squad unit is selected to shoot.",
+        target: "That **WITCHSEEKER** **SQUAD** unit.",
+        effect: "Your unit’s [Torrent] attacks have:<br><br>• +1 **A**.<br>• Or: If those attacks target a **PSYKER**/battle-shocked unit, +2 **A**.",
+      },
+    },
+  ],
+  "Shadowkeepers": [
+    {
+      name: "GRIM RESPONSIBILITY",
+      cp: "1 CP",
+      rules: {
+        when: "Fight phase, when a friendly Adeptus Custodes Infantry unit is selected to fight.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "Your unit’s melee attacks have [Lethal Hits: Character/Monster].",
+      },
+    },
+    {
+      name: "NO ESCAPE",
+      cp: "2 CP",
+      rules: {
+        when: "Your opponent’s Movement phase, when an enemy unit ends a fall-back move.",
+        target: "One friendly unengaged Adeptus Custodes Infantry unit that is within 6\" of that enemy unit.",
+        effect: "Declare a charge with your unit. When selecting charge targets, you can only select enemy units that made a **fall-back move** this phase and are within the **maximum distance**.",
+      },
+    },
+    {
+      name: "INDOMITABLE GUARDIANS",
+      cp: "1 CP",
+      rules: {
+        when: "Your opponent’s Fight phase, when an enemy unit has fought.",
+        target: "One friendly Adeptus Custodes unit that is within range of an objective and is eligible to fight.",
+        effect: "Your unit has Fights First and must be the next unit you select to fight.",
+      },
+    },
+  ],
+  "Solar Watch": [
+    {
+      name: "INEXORABLE",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly Adeptus Custodes unit is selected to move.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "Until the end of the turn, your unit can ignore modifiers to your unit’s:<br><br>• **M**.<br>• Advance rolls and charge rolls.",
+      },
+    },
+    {
+      name: "AT SPEAR'S LENGTH",
+      cp: "1 CP",
+      rules: {
+        when: "Your Movement phase, when a friendly Adeptus Custodes unit is selected to make a fall-back move.",
+        target: "That **ADEPTUS** **CUSTODES** unit.",
+        effect: "That **fall-back move** does not prevent your unit from being eligible to shoot.",
+      },
+    },
+    {
+      name: "GRAVIMETRIC GRENADE",
+      cp: "1 CP",
+      rules: {
+        when: "Start of your opponent’s Charge phase.",
+        target: "One friendly unengaged Adeptus Custodes unit.",
+        effect: "Select one visible enemy unit within 12\" of your unit. When that enemy unit declares a charge, that enemy unit has -1 to charge rolls.",
       },
     },
   ],
@@ -815,9 +787,9 @@ const STRATAGEM_DATABASE = {
       name: "GUIDED RETREAT",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase, just after an **ADEPTUS** **MECHANICUS** unit from your army makes a Fall Back move.",
+        when: "Your Movement phase, when a friendly **ADEPTUS** **MECHANICUS** unit is selected to make a fall-back move.",
         target: "That **ADEPTUS** **MECHANICUS** unit.",
-        effect: "Until the end of the turn, your unit is eligible to shoot and declare a charge in a turn in which it Fell Back, and, if it is a **HALO** **OVERRIDE** unit, you can re-roll Desperate Escape tests taken for it.",
+        effect: "• If your unit is a **HALO** **OVERRIDE** unit, your unit can re-roll hazard rolls.<br>• That **fall-back move** does not prevent your unit from:<br><br>• Being eligible to shoot.<br>• Being eligible to declare a charge.",
       },
     },
     {
@@ -873,7 +845,7 @@ const STRATAGEM_DATABASE = {
       name: "CHANT OF ELECTROTRACTION",
       cp: "1 CP",
       rules: {
-        when: "Your Movement phase, when a friendly ELECTRO-PRIESTS **BATTLECLADE** unit is selected to make an **advance move**.",
+        when: "Your Movement phase, when a friendly ELECTRO-PRIESTS unit is selected to make an **advance move**.",
         target: "That **ELECTRO-PRIESTS** unit.",
         effect: "That move does not prevent your unit from being **eligible to declare a charge**.",
       },

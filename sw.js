@@ -1,4 +1,4 @@
-const CACHE_NAME = "nr-playview-v65";
+const CACHE_NAME = "nr-playview-v66";
 
 // Relative (not root-absolute) because GitHub Pages serves this project from
 // a subpath (/nr-custom-playview/) — these resolve against sw.js's own URL,
