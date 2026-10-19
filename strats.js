@@ -697,7 +697,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Any phase.",
         target: "One **ADEPTUS** **MECHANICUS** unit from your army that was just destroyed while it was within range of an objective marker you controlled. You can use this Stratagem on that unit even though it was just destroyed.",
-        effect: "That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn.",
+        effect: "That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
       },
     },
     {
@@ -867,7 +867,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Fight phase, just after an enemy unit has selected its targets.",
         target: "One **ADEPTUS** **MECHANICUS** unit from your army (excluding Vehicle units) that was selected as the target of one or more of that enemy unit’s attacks. If that unit is BATTLELINE, you can also target one friendly SKITARII unit (excluding **BATTLELINE** units) within 6\" of it.",
-        effect: "Until the end of the turn, each time an attack is made that targets your unit, subtract 1 from the Wound roll.",
+        effect: "Until the end of the phase, each time an attack targets one of those units from your army, subtract 1 from the Wound roll.",
       },
     },
     {
@@ -2561,7 +2561,7 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "Your Shooting phase or the Fight phase.",
-        target: "That **ADEPTA** **SORORITAS** unit from your army that has not been selected to shoot or fight this phase.",
+        target: "One **ADEPTA** **SORORITAS** unit from your army that has not been selected to shoot or fight this phase.",
         effect: "Until the end of the phase, each time a model in your unit makes an attack, improve the Armour Penetration characteristic of that attack by 1. If one or more enemy models are destroyed as the result of any of those attacks, you gain 1 Miracle dice.",
       },
     },
@@ -2779,7 +2779,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Any phase.",
         target: "One PENITENT unit from your army that was just destroyed while it was within range of an objective marker you controlled. You can use this Stratagem on that unit even though it was just destroyed.",
-        effect: "That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn.",
+        effect: "That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
       },
     },
     {
@@ -4025,7 +4025,7 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "Your Movement phase or Charge phase.",
-        target: "One Heretic Astartes Vehicle or Vashtorr the Arkifane unit from your army that has not been selected to move or charge this phase.",
+        target: "One HERETIC ASTARTES DAEMON VEHICLE or Vashtorr the Arkifane unit from your army that has not been selected to move or charge this phase.",
         effect: "Until the end of the phase, each time your unit makes Normal, Advance or charge move, it can move horizontally through terrain features as if they were not there.",
       },
     },
@@ -4034,7 +4034,7 @@ const STRATAGEM_DATABASE = {
       cp: "1 CP",
       rules: {
         when: "Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall back move.",
-        target: "One HERETIC ASTARTES VEHICLE or Vashtorr the Arkifane unit from your army that is within 8\" of that enemy unit and not within Engagement Range of one or more enemy units.",
+        target: "One HERETIC ASTARTES DAEMON VEHICLE or Vashtorr the Arkifane unit from your army that is within 8\" of that enemy unit and not within Engagement Range of one or more enemy units.",
         effect: "Your unit can make a Normal move of up to 6\", but must end that move as close as possible to that enemy unit.",
       },
     },
@@ -4044,7 +4044,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Your opponent’s Movement phase, when an enemy unit (excluding **MONSTER** and **VEHICLES**) is selected to Fall Back.",
         target: "One HERETIC ASTARTES DAEMON VEHICLE or Vashtorr the Arkifane unit from your army that is within Engagement Range of that enemy unit.",
-        effect: "Until the end of the phase, each time an enemy unit (excluding **MONSTERS** and **VEHICLES**) that is within Engagement Range of your units Falls Back, all models in that enemy unit must take a Desperate Escape test. When doing so, of that enemy unit is Battle-shocked, substract 1 from each of those tests.",
+        effect: "Until the end of the phase, each time an enemy unit (excluding **MONSTERS** and **VEHICLES**) that is within Engagement Range of your unit Falls Back, all models in that enemy unit must take a Desperate Escape test. When doing so, of that enemy unit is Battle-shocked, substract 1 from each of those tests.",
       },
     },
   ],
@@ -8056,7 +8056,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Your opponent’s Shooting phase, just after an enemy unit has selected its targets.",
         target: "One Armiger unit from your army that was selected as the target of one or more of the attacking units attacks.",
-        effect: "Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
+        effect: "Until the end of the phase, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1.",
       },
     },
     {
@@ -9918,7 +9918,7 @@ const STRATAGEM_DATABASE = {
       },
     },
     {
-      name: "GUIDED FIRE",
+      name: "GUIDED BY UNITY",
       cp: "1 CP",
       rules: {
         when: "Your Shooting phase, when a friendly T’AU EMPIRE unit (excluding KROOT/VESPID STINGWINGS units) is selected to shoot.",
@@ -10225,7 +10225,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Any phase, just after an enemy unit has selected its targets.",
         target: "One Thousand Sons unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
-        effect: "Until the end of the phase, Psychic weapons equipped by models in the attacking unit have the [hazardous] ability, and models in your unit have the Feel No Pain 4+ ability against Psychic Attacks.",
+        effect: "Until the end of the phase, all attacks made against your unit with Psychic weapons have the [hazardous] ability and all models in your unit have the Feel No Pain 4+ ability against Psychic Attacks.",
       },
     },
     {
@@ -10639,7 +10639,7 @@ const STRATAGEM_DATABASE = {
       rules: {
         when: "Command phase.",
         target: "One Harvester unit from your army that is within range of an objective marker you control.",
-        effect: "That objective marker remains under your control, even if you have no models within range of it, until your opponent controls it at the start or end of any turn.",
+        effect: "That objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.",
       },
     },
     {
