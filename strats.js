@@ -921,7 +921,7 @@ const STRATAGEM_DATABASE = {
       name: "BIONIC ENDURANCE",
       cp: "1 CP",
       rules: {
-        when: "Your opponent’s Shooting phase orthe Fight phase, just after an enemy unit has selected its targets.",
+        when: "Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.",
         target: "One SICARIAN, PTERAXII or SYDONIAN unit from your army that was selected as the target of one or more of the attacking unit’s attacks.",
         effect: "Until the end of the phase, models in your unit have the Feel No Pain 5+ ability.",
       },
