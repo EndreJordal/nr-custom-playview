@@ -42,12 +42,13 @@ const ACCENT_PALETTE = [
   { name: "Gold", hex: "#fbbf24" },
 ];
 
-const DEFAULT_ACCENTS = { primary: "#2dd4bf", secondary: "#f2b544", tertiary: "#b794f6" };
+const DEFAULT_ACCENTS = { primary: "#2dd4bf", secondary: "#f2b544", tertiary: "#b794f6", quaternary: "#60a5fa" };
 const ACCENT_STORAGE_KEY = "40k_accent_prefs";
 const ACCENT_SLOTS = [
   { key: "primary", label: "Primary Accent", cssVar: "--accent", cssSoftVar: "--accent-soft" },
   { key: "secondary", label: "Secondary Accent", cssVar: "--accent-amber", cssSoftVar: "--accent-amber-soft" },
   { key: "tertiary", label: "Tertiary Accent", cssVar: "--accent-violet", cssSoftVar: "--accent-violet-soft" },
+  { key: "quaternary", label: "Fourth Accent", cssVar: "--accent-4", cssSoftVar: "--accent-4-soft" },
 ];
 
 function hexToRgba(hex, alpha) {
@@ -77,6 +78,76 @@ function applyAccentPrefs(prefs) {
 
 // Apply as early as possible so there's no flash of the default palette.
 applyAccentPrefs(loadAccentPrefs());
+
+// --- FONT PREFERENCES ---
+// Two slots, matching the two fonts the stylesheet uses: --font-sans for all
+// text, --font-display for numbers (stats, points, CP). `google` is the
+// Google Fonts css2 family spec, loaded on demand the first time a font is
+// picked; null means it's already loaded by index.html (or is a system font).
+const SYSTEM_SANS = `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif`;
+const FONT_SLOTS = [
+  {
+    key: "text",
+    label: "Text font",
+    cssVar: "--font-sans",
+    options: [
+      { name: "Inter", stack: `"Inter", ${SYSTEM_SANS}`, google: null },
+      { name: "Atkinson Hyperlegible", stack: `"Atkinson Hyperlegible", ${SYSTEM_SANS}`, google: "Atkinson+Hyperlegible:wght@400;700" },
+      { name: "Lexend", stack: `"Lexend", ${SYSTEM_SANS}`, google: "Lexend:wght@400;500;600;700;800" },
+      { name: "Roboto", stack: `"Roboto", ${SYSTEM_SANS}`, google: "Roboto:wght@400;500;600;700;800" },
+      { name: "Barlow", stack: `"Barlow", ${SYSTEM_SANS}`, google: "Barlow:wght@400;500;600;700;800" },
+      { name: "System", stack: SYSTEM_SANS, google: null },
+    ],
+  },
+  {
+    key: "numbers",
+    label: "Number font",
+    cssVar: "--font-display",
+    options: [
+      { name: "Rajdhani", stack: `"Rajdhani", var(--font-sans)`, google: null },
+      { name: "Barlow Condensed", stack: `"Barlow Condensed", var(--font-sans)`, google: "Barlow+Condensed:wght@500;600;700" },
+      { name: "Oswald", stack: `"Oswald", var(--font-sans)`, google: "Oswald:wght@500;600;700" },
+      { name: "Roboto Mono", stack: `"Roboto Mono", var(--font-sans)`, google: "Roboto+Mono:wght@500;600;700" },
+      { name: "Same as text", stack: `var(--font-sans)`, google: null },
+    ],
+  },
+];
+const DEFAULT_FONTS = { text: "Inter", numbers: "Rajdhani" };
+const FONT_STORAGE_KEY = "40k_font_prefs";
+
+function loadFontPrefs() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(FONT_STORAGE_KEY));
+    return { ...DEFAULT_FONTS, ...(saved || {}) };
+  } catch {
+    return { ...DEFAULT_FONTS };
+  }
+}
+
+function findFontOption(slot, name) {
+  return slot.options.find(o => o.name === name) || slot.options[0];
+}
+
+function ensureGoogleFontLoaded(option) {
+  if (!option.google) return;
+  const id = `font-${option.google.split(":")[0]}`;
+  if (document.getElementById(id)) return;
+  const link = document.createElement("link");
+  link.id = id;
+  link.rel = "stylesheet";
+  link.href = `https://fonts.googleapis.com/css2?family=${option.google}&display=swap`;
+  document.head.appendChild(link);
+}
+
+function applyFontPrefs(prefs) {
+  FONT_SLOTS.forEach(slot => {
+    const option = findFontOption(slot, prefs[slot.key]);
+    ensureGoogleFontLoaded(option);
+    document.documentElement.style.setProperty(slot.cssVar, option.stack);
+  });
+}
+
+applyFontPrefs(loadFontPrefs());
 
 const CORE_WEAPON_KEYWORDS = [
   "ASSAULT",
@@ -881,9 +952,9 @@ function formatPointsLabel(metadata) {
   return metadata.pointsLimit ? `${used} / ${metadata.pointsLimit}` : used;
 }
 
-// One shared label + a single row of 3 compact selects, rather than each
+// One shared label + a single row of 4 compact selects, rather than each
 // accent getting its own label+select stack -- the individual identity
-// (Primary/Secondary/Tertiary) is still there via each select's title
+// (Primary/Secondary/Tertiary/Fourth) is still there via each select's title
 // tooltip, just not taking up its own line.
 function buildAccentPickerRow() {
   const prefs = loadAccentPrefs();
@@ -920,6 +991,51 @@ function buildAccentPickerRow() {
       applyAccentPrefs(newPrefs);
       select.style.borderColor = select.value;
       select.style.color = select.value;
+    });
+
+    row.appendChild(select);
+  });
+
+  group.appendChild(row);
+  return group;
+}
+
+// Same layout as the accent picker: one label, a row of selects (text font,
+// number font). Each option previews in its own font -- picking one loads it
+// from Google Fonts if needed, so the preview may only render after that.
+function buildFontPickerRow() {
+  const prefs = loadFontPrefs();
+  const group = el("div", "accent-picker-group font-picker-group");
+  group.addEventListener("click", e => e.stopPropagation());
+  group.appendChild(el("label", "accent-picker-group__label", "Fonts"));
+
+  const row = el("div", "accent-picker-row");
+
+  FONT_SLOTS.forEach(slot => {
+    const select = document.createElement("select");
+    select.className = "accent-picker__select font-picker__select";
+    select.title = slot.label;
+
+    slot.options.forEach(o => {
+      const opt = document.createElement("option");
+      opt.value = o.name;
+      opt.textContent = o.name;
+      opt.style.fontFamily = o.stack;
+      if (o.name === prefs[slot.key]) opt.selected = true;
+      select.appendChild(opt);
+    });
+
+    const syncSelectFont = () => {
+      select.style.fontFamily = findFontOption(slot, select.value).stack;
+    };
+    syncSelectFont();
+
+    select.addEventListener("change", () => {
+      const newPrefs = loadFontPrefs();
+      newPrefs[slot.key] = select.value;
+      localStorage.setItem(FONT_STORAGE_KEY, JSON.stringify(newPrefs));
+      applyFontPrefs(newPrefs);
+      syncSelectFont();
     });
 
     row.appendChild(select);
@@ -1038,6 +1154,7 @@ function buildHeader(metadata) {
   const actionsCol = el("div", "roster-header__actions-col");
   actionsCol.appendChild(switcher);
   actionsCol.appendChild(buildAccentPickerRow());
+  actionsCol.appendChild(buildFontPickerRow());
 
   // Sits in the header's own top-right corner (not the actions column) so
   // it stays put regardless of how tall the switcher/accent rows get.
@@ -1409,47 +1526,8 @@ function renderInlineTray(targetRow, unit) {
     <div class="unit-drawer__inner">
       ${buildStatblockSection(unit)}
 
-      <div>
-        <div class="weapon-section-header weapon-section-header--ranged">
-          <img src="ranged.png" alt="Ranged Icon" class="weapon-section-header__icon"> RANGED WEAPONS
-        </div>
-        <div class="weapon-table-scroll">
-          <table class="weapon-table">
-            <tr class="weapon-table__head-row">
-              <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
-              <th class="weapon-table__head">RANGE</th>
-              <th class="weapon-table__head">A</th>
-              <th class="weapon-table__head">BS</th>
-              <th class="weapon-table__head">S</th>
-              <th class="weapon-table__head">AP</th>
-              <th class="weapon-table__head">D</th>
-              <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
-            </tr>
-            ${buildWeaponRows(unit.ranged)}
-          </table>
-        </div>
-      </div>
-
-      <div class="unit-drawer__section">
-        <div class="weapon-section-header weapon-section-header--melee">
-          <img src="melee.png" alt="Melee Icon" class="weapon-section-header__icon weapon-section-header__icon--melee"> MELEE WEAPONS
-        </div>
-        <div class="weapon-table-scroll">
-          <table class="weapon-table">
-            <tr class="weapon-table__head-row">
-              <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
-              <th class="weapon-table__head">RANGE</th>
-              <th class="weapon-table__head">A</th>
-              <th class="weapon-table__head">WS</th>
-              <th class="weapon-table__head">S</th>
-              <th class="weapon-table__head">AP</th>
-              <th class="weapon-table__head">D</th>
-              <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
-            </tr>
-            ${buildWeaponRows(unit.melee)}
-          </table>
-        </div>
-      </div>
+      ${buildWeaponTable("ranged", buildWeaponRows(unit.ranged, "ranged"))}
+      ${buildWeaponTable("melee", buildWeaponRows(unit.melee, "melee"))}
 
       ${buildEnhancementsBlock(unit)}
       ${buildAbilitiesBlock(unit)}
@@ -1474,47 +1552,8 @@ function renderCombinedInlineTray(targetRow, combinedUnit) {
   const members = combinedUnit.members;
   inlineDrawer.innerHTML = `
     <div class="unit-drawer__inner">
-      <div>
-        <div class="weapon-section-header weapon-section-header--ranged">
-          <img src="ranged.png" alt="Ranged Icon" class="weapon-section-header__icon"> RANGED WEAPONS
-        </div>
-        <div class="weapon-table-scroll">
-          <table class="weapon-table">
-            <tr class="weapon-table__head-row">
-              <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
-              <th class="weapon-table__head">RANGE</th>
-              <th class="weapon-table__head">A</th>
-              <th class="weapon-table__head">BS</th>
-              <th class="weapon-table__head">S</th>
-              <th class="weapon-table__head">AP</th>
-              <th class="weapon-table__head">D</th>
-              <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
-            </tr>
-            ${buildCombinedWeaponRows(members, "ranged")}
-          </table>
-        </div>
-      </div>
-
-      <div class="unit-drawer__section">
-        <div class="weapon-section-header weapon-section-header--melee">
-          <img src="melee.png" alt="Melee Icon" class="weapon-section-header__icon weapon-section-header__icon--melee"> MELEE WEAPONS
-        </div>
-        <div class="weapon-table-scroll">
-          <table class="weapon-table">
-            <tr class="weapon-table__head-row">
-              <th class="weapon-table__head weapon-table__head--name">WEAPON PROFILE</th>
-              <th class="weapon-table__head">RANGE</th>
-              <th class="weapon-table__head">A</th>
-              <th class="weapon-table__head">WS</th>
-              <th class="weapon-table__head">S</th>
-              <th class="weapon-table__head">AP</th>
-              <th class="weapon-table__head">D</th>
-              <th class="weapon-table__head weapon-table__head--keywords">KEYWORDS</th>
-            </tr>
-            ${buildCombinedWeaponRows(members, "melee")}
-          </table>
-        </div>
-      </div>
+      ${buildWeaponTable("ranged", buildCombinedWeaponRows(members, "ranged"))}
+      ${buildWeaponTable("melee", buildCombinedWeaponRows(members, "melee"))}
 
       ${buildCombinedEnhancementsBlock(members)}
       ${buildCombinedAbilitiesBlock(members)}
@@ -1535,19 +1574,28 @@ function renderCombinedInlineTray(targetRow, combinedUnit) {
   });
 }
 
+// Inside an attached-unit drawer every constituent unit is named with a
+// pill in its own accent: 1st unit = accent 1, 2nd = accent 2, and so on
+// (wrapping after 4). Index is the member's position in the combined unit,
+// so a unit keeps its color across every section of the drawer.
+function buildUnitPill(name, memberIndex, extraClass = "") {
+  const slot = (memberIndex % 4) + 1;
+  return `<span class="unit-pill unit-pill--${slot}${extraClass ? " " + extraClass : ""}">${sanitizeHTML(name)}</span>`;
+}
+
 // One labeled row per constituent unit, each with its own statblock(s).
 // Mirrors buildStatblockSection's row layout exactly (stat boxes + label,
 // all on one line), just grouped per member.
 function buildCombinedStatblockSection(members) {
   const container = el("div", "unit-drawer__statblock unit-drawer__statblock--combined");
-  members.forEach(m => {
+  members.forEach((m, mi) => {
     const memberBlock = el("div", "combined-statblock-member");
     m.statblocks.forEach(sb => {
-      const label = m.statblocks.length > 1 ? `${m.name} — ${sb.label}` : m.name;
+      const suffix = m.statblocks.length > 1 ? ` — ${sanitizeHTML(sb.label)}` : "";
       const row = el("div", "statblock-row");
       row.innerHTML = `
         <div class="statblock-row__boxes">${buildStatBoxes(sb.stats)}</div>
-        <span class="statblock-row__label">${sanitizeHTML(label)}</span>
+        <span class="statblock-row__label">${buildUnitPill(m.name, mi)}${suffix}</span>
       `;
       memberBlock.appendChild(row);
     });
@@ -1556,24 +1604,53 @@ function buildCombinedStatblockSection(members) {
   return container;
 }
 
-function buildSubHeaderRow(label) {
-  return `<tr class="weapon-table__subheader-row"><td class="weapon-table__subheader" colspan="8">${sanitizeHTML(label)}</td></tr>`;
+// Ranged or melee weapon table. The section title (icon + "Ranged"/"Melee")
+// sits in the name column of the column-header row, so one row carries both
+// the section label and the stat labels.
+function buildWeaponTable(kind, rowsHtml) {
+  const isMelee = kind === "melee";
+  return `
+    <div class="weapon-table-scroll weapon-table-scroll--${kind}">
+      <table class="weapon-table">
+        <tr class="weapon-table__head-row">
+          <th class="weapon-table__head weapon-table__head--name">
+            <span class="weapon-table__title">
+              <img src="${isMelee ? "melee.png" : "ranged.png"}" alt="" class="weapon-table__title-icon${isMelee ? " weapon-table__title-icon--melee" : ""}">
+              <span>${isMelee ? "Melee" : "Ranged"}<span class="weapon-table__title-suffix"> weapons</span></span>
+            </span>
+          </th>
+          ${isMelee ? "" : `<th class="weapon-table__head weapon-table__head--range">Range</th>`}
+          <th class="weapon-table__head">A</th>
+          <th class="weapon-table__head">${isMelee ? "WS" : "BS"}</th>
+          <th class="weapon-table__head">S</th>
+          <th class="weapon-table__head">AP</th>
+          <th class="weapon-table__head">D</th>
+          <th class="weapon-table__head weapon-table__head--keywords">Keywords</th>
+        </tr>
+        ${rowsHtml}
+      </table>
+    </div>
+  `;
 }
 
 function buildCombinedWeaponRows(members, key) {
-  const withProfiles = members.filter(m => m[key].length > 0);
-  if (withProfiles.length === 0) return buildWeaponRows([]);
+  const withProfiles = members
+    .map((m, mi) => ({ m, mi }))
+    .filter(({ m }) => m[key].length > 0);
+  if (withProfiles.length === 0) return buildWeaponRows([], key);
   return withProfiles
-    .map(m => buildSubHeaderRow(m.name) + buildWeaponRows(m[key]))
+    .map(({ m, mi }) => buildWeaponRows(m[key], key, buildUnitPill(m.name, mi, "weapon-table__unit-chip")))
     .join("");
 }
 
 function buildCombinedEnhancementsBlock(members) {
-  const withEnhancements = members.filter(m => m.enhancements.length > 0);
+  const withEnhancements = members
+    .map((m, mi) => ({ m, mi }))
+    .filter(({ m }) => m.enhancements.length > 0);
   if (withEnhancements.length === 0) return "";
 
   const sections = withEnhancements
-    .map(m => {
+    .map(({ m, mi }) => {
       const rows = m.enhancements
         .map(
           e => `
@@ -1587,7 +1664,7 @@ function buildCombinedEnhancementsBlock(members) {
         .join("");
       return `
         <div class="abilities-block__member">
-          <div class="abilities-block__member-header">${sanitizeHTML(m.name)}</div>
+          <div class="abilities-block__member-header">${buildUnitPill(m.name, mi)}</div>
           ${rows}
         </div>
       `;
@@ -1595,8 +1672,8 @@ function buildCombinedEnhancementsBlock(members) {
     .join("");
 
   return `
-    <div class="abilities-block">
-      <div class="abilities-block__header abilities-block__header--enhancement">Enhancements</div>
+    <div class="abilities-block abilities-block--enhancements">
+      <div class="abilities-block__header">Enhancements</div>
       <div class="abilities-block__body">${sections}</div>
     </div>
   `;
@@ -1604,7 +1681,7 @@ function buildCombinedEnhancementsBlock(members) {
 
 function buildCombinedAbilitiesBlock(members) {
   const sections = members
-    .map(m => {
+    .map((m, mi) => {
       const coreText = m.coreRules.length > 0 ? buildRuleChips(m.coreRules) : "-";
       let inner = `<div class="ability-row"><strong class="ability-label ability-label--core">CORE:</strong> <span class="ability-text">${coreText}</span></div>`;
       if (m.factionRules.length > 0) {
@@ -1615,7 +1692,7 @@ function buildCombinedAbilitiesBlock(members) {
       });
       return `
         <div class="abilities-block__member">
-          <div class="abilities-block__member-header">${sanitizeHTML(m.name)}</div>
+          <div class="abilities-block__member-header">${buildUnitPill(m.name, mi)}</div>
           ${inner}
         </div>
       `;
@@ -1623,7 +1700,7 @@ function buildCombinedAbilitiesBlock(members) {
     .join("");
 
   return `
-    <div class="abilities-block">
+    <div class="abilities-block abilities-block--abilities">
       <div class="abilities-block__header">Abilities &amp; Rules</div>
       <div class="abilities-block__body">${sections}</div>
     </div>
@@ -1631,14 +1708,16 @@ function buildCombinedAbilitiesBlock(members) {
 }
 
 function buildCombinedKeywordsBlock(members) {
-  const withKeywords = members.filter(m => m.keywords.length > 0);
+  const withKeywords = members
+    .map((m, mi) => ({ m, mi }))
+    .filter(({ m }) => m.keywords.length > 0);
   if (withKeywords.length === 0) return "";
 
   const sections = withKeywords
     .map(
-      m => `
+      ({ m, mi }) => `
         <div class="keywords-block__member">
-          <div class="keywords-block__member-header">${sanitizeHTML(m.name)}</div>
+          <div class="keywords-block__member-header">${buildUnitPill(m.name, mi)}</div>
           ${buildKeywordBadges(m.keywords.join(","))}
         </div>
       `,
@@ -1663,20 +1742,26 @@ function buildTotalAttacks(aValue, count) {
   return ` <span class="weapon-table__cell-total">(${base * count})</span>`;
 }
 
-function buildWeaponRows(weaponList) {
+// groupPill (combined units only, pre-built HTML from buildUnitPill) goes in
+// front of the first weapon's name and marks that row as the start of a unit
+// group.
+function buildWeaponRows(weaponList, kind, groupPill = null) {
+  const isMelee = kind === "melee";
   if (weaponList.length === 0) {
-    return `<tr><td colspan="8" class="weapon-table__empty">No profiles found.</td></tr>`;
+    return `<tr><td colspan="${isMelee ? 7 : 8}" class="weapon-table__empty">No profiles found.</td></tr>`;
   }
   return weaponList
     .map(
-      w => `
-        <tr class="weapon-table__row">
-          <td class="weapon-table__cell weapon-table__cell--name">${formatText(w.name)}${
+      (w, i) => `
+        <tr class="weapon-table__row${groupPill && i === 0 ? " weapon-table__row--group-start" : ""}">
+          <td class="weapon-table__cell weapon-table__cell--name"><div class="weapon-table__name-wrap">${
+            groupPill && i === 0 ? groupPill : ""
+          }<span class="weapon-table__name">${formatText(w.name)}${
             w.count > 1
               ? ` <span class="weapon-table__count-badge">x${sanitizeHTML(w.count.toString())}</span>`
               : ""
-          }</td>
-          <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.range)}</td>
+          }</span></div></td>
+          ${isMelee ? "" : `<td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.range)}</td>`}
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.a)}${buildTotalAttacks(w.a, w.count)}</td>
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.ws || w.bs)}</td>
           <td class="weapon-table__cell weapon-table__cell--strong">${formatText(w.s)}</td>
@@ -1749,8 +1834,8 @@ function buildEnhancementsBlock(unit) {
     .join("");
 
   return `
-    <div class="abilities-block">
-      <div class="abilities-block__header abilities-block__header--enhancement">Enhancements</div>
+    <div class="abilities-block abilities-block--enhancements">
+      <div class="abilities-block__header">Enhancements</div>
       <div class="abilities-block__body">${rows}</div>
     </div>
   `;
@@ -1815,7 +1900,7 @@ function buildAbilitiesBlock(unit) {
   });
 
   return `
-    <div class="abilities-block">
+    <div class="abilities-block abilities-block--abilities">
       <div class="abilities-block__header">Abilities &amp; Rules</div>
       <div class="abilities-block__body">${innerContent}</div>
     </div>

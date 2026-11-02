@@ -32,6 +32,8 @@
   --accent-danger-soft: rgba(248, 113, 113, 0.16);
   --accent-violet: #b794f6; /* faction/army-specific keyword badges */
   --accent-violet-soft: rgba(183, 148, 246, 0.18);
+  --accent-4: #60a5fa; /* Abilities & Rules section in the unit drawer */
+  --accent-4-soft: rgba(96, 165, 250, 0.17);
 
   /* Stratagem-card exception palette (deliberately outside the core system) --
      stratagem timing colors are fixed and must NOT move when the user picks
@@ -381,6 +383,13 @@ button {
   padding: 5px 6px;
   min-width: 84px;
   cursor: pointer;
+}
+
+/* Font names are longer than color names. */
+.font-picker__select {
+  min-width: 0;
+  width: 174px;
+  font-size: 12.5px;
 }
 
 .accent-picker__select:focus-visible {
@@ -1037,6 +1046,11 @@ button {
   color: var(--text-primary);
 }
 
+.statblock-row__label .unit-pill {
+  font-size: 12px;
+  padding: 3px 11px;
+}
+
 .unit-drawer__statblock .stat-box {
   width: 50px;
 }
@@ -1079,50 +1093,111 @@ button {
 
 /* Full-width divider row inside a shared weapon table, labeling which
    constituent unit the rows below it belong to. */
-.weapon-table__subheader-row {
-  height: auto;
-  border-bottom: 1px solid var(--border-subtle);
+/* Combined units: the first weapon of each unit carries a unit chip in front
+   of its name. A heavier rule separates unit groups than the hairlines
+   between weapons inside a group. */
+.weapon-table__row--group-start:not(:nth-child(2)) {
+  border-top: 2px solid var(--border-subtle-strong);
 }
 
-.weapon-table__subheader {
-  background: var(--bg-surface-2);
-  color: var(--text-secondary);
+/* Chip and name side by side; a long name wraps within its own space rather
+   than dropping under the chip. */
+.weapon-table__name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px 8px;
+}
+
+.weapon-table__name {
+  min-width: 0;
+}
+
+/* Attached-unit name pill (buildUnitPill). Each constituent unit gets one
+   accent by position -- 1st unit accent 1, 2nd accent 2, ... -- and keeps
+   it everywhere it's named in the drawer. */
+.unit-pill {
+  --pill-color: var(--accent);
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 2px 9px;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--pill-color) 18%, var(--bg-surface-2));
+  border: 1px solid color-mix(in srgb, var(--pill-color) 60%, transparent);
+  color: color-mix(in srgb, var(--pill-color) 75%, white);
   font-family: var(--font-sans);
   font-size: 10.5px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  text-align: left;
-  padding: 6px 10px;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.unit-pill--2 { --pill-color: var(--accent-amber); }
+.unit-pill--3 { --pill-color: var(--accent-violet); }
+.unit-pill--4 { --pill-color: var(--accent-4); }
+
+.weapon-table__unit-chip {
+  font-size: 10px;
+  padding: 2px 8px;
+}
+
+/* The row just above a new unit group: drop its hairline so the group
+   divider is the only line. */
+.weapon-table__row:has(+ .weapon-table__row--group-start) {
+  border-bottom: none;
 }
 
 /* Same per-member labeling inside the Abilities/Enhancements and Keywords
    blocks of a combined unit's drawer. */
 .abilities-block__member {
-  margin-bottom: 16px;
+  margin-bottom: 22px;
 }
 
 .abilities-block__member:last-child {
   margin-bottom: 0;
 }
 
+/* Per-unit heading inside Enhancements / Abilities in an attached-unit
+   drawer. Deliberately NOT a filled band (that's the section header's look):
+   a solid pill in the unit's color followed by a thick rule in the same
+   color, on the plain body background -- reads as a divider within the
+   section. The color comes from the pill inside it. */
 .abilities-block__member-header {
+  --pill-color: var(--border-subtle-strong);
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: var(--text-primary);
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 10px;
+  gap: 10px;
+  margin: 4px 0 12px;
 }
 
 .abilities-block__member-header::after {
   content: "";
   flex: 1;
-  height: 1px;
-  background: var(--border-subtle-strong);
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--pill-color) 70%, transparent),
+    color-mix(in srgb, var(--pill-color) 10%, transparent)
+  );
+}
+
+.abilities-block__member:first-child .abilities-block__member-header {
+  margin-top: 2px;
+}
+
+.abilities-block__member-header:has(.unit-pill--1) { --pill-color: var(--accent); }
+.abilities-block__member-header:has(.unit-pill--2) { --pill-color: var(--accent-amber); }
+.abilities-block__member-header:has(.unit-pill--3) { --pill-color: var(--accent-violet); }
+.abilities-block__member-header:has(.unit-pill--4) { --pill-color: var(--accent-4); }
+
+.abilities-block__member-header .unit-pill {
+  font-size: 12px;
+  padding: 3px 12px;
+  border: none;
+  background: var(--pill-color);
+  color: var(--bg-page, #19191c);
 }
 
 .keywords-block__member {
@@ -1142,12 +1217,26 @@ button {
   margin-bottom: 6px;
 }
 
+/* The wrapper carries the table's frame (border + rounded corners), since
+   border-radius doesn't clip a border-collapse table. */
 .weapon-table-scroll {
+  --section-color: var(--accent);
   width: 100%;
   overflow-x: auto;
+  border: 1px solid color-mix(in srgb, var(--section-color) 35%, var(--border-subtle));
+  border-top: 3px solid var(--section-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-inset);
 }
 
-.weapon-section-header,
+.weapon-table-scroll--melee {
+  --section-color: var(--accent-amber);
+}
+
+.weapon-table-scroll + .weapon-table-scroll {
+  margin-top: 18px;
+}
+
 .abilities-block__header {
   background: var(--bg-surface-2);
   color: var(--text-primary);
@@ -1165,24 +1254,41 @@ button {
   gap: 8px;
 }
 
-.weapon-section-header--ranged {
-  box-shadow: inset 3px 0 0 var(--accent);
+/* Unit-drawer Enhancements (tertiary accent) and Abilities & Rules (fourth
+   accent) get the same colored band as the weapon tables, so every drawer
+   section reads as its own block at a glance. */
+.abilities-block--enhancements {
+  --section-color: var(--accent-violet);
 }
 
-.weapon-section-header--melee,
-.abilities-block__header--enhancement {
-  box-shadow: inset 3px 0 0 var(--accent-amber);
+.abilities-block--abilities {
+  --section-color: var(--accent-4);
 }
 
-.weapon-section-header__icon {
-  width: 15px;
-  height: 15px;
-  display: block;
-  opacity: 0.85;
+.abilities-block--enhancements,
+.abilities-block--abilities {
+  margin-top: 18px;
 }
 
-.weapon-section-header__icon--melee {
-  width: 17px;
+.abilities-block--enhancements .abilities-block__header,
+.abilities-block--abilities .abilities-block__header {
+  background: color-mix(in srgb, var(--section-color) 18%, var(--bg-surface-2));
+  color: color-mix(in srgb, var(--section-color) 80%, white);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--section-color) 35%, var(--border-subtle));
+  border-top: 3px solid var(--section-color);
+  border-bottom: 1px solid color-mix(in srgb, var(--section-color) 45%, transparent);
+  box-shadow: none;
+}
+
+.abilities-block--enhancements .abilities-block__body,
+.abilities-block--abilities .abilities-block__body {
+  border-color: color-mix(in srgb, var(--section-color) 35%, var(--border-subtle));
+  border-top: none;
 }
 
 .weapon-table {
@@ -1193,38 +1299,68 @@ button {
   font-family: var(--font-display);
   font-size: 14px;
   font-variant-numeric: tabular-nums;
-  background: var(--bg-inset);
-  border: 1px solid var(--border-subtle);
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-  overflow: hidden;
 }
 
+/* One header row does double duty: the section title (icon + Ranged/Melee)
+   in the name column, the stat labels over their columns. */
 .weapon-table__head-row {
-  border-bottom: 1px solid var(--border-subtle-strong);
-  color: var(--text-tertiary);
+  background: color-mix(in srgb, var(--section-color) 18%, var(--bg-surface-2));
+  border-bottom: 1px solid color-mix(in srgb, var(--section-color) 45%, transparent);
+  color: color-mix(in srgb, var(--section-color) 35%, var(--text-secondary));
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 9.5px;
+  font-size: 10px;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
   text-align: center;
-  height: 28px;
+  height: 42px;
 }
 
+/* Numbers get just enough room for "1 (20)"; the name column gets the
+   rest of what keywords gave up (keyword badges wrap onto extra lines). */
 .weapon-table__head {
-  width: 6%;
+  width: 5.5%;
   font-weight: 700;
 }
 
 .weapon-table__head--name {
   padding: 6px 10px;
   text-align: left;
-  width: 28%;
+  width: 42%;
+}
+
+.weapon-table__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: color-mix(in srgb, var(--section-color) 80%, white);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.weapon-table__title-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.weapon-table__title-icon--melee {
+  width: 20px;
 }
 
 .weapon-table__head--keywords {
   padding: 6px 10px;
   text-align: left;
-  width: 34%;
+  width: 25%;
+}
+
+/* Melee has no Range column; its name column takes that width so the stat
+   columns line up with the ranged table above. */
+.weapon-table-scroll--melee .weapon-table__head--name {
+  width: 47.5%;
 }
 
 .weapon-table__row {
@@ -1261,6 +1397,8 @@ button {
 .weapon-table__cell--strong {
   color: var(--text-primary);
   font-weight: 700;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 /* Total attacks across all models carrying this profile, e.g. "4 (40)" —
@@ -1720,13 +1858,68 @@ button {
   }
 
   .weapon-table__head {
-    width: 9%;
+    width: 7.5%;
+  }
+
+  /* Range needs room for "Melee". */
+  .weapon-table__head--range {
+    width: 11%;
   }
 
   .weapon-table__head--name,
   .weapon-table__head--keywords {
-    width: 23%;
     padding: 6px 6px;
+  }
+
+  .weapon-table__head--name {
+    width: 30%;
+  }
+
+  .weapon-table__head--keywords {
+    width: 21.5%;
+  }
+
+  .weapon-table-scroll--melee .weapon-table__head--name {
+    width: 41%;
+  }
+
+  /* Total attacks "(20)" under the per-model value instead of beside it. */
+  .weapon-table__cell-total {
+    display: block;
+  }
+
+  /* Long unit names truncate rather than spill out of the name column. */
+  .weapon-table__unit-chip {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  /* Only "Ranged"/"Melee" fits the narrow name column. */
+  .weapon-table__title {
+    gap: 5px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .weapon-table__title-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .weapon-table__title-icon--melee {
+    width: 18px;
+  }
+
+  .weapon-table__title-suffix {
+    display: none;
+  }
+
+  /* Name column is too narrow for chip + name side by side on phones. */
+  .weapon-table__name-wrap {
+    flex-wrap: wrap;
   }
 
   .weapon-table__cell {
